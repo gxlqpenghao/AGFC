@@ -6,6 +6,8 @@ AGFC also provides first-party MinerU artifact repair for image remediation work
 
 ![AGFC architecture flowchart](docs/assets/agfc-architecture-flowchart.svg)
 
+Diagram topology: [minimal-flowchart spec](docs/assets/agfc-architecture-flowchart.spec.json).
+
 ## Status
 
 This repository is being shaped as a public, demo-first product repo. AGFC v0.1 freezes the current extraction algorithm as a baseline and focuses on stable packaging, contracts, CLI, local service, and MinerU repair.
