@@ -65,3 +65,9 @@ def test_journalmix_visualization_postprocess_script_imports_main():
     project_root = Path(__file__).resolve().parents[1]
     run_jm = (project_root / "scripts" / "run_journalmix_visualization_postprocess.py").read_text(encoding="utf-8")
     assert "from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle_from_results" in run_jm
+
+
+def test_mineru_api_vs_client_audit_script_imports_main():
+    project_root = Path(__file__).resolve().parents[1]
+    run_script = (project_root / "scripts" / "run_mineru_api_vs_client_audit.py").read_text(encoding="utf-8")
+    assert "from agfc.mineru_api_vs_client_audit import main" in run_script
