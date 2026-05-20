@@ -636,7 +636,7 @@ def _render_html(
       {_metric_card("Local MinerU F1", _fmt(mineru_aggregate.get("f1")), f"命中 {mineru_aggregate.get('total_match_count', 0)}/{mineru_aggregate.get('total_gt_count', 0)} / 漏 {mineru_miss} / 误 {mineru_fp}")}
       {_metric_card("问题页", str(len(problem_entries)), "MinerU 漏检、误检或低 F1 页面优先展示")}
     </section>
-    <div class="note">注意：这版和上一版不同，MinerU 来源不是 DataProxy selected_pages baseline，而是你本地完整 raw PDF 的 VLM 输出。页面同时显示 raw_id 和 current_id；例如 raw 第 12 页 raw_id=jm_0012，对应当前 GT/AGFC 的 current_id=jm_0004。</div>
+    <div class="note">注意：这版和上一版不同，MinerU 来源不是之前的 selected_pages baseline，而是你本地完整 raw PDF 的 VLM 输出。页面同时显示 raw_id 和 current_id；例如 raw 第 12 页 raw_id=jm_0012，对应当前 GT/AGFC 的 current_id=jm_0004。</div>
 
     <section>
       <h2>Local MinerU 问题页优先审计</h2>

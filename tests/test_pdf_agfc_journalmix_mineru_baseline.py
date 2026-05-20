@@ -6,7 +6,7 @@ from pathlib import Path
 
 import fitz
 
-from agfc.integrations.mineru.dataproxy_adapter import dataproxy_postprocessed_dir_for_pdf
+from agfc.integrations.mineru.mineru_postprocessed_adapter import mineru_postprocessed_dir_for_pdf
 from agfc.journalmix_mineru_baseline import run_journalmix_mineru_baseline
 from agfc.journalmix_selected_pages import extract_single_page_pdf
 
@@ -14,8 +14,8 @@ from agfc.journalmix_selected_pages import extract_single_page_pdf
 def test_run_journalmix_mineru_baseline_uses_selected_single_page_pdfs(tmp_path: Path, monkeypatch):
     dataset_root = tmp_path / "journalmix_v1"
     output_dir = tmp_path / "output"
-    dataproxy_root = tmp_path / "DataProxy"
-    parsed_root = dataproxy_root / "runtime" / "parsed" / "mineru"
+    runtime_root = tmp_path / "mineru_runtime"
+    parsed_root = runtime_root / "runtime" / "parsed" / "mineru"
     parsed_root.mkdir(parents=True)
     (dataset_root / "gt").mkdir(parents=True)
     (dataset_root / "meta").mkdir(parents=True)
@@ -65,7 +65,7 @@ def test_run_journalmix_mineru_baseline_uses_selected_single_page_pdfs(tmp_path:
 
     captured = {}
 
-    def fake_run_dataproxy_runtime_pilot(*, dataproxy_root: Path, source_dir: Path, report_dir: Path) -> None:
+    def fake_run_mineru_runtime_pilot(*, runtime_root: Path, source_dir: Path, report_dir: Path) -> None:
         captured["source_dir"] = source_dir
         staged_pdf = source_dir / "jm_0001.pdf"
         assert staged_pdf.exists()
@@ -76,7 +76,7 @@ def test_run_journalmix_mineru_baseline_uses_selected_single_page_pdfs(tmp_path:
         finally:
             staged_doc.close()
 
-        postprocessed_dir = dataproxy_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root)
+        postprocessed_dir = mineru_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root)
         postprocessed_dir.mkdir(parents=True, exist_ok=True)
         (postprocessed_dir / "merged_content_list.json").write_text(
             json.dumps(
@@ -93,29 +93,29 @@ def test_run_journalmix_mineru_baseline_uses_selected_single_page_pdfs(tmp_path:
             encoding="utf-8",
         )
 
-    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_dataproxy_runtime_pilot", fake_run_dataproxy_runtime_pilot)
+    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_mineru_runtime_pilot", fake_run_mineru_runtime_pilot)
 
     report = run_journalmix_mineru_baseline(
         dataset_root=dataset_root,
         output_dir=output_dir,
-        dataproxy_root=dataproxy_root,
+        runtime_root=runtime_root,
         parsed_root=parsed_root,
     )
 
-    assert captured["source_dir"] == output_dir / "dataproxy_source_pending"
+    assert captured["source_dir"] == output_dir / "runtime_source_pending"
     assert report["aggregate"]["page_count"] == 1
     assert report["aggregate"]["recall"] == 1.0
     assert report["aggregate"]["f1"] == 1.0
     assert report["pages"][0]["page_id"] == "jm_0001"
-    assert report["pages"][0]["baseline"] == "mineru_dataproxy"
+    assert report["pages"][0]["baseline"] == "mineru_postprocessed"
     assert report["pages"][0]["staged_pdf"].endswith("jm_0001.pdf")
 
 
 def test_run_journalmix_mineru_baseline_continues_when_runtime_pilot_fails_after_parse(tmp_path: Path, monkeypatch):
     dataset_root = tmp_path / "journalmix_v1"
     output_dir = tmp_path / "output"
-    dataproxy_root = tmp_path / "DataProxy"
-    parsed_root = dataproxy_root / "runtime" / "parsed" / "mineru"
+    runtime_root = tmp_path / "mineru_runtime"
+    parsed_root = runtime_root / "runtime" / "parsed" / "mineru"
     parsed_root.mkdir(parents=True)
     (dataset_root / "gt").mkdir(parents=True)
     (dataset_root / "meta").mkdir(parents=True)
@@ -162,9 +162,9 @@ def test_run_journalmix_mineru_baseline_continues_when_runtime_pilot_fails_after
         encoding="utf-8",
     )
 
-    def fake_run_dataproxy_runtime_pilot(*, dataproxy_root: Path, source_dir: Path, report_dir: Path) -> None:
+    def fake_run_mineru_runtime_pilot(*, runtime_root: Path, source_dir: Path, report_dir: Path) -> None:
         staged_pdf = source_dir / "jm_0001.pdf"
-        extracted_dir = dataproxy_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root).parent / "extracted"
+        extracted_dir = mineru_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root).parent / "extracted"
         extracted_dir.mkdir(parents=True, exist_ok=True)
         (extracted_dir / "layout.json").write_text(
             json.dumps(
@@ -183,16 +183,16 @@ def test_run_journalmix_mineru_baseline_continues_when_runtime_pilot_fails_after
         )
         raise subprocess.CalledProcessError(returncode=1, cmd=["runtime_pilot.py"])
 
-    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_dataproxy_runtime_pilot", fake_run_dataproxy_runtime_pilot)
+    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_mineru_runtime_pilot", fake_run_mineru_runtime_pilot)
 
     report = run_journalmix_mineru_baseline(
         dataset_root=dataset_root,
         output_dir=output_dir,
-        dataproxy_root=dataproxy_root,
+        runtime_root=runtime_root,
         parsed_root=parsed_root,
     )
 
-    assert report["config"]["dataproxy_exit_code"] == 1
+    assert report["config"]["runtime_exit_code"] == 1
     assert report["aggregate"]["page_count"] == 1
     assert report["aggregate"]["recall"] == 1.0
 
@@ -200,8 +200,8 @@ def test_run_journalmix_mineru_baseline_continues_when_runtime_pilot_fails_after
 def test_run_journalmix_mineru_baseline_skips_runtime_pilot_when_all_pages_cached(tmp_path: Path, monkeypatch):
     dataset_root = tmp_path / "journalmix_v1"
     output_dir = tmp_path / "output"
-    dataproxy_root = tmp_path / "DataProxy"
-    parsed_root = dataproxy_root / "runtime" / "parsed" / "mineru"
+    runtime_root = tmp_path / "mineru_runtime"
+    parsed_root = runtime_root / "runtime" / "parsed" / "mineru"
     parsed_root.mkdir(parents=True)
     (dataset_root / "gt").mkdir(parents=True)
     (dataset_root / "meta").mkdir(parents=True)
@@ -248,20 +248,20 @@ def test_run_journalmix_mineru_baseline_skips_runtime_pilot_when_all_pages_cache
         encoding="utf-8",
     )
 
-    def fail_runtime(*, dataproxy_root: Path, source_dir: Path, report_dir: Path) -> None:
+    def fail_runtime(*, runtime_root: Path, source_dir: Path, report_dir: Path) -> None:
         raise AssertionError("runtime_pilot should not be called when all pages are cached")
 
     monkeypatch.setattr("agfc.journalmix_mineru_baseline._has_mineru_prediction_artifacts", lambda *args, **kwargs: True)
     monkeypatch.setattr(
-        "agfc.journalmix_mineru_baseline.load_dataproxy_mineru_predictions",
+        "agfc.journalmix_mineru_baseline.load_mineru_postprocessed_predictions",
         lambda _postprocessed_dir: {0: [{"figure_id": "page_1_figure_01", "bbox": [0.0, 0.0, 100.0, 100.0], "page_idx": 0}]},
     )
-    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_dataproxy_runtime_pilot", fail_runtime)
+    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_mineru_runtime_pilot", fail_runtime)
 
     report = run_journalmix_mineru_baseline(
         dataset_root=dataset_root,
         output_dir=output_dir,
-        dataproxy_root=dataproxy_root,
+        runtime_root=runtime_root,
         parsed_root=parsed_root,
     )
 
@@ -273,8 +273,8 @@ def test_run_journalmix_mineru_baseline_skips_runtime_pilot_when_all_pages_cache
 def test_run_journalmix_mineru_baseline_only_sends_pending_pages_to_runtime_pilot(tmp_path: Path, monkeypatch):
     dataset_root = tmp_path / "journalmix_v1"
     output_dir = tmp_path / "output"
-    dataproxy_root = tmp_path / "DataProxy"
-    parsed_root = dataproxy_root / "runtime" / "parsed" / "mineru"
+    runtime_root = tmp_path / "mineru_runtime"
+    parsed_root = runtime_root / "runtime" / "parsed" / "mineru"
     parsed_root.mkdir(parents=True)
     (dataset_root / "gt").mkdir(parents=True)
     (dataset_root / "meta").mkdir(parents=True)
@@ -332,10 +332,10 @@ def test_run_journalmix_mineru_baseline_only_sends_pending_pages_to_runtime_pilo
 
     captured = {}
 
-    def fake_run_dataproxy_runtime_pilot(*, dataproxy_root: Path, source_dir: Path, report_dir: Path) -> None:
+    def fake_run_mineru_runtime_pilot(*, runtime_root: Path, source_dir: Path, report_dir: Path) -> None:
         captured["files"] = sorted(path.name for path in source_dir.glob("*.pdf"))
         pending_pdf = source_dir / "jm_0002.pdf"
-        postprocessed_dir = dataproxy_postprocessed_dir_for_pdf(pending_pdf, parsed_root=parsed_root)
+        postprocessed_dir = mineru_postprocessed_dir_for_pdf(pending_pdf, parsed_root=parsed_root)
         postprocessed_dir.mkdir(parents=True, exist_ok=True)
         (postprocessed_dir / "merged_content_list.json").write_text(
             json.dumps(
@@ -344,12 +344,12 @@ def test_run_journalmix_mineru_baseline_only_sends_pending_pages_to_runtime_pilo
             encoding="utf-8",
         )
 
-    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_dataproxy_runtime_pilot", fake_run_dataproxy_runtime_pilot)
+    monkeypatch.setattr("agfc.journalmix_mineru_baseline.run_mineru_runtime_pilot", fake_run_mineru_runtime_pilot)
 
     report = run_journalmix_mineru_baseline(
         dataset_root=dataset_root,
         output_dir=output_dir,
-        dataproxy_root=dataproxy_root,
+        runtime_root=runtime_root,
         parsed_root=parsed_root,
     )
 

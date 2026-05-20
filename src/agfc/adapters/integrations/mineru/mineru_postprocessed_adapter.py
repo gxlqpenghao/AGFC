@@ -6,13 +6,13 @@ from pathlib import Path
 from typing import Any
 
 
-def dataproxy_postprocessed_dir_for_pdf(pdf_path: str | Path, *, parsed_root: str | Path) -> Path:
+def mineru_postprocessed_dir_for_pdf(pdf_path: str | Path, *, parsed_root: str | Path) -> Path:
     pdf = Path(pdf_path).expanduser().resolve()
     checksum = _sha256_for_file(pdf)
     return Path(parsed_root).expanduser().resolve() / checksum / "postprocessed"
 
 
-def load_dataproxy_mineru_predictions(postprocessed_dir: str | Path) -> dict[int, list[dict[str, Any]]]:
+def load_mineru_postprocessed_predictions(postprocessed_dir: str | Path) -> dict[int, list[dict[str, Any]]]:
     requested_path = Path(postprocessed_dir)
     content_list_path = requested_path / "merged_content_list.json"
     if content_list_path.exists():
@@ -30,7 +30,7 @@ def load_dataproxy_mineru_predictions(postprocessed_dir: str | Path) -> dict[int
                     "bbox": bbox,
                     "page_idx": page_idx,
                     "asset_path": item.get("asset_path"),
-                    "provider": "mineru_dataproxy",
+                    "provider": "mineru_postprocessed",
                 }
             )
         return predictions
@@ -54,7 +54,7 @@ def load_dataproxy_mineru_predictions(postprocessed_dir: str | Path) -> dict[int
                     "bbox": [float(value) for value in (block.get("bbox") or [0.0, 0.0, 0.0, 0.0])],
                     "page_idx": page_idx,
                     "asset_path": None,
-                    "provider": "mineru_dataproxy",
+                    "provider": "mineru_postprocessed",
                 }
             )
     return predictions

@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any
 
 from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
-from agfc.integrations.mineru.dataproxy_adapter import (
-    dataproxy_postprocessed_dir_for_pdf,
-    load_dataproxy_mineru_predictions,
+from agfc.integrations.mineru.mineru_postprocessed_adapter import (
+    mineru_postprocessed_dir_for_pdf,
+    load_mineru_postprocessed_predictions,
 )
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
 from agfc.journalmix_selected_pages import extract_single_page_pdf, load_journalmix_selected_page_records
@@ -23,8 +23,8 @@ PACKAGE_ROOT = MODULE_ROOT.parent
 PROJECT_ROOT = PACKAGE_ROOT.parents[1]
 DEFAULT_DATASET_ROOT = PROJECT_ROOT / "data" / "private" / "journalmix_v1"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "artifacts" / "benchmarks" / "journalmix_v1" / "mineru_selected_pages"
-DEFAULT_DATAPROXY_ROOT = Path(
-    os.environ.get("AGFC_DATAPROXY_ROOT", str(PROJECT_ROOT.parent / "DataProxy"))
+DEFAULT_MINERU_RUNTIME_ROOT = Path(
+    os.environ.get("AGFC_MINERU_RUNTIME_ROOT", str(PROJECT_ROOT.parent / "mineru_runtime"))
 )
 
 
@@ -32,21 +32,21 @@ def run_journalmix_mineru_baseline(
     *,
     dataset_root: str | Path = DEFAULT_DATASET_ROOT,
     output_dir: str | Path = DEFAULT_OUTPUT_DIR,
-    dataproxy_root: str | Path = DEFAULT_DATAPROXY_ROOT,
+    runtime_root: str | Path = DEFAULT_MINERU_RUNTIME_ROOT,
     parsed_root: str | Path | None = None,
     iou_threshold: float = 0.5,
     write_visualizations: bool = False,
 ) -> dict[str, Any]:
     dataset_path = Path(dataset_root)
     output_path = Path(output_dir)
-    dataproxy_path = Path(dataproxy_root)
-    parsed_path = Path(parsed_root) if parsed_root is not None else dataproxy_path / "runtime" / "parsed" / "mineru"
+    runtime_path = Path(runtime_root)
+    parsed_path = Path(parsed_root) if parsed_root is not None else runtime_path / "runtime" / "parsed" / "mineru"
     records = load_journalmix_selected_page_records(dataset_path)
 
     _reset_output_dir(output_path)
-    source_dir = output_path / "dataproxy_source"
+    source_dir = output_path / "runtime_source"
     source_dir.mkdir(parents=True, exist_ok=True)
-    pending_source_dir = output_path / "dataproxy_source_pending"
+    pending_source_dir = output_path / "runtime_source_pending"
     pending_source_dir.mkdir(parents=True, exist_ok=True)
     (output_path / "pages").mkdir(parents=True, exist_ok=True)
 
@@ -67,28 +67,28 @@ def run_journalmix_mineru_baseline(
     for page_id in pending_page_ids:
         shutil.copy2(staged_pdf_by_page_id[page_id], pending_source_dir / f"{page_id}.pdf")
 
-    dataproxy_exit_code = 0
-    dataproxy_error = None
-    dataproxy_stopped_after_directory_ingest = False
+    runtime_exit_code = 0
+    runtime_error = None
+    runtime_stopped_after_directory_ingest = False
     if pending_page_ids:
         try:
-            runtime_result = run_dataproxy_runtime_pilot(
-                dataproxy_root=dataproxy_path,
+            runtime_result = run_mineru_runtime_pilot(
+                runtime_root=runtime_path,
                 source_dir=pending_source_dir,
-                report_dir=output_path / "dataproxy_runtime_pilot",
+                report_dir=output_path / "mineru_runtime_pilot",
             )
             runtime_result = runtime_result or {}
-            dataproxy_exit_code = int(runtime_result.get("exit_code", 0) or 0)
-            dataproxy_stopped_after_directory_ingest = bool(runtime_result.get("stopped_after_directory_ingest"))
+            runtime_exit_code = int(runtime_result.get("exit_code", 0) or 0)
+            runtime_stopped_after_directory_ingest = bool(runtime_result.get("stopped_after_directory_ingest"))
         except subprocess.CalledProcessError as exc:
-            dataproxy_exit_code = int(exc.returncode or 1)
-            dataproxy_error = str(exc)
+            runtime_exit_code = int(exc.returncode or 1)
+            runtime_error = str(exc)
 
     page_results = []
     for record in records:
         staged_pdf = staged_pdf_by_page_id[record["page_id"]]
-        postprocessed_dir = dataproxy_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_path)
-        predictions_by_page = load_dataproxy_mineru_predictions(postprocessed_dir)
+        postprocessed_dir = mineru_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_path)
+        predictions_by_page = load_mineru_postprocessed_predictions(postprocessed_dir)
         page_result = evaluate_figure_page(record["gt_page"], predictions_by_page.get(0, []), iou_threshold=iou_threshold)
         page_result.update(
             {
@@ -98,7 +98,7 @@ def run_journalmix_mineru_baseline(
                 "page_label": record["page_label"],
                 "figure_family": record["figure_family"],
                 "difficulty": record["difficulty"],
-                "baseline": "mineru_dataproxy",
+                "baseline": "mineru_postprocessed",
                 "selected_page_idx": record["selected_page_idx"],
                 "source_pdf": str(record["source_pdf"]),
                 "staged_pdf": str(staged_pdf),
@@ -116,17 +116,17 @@ def run_journalmix_mineru_baseline(
         "config": {
             "dataset_root": str(dataset_path),
             "output_dir": str(output_path),
-            "dataproxy_root": str(dataproxy_path),
+            "runtime_root": str(runtime_path),
             "parsed_root": str(parsed_path),
             "iou_threshold": iou_threshold,
-            "baseline": "mineru_dataproxy",
+            "baseline": "mineru_postprocessed",
             "selection_mode": "selected_pages_only",
             "page_count": len(records),
             "cached_page_count": len(records) - len(pending_page_ids),
             "pending_page_count": len(pending_page_ids),
-            "dataproxy_exit_code": dataproxy_exit_code,
-            "dataproxy_error": dataproxy_error,
-            "dataproxy_stopped_after_directory_ingest": dataproxy_stopped_after_directory_ingest,
+            "runtime_exit_code": runtime_exit_code,
+            "runtime_error": runtime_error,
+            "runtime_stopped_after_directory_ingest": runtime_stopped_after_directory_ingest,
             "write_visualizations": write_visualizations,
         },
         "aggregate": aggregate,
@@ -144,10 +144,10 @@ def run_journalmix_mineru_baseline(
     return report
 
 
-def run_dataproxy_runtime_pilot(*, dataproxy_root: Path, source_dir: Path, report_dir: Path) -> dict[str, Any]:
+def run_mineru_runtime_pilot(*, runtime_root: Path, source_dir: Path, report_dir: Path) -> dict[str, Any]:
     report_dir.mkdir(parents=True, exist_ok=True)
     command = [
-        str(dataproxy_root / ".venv" / "bin" / "python"),
+        str(runtime_root / ".venv" / "bin" / "python"),
         "scripts/runtime_pilot.py",
         "--source-dir",
         str(source_dir),
@@ -157,7 +157,7 @@ def run_dataproxy_runtime_pilot(*, dataproxy_root: Path, source_dir: Path, repor
     progress_path = report_dir / "phase2_runtime_pilot_progress.json"
     process = subprocess.Popen(
         command,
-        cwd=dataproxy_root,
+        cwd=runtime_root,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
@@ -201,7 +201,7 @@ def _reset_output_dir(path: Path) -> None:
 
 
 def _has_mineru_prediction_artifacts(staged_pdf: Path, *, parsed_root: Path) -> bool:
-    postprocessed_dir = dataproxy_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root)
+    postprocessed_dir = mineru_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_root)
     return (postprocessed_dir / "merged_content_list.json").exists() or (
         postprocessed_dir.parent / "extracted" / "layout.json"
     ).exists()
@@ -230,8 +230,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run MinerU on JournalMix-v1 selected pages only.")
     parser.add_argument("--dataset-root", default=str(DEFAULT_DATASET_ROOT), help="Path to the frozen JournalMix-v1 dataset root")
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR), help="Output directory for MinerU results")
-    parser.add_argument("--dataproxy-root", default=str(DEFAULT_DATAPROXY_ROOT), help="Path to the DataProxy repository root")
-    parser.add_argument("--parsed-root", default=None, help="Optional override for DataProxy parsed MinerU output root")
+    parser.add_argument("--runtime-root", default=str(DEFAULT_MINERU_RUNTIME_ROOT), help="Path to the local MinerU runtime repository root")
+    parser.add_argument("--parsed-root", default=None, help="Optional override for parsed MinerU output root")
     parser.add_argument("--iou-threshold", type=float, default=0.5, help="IoU threshold used for F1 / recall matching")
     parser.add_argument("--write-visualizations", action="store_true", help="Also render per-page visualization PNGs after the benchmark run")
     args = parser.parse_args()
@@ -239,7 +239,7 @@ def main() -> int:
     report = run_journalmix_mineru_baseline(
         dataset_root=args.dataset_root,
         output_dir=args.output_dir,
-        dataproxy_root=args.dataproxy_root,
+        runtime_root=args.runtime_root,
         parsed_root=args.parsed_root,
         iou_threshold=args.iou_threshold,
         write_visualizations=args.write_visualizations,

@@ -1,6 +1,6 @@
-# DataProxy-Style Consumer Integration
+# Consumer Integration
 
-AGFC can be used by DataProxy-style systems without importing their internal types into AGFC.
+AGFC can be used by downstream systems without importing their internal types into AGFC.
 
 ## Recommended Boundary
 

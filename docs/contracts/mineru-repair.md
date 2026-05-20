@@ -40,4 +40,4 @@ It falls back to document-level image slot order when necessary. Future versions
 
 ## Boundary
 
-The repair adapter depends only on MinerU-style files such as `content_list.json` and `full.md`. It does not depend on DataProxy internal classes or runtime directories.
+The repair adapter depends only on MinerU-style files such as `content_list.json` and `full.md`. It does not depend on consumer-specific classes or runtime directories.

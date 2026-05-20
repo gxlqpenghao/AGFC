@@ -17,7 +17,7 @@ SRC_ROOT = REPO_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from agfc.integrations.mineru.dataproxy_adapter import load_dataproxy_mineru_predictions
+from agfc.integrations.mineru.mineru_postprocessed_adapter import load_mineru_postprocessed_predictions
 from agfc.journalmix_selected_pages import load_journalmix_selected_page_records
 
 
@@ -159,7 +159,7 @@ def _mineru_boxes(page_result: dict[str, Any]) -> list[list[float]]:
     postprocessed_dir = str(page_result.get("postprocessed_dir", "") or "")
     if not postprocessed_dir:
         return []
-    predictions_by_page = load_dataproxy_mineru_predictions(postprocessed_dir)
+    predictions_by_page = load_mineru_postprocessed_predictions(postprocessed_dir)
     return [_float_bbox(item.get("bbox") or [0.0, 0.0, 0.0, 0.0]) for item in predictions_by_page.get(0, [])]
 
 

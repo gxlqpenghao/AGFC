@@ -1,26 +1,28 @@
 # AGFC
 
-AGFC is a standalone figure extractor for heterogeneous documents. It extracts figure crops from PDFs and exposes stable JSON contracts for use by other projects.
+AGFC 是一个面向异构文档的独立 figure extractor，专注从 PDF 中提取图片/图形，并以稳定 JSON contract 对外输出，方便其他项目直接复用。
 
-AGFC also provides first-party MinerU artifact repair for image remediation workflows. The MinerU adapter reads MinerU-style artifacts, writes a new repaired bundle, and does not mutate the original parser output.
+AGFC 同时提供面向 MinerU 解析工件的 first-party repair 能力。该适配层会读取 MinerU 风格工件，生成一份新的修复结果，不会原地改写原始解析产物。
 
 ![AGFC project overview](docs/assets/agfc-project-intro.png)
 
-## Status
+英文版说明见 [README.en.md](README.en.md)。
 
-This repository is being shaped as a public, demo-first product repo. AGFC v0.1 freezes the current extraction algorithm as a baseline and focuses on stable packaging, contracts, CLI, local service, and MinerU repair.
+## 当前状态
 
-## What This Repo Delivers
+这个仓库正在收敛成一个公开、可演示、可复用的产品仓。AGFC v0.1 冻结当前抽图算法作为 baseline，重点补齐稳定打包、contract、CLI、本地 service 和 MinerU repair。
 
-- A standalone `agfc` CLI for figure extraction and MinerU artifact repair
-- A local HTTP sidecar service with `/extract` and `/repair/mineru`
-- Stable JSON contracts in `src/agfc/contracts/` and JSON Schemas under `src/agfc/schemas/`
-- First-party MinerU repair that writes a new repaired bundle without mutating original artifacts
-- Public-safe generated demos that run without private datasets
-- JournalMix-v1 benchmark runner and report format for maintainers with the private benchmark dataset
-- Python APIs for projects that intentionally want in-process integration
+## 仓库提供什么
 
-## Install
+- 独立的 `agfc` CLI，可直接执行 figure extraction 和 MinerU artifact repair
+- 本地 HTTP sidecar service，提供 `/extract` 与 `/repair/mineru`
+- 稳定 JSON contracts，位于 `src/agfc/contracts/`，对应 JSON Schemas 位于 `src/agfc/schemas/`
+- First-party MinerU repair，输出新的 repaired bundle，而不是修改原始工件
+- 可直接运行的 public-safe demos，不依赖私有数据
+- 面向维护者的 JournalMix-v1 benchmark runner 与报告格式
+- 可选的 Python API，适合明确需要 in-process 集成的项目
+
+## 安装
 
 ```bash
 python3 -m venv .venv
@@ -28,40 +30,40 @@ source .venv/bin/activate
 python3 -m pip install -e .
 ```
 
-This installs the `agfc` console command.
+安装完成后会提供 `agfc` 命令。
 
-## Quickstart: Extract Figures
+## 快速开始：抽图
 
-Run the generated public-safe demo:
+运行 public-safe demo：
 
 ```bash
 agfc demo extract
 ```
 
-Or run extraction on your own PDF:
+或者对你自己的 PDF 执行抽图：
 
 ```bash
 agfc extract --input path/to/file.pdf --output-dir out/extract
 ```
 
-The command writes:
+命令会输出：
 
 - `out/extract/extract_result.json`
 - `out/extract/summary.json`
 - `out/extract/images/`
 - `out/extract/pages/`
 
-See [Extract Contract](docs/contracts/extract.md).
+详见 [Extract Contract](docs/contracts/extract.md)。
 
-## Quickstart: Repair MinerU Artifacts
+## 快速开始：修复 MinerU 工件
 
-Run the generated MinerU repair demo:
+运行自带的 MinerU repair demo：
 
 ```bash
 agfc demo mineru
 ```
 
-Or repair an existing MinerU artifact directory:
+或者修复一个现有的 MinerU artifact 目录：
 
 ```bash
 agfc repair mineru \
@@ -70,7 +72,7 @@ agfc repair mineru \
   --output-dir out/mineru_repair
 ```
 
-If you already have an AGFC extraction result, pass it explicitly:
+如果你已经有 AGFC 的抽图结果，也可以显式传入：
 
 ```bash
 agfc repair mineru \
@@ -80,7 +82,7 @@ agfc repair mineru \
   --extract-result out/extract/extract_result.json
 ```
 
-The repair command writes:
+命令会输出：
 
 - `out/mineru_repair/mineru_repair_result.json`
 - `out/mineru_repair/repaired/content_list.json`
@@ -88,26 +90,26 @@ The repair command writes:
 - `out/mineru_repair/postprocessed/merged_full.md`
 - `out/mineru_repair/postprocessed/final_images/`
 
-See [MinerU Repair Contract](docs/contracts/mineru-repair.md) and [MinerU Integration](docs/integrations/mineru.md).
+详见 [MinerU Repair Contract](docs/contracts/mineru-repair.md) 和 [MinerU Integration](docs/integrations/mineru.md)。
 
-## Local HTTP Service
+## 本地 HTTP Service
 
 ```bash
 agfc serve --host 127.0.0.1 --port 8000
 ```
 
-Routes:
+可用路由：
 
 - `GET /health`
 - `GET /version`
 - `POST /extract`
 - `POST /repair/mineru`
 
-See [HTTP Service Contract](docs/contracts/http-service.md).
+详见 [HTTP Service Contract](docs/contracts/http-service.md)。
 
 ## JournalMix Benchmark
 
-Maintainers with the private JournalMix-v1 dataset can run:
+如果你有本地私有的 JournalMix-v1 数据集，可以运行：
 
 ```bash
 agfc benchmark journalmix \
@@ -115,38 +117,38 @@ agfc benchmark journalmix \
   --output-dir artifacts/benchmarks/journalmix_v1/fresh
 ```
 
-See [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md).
+详见 [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md)。
 
-For the current AGFC vs local MinerU raw-page comparison on JournalMix-v1, see
-[JournalMix-v1 vs MinerU](docs/benchmarks/journalmix-v1-vs-mineru.md).
+当前 AGFC 与本地 MinerU raw-page 对比结果见
+[JournalMix-v1 vs MinerU](docs/benchmarks/journalmix-v1-vs-mineru.md)。
 
-## Repository Layout
+## 仓库结构
 
 ```text
-src/agfc/core/        Algorithmic figure extraction core
-src/agfc/runtime/     CLI, service, runner, demos
-src/agfc/contracts/   Stable public contract builders
-src/agfc/adapters/    MinerU and third-party integration adapters
-src/agfc/research/    JournalMix, corpus, evaluation tooling
-src/agfc/schemas/     JSON Schema files for public contracts
-tests/                Automated tests
-docs/contracts/       Public contract docs
-docs/integrations/    Integration guides
-docs/benchmarks/      Benchmark protocols and reference reports
-examples/             Runnable demo wrappers
-fixtures/             Public-safe fixture notes and generated demo roots
-scripts/              Thin research and benchmark entrypoints
+src/agfc/core/        抽图算法核心
+src/agfc/runtime/     CLI、service、runner、demos
+src/agfc/contracts/   稳定 public contract 构建层
+src/agfc/adapters/    MinerU 与第三方集成适配层
+src/agfc/research/    JournalMix、corpus、evaluation 工具
+src/agfc/schemas/     JSON Schema 文件
+tests/                自动化测试
+docs/contracts/       public contract 文档
+docs/integrations/    集成说明
+docs/benchmarks/      benchmark 协议与结果说明
+examples/             可运行 demo 包装脚本
+fixtures/             public-safe fixture 说明
+scripts/              薄脚本入口
 ```
 
 ## Public Contract Boundary
 
-AGFC public contracts are stable JSON plus file artifact paths. Consumers should not rely on AGFC internal dataclasses or research-only files.
+AGFC 对外 contract 是稳定 JSON 加文件产物路径。下游项目不应该依赖 AGFC 内部 dataclass 或 research-only 文件结构。
 
-The MinerU repair adapter is intentionally independent of DataProxy internals. DataProxy-style consumers should call AGFC through CLI, HTTP, or Python API, then map AGFC JSON into their own internal types. See [DataProxy-Style Consumer Integration](docs/integrations/dataproxy-style-consumer.md).
+MinerU repair adapter 也刻意不依赖外部系统的内部类型。下游消费者应该通过 CLI、HTTP 或 Python API 调用 AGFC，再把 AGFC JSON 映射到自己的内部模型。详见 [Consumer Integration](docs/integrations/consumer-integration.md)。
 
-## Development
+## 开发
 
-Run the public-surface tests:
+运行 public surface 测试：
 
 ```bash
 python3 -m pytest \
@@ -158,7 +160,7 @@ python3 -m pytest \
   tests/test_public_service.py -v
 ```
 
-Run a small regression subset:
+运行一组较小的回归测试：
 
 ```bash
 python3 -m pytest \
@@ -166,9 +168,9 @@ python3 -m pytest \
   tests/test_script_entrypoints.py \
   tests/test_pdf_agfc_export.py \
   tests/test_pdf_agfc_runner_benchmark_mode.py \
-  tests/test_pdf_agfc_mineru_dataproxy_adapter.py -v
+  tests/test_pdf_agfc_mineru_postprocessed_adapter.py -v
 ```
 
-## Scope Notes
+## 范围说明
 
-AGFC v0.1 productizes the current figure extraction baseline. Known extraction-quality issues should be fixed in AGFC core over time, but major algorithm changes are outside this release packaging pass.
+AGFC v0.1 的重点是把当前 figure extraction baseline 产品化。已知的抽图质量问题应该继续在 AGFC core 中修复，但大规模算法升级不属于这次 packaging pass 的范围。
