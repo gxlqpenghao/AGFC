@@ -1,8 +1,10 @@
 # AGFC
 
-AGFC 是一个面向异构文档的独立 figure extractor，专注从 PDF 中提取图片/图形，并以稳定 JSON contract 对外输出，方便其他项目直接复用。
+AGFC 是一个面向异构文档的独立 figure extractor，专注从 PDF 中恢复逻辑完整的图片/图形，并以稳定 JSON contract 对外输出，方便其他项目直接复用。
 
-AGFC 同时提供面向 MinerU 解析工件的 first-party repair 能力。该适配层会读取 MinerU 风格工件，生成一份新的修复结果，不会原地改写原始解析产物。
+方法上，AGFC 不是直接把整页渲染图送进一个通用模型去回归局部 bbox，也不是把解析器输出的 `image block` 直接当成最终结果；它会从页面中的文本块、位图区域、矢量路径和版面原语构建证据，再经过候选闭包、负证据过滤和边界排序，恢复更接近“完整 figure”的边界。
+
+相较于当前主流的图片抽取方式，例如 MinerU 一类以解析块或局部视觉检测为主的流程，AGFC 更强调逻辑完整图恢复，因此对多面板组图、矢量与栅格混合图、以及紧邻正文的复杂页面更友好。AGFC 同时提供面向 MinerU 解析工件的 first-party repair 能力：读取 MinerU 风格工件，生成一份新的修复结果，而不是原地改写原始解析产物。
 
 ![AGFC project overview](docs/assets/agfc-project-intro.png)
 
@@ -21,6 +23,12 @@ AGFC 同时提供面向 MinerU 解析工件的 first-party repair 能力。该�
 - 可直接运行的 public-safe demos，不依赖私有数据
 - 面向维护者的 JournalMix-v1 benchmark runner 与报告格式
 - 可选的 Python API，适合明确需要 in-process 集成的项目
+
+## 如何使用
+
+- 想直接跑工具：用 `agfc extract` 和 `agfc repair mineru`
+- 想给别的系统接入：启动 `agfc serve`，通过 HTTP 调用
+- 想先快速体验：先跑 `agfc demo extract` 或 `agfc demo mineru`
 
 ## 安装
 
