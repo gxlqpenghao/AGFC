@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">AGFC public product architecture</title>
+  <desc id="desc">A minimalist whitepaper architecture diagram for AGFC, showing inputs, core figure extraction, stable contracts, interfaces, consumers, and benchmark governance.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#8088B0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, Helvetica, sans-serif; fill: #22252A; }
+      .subtitle { font: 400 16px Arial, Helvetica, sans-serif; fill: #505050; }
+      .section { fill: #3050A0; }
+      .sectionText { font: 700 17px Arial, Helvetica, sans-serif; fill: #FFFFFF; }
+      .plate { fill: #EEF4F7; stroke: #D0D0D0; stroke-width: 1; }
+      .card { fill: #FFFFFF; stroke: #B8B8B8; stroke-width: 1; }
+      .greenCard { fill: #E0F0E8; stroke: #309878; stroke-width: 1.2; }
+      .redCard { fill: #F8E8E8; stroke: #A82040; stroke-width: 1.2; }
+      .nodeTitle { font: 700 15px Arial, Helvetica, sans-serif; fill: #22252A; }
+      .nodeText { font: 400 12.5px Arial, Helvetica, sans-serif; fill: #505050; }
+      .small { font: 600 11px Arial, Helvetica, sans-serif; fill: #505050; }
+      .chip { fill: #8080A8; }
+      .chipText { font: 700 11px Arial, Helvetica, sans-serif; fill: #FFFFFF; }
+      .line { fill: none; stroke: #8088B0; stroke-width: 1.8; marker-end: url(#arrow); }
+      .greenLine { fill: none; stroke: #309878; stroke-width: 1.8; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #707070; stroke-width: 1.2; stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <text x="64" y="58" class="title">AGFC Public Product Architecture</text>
+  <text x="64" y="86" class="subtitle">Independent figure extraction capability with stable contracts, sidecar runtime, and first-party MinerU repair.</text>
+
+  <rect x="64" y="120" width="1472" height="640" rx="0" class="plate"/>
+  <rect x="64" y="120" width="1472" height="38" rx="0" class="section"/>
+  <text x="88" y="145" class="sectionText">Runtime and integration boundary</text>
+
+  <rect x="92" y="190" width="248" height="300" rx="0" class="card"/>
+  <rect x="92" y="190" width="248" height="34" rx="0" class="section"/>
+  <text x="112" y="212" class="sectionText">Inputs</text>
+  <rect x="116" y="250" width="200" height="52" rx="0" class="card"/>
+  <text x="132" y="274" class="nodeTitle">Source documents</text>
+  <text x="132" y="292" class="nodeText">PDF / PPTX / DOCX</text>
+  <rect x="116" y="320" width="200" height="52" rx="0" class="card"/>
+  <text x="132" y="344" class="nodeTitle">Parser artifacts</text>
+  <text x="132" y="362" class="nodeText">content_list / full.md / images</text>
+  <rect x="116" y="390" width="200" height="52" rx="0" class="greenCard"/>
+  <text x="132" y="414" class="nodeTitle">Candidate evidence</text>
+  <text x="132" y="432" class="nodeText">text, raster, vector, layout atoms</text>
+
+  <rect x="424" y="190" width="418" height="300" rx="0" class="card"/>
+  <rect x="424" y="190" width="418" height="34" rx="0" class="section"/>
+  <text x="444" y="212" class="sectionText">AGFC Core</text>
+  <rect x="452" y="248" width="158" height="54" rx="0" class="card"/>
+  <text x="468" y="272" class="nodeTitle">Atom graph</text>
+  <text x="468" y="290" class="nodeText">normalize page primitives</text>
+  <rect x="652" y="248" width="158" height="54" rx="0" class="card"/>
+  <text x="668" y="272" class="nodeTitle">Panel grouping</text>
+  <text x="668" y="290" class="nodeText">visual communities</text>
+  <rect x="452" y="340" width="158" height="54" rx="0" class="redCard"/>
+  <text x="468" y="364" class="nodeTitle">Negative evidence</text>
+  <text x="468" y="382" class="nodeText">reject body, table, footer</text>
+  <rect x="652" y="340" width="158" height="54" rx="0" class="greenCard"/>
+  <text x="668" y="364" class="nodeTitle">Closure ranking</text>
+  <text x="668" y="382" class="nodeText">select figure boundary</text>
+  <rect x="552" y="428" width="158" height="38" rx="0" class="greenCard"/>
+  <text x="584" y="452" class="nodeTitle">Figure export</text>
+  <path d="M610 275 H652" class="line"/>
+  <path d="M531 302 V340" class="line"/>
+  <path d="M731 302 V340" class="line"/>
+  <path d="M531 394 C531 414 552 424 589 428" class="greenLine"/>
+  <path d="M731 394 C731 414 710 424 673 428" class="greenLine"/>
+
+  <rect x="918" y="190" width="292" height="300" rx="0" class="card"/>
+  <rect x="918" y="190" width="292" height="34" rx="0" class="section"/>
+  <text x="938" y="212" class="sectionText">Stable Contract</text>
+  <rect x="944" y="250" width="240" height="66" rx="0" class="greenCard"/>
+  <text x="962" y="275" class="nodeTitle">extract_result.json</text>
+  <text x="962" y="294" class="nodeText">figure_bbox, content_bbox</text>
+  <text x="962" y="311" class="nodeText">support_bbox, caption_text</text>
+  <rect x="944" y="338" width="240" height="66" rx="0" class="card"/>
+  <text x="962" y="363" class="nodeTitle">artifact paths</text>
+  <text x="962" y="382" class="nodeText">images_dir, summary_json</text>
+  <rect x="944" y="426" width="240" height="38" rx="0" class="card"/>
+  <text x="962" y="450" class="nodeTitle">versioned JSON Schemas</text>
+
+  <rect x="1268" y="190" width="236" height="300" rx="0" class="card"/>
+  <rect x="1268" y="190" width="236" height="34" rx="0" class="section"/>
+  <text x="1288" y="212" class="sectionText">Interfaces</text>
+  <rect x="1294" y="250" width="184" height="44" rx="0" class="greenCard"/>
+  <text x="1326" y="277" class="nodeTitle">CLI</text>
+  <rect x="1294" y="312" width="184" height="44" rx="0" class="greenCard"/>
+  <text x="1316" y="339" class="nodeTitle">HTTP sidecar</text>
+  <rect x="1294" y="374" width="184" height="44" rx="0" class="card"/>
+  <text x="1320" y="401" class="nodeTitle">Python API</text>
+  <rect x="1294" y="436" width="184" height="34" rx="0" class="card"/>
+  <text x="1322" y="458" class="nodeTitle">MCP adapter</text>
+
+  <path d="M340 340 H424" class="line"/>
+  <rect x="354" y="319" width="54" height="22" rx="3" class="chip"/>
+  <text x="364" y="334" class="chipText">parse</text>
+  <path d="M842 340 H918" class="line"/>
+  <rect x="852" y="319" width="54" height="22" rx="3" class="chip"/>
+  <text x="861" y="334" class="chipText">publish</text>
+  <path d="M1210 340 H1268" class="line"/>
+  <rect x="1215" y="319" width="48" height="22" rx="3" class="chip"/>
+  <text x="1225" y="334" class="chipText">serve</text>
+
+  <rect x="92" y="540" width="418" height="160" rx="0" class="card"/>
+  <rect x="92" y="540" width="418" height="34" rx="0" class="section"/>
+  <text x="112" y="562" class="sectionText">First-party repair application</text>
+  <rect x="120" y="596" width="170" height="58" rx="0" class="greenCard"/>
+  <text x="138" y="621" class="nodeTitle">MinerU adapter</text>
+  <text x="138" y="640" class="nodeText">replace image slots safely</text>
+  <rect x="312" y="596" width="170" height="58" rx="0" class="card"/>
+  <text x="330" y="621" class="nodeTitle">repaired bundle</text>
+  <text x="330" y="640" class="nodeText">content_list + final_images</text>
+  <path d="M290 625 H312" class="line"/>
+
+  <rect x="558" y="540" width="418" height="160" rx="0" class="card"/>
+  <rect x="558" y="540" width="418" height="34" rx="0" class="section"/>
+  <text x="578" y="562" class="sectionText">Cross-project consumers</text>
+  <rect x="586" y="596" width="158" height="58" rx="0" class="card"/>
+  <text x="604" y="621" class="nodeTitle">DataProxy-style</text>
+  <text x="604" y="640" class="nodeText">thin client mapping</text>
+  <rect x="772" y="596" width="158" height="58" rx="0" class="card"/>
+  <text x="790" y="621" class="nodeTitle">Other systems</text>
+  <text x="790" y="640" class="nodeText">language-neutral calls</text>
+
+  <rect x="1024" y="540" width="480" height="160" rx="0" class="card"/>
+  <rect x="1024" y="540" width="480" height="34" rx="0" class="section"/>
+  <text x="1044" y="562" class="sectionText">Benchmark and release loop</text>
+  <rect x="1052" y="596" width="136" height="58" rx="0" class="card"/>
+  <text x="1070" y="621" class="nodeTitle">JournalMix-v1</text>
+  <text x="1070" y="640" class="nodeText">quality + runtime</text>
+  <rect x="1212" y="596" width="120" height="58" rx="0" class="greenCard"/>
+  <text x="1230" y="621" class="nodeTitle">CI</text>
+  <text x="1230" y="640" class="nodeText">482 tests</text>
+  <rect x="1356" y="596" width="120" height="58" rx="0" class="greenCard"/>
+  <text x="1374" y="621" class="nodeTitle">v0.1.0 RC</text>
+  <text x="1374" y="640" class="nodeText">release checklist</text>
+  <path d="M1188 625 H1212" class="line"/>
+  <path d="M1332 625 H1356" class="line"/>
+
+  <path d="M1386 490 V518 H301 V540" class="greenLine"/>
+  <rect x="756" y="507" width="76" height="22" rx="3" class="chip"/>
+  <text x="768" y="522" class="chipText">repair call</text>
+  <path d="M1386 490 V520 H767 V540" class="greenLine"/>
+  <rect x="960" y="509" width="84" height="22" rx="3" class="chip"/>
+  <text x="972" y="524" class="chipText">reuse API</text>
+  <path d="M632 490 V518 H1264 V540" class="line"/>
+  <rect x="900" y="507" width="92" height="22" rx="3" class="chip"/>
+  <text x="912" y="522" class="chipText">measure</text>
+
+  <rect x="64" y="792" width="1472" height="54" rx="0" fill="#282828"/>
+  <text x="92" y="826" class="sectionText">Design principle: AGFC keeps algorithms, contracts, service runtime, adapters, and benchmarks inside one reusable product repository.</text>
+</svg>
