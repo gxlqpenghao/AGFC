@@ -15,6 +15,7 @@ This repository is being shaped as a public, demo-first product repo. AGFC v0.1 
 - Stable JSON contracts and JSON Schemas under `src/agfc/schemas/`
 - First-party MinerU repair that writes a new repaired bundle without mutating original artifacts
 - Public-safe generated demos that run without private datasets
+- JournalMix-v1 benchmark runner and report format for maintainers with the private benchmark dataset
 - Python APIs for projects that intentionally want in-process integration
 
 ## Install
@@ -100,6 +101,20 @@ Routes:
 - `POST /extract`
 - `POST /repair/mineru`
 
+See [HTTP Service Contract](docs/contracts/http-service.md).
+
+## JournalMix Benchmark
+
+Maintainers with the private JournalMix-v1 dataset can run:
+
+```bash
+agfc benchmark journalmix \
+  --dataset-root data/private/journalmix_v1 \
+  --output-dir artifacts/benchmarks/journalmix_v1/fresh
+```
+
+See [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md).
+
 ## Repository Layout
 
 ```text
@@ -109,6 +124,7 @@ src/agfc/schemas/     JSON Schema files for public contracts
 tests/                Automated tests
 docs/contracts/       Public contract docs
 docs/integrations/    Integration guides
+docs/benchmarks/      Benchmark protocols and reference reports
 examples/             Runnable demo wrappers
 fixtures/             Public-safe fixture notes and generated demo roots
 scripts/              Research and benchmark entrypoints

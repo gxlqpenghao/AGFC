@@ -4,9 +4,10 @@ import argparse
 import json
 import shutil
 import re
+import time
 from collections import defaultdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from agfc.doclaynet_metrics import aggregate_doclaynet_results, evaluate_doclaynet_page
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
@@ -27,6 +28,8 @@ def run_journalmix_agfc_fresh_benchmark(
     iou_threshold: float = 0.5,
     write_visualizations: bool = False,
     page_ids: list[str] | None = None,
+    collect_timings: bool = False,
+    clock: Callable[[], float] = time.perf_counter,
 ) -> dict[str, Any]:
     dataset_path = Path(dataset_root)
     output_path = Path(output_dir)
@@ -42,11 +45,24 @@ def run_journalmix_agfc_fresh_benchmark(
         records_by_source_pdf[Path(record["source_pdf"])].append(record)
 
     prediction_page_dir_by_page_id: dict[str, Path] = {}
+    source_pdf_runs: list[dict[str, Any]] = []
     for source_pdf, group in records_by_source_pdf.items():
         selected_pages = sorted({int(record["selected_page_idx"]) for record in group})
         run_dir = runs_dir / _safe_run_name(group[0]["doc_id"] or source_pdf.stem)
         run_dir.mkdir(parents=True, exist_ok=True)
+        started = clock()
         run_pdf(source_pdf, output_dir=run_dir, pages=selected_pages, benchmark_only=True)
+        elapsed = round(clock() - started, 4)
+        if collect_timings:
+            source_pdf_runs.append(
+                {
+                    "source_pdf": str(source_pdf),
+                    "doc_id": str(group[0].get("doc_id", "")),
+                    "selected_page_count": len(selected_pages),
+                    "seconds": elapsed,
+                    "seconds_per_selected_page": round(elapsed / len(selected_pages), 4) if selected_pages else 0.0,
+                }
+            )
         for record in group:
             prediction_page_dir_by_page_id[record["page_id"]] = run_dir / "pages" / f"page_{int(record['selected_page_idx']):03d}"
 
@@ -90,6 +106,8 @@ def run_journalmix_agfc_fresh_benchmark(
         "aggregate": aggregate,
         "pages": page_results,
     }
+    if collect_timings:
+        report["performance"] = {"source_pdf_runs": source_pdf_runs}
     if write_visualizations and (dataset_path / "page_index.csv").exists():
         bundle_dir = create_journalmix_visualization_bundle(
             report=report,
