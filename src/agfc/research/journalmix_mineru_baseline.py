@@ -8,7 +8,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from agfc.doclaynet_metrics import aggregate_doclaynet_results, evaluate_doclaynet_page
+from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.integrations.mineru.dataproxy_adapter import (
     dataproxy_postprocessed_dir_for_pdf,
     load_dataproxy_mineru_predictions,
@@ -86,7 +86,7 @@ def run_journalmix_mineru_baseline(
         staged_pdf = staged_pdf_by_page_id[record["page_id"]]
         postprocessed_dir = dataproxy_postprocessed_dir_for_pdf(staged_pdf, parsed_root=parsed_path)
         predictions_by_page = load_dataproxy_mineru_predictions(postprocessed_dir)
-        page_result = evaluate_doclaynet_page(record["gt_page"], predictions_by_page.get(0, []), iou_threshold=iou_threshold)
+        page_result = evaluate_figure_page(record["gt_page"], predictions_by_page.get(0, []), iou_threshold=iou_threshold)
         page_result.update(
             {
                 "page_id": record["page_id"],
@@ -108,7 +108,7 @@ def run_journalmix_mineru_baseline(
             encoding="utf-8",
         )
 
-    aggregate = aggregate_doclaynet_results(page_results)
+    aggregate = aggregate_figure_results(page_results)
     report = {
         "config": {
             "dataset_root": str(dataset_path),

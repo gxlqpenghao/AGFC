@@ -9,7 +9,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Callable
 
-from agfc.doclaynet_metrics import aggregate_doclaynet_results, evaluate_doclaynet_page
+from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
 from agfc.journalmix_selected_pages import load_journalmix_selected_page_records
 from agfc.runner import run_pdf
@@ -71,7 +71,7 @@ def run_journalmix_agfc_fresh_benchmark(
     for record in records:
         prediction_page_dir = prediction_page_dir_by_page_id[record["page_id"]]
         predictions = _load_prediction_boxes_from_page_dir(prediction_page_dir)
-        page_result = evaluate_doclaynet_page(record["gt_page"], predictions, iou_threshold=iou_threshold)
+        page_result = evaluate_figure_page(record["gt_page"], predictions, iou_threshold=iou_threshold)
         page_result.update(
             {
                 "page_id": record["page_id"],
@@ -92,7 +92,7 @@ def run_journalmix_agfc_fresh_benchmark(
             encoding="utf-8",
         )
 
-    aggregate = aggregate_doclaynet_results(page_results)
+    aggregate = aggregate_figure_results(page_results)
     report = {
         "config": {
             "dataset_root": str(dataset_path),

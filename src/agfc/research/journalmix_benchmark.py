@@ -7,7 +7,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from agfc.doclaynet_metrics import aggregate_doclaynet_results, evaluate_doclaynet_page
+from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
 
 
@@ -42,7 +42,7 @@ def run_journalmix_agfc_benchmark(
             record["meta"].get("page_dir", ""),
             fallback_page_idx=int(record["gt_page"].get("page_idx", -1)),
         )
-        page_result = evaluate_doclaynet_page(record["gt_page"], predictions, iou_threshold=iou_threshold)
+        page_result = evaluate_figure_page(record["gt_page"], predictions, iou_threshold=iou_threshold)
         page_result.update(
             {
                 "page_id": record["page_id"],
@@ -66,7 +66,7 @@ def run_journalmix_agfc_benchmark(
             encoding="utf-8",
         )
 
-    aggregate = aggregate_doclaynet_results(page_results)
+    aggregate = aggregate_figure_results(page_results)
     report = {
         "config": {
             "dataset_root": str(dataset_path),
@@ -185,7 +185,7 @@ def _render_group_table(title: str, page_results: list[dict[str, Any]], group_ke
 
     lines = [f"## {title}", "", "| group | page_count | gt_count | prediction_count | match_count | precision | recall | f1 | iou |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for group_value in sorted(grouped):
-        aggregate = aggregate_doclaynet_results(grouped[group_value])
+        aggregate = aggregate_figure_results(grouped[group_value])
         lines.append(
             "| "
             + " | ".join(

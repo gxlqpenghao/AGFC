@@ -455,38 +455,17 @@ class SeedCandidate:
 
 ## 9. 数据集与评测策略
 
-### 9.1 现有可用公开数据集
+### 9.1 JournalMix-v1 作为主 benchmark
 
-当前学术界没有直接针对 "logical figure grouping" 任务的开源 benchmark。但以下公开数据集可以适配使用：
+AGFC 当前的主评测线应收敛到 `JournalMix-v1`，而不是再并列多条公开 benchmark 支线。
 
-| 数据集 | 规模 | 标注内容 | 有原始 PDF | 对 AGFC 的可用性 |
-|---|---|---|---|---|
-| **DocLayNet** (IBM) | 80,863 页 | 11 类 bbox (含 `Figure`)，COCO 格式，人工标注 | ✅ 有 PDF 文本坐标 | ✅ **主数据集**：可直接测 IoU / F1 |
-| **PubLayNet** | 360,000 页 | 5 类 bbox (含 `Figure`)，COCO 格式 | ❌ 仅有渲染图 | ⚠️ 辅助：AGFC 需要 PDF 原生结构，无法直接使用 |
-| **DocBank** | 500,000 页 | token 级 12 类标注 | ❌ 仅有渲染图 | ⚠️ 辅助：可用于验证 Text DNA 分类效果 |
-| **Comp-HRDoc** | 1,500 页 | 层次结构标注 | ✅ | ⚠️ 辅助：面向文档结构树，不是 figure 边界 |
+原因：
 
-关键约束：
+- `JournalMix-v1` 直接面向 AGFC 关注的 figure extraction 场景
+- 页面选择、GT、review 和审计工件已经冻结
+- 可以自然承接 AGFC 与 MinerU 的对比
 
-- **AGFC 运行必须有原始 PDF 文件**（需要 PyMuPDF 解析原子），纯页面渲染图不够
-- **DocLayNet 是目前唯一既有原始 PDF 坐标又有 figure bbox 标注的大规模数据集**
-
-### 9.2 公开数据集的局限
-
-即使使用 DocLayNet，它也只能回答：
-
-- "AGFC 检测到的 figure 区域和 GT 是否对齐"（IoU / F1）
-
-但**无法评测 AGFC 最核心的价值**：
-
-| AGFC 核心优势 | DocLayNet 能否评测 |
-|---|---|
-| 组图是否被拆碎（Fragmentation Rate） | ❌ 无组图内部分组标注 |
-| 正文是否被混入（Contamination Rate） | ❌ 无像素级正文/图内容标注 |
-| 不相关图是否被过度合并（Overmerge Rate） | ❌ 无逻辑图分组 GT |
-| 图题/说明条是否保留（Structural Completeness） | ❌ 无图内结构标注 |
-
-### 9.3 自建 AGFC-Bench
+### 9.2 自建 AGFC-Bench
 
 为了评测 AGFC 的独特优势，必须构建自有 benchmark：
 
@@ -507,13 +486,14 @@ class SeedCandidate:
 3. **body_text vs figure_text 标签**：每个 text block 的角色
 4. **图题/图注/说明条标签**：是否属于图的一部分
 
-### 9.4 双轨评测策略
+### 9.3 双轨评测策略
 
-第一轨（快速启动 + 可比性）：
-  DocLayNet 子集 → 选出含 figure 的页面
-  → AGFC 输出 vs GT 的 IoU / mAP / F1
-  → 对标 MinerU / PDFFigures / DocLayout-YOLO
-  → 证明"在标准 benchmark 上不差于 baseline"
+第一轨（主 benchmark + baseline 对比）：
+  JournalMix-v1 冻结页集
+  → AGFC fresh benchmark
+  → Local MinerU raw-page audit
+  → 汇报 IoU / Precision / Recall / F1
+  → 证明 AGFC 在目标场景中的基线优势
 
 第二轨（核心贡献 + 差异化）：
   AGFC-Bench（自建 100-200 页）
@@ -525,9 +505,9 @@ class SeedCandidate:
   → 按图片复杂度分组报告（Simple / Captioned / Compound / Hybrid）
   → 证明"在难例上有质的飞跃"
 
-第一轨解决"可信度"，第二轨解决"独特性"。两条轨都必须出现在论文中。
+第一轨解决"可信度"，第二轨解决"独特性"。
 
-### 9.5 关于输入格式的通用性说明
+### 9.4 关于输入格式的通用性说明
 
 AGFC 选择在 PDF 层操作，这不是局限而是优势：
 

@@ -119,6 +119,9 @@ agfc benchmark journalmix \
 
 See [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md).
 
+For the current AGFC vs local MinerU raw-page comparison on JournalMix-v1, see
+[JournalMix-v1 vs MinerU](docs/benchmarks/journalmix-v1-vs-mineru.md).
+
 ## Repository Layout
 
 ```text
@@ -126,7 +129,7 @@ src/agfc/core/        Algorithmic figure extraction core
 src/agfc/runtime/     CLI, service, runner, demos
 src/agfc/contracts/   Stable public contract builders
 src/agfc/adapters/    MinerU and third-party integration adapters
-src/agfc/research/    JournalMix, DocLayNet, corpus, evaluation tooling
+src/agfc/research/    JournalMix, corpus, evaluation tooling
 src/agfc/schemas/     JSON Schema files for public contracts
 tests/                Automated tests
 docs/contracts/       Public contract docs

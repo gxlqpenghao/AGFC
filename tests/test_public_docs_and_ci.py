@@ -9,6 +9,7 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
 
     http_doc = (root / "docs" / "contracts" / "http-service.md").read_text(encoding="utf-8")
     benchmark_doc = (root / "docs" / "benchmarks" / "journalmix-v1.md").read_text(encoding="utf-8")
+    benchmark_comparison_doc = (root / "docs" / "benchmarks" / "journalmix-v1-vs-mineru.md").read_text(encoding="utf-8")
     changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
     ci = (root / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
     readme = (root / "README.md").read_text(encoding="utf-8")
@@ -20,6 +21,8 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "POST /repair/mineru" in http_doc
     assert "agfc benchmark journalmix" in benchmark_doc
     assert "JournalMix-v1" in benchmark_doc
+    assert "Local MinerU" in benchmark_comparison_doc
+    assert "compound_multi_panel" in benchmark_comparison_doc
     assert "0.1.0" in changelog
     assert "python3 -m pytest -q" in ci
     assert graphical_abstract.exists()
@@ -31,3 +34,4 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "…" not in graphical_abstract_svg
     assert "docs/assets/agfc-architecture-flowchart.svg" in readme
     assert "docs/assets/agfc-architecture-flowchart.spec.json" in readme
+    assert "docs/benchmarks/journalmix-v1-vs-mineru.md" in readme

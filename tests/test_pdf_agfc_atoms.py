@@ -212,32 +212,3 @@ def test_collect_page_atoms_adds_conservative_drawing_composites_without_overmer
     assert composite_atoms[0].bbox == (40.0, 120.0, 260.0, 240.0)
     assert composite_atoms[1].bbox == (40.0, 430.0, 260.0, 570.0)
     assert all(atom.metadata["member_count"] >= 6 for atom in composite_atoms)
-
-
-def test_collect_page_atoms_builds_stable_drawing_evidence_for_test_000023():
-    pdf_path = Path(__file__).resolve().parents[1] / "data" / "public" / "doclaynet_pilot" / "pdfs" / "test_000023.pdf"
-    doc = fitz.open(pdf_path)
-    atoms = collect_page_atoms(doc[0], page_idx=0)
-    doc.close()
-
-    composite_atoms = [
-        atom
-        for atom in atoms
-        if atom.kind == "vector_cluster" and atom.metadata.get("source") == "drawing_composite"
-    ]
-
-    assert len(composite_atoms) >= 2
-    assert any(
-        atom.bbox[0] <= 60.0
-        and atom.bbox[1] <= 125.0
-        and atom.bbox[2] >= 550.0
-        and atom.bbox[3] >= 280.0
-        for atom in composite_atoms
-    )
-    assert any(
-        atom.bbox[0] <= 60.0
-        and atom.bbox[1] <= 535.0
-        and atom.bbox[2] >= 550.0
-        and atom.bbox[3] >= 736.0
-        for atom in composite_atoms
-    )

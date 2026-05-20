@@ -17,7 +17,7 @@ SRC_ROOT = REPO_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from agfc.doclaynet_metrics import aggregate_doclaynet_results, evaluate_doclaynet_page
+from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.journalmix_selected_pages import load_journalmix_selected_page_records
 
 
@@ -91,10 +91,10 @@ def main() -> None:
         if record is not None and agfc_page is not None:
             gt_boxes = _gt_boxes(record)
             agfc_boxes = _agfc_boxes(agfc_page)
-            mineru_eval = evaluate_doclaynet_page(
+            mineru_eval = evaluate_figure_page(
                 record["gt_page"], [{"bbox": bbox} for bbox in mineru_image_boxes], iou_threshold=0.5
             )
-            agfc_eval = evaluate_doclaynet_page(
+            agfc_eval = evaluate_figure_page(
                 record["gt_page"], [{"bbox": bbox} for bbox in agfc_boxes], iou_threshold=0.5
             )
             agfc_page_results.append(agfc_eval)
@@ -156,8 +156,8 @@ def main() -> None:
     comparable_entries.sort(key=_problem_sort_key)
     problem_entries = [entry for entry in comparable_entries if entry["mineru_problem_score"] > 0]
     family_rows = _family_rows(comparable_entries)
-    agfc_aggregate = aggregate_doclaynet_results(agfc_page_results)
-    mineru_aggregate = aggregate_doclaynet_results(mineru_page_results)
+    agfc_aggregate = aggregate_figure_results(agfc_page_results)
+    mineru_aggregate = aggregate_figure_results(mineru_page_results)
 
     manifest = {
         "title": "JournalMix-v1 local MinerU VLM vs AGFC raw-PDF aligned audit",

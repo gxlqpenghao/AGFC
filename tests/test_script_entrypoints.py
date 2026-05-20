@@ -7,15 +7,9 @@ def test_scripts_do_not_depend_on_runner_shell_modules():
     project_root = Path(__file__).resolve().parents[1]
     run_corpus = (project_root / "scripts" / "run_corpus.py").read_text(encoding="utf-8")
     run_eval = (project_root / "scripts" / "run_evaluation.py").read_text(encoding="utf-8")
-    run_doclaynet = (project_root / "scripts" / "run_doclaynet_pilot.py").read_text(encoding="utf-8")
-    run_doclaynet_mineru = (project_root / "scripts" / "run_doclaynet_mineru_baseline.py").read_text(encoding="utf-8")
 
     assert "agfc.corpus_runner" not in run_corpus
     assert "agfc.evaluation_runner" not in run_eval
-    assert "agfc.doclaynet_runner" not in run_doclaynet
-    assert "from agfc.doclaynet_pilot import main" in run_doclaynet
-    assert "agfc.mineru_runner" not in run_doclaynet_mineru
-    assert "from agfc.doclaynet_mineru_baseline import main" in run_doclaynet_mineru
 
 
 def test_journalmix_prepare_script_imports_scaffold_main():
@@ -71,4 +65,3 @@ def test_journalmix_visualization_postprocess_script_imports_main():
     project_root = Path(__file__).resolve().parents[1]
     run_jm = (project_root / "scripts" / "run_journalmix_visualization_postprocess.py").read_text(encoding="utf-8")
     assert "from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle_from_results" in run_jm
-

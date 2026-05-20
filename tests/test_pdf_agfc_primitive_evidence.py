@@ -177,28 +177,6 @@ def test_collect_page_primitive_evidence_adds_deduped_image_anchors():
     assert anchors[1].metadata["source"] == "xref"
 
 
-def test_collect_page_primitive_evidence_is_compositional_and_conservative_for_test_000023():
-    pdf_path = Path(__file__).resolve().parents[1] / "data" / "public" / "doclaynet_pilot" / "pdfs" / "test_000023.pdf"
-    doc = fitz.open(pdf_path)
-    page = doc[0]
-    page_area = float(page.rect.width * page.rect.height)
-    evidence = collect_page_primitive_evidence(page, page_idx=0)
-    doc.close()
-
-    lines = [fragment for fragment in evidence if fragment.kind == "line"]
-    curves = [fragment for fragment in evidence if fragment.kind == "curve"]
-    fills = [fragment for fragment in evidence if fragment.kind == "fill"]
-
-    assert len(lines) >= 10
-    assert len(curves) >= 4
-    assert len(fills) >= 3
-    assert len(evidence) < 80
-
-    assert not any(
-        fragment.kind == "fill"
-        and (fragment.bbox[2] - fragment.bbox[0]) * (fragment.bbox[3] - fragment.bbox[1]) >= page_area * 0.9
-        for fragment in evidence
-    )
 
 
 def test_group_primitive_evidence_clusters_rolls_up_group_members_by_page():

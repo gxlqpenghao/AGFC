@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from agfc.doclaynet_metrics import aggregate_doclaynet_results
+from agfc.page_metrics import aggregate_figure_results
 
 
 def write_journalmix_dashboard(results_path: str | Path, output_path: str | Path | None = None) -> Path:
@@ -418,7 +418,7 @@ def _build_group_rows(page_results: list[dict[str, Any]], group_key: str) -> lis
 
     rows = []
     for group, pages in grouped.items():
-        aggregate = aggregate_doclaynet_results(pages)
+        aggregate = aggregate_figure_results(pages)
         rows.append(
             {
                 "group": group,

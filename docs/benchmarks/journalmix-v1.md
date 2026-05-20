@@ -56,3 +56,8 @@ Quality:
 ## Public Release Note
 
 The public repository should include the benchmark command and report protocol, but not private JournalMix-v1 PDFs or annotations.
+
+## Companion Comparison
+
+A separate local audit compares AGFC with MinerU on JournalMix-v1 raw pages. See
+[JournalMix-v1 vs MinerU](journalmix-v1-vs-mineru.md).

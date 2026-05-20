@@ -6,7 +6,7 @@
 
 **Architecture:** The work is split into disjoint write tracks so workers can move in parallel without stomping on each other. Phase 1 changes atom recall and boilerplate semantics together; supporting tracks refactor visual-community and attachment logic so the system becomes more general while preserving AGFC’s standalone extraction capability. MinerU remains a comparison baseline, not a dependency.
 
-**Tech Stack:** Python 3, PyMuPDF (`fitz`), pytest, AGFC benchmark artifacts under `artifacts/benchmarks/doclaynet_pilot/`.
+**Tech Stack:** Python 3, PyMuPDF (`fitz`), pytest, AGFC benchmark artifacts under `artifacts/benchmarks/journalmix_v1/`.
 
 ---
 
@@ -167,11 +167,11 @@ Expected: all tests pass.
 ### Task 7: Re-run Benchmark And Refresh Artifacts
 
 **Files:**
-- Output: `artifacts/benchmarks/doclaynet_pilot/single_picture_64_<new-run>/`
+- Output: `artifacts/benchmarks/journalmix_v1/<new-run>/`
 
-- [ ] **Step 1: Run benchmark on `single_picture_64`**
+- [ ] **Step 1: Run benchmark on JournalMix-v1**
 
-Run the AGFC pilot benchmark against `data/public/doclaynet_pilot/single_picture_64`.
+Run the AGFC benchmark against the frozen JournalMix-v1 selection.
 
 - [ ] **Step 2: Recompute comparison and error review artifacts**
 
@@ -184,8 +184,8 @@ Refresh:
 - [ ] **Step 3: Record outcome against the current baseline**
 
 Compare the new run to:
-- `artifacts/benchmarks/doclaynet_pilot/single_picture_64_edgefix4/`
-- `artifacts/benchmarks/doclaynet_mineru_baseline/single_picture_64/`
+- the current JournalMix AGFC benchmark baseline
+- the current JournalMix MinerU comparison outputs
 
 - [ ] **Step 4: Decide whether to enter singleton-failure work**
 

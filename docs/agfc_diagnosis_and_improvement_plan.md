@@ -571,7 +571,7 @@ AGFC-only 命中的 5 页是：
 3. 汇总后跑全量：
    - `python3 -m pytest -q`
 4. 再重跑 benchmark：
-   - `single_picture_64`
+   - `JournalMix-v1`
 5. 更新：
    - `results.json`
    - `comparison.json`

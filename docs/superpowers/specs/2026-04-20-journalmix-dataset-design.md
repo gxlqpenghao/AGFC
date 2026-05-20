@@ -30,29 +30,27 @@ This dataset should support three things at once:
 This work does not aim to:
 
 - build a training dataset
-- replace the public DocLayNet benchmark
+- replace the main JournalMix benchmark line
 - cover all document domains
 - optimize AGFC mainline algorithm code in this thread
 - chase benchmark scale over benchmark sharpness
 
 ## 4. Why A Private Mixed Journal Set Is Needed
 
-The current local public benchmark setup already contains:
+The current local benchmark setup already contains:
 
-- a mixed `DocLayNet` 64-page pilot
-- a `single_picture_64` control slice
-- MinerU comparison outputs on the same `single_picture_64` slice
+- a frozen JournalMix page set
+- MinerU comparison outputs on the same JournalMix pages
 
-Those public slices are useful for comparability, but their labels are still mostly detection-style `Picture` boxes. They are weak at evaluating:
+Those slices are useful for comparability, but they are still weak at evaluating:
 
 - logical grouping completeness
 - whether AGFC incorrectly fragments a single logical figure
 - whether nearby body text is incorrectly absorbed
 - whether a caption/description strip is retained when it should be part of the figure
 
-The private set should therefore complement, not replace, the public track:
+The private set should therefore complement, not replace, the main benchmark track:
 
-- `DocLayNet`: external comparability
 - `JournalMix`: AGFC-specific stress testing and mechanism analysis
 
 ## 5. Dataset Positioning
