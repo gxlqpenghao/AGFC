@@ -1,0 +1,40 @@
+{
+  "page_idx": 0,
+  "page_label": "ASX_MRM_2000.pdf#page_20",
+  "figures": [
+    {
+      "figure_id": "test_000052_picture_0",
+      "bbox": [
+        38.2525,
+        570.5554,
+        176.1772,
+        773.1322
+      ],
+      "logical_group_id": "test_000052_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000052_picture_1",
+      "bbox": [
+        511.8297,
+        780.1362,
+        574.8656,
+        830.7804
+      ],
+      "logical_group_id": "test_000052_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 52,
+    "row_id": "test_000052",
+    "source_pdf_name": "ASX_MRM_2000.pdf",
+    "page_no": 20,
+    "page_hash": "e2f3b61b91b5449510035885b56daf1d7af84b2f3d26755a35c301ee8b7be587"
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/63/image/image.jpg?Expires=1776543024&Signature=vd7KD3rjK4KRW0mIItTlTjnK-8b7VLdLPwQygt4rh5KIQ2LlDPe-nZhNou6bFSLLS3Hmw2lQkr0MlaFtd0LWDnX0ljZCYX-2lnJwfSMp5RjVGDcSMdUPYmABG6pXceroWscN5edMqcQ9XzATt4s5SKP7kDXsiSIOCexln0NzUAipOrSBZ21zfbmmrubp9g7k2EpFKNj5iIR6Q088V3Up4mPqGrD1VQZee~dHcyeyxJ2VefCF870cVAdsgIkqPW6yB-CjWX9eKZWo700QWr6uW-58WAYlA7TLAxez4cMdAonoEa-97qhC6RnPa1bySykODkf-CWOaEwecr-Phtm7dMg__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      60.265165142503896,
+      920.0481878422263,
+      138.609879827759,
+      56.24748746633701
+    ],
+    [
+      224.21875,
+      962.2780704513889,
+      326.6022808159722,
+      14.046772256944443
+    ]
+  ],
+  "category_id": [
+    7,
+    10
+  ],
+  "segmentation": [
+    [
+      [
+        60.265165142503896,
+        920.0481878422263,
+        60.265165142503896,
+        976.2956753085633,
+        198.87504497026288,
+        976.2956753085633,
+        198.87504497026288,
+        920.0481878422263
+      ]
+    ],
+    [
+      [
+        224.21875,
+        962.2780704513889,
+        224.21875,
+        976.3248427083333,
+        550.8210308159722,
+        976.3248427083333,
+        550.8210308159722,
+        962.2780704513889
+      ]
+    ]
+  ],
+  "area": [
+    7796.457478322353,
+    4587.707857220577
+  ],
+  "pdf_cells": [
+    [],
+    [
+      {
+        "bbox": [
+          224.21875,
+          962.2780704513889,
+          26.481266493055557,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ó Ç ä ä Ê"
+      },
+      {
+        "bbox": [
+          266.105375,
+          962.2780704513889,
+          58.925452690972236,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": " À Ì  Ê  À Ã Ì Ê -"
+      },
+      {
+        "bbox": [
+          332.7335069444444,
+          962.2780704513889,
+          13.523949652777844,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ì À i"
+      },
+      {
+        "bbox": [
+          353.9601358506944,
+          962.2780704513889,
+          2.297512586805567,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "i"
+      },
+      {
+        "bbox": [
+          363.96030989583335,
+          962.2780704513889,
+          6.719924913194461,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ì ]"
+      },
+      {
+        "bbox": [
+          378.3829140625,
+          962.2780704513889,
+          7.6229926215277715,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ê -"
+      },
+      {
+        "bbox": [
+          393.7086037326389,
+          962.2780704513889,
+          2.1292951388888355,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": ">"
+      },
+      {
+        "bbox": [
+          403.5405603298611,
+          962.2780704513889,
+          25.985458333333327,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": " Ê  Ã i"
+      },
+      {
+        "bbox": [
+          437.22869791666665,
+          962.2780704513889,
+          1.230640625000035,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "]"
+      },
+      {
+        "bbox": [
+          446.1620355902778,
+          962.2780704513889,
+          7.211302083333294,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ê >"
+      },
+      {
+        "bbox": [
+          461.07601692708334,
+          962.2780704513889,
+          11.797483072916577,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "  v"
+      },
+      {
+        "bbox": [
+          480.57616145833333,
+          962.2780704513889,
+          25.896909722222176,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": " À   >"
+      },
+      {
+        "bbox": [
+          514.1757326388889,
+          962.2780704513889,
+          13.855971354166627,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "Ê  x"
+      },
+      {
+        "bbox": [
+          535.7344188368055,
+          962.2780704513889,
+          15.086611979166719,
+          14.046772256944443
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/AAAAAB+JansonText-Bold",
+          "size": 1.0
+        },
+        "text": "£ Î {"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 72,
+    "num_pages": 32,
+    "original_filename": "NASDAQ_SANM_2004.pdf",
+    "original_height": 720.0,
+    "original_width": 576.0,
+    "page_hash": "f556167ac3284665652050b1b0bc1e6f5af27f54f17f27566c60c80f6f134a92",
+    "page_no": 31
+  },
+  "modalities": [
+    "layout"
+  ]
+}

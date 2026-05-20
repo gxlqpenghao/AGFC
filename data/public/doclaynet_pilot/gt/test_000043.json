@@ -1,0 +1,105 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_SANM_2004.pdf#page_19",
+  "figures": [
+    {
+      "figure_id": "test_000043_picture_0",
+      "bbox": [
+        409.6814,
+        611.9638,
+        521.2267,
+        658.0146
+      ],
+      "logical_group_id": "test_000043_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_1",
+      "bbox": [
+        31.4006,
+        612.0189,
+        144.5207,
+        657.8521
+      ],
+      "logical_group_id": "test_000043_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_2",
+      "bbox": [
+        157.393,
+        612.0189,
+        269.928,
+        657.072
+      ],
+      "logical_group_id": "test_000043_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_3",
+      "bbox": [
+        283.7755,
+        612.214,
+        396.1155,
+        657.267
+      ],
+      "logical_group_id": "test_000043_picture_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_4",
+      "bbox": [
+        283.5805,
+        553.3135,
+        395.3354,
+        598.5615
+      ],
+      "logical_group_id": "test_000043_picture_4",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_5",
+      "bbox": [
+        157.393,
+        553.1185,
+        269.928,
+        598.7566
+      ],
+      "logical_group_id": "test_000043_picture_5",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000043_picture_6",
+      "bbox": [
+        -0.3411,
+        250.7209,
+        575.8054,
+        539.9881
+      ],
+      "logical_group_id": "test_000043_picture_6",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 43,
+    "row_id": "test_000043",
+    "source_pdf_name": "NASDAQ_SANM_2004.pdf",
+    "page_no": 19,
+    "page_hash": "b4f5d430d89499474a31f39fe8eb615fdcd7aa682eb0b959a0384206d5c8174c"
+  }
+}

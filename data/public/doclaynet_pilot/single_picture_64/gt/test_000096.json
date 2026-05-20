@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_EEFT_2000.pdf#page_18",
+  "figures": [
+    {
+      "figure_id": "test_000096_picture_0",
+      "bbox": [
+        398.8187,
+        70.5136,
+        540.9831,
+        194.8601
+      ],
+      "logical_group_id": "test_000096_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 96,
+    "row_id": "test_000096",
+    "source_pdf_name": "NASDAQ_EEFT_2000.pdf",
+    "page_no": 18,
+    "page_hash": "f9a444f234cb7902f6b5b1bf7309c98098474b4ff953df3152bc86a75ffd3bb0"
+  }
+}

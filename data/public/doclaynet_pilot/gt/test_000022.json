@@ -1,0 +1,131 @@
+{
+  "page_idx": 0,
+  "page_label": "OTC_NSANY_2004.pdf#page_46",
+  "figures": [
+    {
+      "figure_id": "test_000022_picture_0",
+      "bbox": [
+        422.3144,
+        127.5705,
+        525.3521,
+        195.9118
+      ],
+      "logical_group_id": "test_000022_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_1",
+      "bbox": [
+        314.3701,
+        126.5191,
+        417.7583,
+        196.2623
+      ],
+      "logical_group_id": "test_000022_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_2",
+      "bbox": [
+        206.7763,
+        126.8695,
+        309.4636,
+        195.9118
+      ],
+      "logical_group_id": "test_000022_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_3",
+      "bbox": [
+        314.3701,
+        258.9961,
+        525.3521,
+        348.716
+      ],
+      "logical_group_id": "test_000022_picture_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_4",
+      "bbox": [
+        314.7206,
+        392.1741,
+        524.6511,
+        475.936
+      ],
+      "logical_group_id": "test_000022_picture_4",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_5",
+      "bbox": [
+        315.0711,
+        519.7446,
+        525.3521,
+        603.1561
+      ],
+      "logical_group_id": "test_000022_picture_5",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_6",
+      "bbox": [
+        87.6171,
+        685.5161,
+        230.2577,
+        771.3809
+      ],
+      "logical_group_id": "test_000022_picture_6",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_7",
+      "bbox": [
+        234.8138,
+        685.1657,
+        377.4544,
+        771.0304
+      ],
+      "logical_group_id": "test_000022_picture_7",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000022_picture_8",
+      "bbox": [
+        382.0105,
+        685.5161,
+        524.6511,
+        771.0304
+      ],
+      "logical_group_id": "test_000022_picture_8",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 22,
+    "row_id": "test_000022",
+    "source_pdf_name": "OTC_NSANY_2004.pdf",
+    "page_no": 46,
+    "page_hash": "fd97ccbbd93a4d2c1ac3e10a89b7eaef6c391524d77fbcefaca1c50320a7e158"
+  }
+}

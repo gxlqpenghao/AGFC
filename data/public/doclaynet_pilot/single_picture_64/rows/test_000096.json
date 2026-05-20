@@ -1,0 +1,2428 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/96/image/image.jpg?Expires=1776545160&Signature=p03mrj0ze93jFn6hXHqHC4~RvK1DpkXINgjoObT9ZNqxO72FOrJKJkScTN7DYlSsnb0Qtvm0SOA~1FWcTyYjzoRP7c4ImiDwsG0TGOEbG37ZObIBwHi331KcTKRXefEbrXlZiQ2ng6qUNXBHuZJP2rp47EL1uzv5T0LKrHgANS0u3YDCeVZec~4pcU-OTBiwOD2j-UGHGXbztlWSXr~ySWLYWYLgrUd8tG9TpPK2UfmQPfTsJctRqUmO7HjdirrofcaFbd9xybpz9ApDHf8mTGxExrLgG7KFeCeaRnRSs-M6lJFoRWzp6CbpVn62brCcGnJqSH2C6hOXMHN3NLMJog__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      75.94603010620915,
+      69.43318939393953,
+      574.3223105800654,
+      92.34174526515142
+    ],
+    [
+      75.84926809640523,
+      174.92571054292932,
+      574.4770889297386,
+      65.15944412878787
+    ],
+    [
+      75.96269305555556,
+      252.91301672979796,
+      828.880961764706,
+      51.568306502525274
+    ],
+    [
+      75.83256830065359,
+      317.63208617424254,
+      828.7943794117647,
+      37.977155934343386
+    ],
+    [
+      75.82088799019608,
+      368.7600179924243,
+      828.9696242647059,
+      119.52404640151519
+    ],
+    [
+      75.87679906045751,
+      663.1202297979798,
+      829.262698897059,
+      51.904809343434295
+    ],
+    [
+      75.84495539215686,
+      728.1340385101009,
+      829.1429363562091,
+      65.48948895202022
+    ],
+    [
+      75.97727250816993,
+      807.0563724747475,
+      829.0295448937909,
+      65.4894889520202
+    ],
+    [
+      75.90363329248366,
+      885.6548478535353,
+      828.8841154820261,
+      38.32018797348485
+    ],
+    [
+      956.0921809640523,
+      972.1067878156566,
+      14.780968954248465,
+      10.633500126262625
+    ],
+    [
+      667.9561219150269,
+      91.25809097370018,
+      238.1022297700904,
+      160.9282464482452
+    ],
+    [
+      686.2056781045751,
+      77.65411647727285,
+      165.80892401960796,
+      10.937202967171629
+    ],
+    [
+      75.55777424704202,
+      498.48505607139407,
+      499.06227359810947,
+      144.7372948238792
+    ]
+  ],
+  "category_id": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    5,
+    7,
+    8,
+    9
+  ],
+  "segmentation": [
+    [
+      [
+        75.94603010620915,
+        69.43318939393953,
+        75.94603010620915,
+        161.77493465909095,
+        650.2683406862745,
+        161.77493465909095,
+        650.2683406862745,
+        69.43318939393953
+      ]
+    ],
+    [
+      [
+        75.84926809640523,
+        174.92571054292932,
+        75.84926809640523,
+        240.0851546717172,
+        650.3263570261438,
+        240.0851546717172,
+        650.3263570261438,
+        174.92571054292932
+      ]
+    ],
+    [
+      [
+        75.96269305555556,
+        252.91301672979796,
+        75.96269305555556,
+        304.48132323232323,
+        904.8436548202615,
+        304.48132323232323,
+        904.8436548202615,
+        252.91301672979796
+      ]
+    ],
+    [
+      [
+        75.83256830065359,
+        317.63208617424254,
+        75.83256830065359,
+        355.60924210858593,
+        904.6269477124183,
+        355.60924210858593,
+        904.6269477124183,
+        317.63208617424254
+      ]
+    ],
+    [
+      [
+        75.82088799019608,
+        368.7600179924243,
+        75.82088799019608,
+        488.2840643939395,
+        904.790512254902,
+        488.2840643939395,
+        904.790512254902,
+        368.7600179924243
+      ]
+    ],
+    [
+      [
+        75.87679906045751,
+        663.1202297979798,
+        75.87679906045751,
+        715.0250391414141,
+        905.1394979575165,
+        715.0250391414141,
+        905.1394979575165,
+        663.1202297979798
+      ]
+    ],
+    [
+      [
+        75.84495539215686,
+        728.1340385101009,
+        75.84495539215686,
+        793.6235274621212,
+        904.987891748366,
+        793.6235274621212,
+        904.987891748366,
+        728.1340385101009
+      ]
+    ],
+    [
+      [
+        75.97727250816993,
+        807.0563724747475,
+        75.97727250816993,
+        872.5458614267677,
+        905.0068174019608,
+        872.5458614267677,
+        905.0068174019608,
+        807.0563724747475
+      ]
+    ],
+    [
+      [
+        75.90363329248366,
+        885.6548478535353,
+        75.90363329248366,
+        923.9750358270202,
+        904.7877487745097,
+        923.9750358270202,
+        904.7877487745097,
+        885.6548478535353
+      ]
+    ],
+    [
+      [
+        956.0921809640523,
+        972.1067878156566,
+        956.0921809640523,
+        982.7402879419193,
+        970.8731499183008,
+        982.7402879419193,
+        970.8731499183008,
+        972.1067878156566
+      ]
+    ],
+    [
+      [
+        667.9561219150269,
+        91.25809097370018,
+        667.9561219150269,
+        252.18633742194538,
+        906.0583516851173,
+        252.18633742194538,
+        906.0583516851173,
+        91.25809097370018
+      ]
+    ],
+    [
+      [
+        686.2056781045751,
+        77.65411647727285,
+        686.2056781045751,
+        88.59131944444448,
+        852.014602124183,
+        88.59131944444448,
+        852.014602124183,
+        77.65411647727285
+      ]
+    ],
+    [
+      [
+        75.55777424704202,
+        498.48505607139407,
+        75.55777424704202,
+        643.2223508952733,
+        574.6200478451515,
+        643.2223508952733,
+        574.6200478451515,
+        498.48505607139407
+      ]
+    ]
+  ],
+  "area": [
+    53033.924503677576,
+    37432.607779386,
+    42743.98749039029,
+    31475.253384427942,
+    99081.80383606133,
+    43042.722281873605,
+    54300.14717014557,
+    54292.72122122025,
+    31762.995113506964,
+    157.17343524128498,
+    38317.374312317814,
+    1813.4858557707914,
+    72232.92342924504
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          76.08782679738562,
+          69.43318939393953,
+          573.7466809640523,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "The Company re c o rded an $800,000 write-down of certain ATM hard w a re assets associated with the"
+      },
+      {
+        "bbox": [
+          76.09116307189542,
+          83.02433996212119,
+          573.8193990196079,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "p u rchase of the Budapest Bank ATM network in May 2000 and the Service Bank ATM network in"
+      },
+      {
+        "bbox": [
+          76.19625571895425,
+          96.61549053030308,
+          574.0720849673203,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "M a rch 1999 (see Note 10 to the Consolidated Financial Statements – Asset Write Down). In addition,"
+      },
+      {
+        "bbox": [
+          76.09783227124184,
+          110.20664109848497,
+          573.9808834150327,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "the Company re c o rded a one-time gain in its Central European Sub-segment of $1.2 million. The"
+      },
+      {
+        "bbox": [
+          75.94603010620915,
+          123.79777872474756,
+          574.2804564133987,
+          10.794867739898905
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "gain is related to a change in Hungarian law that eliminates a major portion of the Company’s"
+      },
+      {
+        "bbox": [
+          76.01942647058823,
+          137.38892929292945,
+          573.7106552287582,
+          10.794854797979724
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "liability for import taxes on ATM hard w a re to the Hungarian government. The gain is included as an"
+      },
+      {
+        "bbox": [
+          75.99105976307189,
+          150.9800798611111,
+          189.98619023692814,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "element of direct operating costs. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          75.86094840686275,
+          174.92571054292932,
+          574.1980377042485,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "The operating expenses for the Central European Sub-segment totaled $21.7 million for the year"
+      },
+      {
+        "bbox": [
+          75.84926809640523,
+          188.5168611111112,
+          574.0606743055556,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "ended December 31, 2000 as compared to $20.7 million for the year ended December 31, 1999, an"
+      },
+      {
+        "bbox": [
+          76.09281781045752,
+          202.10801167929287,
+          3.6774286764705835,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "i"
+      },
+      {
+        "bbox": [
+          83.4476868872549,
+          202.10801167929287,
+          566.7081047794118,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "n c rease of 5%. The increase in operating expenses is largely the result of an increase in the number"
+      },
+      {
+        "bbox": [
+          75.89431115196078,
+          215.69914930555558,
+          574.432045874183,
+          10.794867739899018
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "of ATMs operated by the Company from 1,203 at December 31, 1999 to 1,391 at December 31,"
+      },
+      {
+        "bbox": [
+          76.13785919117647,
+          229.29029987373735,
+          239.13078664215686,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "2000, and increased transaction volumes. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          76.08281233660131,
+          252.91301672979796,
+          574.0270385620915,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "The operating expenses for the We s t e rn European Sub-segment totaled $18.9 million for the year"
+      },
+      {
+        "bbox": [
+          75.96269305555556,
+          266.50416729797985,
+          828.880961764706,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "ended December 31, 2000 as compared to $16.5 million for the year ended December 31, 1999, an increase of 15%. The increase in operating"
+      },
+      {
+        "bbox": [
+          75.98270902777779,
+          280.09531786616174,
+          828.5497779003268,
+          10.79485479797961
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "expenses is largely the result of an increase in the number of ATMs operated by the Company from 621 at December 31, 1999 to 787 at"
+      },
+      {
+        "bbox": [
+          76.18288214869281,
+          293.68645549242433,
+          321.7311117238562,
+          10.794867739898905
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "December 31, 2000, and increased transaction volumes. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          75.83757606209151,
+          317.63208617424254,
+          828.5501714869282,
+          10.794867739898905
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "The operating expenses for the Other ATM Operations Sub-segment were $2.4 million for the year ended December 31, 2000 as compared to"
+      },
+      {
+        "bbox": [
+          76.15952487745098,
+          331.2232367424242,
+          828.4674228349674,
+          10.794867739899132
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "$2.2 million for the year ended December 31, 1999, an increase of 9%. The operating expenses from this segment are the result of the acquisition"
+      },
+      {
+        "bbox": [
+          75.83256830065359,
+          344.8143873106061,
+          810.1641669934639,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "of the Dash network located in the United States in August 1999 and the unallocated costs associated with the Company's processing facilities. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          75.87093378267974,
+          368.7600179924243,
+          828.9195784722222,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "D i rect operating costs in the Network Services Segment consist primarily of: ATM installation costs; ATM site rentals; and costs associated with"
+      },
+      {
+        "bbox": [
+          75.91263386437909,
+          382.3511685606061,
+          828.8671426879085,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "maintaining ATMs, ATM telecommunications, interest on network cash and cash delivery and security services to ATMs. Such costs increased to"
+      },
+      {
+        "bbox": [
+          75.94099554738563,
+          395.94231912878786,
+          828.6878949754903,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "$24.4 million for the year ended December 31, 2000 from $21.9 million for the year ended December 31, 1999. The increase in direct operating"
+      },
+      {
+        "bbox": [
+          76.1795408496732,
+          409.53345675505057,
+          828.1507430555556,
+          10.794867739899018
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "costs is primarily attributable to costs associated with operating the increased number of ATMs in the network during the periods. Also,"
+      },
+      {
+        "bbox": [
+          75.84758153594771,
+          423.12460732323234,
+          3.7887064950980403,
+          10.794867739899018
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "i"
+      },
+      {
+        "bbox": [
+          83.4249995506536,
+          423.12460732323234,
+          820.8410878676469,
+          10.794867739899018
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "n t e rcompany allocations were made to charge the ATM operations with transaction switching and bank connection fees associated with the"
+      },
+      {
+        "bbox": [
+          75.82088799019608,
+          436.7157578914142,
+          828.7702852124183,
+          10.794854797979724
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "operations central processing center in Budapest. These allocations totalled $3.5 million and $2.9 million for the years ended December 31, 2000"
+      },
+      {
+        "bbox": [
+          76.1645276143791,
+          450.306908459596,
+          828.3594846405229,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "and 1999, re s p e c t i v e l y. Direct operating costs for 2000 include a one-time gain of $1.2 million due to a change in Hungarian law that eliminates a"
+      },
+      {
+        "bbox": [
+          76.0027266748366,
+          463.8980590277778,
+          828.3756082924838,
+          10.794854797979838
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "major portion of the Company’s liability for import taxes on ATM hard w a re. Direct operating costs also include a $657,000 gain realized in 1999"
+      },
+      {
+        "bbox": [
+          75.97603312908497,
+          477.48919665404037,
+          811.1066327205883,
+          10.794867739899132
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "f rom the sale of the Croatian network assets. The components of direct operating costs for the years ended December 31, 2000 and 1999 were: "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          76.08615363562092,
+          663.1202297979798,
+          828.6023275735294,
+          10.82705429292929
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "As a percentage of network revenue, direct operating costs fell from 83% for the year ended December 31, 1999 to 66% for the year ended"
+      },
+      {
+        "bbox": [
+          75.95719121732027,
+          676.7048705808081,
+          829.1823067401962,
+          10.827041351010052
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "December 31, 2000. On a per ATM basis the direct operating costs fell from $12,782 per ATM for the year ended December 31, 1999 to $9,807"
+      },
+      {
+        "bbox": [
+          75.90694779411764,
+          690.6133570075758,
+          829.2236567810459,
+          10.827028409090872
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "per ATM for the year ended December 31, 2000, an improvement of 23%. On a per transaction basis the direct operating costs fell from $0.66"
+      },
+      {
+        "bbox": [
+          75.87679906045751,
+          704.1980107323233,
+          826.5849366421569,
+          10.827028409090872
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "per transaction for the year ended December 31, 1999 to $0.46 per transaction for the year ended December 31, 2000, an improvement of 30%. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          76.12467320261437,
+          728.1340385101009,
+          828.767752859477,
+          10.827028409090929
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "Segment salaries and benefits increased to $7.4 million for the year ended December 31, 2000 from $7.2 million for the year ended December"
+      },
+      {
+        "bbox": [
+          76.02083165849675,
+          741.7186922348485,
+          828.4780245506537,
+          10.827028409090929
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "31, 1999, an increase of 3%. The increase in the year-on-year expenses reflect the continued expansion of the operations to We s t e rn Euro p e a n"
+      },
+      {
+        "bbox": [
+          75.89016425653595,
+          755.6271916035354,
+          829.09772749183,
+          10.827028409090872
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "markets with significantly higher labor costs than Central Europe as well as some increases in staff levels at the processing center re q u i red to"
+      },
+      {
+        "bbox": [
+          75.95717279411765,
+          769.2118453282828,
+          828.7539019607843,
+          10.8270284090909
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "maintain quality service in line with the rising transaction volumes. As a percentage of Network Services Segment revenue, salaries and benefits"
+      },
+      {
+        "bbox": [
+          75.84495539215686,
+          782.7964990530303,
+          578.5209400326797,
+          10.8270284090909
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "fell from 27% for the year ended December 31, 1999 to 20% for the year ended December 31, 2000. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          76.09618423202615,
+          807.0563724747475,
+          828.7538182189543,
+          10.8270284090909
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "Selling, general and administrative costs allocated to the Network Services Segment decreased to $2.4 million for the year ended December 31,"
+      },
+      {
+        "bbox": [
+          75.97727250816993,
+          820.641026199495,
+          828.6807434232027,
+          10.8270284090909
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "2000 from $2.9 million for the year ended December 31, 1999. The $500,000 cost decrease for the year ended December 31, 2000 results fro m"
+      },
+      {
+        "bbox": [
+          76.0527004493464,
+          834.2256669823232,
+          828.2025675245098,
+          10.827028409090929
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "the net effect of (1) a $600,000 increase in the allocation of costs from the selling, general and administrative line of the Budapest pro c e s s i n g"
+      },
+      {
+        "bbox": [
+          76.05939644607842,
+          847.8103207070708,
+          828.9474209558824,
+          10.8270284090909
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "center to the operating cost line, as discussed above, from $2.9 million for the year ended December 31, 1999 to $3.5 for the year ended"
+      },
+      {
+        "bbox": [
+          76.13811544117647,
+          861.7188071338384,
+          718.491241993464,
+          10.82705429292929
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "December 31, 2000 and (2) a $100,000 increase in costs associated with the expansion of the Company’s network operations. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          76.0041251633987,
+          885.6548478535353,
+          828.783623611111,
+          10.827042645202027
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "D e p reciation and amortization increased to $8.0 million for the year ended December 31, 2000 from $7.4 million for the year ended December"
+      },
+      {
+        "bbox": [
+          75.90363329248366,
+          899.2394925189394,
+          828.818378145425,
+          10.827049116161604
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "31, 1999. The increases are due primarily to the increase in the number of owned ATMs as discussed pre v i o u s l y. The Company also re c o rded an"
+      },
+      {
+        "bbox": [
+          76.10463043300653,
+          913.1479880050505,
+          675.7008299428105,
+          10.8270478219697
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.25
+        },
+        "text": "$800,000 write-down of certain ATM hard w a re assets for the year ended December 31, 2000, as previously discussed. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          956.0921809640523,
+          972.1067878156566,
+          5.9124411764705656,
+          10.633500126262625
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MKGONC+Bodoni",
+          "size": 8.75
+        },
+        "text": "1"
+      },
+      {
+        "bbox": [
+          964.9607254901961,
+          972.1067878156566,
+          5.912424428104714,
+          10.633500126262625
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MKGONC+Bodoni",
+          "size": 8.75
+        },
+        "text": "7"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          701.2323288398693,
+          238.06140088383836,
+          12.576147058823608,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "Q1"
+      },
+      {
+        "bbox": [
+          745.5647009803922,
+          238.06140088383836,
+          12.576096813725485,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "Q2"
+      },
+      {
+        "bbox": [
+          792.5433819444445,
+          238.06140088383836,
+          12.576096813725485,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "Q3"
+      },
+      {
+        "bbox": [
+          839.5220629084968,
+          238.06140088383836,
+          15.222472630718926,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "Q4 "
+      },
+      {
+        "bbox": [
+          710.6382111928104,
+          167.8514892676768,
+          17.078292075163404,
+          8.506723484848521
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "- 0 . 7"
+      },
+      {
+        "bbox": [
+          759.1079824346406,
+          138.73217108585857,
+          3.748753267973825,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "0"
+      },
+      {
+        "bbox": [
+          764.7311123366013,
+          138.73217108585857,
+          7.4975735294117385,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": ". 4"
+      },
+      {
+        "bbox": [
+          811.9976642156863,
+          123.52541603535349,
+          3.748753267973825,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "0"
+      },
+      {
+        "bbox": [
+          817.620794117647,
+          123.52541603535349,
+          7.497573529411852,
+          8.506723484848635
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": ". 7"
+      },
+      {
+        "bbox": [
+          868.2369689542484,
+          93.43545391414148,
+          3.748753267973825,
+          8.506723484848521
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": "1"
+      },
+      {
+        "bbox": [
+          873.8600988562092,
+          93.43545391414148,
+          7.497523284313729,
+          8.506723484848521
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 7.0
+        },
+        "text": ". 3"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          686.2056781045751,
+          77.65411647727285,
+          165.80892401960796,
+          10.937202967171629
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/FLGONC+Univers-CondensedBold",
+          "size": 9.0
+        },
+        "text": "Network Services: EBITDA"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          75.99571078431373,
+          498.6021647727273,
+          74.62835073529413,
+          9.71272916666669
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/IKGONC+BauerBodoni-Italic",
+          "size": 7.25
+        },
+        "text": "(in thousands)"
+      },
+      {
+        "bbox": [
+          395.24276348039217,
+          498.6021647727273,
+          141.47729983660128,
+          9.71272916666669
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 7.25
+        },
+        "text": "Years ending December 31,"
+      },
+      {
+        "bbox": [
+          395.47079248366015,
+          511.2205359848484,
+          4.943933415032632,
+          9.712729166666747
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 7.25
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          402.88668423202614,
+          511.2205359848484,
+          19.775716911764732,
+          9.712729166666747
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 7.25
+        },
+        "text": "0 0 0"
+      },
+      {
+        "bbox": [
+          501.76516830065367,
+          511.2205359848484,
+          4.943899918300588,
+          9.712729166666747
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 7.25
+        },
+        "text": "1"
+      },
+      {
+        "bbox": [
+          509.18104330065364,
+          511.2205359848484,
+          19.77573366013064,
+          9.712729166666747
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 7.25
+        },
+        "text": "9 9 9"
+      },
+      {
+        "bbox": [
+          75.93709150326798,
+          530.5079040404041,
+          131.2171838235294,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "ATM communication"
+      },
+      {
+        "bbox": [
+          395.1681327614379,
+          530.5079040404041,
+          8.343650735294148,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "$"
+      },
+      {
+        "bbox": [
+          430.0913231209151,
+          530.5079040404041,
+          5.622828431372511,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "4"
+      },
+      {
+        "bbox": [
+          438.5255155228758,
+          530.5079040404041,
+          28.114024918300686,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 1 8 3"
+      },
+      {
+        "bbox": [
+          501.69907924836605,
+          530.5079040404041,
+          8.343617238562047,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "$"
+      },
+      {
+        "bbox": [
+          537.0407442810458,
+          530.5079040404041,
+          5.622828431372454,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "3"
+      },
+      {
+        "bbox": [
+          545.4749366830065,
+          530.5079040404041,
+          28.114024918300743,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 9 8 2"
+      },
+      {
+        "bbox": [
+          75.84789473039216,
+          543.7683885732324,
+          284.1187903186274,
+          11.653926452020187
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "ATM cash filling and interest on network cash"
+      },
+      {
+        "bbox": [
+          430.2011086601307,
+          543.7683885732324,
+          5.622828431372511,
+          11.653926452020187
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "7"
+      },
+      {
+        "bbox": [
+          438.63530106209157,
+          543.7683885732324,
+          28.114024918300572,
+          11.653926452020187
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 4 2 6"
+      },
+      {
+        "bbox": [
+          537.3854926470588,
+          543.7683885732324,
+          5.622828431372682,
+          11.653926452020187
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "5"
+      },
+      {
+        "bbox": [
+          545.8196850490197,
+          543.7683885732324,
+          28.11402491830063,
+          11.653926452020187
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 9 0 0"
+      },
+      {
+        "bbox": [
+          76.19264477124183,
+          557.0288860479798,
+          113.64454027777778,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "ATM maintenance"
+      },
+      {
+        "bbox": [
+          430.22855923202616,
+          557.0288860479798,
+          5.622828431372511,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "3"
+      },
+      {
+        "bbox": [
+          438.662751633987,
+          557.0288860479798,
+          28.114024918300572,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 9 8 7"
+      },
+      {
+        "bbox": [
+          537.4129934640523,
+          557.0288860479798,
+          5.622828431372568,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          545.8471858660131,
+          557.0288860479798,
+          28.11402491830063,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 9 6 7"
+      },
+      {
+        "bbox": [
+          75.80163909313725,
+          570.289370580808,
+          95.26364236111112,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "ATM site re n t a l"
+      },
+      {
+        "bbox": [
+          430.1874587418301,
+          570.289370580808,
+          5.622828431372511,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          438.6216511437909,
+          570.289370580808,
+          28.114024918300572,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 2 5 8"
+      },
+      {
+        "bbox": [
+          537.3718929738562,
+          570.289370580808,
+          5.622828431372568,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          545.806085375817,
+          570.289370580808,
+          28.11402491830063,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 4 2 1"
+      },
+      {
+        "bbox": [
+          76.17905012254903,
+          583.5498680555556,
+          103.48511041666666,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "ATM installation"
+      },
+      {
+        "bbox": [
+          441.80858047385624,
+          583.5498680555556,
+          6.132983660130719,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "6"
+      },
+      {
+        "bbox": [
+          451.00802246732025,
+          583.5498680555556,
+          15.332408905228817,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "7 5"
+      },
+      {
+        "bbox": [
+          549.426914624183,
+          583.5498680555556,
+          6.132966911764697,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "7"
+      },
+      {
+        "bbox": [
+          558.6263398692811,
+          583.5498680555556,
+          15.332408905228817,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "8 3"
+      },
+      {
+        "bbox": [
+          76.11214375,
+          596.4869599116162,
+          275.18992487745095,
+          11.653939393939368
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "Transaction processing and ATM monitoring"
+      },
+      {
+        "bbox": [
+          429.92852900326795,
+          596.4869599116162,
+          5.622828431372625,
+          11.653939393939368
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "5"
+      },
+      {
+        "bbox": [
+          438.3627214052288,
+          596.4869599116162,
+          28.114024918300686,
+          11.653939393939368
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 2 4 2"
+      },
+      {
+        "bbox": [
+          537.1129632352942,
+          596.4869599116162,
+          5.622828431372454,
+          11.653939393939368
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "4"
+      },
+      {
+        "bbox": [
+          545.5471556372548,
+          596.4869599116162,
+          28.114024918300743,
+          11.653939393939368
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 2 0 5"
+      },
+      {
+        "bbox": [
+          75.99571078431373,
+          609.7771590909091,
+          35.677833210784314,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "O t h e r"
+      },
+      {
+        "bbox": [
+          441.8242234477125,
+          609.7771590909091,
+          6.132983660130662,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "6"
+      },
+      {
+        "bbox": [
+          451.0236654411765,
+          609.7771590909091,
+          15.332408905228704,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "0 0"
+      },
+      {
+        "bbox": [
+          537.3052512254902,
+          609.7771590909091,
+          5.622828431372568,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "1"
+      },
+      {
+        "bbox": [
+          545.7394268790849,
+          609.7771590909091,
+          28.114041666666708,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": ", 6 6 3"
+      },
+      {
+        "bbox": [
+          76.11294934640523,
+          630.8077777777778,
+          191.25840114379088,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "Total direct operating expenses"
+      },
+      {
+        "bbox": [
+          395.5378026960784,
+          630.8077777777778,
+          8.343633986928126,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "$"
+      },
+      {
+        "bbox": [
+          421.67146732026146,
+          630.8077777777778,
+          5.580287581699338,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          430.0418986928105,
+          630.8077777777778,
+          36.2718525326797,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "4 , 3 7 1"
+      },
+      {
+        "bbox": [
+          501.5851401143791,
+          630.8077777777778,
+          8.343617238562103,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "$"
+      },
+      {
+        "bbox": [
+          529.3927034313726,
+          630.8077777777778,
+          5.580304330065246,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          537.7631515522876,
+          630.8077777777778,
+          36.271869281045724,
+          11.653926452020244
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/BKGONC+BauerBodoni-Roman",
+          "size": 8.75
+        },
+        "text": "1 , 9 2 1"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 110,
+    "num_pages": 48,
+    "original_filename": "NASDAQ_EEFT_2000.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "f9a444f234cb7902f6b5b1bf7309c98098474b4ff953df3152bc86a75ffd3bb0",
+    "page_no": 18
+  },
+  "modalities": [
+    "layout"
+  ]
+}

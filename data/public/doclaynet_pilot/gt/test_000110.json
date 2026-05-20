@@ -1,0 +1,53 @@
+{
+  "page_idx": 0,
+  "page_label": "ASX_STO_2004.pdf#page_17",
+  "figures": [
+    {
+      "figure_id": "test_000110_picture_0",
+      "bbox": [
+        288.956,
+        156.0475,
+        378.4082,
+        334.1054
+      ],
+      "logical_group_id": "test_000110_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000110_picture_1",
+      "bbox": [
+        420.1714,
+        155.7654,
+        496.361,
+        333.541
+      ],
+      "logical_group_id": "test_000110_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000110_picture_2",
+      "bbox": [
+        291.411,
+        463.0774,
+        540.9601,
+        737.6139
+      ],
+      "logical_group_id": "test_000110_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 110,
+    "row_id": "test_000110",
+    "source_pdf_name": "ASX_STO_2004.pdf",
+    "page_no": 17,
+    "page_hash": "adf79d91e03e8f88ddf8357e9bd63f04af65e5304a39c6b778f9dd8a88e62e92"
+  }
+}

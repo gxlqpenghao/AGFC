@@ -1,0 +1,1360 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/135/image/image.jpg?Expires=1776545172&Signature=mSBbHe86DNc4Kt71o6joTqOkHJB9z90Zkf9vp2FO0KImnhg8h5PRiIBC0P2su2I8DIZ0gEbgrno4vZUFGFkwpCYEyfdP4TP0T3x1X7hAVi5VyCF3Zb~SKkaj5vv0f2FxWKfgugrG-y7Uo~EyI9K1X3YPrSZFtJpa91Rg48mgD-04end2h208uTvnIveFu~qhloY35AujV1m8IGArhi4odfWfNRduE0R0f8a-2zXPqkdUWuBL1f5UtR9ahKMdDze9d8hCD2CUQchwzgUr~0kir0U-CwMwGZu0YWTPY4gGyptFOlP3dhqVFSToeUoko-Y0ASgfbOebJyHZu6yzGtlmgg__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      620.5129482755996,
+      129.11221394919596,
+      343.04780880277065,
+      259.133668841696
+    ],
+    [
+      60.996868279569895,
+      149.10889534883722,
+      528.698453405018,
+      95.70342894056841
+    ],
+    [
+      60.996868279569895,
+      252.29556589147285,
+      528.9753319892474,
+      95.70342894056853
+    ],
+    [
+      60.996868279569895,
+      355.48222319121453,
+      528.6418947132616,
+      40.08449224806202
+    ],
+    [
+      60.996868279569895,
+      403.0498775839793,
+      901.5233750000001,
+      58.62413339793284
+    ],
+    [
+      60.996868279569895,
+      469.15719961240313,
+      901.69279390681,
+      95.7034819121447
+    ],
+    [
+      60.996868279569895,
+      572.3438304263566,
+      901.6623010752689,
+      95.70346866925064
+    ],
+    [
+      60.996868279569895,
+      675.5305009689923,
+      901.7577105734767,
+      95.70346866925061
+    ],
+    [
+      60.996868279569895,
+      778.7171450258397,
+      901.8163449820789,
+      58.62415988372095
+    ],
+    [
+      60.996868279569895,
+      844.8244802971576,
+      901.6968167562725,
+      95.70347264211885
+    ],
+    [
+      60.996868279569895,
+      120.86711272609818,
+      214.45738844086023,
+      20.568836563307514
+    ],
+    [
+      59.79457267025091,
+      57.35690762273907,
+      370.27331084229394,
+      26.379831718346168
+    ]
+  ],
+  "category_id": [
+    7,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    8
+  ],
+  "segmentation": [
+    [
+      [
+        620.5129482755996,
+        129.11221394919596,
+        620.5129482755996,
+        388.245882790892,
+        963.5607570783702,
+        388.245882790892,
+        963.5607570783702,
+        129.11221394919596
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        149.10889534883722,
+        60.996868279569895,
+        244.81232428940564,
+        589.6953216845878,
+        244.81232428940564,
+        589.6953216845878,
+        149.10889534883722
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        252.29556589147285,
+        60.996868279569895,
+        347.9989948320414,
+        589.9722002688172,
+        347.9989948320414,
+        589.9722002688172,
+        252.29556589147285
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        355.48222319121453,
+        60.996868279569895,
+        395.56671543927655,
+        589.6387629928315,
+        395.56671543927655,
+        589.6387629928315,
+        355.48222319121453
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        403.0498775839793,
+        60.996868279569895,
+        461.67401098191215,
+        962.52024327957,
+        461.67401098191215,
+        962.52024327957,
+        403.0498775839793
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        469.15719961240313,
+        60.996868279569895,
+        564.8606815245478,
+        962.6896621863799,
+        564.8606815245478,
+        962.6896621863799,
+        469.15719961240313
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        572.3438304263566,
+        60.996868279569895,
+        668.0472990956073,
+        962.6591693548388,
+        668.0472990956073,
+        962.6591693548388,
+        572.3438304263566
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        675.5305009689923,
+        60.996868279569895,
+        771.2339696382429,
+        962.7545788530466,
+        771.2339696382429,
+        962.7545788530466,
+        675.5305009689923
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        778.7171450258397,
+        60.996868279569895,
+        837.3413049095607,
+        962.8132132616488,
+        837.3413049095607,
+        962.8132132616488,
+        778.7171450258397
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        844.8244802971576,
+        60.996868279569895,
+        940.5279529392765,
+        962.6936850358423,
+        940.5279529392765,
+        962.6936850358423,
+        844.8244802971576
+      ]
+    ],
+    [
+      [
+        60.996868279569895,
+        120.86711272609818,
+        60.996868279569895,
+        141.4359492894057,
+        275.4542567204301,
+        141.4359492894057,
+        275.4542567204301,
+        120.86711272609818
+      ]
+    ],
+    [
+      [
+        59.79457267025091,
+        57.35690762273907,
+        59.79457267025091,
+        83.73673934108524,
+        430.0678835125448,
+        83.73673934108524,
+        430.0678835125448,
+        57.35690762273907
+      ]
+    ]
+  ],
+  "area": [
+    88895.23728316663,
+    50598.254866435556,
+    50624.75309634658,
+    21190.341930634557,
+    52851.026597354634,
+    86295.1399919716,
+    86292.20978120144,
+    86301.3408011239,
+    52868.22559398224,
+    86295.51663391959,
+    4411.138972633808,
+    9767.747629814596
+  ],
+  "pdf_cells": [
+    [],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          149.10889534883722,
+          7.079004525089601,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "I"
+      },
+      {
+        "bbox": [
+          73.32732804659499,
+          149.10889534883722,
+          516.3679936379929,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "am pleased to report that 2004 was a very good year for"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          167.64853649870804,
+          528.6036684587814,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Republic Services, Inc. Our team met and exceeded the"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          186.1881908914729,
+          528.6480667562724,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "important financial and management goals we told you"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          204.72783204134362,
+          528.4924982078853,
+          21.54483785529726
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "about here a year ago, and we plan to work just as hard and"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          223.2674864341086,
+          396.3970008960574,
+          21.544837855297033
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "accomplish just as much in the coming year."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          252.29556589147285,
+          528.5469260752689,
+          21.54483785529726
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Republic is strengthening its competitive position among"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          270.83520704134366,
+          528.5529879032259,
+          21.54483785529726
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "the leading waste services providers every day. As always,"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          289.37486143410865,
+          528.5874117383513,
+          21.544837855297033
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "we are doing so by offering our customers cost-effective"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          307.91450258397936,
+          40.868838575268825,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "and "
+      },
+      {
+        "bbox": [
+          115.26234480286739,
+          307.91450258397936,
+          42.13980367383512,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "safe "
+      },
+      {
+        "bbox": [
+          170.7988011200717,
+          307.91450258397936,
+          59.25236420250897,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "waste "
+      },
+      {
+        "bbox": [
+          243.44780510752688,
+          307.91450258397936,
+          100.6020967741936,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "collection, "
+      },
+      {
+        "bbox": [
+          357.4465416666667,
+          307.91450258397936,
+          74.56252284946237,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "reliable "
+      },
+      {
+        "bbox": [
+          445.40570430107533,
+          307.91450258397936,
+          95.75465501792115,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "recycling, "
+      },
+      {
+        "bbox": [
+          554.5569991039426,
+          307.91450258397936,
+          35.41520116487459,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "and"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          326.45415697674423,
+          400.77167517921146,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "environmentally protective disposal options."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          355.48222319121453,
+          6.990474283154114,
+          21.54485109819109
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "I"
+      },
+      {
+        "bbox": [
+          73.17318862007168,
+          355.48222319121453,
+          516.4655743727599,
+          21.54485109819109
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "am proud of our team and what they accomplished. The"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          374.0218775839793,
+          344.8977311827957,
+          21.54483785529726
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "results tell you just how well they did."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          403.0498775839793,
+          901.5233750000001,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Revenue in 2004 grew 7.6 percent to $2.7 billion, a record. The increases came largely from new"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          421.5895187338501,
+          901.3938906810038,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "municipal contracts and improved pricing. At the same time, we benefited from our presence in high-"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          440.129173126615,
+          657.5000268817205,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "growth markets, especially those in the rapidly expanding Sunbelt states."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          469.15719961240313,
+          268.9562343189964,
+          21.544851098191202
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "We met last year ’s guidance."
+      },
+      {
+        "bbox": [
+          345.3184955197133,
+          469.15719961240313,
+          485.5471657706093,
+          21.544851098191202
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Net income per diluted share rose 15 percent to $1.53."
+      },
+      {
+        "bbox": [
+          846.2310542114695,
+          469.15719961240313,
+          115.05624999999998,
+          21.544851098191202
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Our revenue"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          487.696854005168,
+          901.3816568100359,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "enhancement and cost reduction efforts produced results. We generated a record level of free cash"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          506.2364951550387,
+          901.69279390681,
+          21.544851098191316
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "flow - $388 million to be exact. Republic continues to generate strong and predictable levels of cash"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          524.7761892764858,
+          45.91869395161291,
+          21.544837855297203
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "flow."
+      },
+      {
+        "bbox": [
+          127.28765766129031,
+          524.7761892764858,
+          835.3780143817205,
+          21.544837855297203
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "As in the past year, we will concentrate on free cash flow and use it for acquisitions,"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          543.3158304263566,
+          691.276311827957,
+          21.54485109819126
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "reinvestment, repurchases of our stock and regular quarterly cash dividends."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          572.3438304263566,
+          901.5191133512546,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "As I thought about these achievements, I realized they result from the environment that we work to"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          590.8835245478036,
+          901.6623010752689,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "create for both our customers and our people. We care about our customers and the communities we"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          609.4231656976744,
+          51.744185931899636,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "serve."
+      },
+      {
+        "bbox": [
+          132.70409198028673,
+          609.4231656976744,
+          171.62221043906808,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "About our people."
+      },
+      {
+        "bbox": [
+          324.2893346774194,
+          609.4231656976744,
+          222.64770788530467,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "About the environment."
+      },
+      {
+        "bbox": [
+          566.9001299283154,
+          609.4231656976744,
+          395.5675407706092,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "And, of course, we care about you -- our"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          627.9628200904392,
+          120.84942141577062,
+          21.544837855297203
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "shareholders."
+      },
+      {
+        "bbox": [
+          197.05896863799282,
+          627.9628200904392,
+          765.5217092293908,
+          21.544837855297203
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Every year we adopt a theme that captures our Company and our values. Our theme"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          646.5024612403101,
+          505.87006854838717,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "for 2005 is “Republic Services…A Company that cares”."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          675.5305009689923,
+          901.6262974910394,
+          21.544837855297146
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Our 13,400 dedicated people worked hard last year to create real value. We improved the way we"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          694.070142118863,
+          901.5879610215054,
+          21.544851098191202
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "deliver our services, increasing our efficiency in routing our collection trucks. We improved the way"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          712.6097965116279,
+          901.7232867383514,
+          21.54486434108526
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "we construct disposal cells at numerous landfills, lowering costs. We worked with our vendors to"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          731.1494376614987,
+          901.7577105734767,
+          21.54489082687337
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "control prices. And, we communicated to our customers the value of the services we offer. This year"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          749.6891052971575,
+          690.0056424731183,
+          21.544864341085287
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "will be no different. We will continue to concentrate on these fundamentals. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          778.7171450258397,
+          901.8163449820789,
+          21.544864341085287
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Republic’s future is bright. We are mindful of our mission. We know our business exists to ease the"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          797.2567994186046,
+          901.4501738351255,
+          21.54485109819123
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "burden of managing society’s waste. It’s not a glamorous business, but it is an essential one, and we"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          815.7964405684754,
+          338.9765927419355,
+          21.544864341085287
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "take this responsibility very seriously."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          844.8244802971576,
+          901.50711827957,
+          21.54486434108526
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "At the end of the year, Republic had 140 collection companies, 58 landfills, 96 transfer stations and 35"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          863.3641346899225,
+          901.401513888889,
+          21.54485109819123
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "recycling facilities in 22 states. These resources give us many opportunities to listen to our customers,"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          881.9037758397933,
+          901.6968167562725,
+          21.544861692506444
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "anticipate their needs and quickly respond to them. Each customer faces challenges unique to his or"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          900.4434236111111,
+          274.81429301075275,
+          21.5448709625323
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "her business and community."
+      },
+      {
+        "bbox": [
+          355.73536111111116,
+          900.4434236111111,
+          606.9504802867383,
+          21.5448709625323
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "Our goal is to remain flexible and to tailor our services to each"
+      },
+      {
+        "bbox": [
+          60.996868279569895,
+          918.9830819767442,
+          86.36487983870967,
+          21.5448709625323
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAO+Palatino-Roman",
+          "size": 1.0
+        },
+        "text": "customer."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          60.996868279569895,
+          120.86711272609818,
+          214.45738844086023,
+          20.568836563307514
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAN+Palatino-Italic",
+          "size": 1.0
+        },
+        "text": "Dear Fellow Shareholders:"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          59.79457267025091,
+          57.35690762273907,
+          370.27331084229394,
+          26.379831718346168
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/AAAAAP+Helvetica-Black",
+          "size": 1.0
+        },
+        "text": "Letter to Shareholders"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 154,
+    "num_pages": 6,
+    "original_filename": "NYSE_RSG_2004.pdf",
+    "original_height": 774.0,
+    "original_width": 558.0,
+    "page_hash": "8ad7a47d65e0e0dbe31e731b864ca88aa9e94f12859e5fbb1e5ffb35c811e1ef",
+    "page_no": 2
+  },
+  "modalities": [
+    "layout"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/157/image/image.jpg?Expires=1776545173&Signature=PQqHE3jkGUGEO3IBQDGXy56rqoTxIu78Tf5u3gvJZO7yKHFuqZqxX7wDmA5vvLRChErMgjHyJMrLpWVvJI0sf0e0gQhBNt9GPk4CuS0G4lpgWvU9oeKspVdyhGTCcwty0-OWnD5YD-0upXlbLuYJNf965GktucNkXzP7o9EuT6IUK2qJWV2dIDYn~tfzS66qDYE3ztUUGXwKuVBbiaVAMbxGM-kUhS1uvZkLvCAhVpP2psYivUf577sZkOHsjnvOLxhY5y~cShg7XiATISYmFFMPH94~kkQExeKoEE1hd82eHR80I6VYdTpWAzGD3cywr1EFfC7mjU4Zoisy4u0iIg__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      44.85162005718954,
+      407.84774589646474,
+      931.0656687500001,
+      49.262988320706995
+    ],
+    [
+      480.0284187091504,
+      664.4218503787879,
+      441.947977124183,
+      15.798200757575728
+    ],
+    [
+      753.2173556992993,
+      846.7683711456855,
+      173.81938977676157,
+      83.05467548402122
+    ],
+    [
+      485.1804003267974,
+      958.8517815972223,
+      441.54060661764703,
+      11.958330744949492
+    ]
+  ],
+  "category_id": [
+    11,
+    10,
+    7,
+    10
+  ],
+  "segmentation": [
+    [
+      [
+        44.85162005718954,
+        407.84774589646474,
+        44.85162005718954,
+        457.11073421717174,
+        975.9172888071896,
+        457.11073421717174,
+        975.9172888071896,
+        407.84774589646474
+      ]
+    ],
+    [
+      [
+        480.0284187091504,
+        664.4218503787879,
+        480.0284187091504,
+        680.2200511363636,
+        921.9763958333334,
+        680.2200511363636,
+        921.9763958333334,
+        664.4218503787879
+      ]
+    ],
+    [
+      [
+        753.2173556992993,
+        846.7683711456855,
+        753.2173556992993,
+        929.8230466297067,
+        927.0367454760609,
+        929.8230466297067,
+        927.0367454760609,
+        846.7683711456855
+      ]
+    ],
+    [
+      [
+        485.1804003267974,
+        958.8517815972223,
+        485.1804003267974,
+        970.8101123421718,
+        926.7210069444444,
+        970.8101123421718,
+        926.7210069444444,
+        958.8517815972223
+      ]
+    ]
+  ],
+  "area": [
+    45867.077165442504,
+    6981.982867012329,
+    14436.513010739527,
+    5280.088611259458
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          44.85162005718954,
+          407.84774589646474,
+          931.0656687500001,
+          49.262988320706995
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/DNCOAC+Bodoni",
+          "size": 1.0
+        },
+        "text": "Connecting aWorld in Motion"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          480.0284187091504,
+          664.4218503787879,
+          441.947977124183,
+          15.798200757575728
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/DNCOIJ+Univers-CondensedBold",
+          "size": 1.0
+        },
+        "text": "Euronet Worldwide Annual Report 2000"
+      }
+    ],
+    [],
+    [
+      {
+        "bbox": [
+          485.1804003267974,
+          958.8517815972223,
+          441.54060661764703,
+          11.958330744949492
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/DNDDLA+Bodoni-Book",
+          "size": 1.0
+        },
+        "text": "SECURE FINANCIAL TRANSACTIONS ANY TIME, ANY PLACE"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 179,
+    "num_pages": 48,
+    "original_filename": "NASDAQ_EEFT_2000.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "3d4c6966f95156a5d38a9346c0b3906c081c807f408b25d97d795b27040fd86a",
+    "page_no": 0
+  },
+  "modalities": [
+    "layout"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NYSE_HIG_2001.pdf#page_11",
+  "figures": [
+    {
+      "figure_id": "test_000130_picture_0",
+      "bbox": [
+        34.8777,
+        34.4417,
+        611.6673,
+        307.3595
+      ],
+      "logical_group_id": "test_000130_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 130,
+    "row_id": "test_000130",
+    "source_pdf_name": "NYSE_HIG_2001.pdf",
+    "page_no": 11,
+    "page_hash": "a832ddaa54c4c5a35e340a6a29ceadee1fb584eb8c3ed8f14a590799220fa633"
+  }
+}

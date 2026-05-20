@@ -1,0 +1,40 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_EEFT_2000.pdf#page_24",
+  "figures": [
+    {
+      "figure_id": "test_000085_picture_0",
+      "bbox": [
+        44.3025,
+        367.2579,
+        97.1635,
+        389.1575
+      ],
+      "logical_group_id": "test_000085_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000085_picture_1",
+      "bbox": [
+        44.3025,
+        608.6564,
+        133.9145,
+        722.1816
+      ],
+      "logical_group_id": "test_000085_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 85,
+    "row_id": "test_000085",
+    "source_pdf_name": "NASDAQ_EEFT_2000.pdf",
+    "page_no": 24,
+    "page_hash": "234a67f247e22d874c4985cbeac84a7158fb8abb326167cf3505a354734ae0a3"
+  }
+}

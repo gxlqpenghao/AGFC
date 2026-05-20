@@ -1,0 +1,702 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/73/image/image.jpg?Expires=1776543024&Signature=W9KGyOxZHSATHDiLAXhfS1Izc0LH1Ya~GYVWRF12-tSjSsPkbO2nYPFYHI8dbZC4kIP8ftbMYokdbAkYyW-zDs1tFWwOe51h4PDMGrDwolmZ0uojfe-ePBgActbnZbDQHlwp2L1R5J4Gmd7Dgwf8UmQkyO5eJ0zwyXTNH9~2Sy1vK2b16lB~2Ws1mSL6FOrYNUMeIIDaFX0MpiAbjR8NBGkyY2CELHsbaDi~rmud2x76BbhmLrjZVB8uh0OPRGvoCJDUIDREJtHda64WnIEtIEQzXLxcOyXJzD4s5uqRrCqBlTgLWOUgsnAkXpsonwQJ0lFFe0vYZHdzguzsp~H-SQ__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      292.68504861111114,
+      406.95929608585857,
+      623.8981053921568,
+      56.312865845959664
+    ],
+    [
+      296.44524101307195,
+      493.07870896464647,
+      651.6980147058823,
+      59.83670454545455
+    ],
+    [
+      296.4452577614379,
+      566.8472989267677,
+      651.5366944444445,
+      59.83670454545455
+    ],
+    [
+      296.4452577614379,
+      640.6158759469697,
+      651.5654178921569,
+      84.42619570707075
+    ],
+    [
+      296.4452577614379,
+      738.9739053030303,
+      655.1769852941178,
+      84.42619570707069
+    ],
+    [
+      296.4452577614379,
+      837.3319476010101,
+      651.4266911764705,
+      133.60525697601008
+    ],
+    [
+      61.96895424836602,
+      987.4567879103536,
+      7.216867565359479,
+      9.187467140151512
+    ],
+    [
+      291.0955406301083,
+      46.81712751108432,
+      660.187972529528,
+      350.85939238191827
+    ]
+  ],
+  "category_id": [
+    1,
+    10,
+    10,
+    10,
+    10,
+    10,
+    5,
+    7
+  ],
+  "segmentation": [
+    [
+      [
+        292.68504861111114,
+        406.95929608585857,
+        292.68504861111114,
+        463.27216193181823,
+        916.583154003268,
+        463.27216193181823,
+        916.583154003268,
+        406.95929608585857
+      ]
+    ],
+    [
+      [
+        296.44524101307195,
+        493.07870896464647,
+        296.44524101307195,
+        552.915413510101,
+        948.1432557189543,
+        552.915413510101,
+        948.1432557189543,
+        493.07870896464647
+      ]
+    ],
+    [
+      [
+        296.4452577614379,
+        566.8472989267677,
+        296.4452577614379,
+        626.6840034722222,
+        947.9819522058824,
+        626.6840034722222,
+        947.9819522058824,
+        566.8472989267677
+      ]
+    ],
+    [
+      [
+        296.4452577614379,
+        640.6158759469697,
+        296.4452577614379,
+        725.0420716540405,
+        948.0106756535948,
+        725.0420716540405,
+        948.0106756535948,
+        640.6158759469697
+      ]
+    ],
+    [
+      [
+        296.4452577614379,
+        738.9739053030303,
+        296.4452577614379,
+        823.400101010101,
+        951.6222430555557,
+        823.400101010101,
+        951.6222430555557,
+        738.9739053030303
+      ]
+    ],
+    [
+      [
+        296.4452577614379,
+        837.3319476010101,
+        296.4452577614379,
+        970.9372045770202,
+        947.8719489379084,
+        970.9372045770202,
+        947.8719489379084,
+        837.3319476010101
+      ]
+    ],
+    [
+      [
+        61.96895424836602,
+        987.4567879103536,
+        61.96895424836602,
+        996.6442550505051,
+        69.1858218137255,
+        996.6442550505051,
+        69.1858218137255,
+        987.4567879103536
+      ]
+    ],
+    [
+      [
+        291.0955406301083,
+        46.81712751108432,
+        291.0955406301083,
+        397.6765198930026,
+        951.2835131596363,
+        397.6765198930026,
+        951.2835131596363,
+        46.81712751108432
+      ]
+    ]
+  ],
+  "area": [
+    35133.49031049693,
+    38995.46155881518,
+    38985.80868599433,
+    55009.18948692257,
+    55314.10038320976,
+    87034.0304756643,
+    66.30473361156545,
+    231633.15089956074
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          292.68504861111114,
+          406.95929608585857,
+          598.6683333333333,
+          9.721956755050542
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/NCPHPG+Univers-CondensedBoldOblique",
+          "size": 1.0
+        },
+        "text": "The Hartford Chairman, President and CEO Ramani Ayer speaking at the opening of New York employees’ new "
+      },
+      {
+        "bbox": [
+          292.68504861111114,
+          422.48959911616157,
+          610.8638402777777,
+          9.721956755050542
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/NCPHPG+Univers-CondensedBoldOblique",
+          "size": 1.0
+        },
+        "text": "permanent offices in early November. Despite the destruction of their offices at 7 World Trade Center on Sept. 11, "
+      },
+      {
+        "bbox": [
+          292.68504861111114,
+          438.0199021464647,
+          623.8981053921568,
+          9.721956755050542
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/NCPHPG+Univers-CondensedBoldOblique",
+          "size": 1.0
+        },
+        "text": "The Hartford’s New York employees had their businesses back in operation by Sept. 17. Employees moved into their"
+      },
+      {
+        "bbox": [
+          292.68504861111114,
+          453.5502051767677,
+          308.04134068627457,
+          9.721956755050542
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/NCPHPG+Univers-CondensedBoldOblique",
+          "size": 1.0
+        },
+        "text": "new permanent offices less than 60 days after the attack."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          296.44524101307195,
+          493.07870896464647,
+          651.5322058823529,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "our proven approach to asset management despite the stock market’s vagaries. It means"
+      },
+      {
+        "bbox": [
+          296.44524101307195,
+          517.6682389520201,
+          651.6980147058823,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "growing our business profitably, maintaining financial discipline, controlling expenses and"
+      },
+      {
+        "bbox": [
+          296.44524101307195,
+          542.2577689393939,
+          447.98078880718947,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "providing extraordinary service to distributors and customers."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          346.68985334967323,
+          566.8472989267677,
+          601.2920988562091,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "We take the last point very seriously, as evidenced by our earning a sixth consecutive"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          591.4368159722222,
+          651.5337299836602,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "DALBAR Annuity Service Award in 2001. DALBAR also awarded us the Intermediary Service"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          616.026345959596,
+          387.6103321078432,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Award and the first-ever Life Insurance Service Award."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          346.68985334967323,
+          640.6158759469697,
+          601.2920988562091,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "As you’ll read throughout this report, service means very specific—and very impor-"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          665.2054059343434,
+          651.5609125816993,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "tant—things to us. We strive to forge strong partnerships with our distributors and provide"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          689.7948970959596,
+          651.5654178921569,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "them with technological tools and outstanding products to enhance their selling efforts."
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          714.384401199495,
+          445.4951470588235,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "These are some of the underpinnings to our solid 2001 results."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          346.68985334967323,
+          738.9739053030303,
+          601.1685126633986,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Despite the challenges I’ve mentioned, our revenues for 2001 rose 3 percent to $15.1"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          763.5634223484849,
+          651.4161732026145,
+          10.65767045454541
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "billion. Total assets under management rose 8 percent to $198 billion. Operating income rose"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          788.1529264520202,
+          8.51947508169934,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "7"
+      },
+      {
+        "bbox": [
+          309.22447875816994,
+          788.1529264520202,
+          638.6383758169936,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "percent to $1.034 billion, or $4.28 per diluted share, excluding the $440 million impact of"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          812.7424305555555,
+          655.1769852941178,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Sept. 11 (after tax and net of reinsurance) and a $130 million tax benefit in our life operations. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          346.68985334967323,
+          837.3319476010101,
+          601.1760661764706,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The results attest to the resilience of our enterprise. With our strong and balanced"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          861.9214646464646,
+          651.4146323529411,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "portfolio of businesses, we consistently demonstrate superior financial performance. Since"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          886.5109816919191,
+          651.4206617647059,
+          10.657667866161631
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "1995, we’ve produced 13 percent annualized operating earnings-per-share growth, excluding"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          911.1004961489899,
+          651.4146323529411,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the effects of Sept. 11 and the tax benefit in 2001, and 13 percent annualized growth in assets"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          935.6900144886364,
+          651.4266911764705,
+          10.657671748737386
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "under management. Excluding the effect of Sept. 11 and the tax benefit, operating return on"
+      },
+      {
+        "bbox": [
+          296.4452577614379,
+          960.2795328282829,
+          627.239705882353,
+          10.657671748737386
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "equity has met or exceeded our 13 to 15 percent target every year for the past five years. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          61.96895424836602,
+          987.4567879103536,
+          7.216867565359479,
+          9.187467140151512
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OCMHLN+Univers-Light",
+          "size": 1.0
+        },
+        "text": "4"
+      }
+    ],
+    []
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 83,
+    "num_pages": 40,
+    "original_filename": "NYSE_HIG_2001.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "52aa5e9f90c3dd912affe80b9e1a3d6ad3dbdc47fc5c4f15ad217014a1e9d775",
+    "page_no": 5
+  },
+  "modalities": [
+    "layout"
+  ]
+}

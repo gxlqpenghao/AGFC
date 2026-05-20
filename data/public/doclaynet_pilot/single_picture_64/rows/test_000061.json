@@ -1,0 +1,1161 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/61/image/image.jpg?Expires=1776545160&Signature=1vOsGaxwCGJ59M0ZZ-slFjXMmFN7F~3pUtZ1CWrc3axc0upYgixQOB15DhPdVdJ~HLvVmMzYMfCF216Olvbx-o4y2tQKJjNTrYJ8XYxw9G-XSY~ZzTv4h0spTnNlhJjGZyLbopEn3OIF-IVGqDkAHPndgw6V06fkA3NdaANZwg-xWspgpHV67Kk42HlcjwJI~TLyIz0xZa8NDkM1J9YFINmJ9XG3hjpItzqNkEuQ2y6iVgnZA3Yf05Q~cgmk8OCg4VBNw9b7aPLlImVACi0v~kgnnWW0H0pSc-i4ShorsrE7nW-C3FXaleLym8cjee0j83-3rf0R2n8wXHSSL47aMA__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      61.968455147058826,
+      534.5003955176768,
+      404.2208389705883,
+      197.0237398989899
+    ],
+    [
+      61.968455147058826,
+      741.5737815656566,
+      392.77999665032684,
+      93.48698863636363
+    ],
+    [
+      61.968455147058826,
+      845.1104292929293,
+      405.82918455882356,
+      114.19430265151516
+    ],
+    [
+      535.1099926470588,
+      824.407836489899,
+      392.7754444444445,
+      134.9016347853535
+    ],
+    [
+      575.3065735294117,
+      969.3591277777778,
+      267.13459558823536,
+      10.657671748737378
+    ],
+    [
+      535.1099926470588,
+      596.6271726641414,
+      392.7754444444445,
+      217.73100473484848
+    ],
+    [
+      535.1099926470588,
+      534.505132260101,
+      392.77402083333334,
+      52.07234248737376
+    ],
+    [
+      61.96895424836602,
+      987.4567879103536,
+      14.42854816176471,
+      9.187467140151512
+    ],
+    [
+      58.259501213175376,
+      45.82261093796035,
+      966.4835111971418,
+      467.06906938517295
+    ]
+  ],
+  "category_id": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    5,
+    7
+  ],
+  "segmentation": [
+    [
+      [
+        61.968455147058826,
+        534.5003955176768,
+        61.968455147058826,
+        731.5241354166667,
+        466.18929411764714,
+        731.5241354166667,
+        466.18929411764714,
+        534.5003955176768
+      ]
+    ],
+    [
+      [
+        61.968455147058826,
+        741.5737815656566,
+        61.968455147058826,
+        835.0607702020203,
+        454.74845179738566,
+        835.0607702020203,
+        454.74845179738566,
+        741.5737815656566
+      ]
+    ],
+    [
+      [
+        61.968455147058826,
+        845.1104292929293,
+        61.968455147058826,
+        959.3047319444445,
+        467.7976397058824,
+        959.3047319444445,
+        467.7976397058824,
+        845.1104292929293
+      ]
+    ],
+    [
+      [
+        535.1099926470588,
+        824.407836489899,
+        535.1099926470588,
+        959.3094712752525,
+        927.8854370915033,
+        959.3094712752525,
+        927.8854370915033,
+        824.407836489899
+      ]
+    ],
+    [
+      [
+        575.3065735294117,
+        969.3591277777778,
+        575.3065735294117,
+        980.0167995265151,
+        842.4411691176471,
+        980.0167995265151,
+        842.4411691176471,
+        969.3591277777778
+      ]
+    ],
+    [
+      [
+        535.1099926470588,
+        596.6271726641414,
+        535.1099926470588,
+        814.3581773989899,
+        927.8854370915033,
+        814.3581773989899,
+        927.8854370915033,
+        596.6271726641414
+      ]
+    ],
+    [
+      [
+        535.1099926470588,
+        534.505132260101,
+        535.1099926470588,
+        586.5774747474748,
+        927.8840134803921,
+        586.5774747474748,
+        927.8840134803921,
+        534.505132260101
+      ]
+    ],
+    [
+      [
+        61.96895424836602,
+        987.4567879103536,
+        61.96895424836602,
+        996.6442550505051,
+        76.39750241013073,
+        996.6442550505051,
+        76.39750241013073,
+        987.4567879103536
+      ]
+    ],
+    [
+      [
+        58.259501213175376,
+        45.82261093796035,
+        58.259501213175376,
+        512.8916803231333,
+        1024.743012410317,
+        512.8916803231333,
+        1024.743012410317,
+        45.82261093796035
+      ]
+    ]
+  ],
+  "area": [
+    79641.10143909267,
+    36719.81908344005,
+    46343.3807263279,
+    52986.04955909935,
+    2847.032832511121,
+    85519.39215406556,
+    20452.66333297621,
+    132.56181211630675,
+    451414.5541509634
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          102.16503267973856,
+          534.5003955176768,
+          352.89095261437916,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The optimistic message expanded on The"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          555.2077380050505,
+          404.2208389705883,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Hartford’s “Investor Survival Guide,” a brochure "
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          575.9150934343434,
+          392.66391372549015,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO used throughout the year to help financial pro-"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          596.6224359217172,
+          392.65793455882357,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "fessionals advise their clients amid market volatility."
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          617.329778409091,
+          392.6548696078432,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO sent out more than 500,000 guides in the sec-"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          638.0371338383839,
+          392.6699431372549,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "ond half of 2001 alone. And that was just a small part of"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          658.7444763257577,
+          392.6594251633987,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the company’s massive educational efforts during the"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          679.4518188131312,
+          392.6594251633987,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "year. Those efforts included 5,000 instructional semi-"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          700.1591354166667,
+          392.65036429738564,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "nars—1,200 more than in 2000—and constant advice"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          720.8664649621212,
+          347.9347225490196,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "and selling strategies for The Hartford’s products."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          102.16503267973856,
+          741.5737815656566,
+          352.57437500000003,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "“Our value is in providing education to financial"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          762.2811111111112,
+          392.7633822712418,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "professionals,” says Tim Seifert, PLANCO senior vice"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          782.9884406565657,
+          392.77999665032684,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "president and managing director. “One of their major"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          803.6957702020202,
+          392.77549133986923,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "concerns in 2001 was how to show their clients that"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          824.4030997474747,
+          366.7706049019608,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "we’ve been through downturns and crises before.” "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          102.16503267973856,
+          845.1104292929293,
+          352.5728341503268,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO wholesalers did that and much more."
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          865.8177458964647,
+          392.77095253267976,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "They provided reliable counsel only a trusted partner"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          886.5250754419192,
+          392.76041781045757,
+          10.657674337121207
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "can offer. They helped financial professionals success-"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          907.2324062815657,
+          392.704645751634,
+          10.657670454545453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "fully show clients the benefits of using short-term buy-"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          927.9397332386363,
+          23.609674142156855,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "ing"
+      },
+      {
+        "bbox": [
+          102.4770580882353,
+          927.9397332386363,
+          99.79128341503268,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "opportunities"
+      },
+      {
+        "bbox": [
+          219.1672753267974,
+          927.9397332386363,
+          14.895661764705864,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "to"
+      },
+      {
+        "bbox": [
+          250.9618876633987,
+          927.9397332386363,
+          62.641066176470616,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "enhance"
+      },
+      {
+        "bbox": [
+          330.50187091503267,
+          927.9397332386363,
+          34.329963235294144,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "their"
+      },
+      {
+        "bbox": [
+          381.73076797385625,
+          927.9397332386363,
+          73.33119648692809,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "long-term"
+      },
+      {
+        "bbox": [
+          61.968455147058826,
+          948.6470601957071,
+          405.82918455882356,
+          10.657671748737386
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "investment positions. Consequently, despite the "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          579.0915200163399,
+          824.407836489899,
+          348.7894285130719,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "“We want to be a trusted advisor to our clients so"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          845.1151660353535,
+          392.7633856209151,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "they in turn can be trusted advisors to theirs,” says"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          865.8224955808081,
+          392.7723794934642,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Seifert. “Our role doesn’t always revolve around prod-"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          886.5298121843434,
+          392.7754444444445,
+          10.657676925505044
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "ucts. Sometimes it just means being the go-to person,"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          907.2371456123738,
+          392.7754444444445,
+          10.657670454545453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the one who can solve difficult problems. Financial pro-"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          927.9444725694444,
+          392.7649264705883,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "fessionals need an inner circle of people they can"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          948.6518008207071,
+          113.88652736928111,
+          10.657670454545453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "always turn to.”"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3065735294117,
+          969.3591277777778,
+          267.13459558823536,
+          10.657671748737378
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO is at the center of that circle."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3065735294117,
+          596.6271726641414,
+          352.56231617647074,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO’s extraordinary service and steady sup-"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          617.3345280934343,
+          392.71064501634,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "port during 2001 reveal how well the company’s whole-"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          638.0418705808081,
+          392.76645057189546,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "salers always think ahead and anticipate financial"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          658.7492130681819,
+          392.77095588235306,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "professionals’ needs. That does more than sell financial"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          679.4565684974748,
+          392.76951552287596,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "products; it builds trust. Trust is the bedrock on which"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          700.1638721590909,
+          392.7724799836602,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "PLANCO was founded 25 years ago. Trust—along with"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          720.8712017045455,
+          392.7754444444445,
+          10.657670454545382
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "a constant flow of reliable information and advice—is"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          741.57853125,
+          392.7679914215686,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "what has helped PLANCO’s clients weather changes in"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          762.2858478535354,
+          392.7604211601308,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the financial markets over those 25 years. And trust is"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          782.9931773989899,
+          392.77402083333334,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "what makes PLANCO the financial advisor’s “partner of"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          803.7005069444444,
+          102.71121364379098,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "choice” today."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          535.1099926470588,
+          534.505132260101,
+          392.77402083333334,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "prolonged market correction, many of the financial pro-"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          555.2124747474747,
+          392.76789093137256,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "fessionals PLANCO works with—and their clients—"
+      },
+      {
+        "bbox": [
+          535.1099926470588,
+          575.9198301767677,
+          270.5141143790851,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "earned above-market returns in 2001. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          61.96895424836602,
+          987.4567879103536,
+          14.42854816176471,
+          9.187467140151512
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OCMHLN+Univers-Light",
+          "size": 1.0
+        },
+        "text": "26"
+      }
+    ],
+    []
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 70,
+    "num_pages": 40,
+    "original_filename": "NYSE_HIG_2001.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "7f8169a7a927d04f92cf55317c9d2065f4f427f8577297fe552bda893d7a835e",
+    "page_no": 27
+  },
+  "modalities": [
+    "layout"
+  ]
+}

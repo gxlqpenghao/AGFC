@@ -1,0 +1,1487 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/130/image/image.jpg?Expires=1776545172&Signature=FVh2-phEFSFmbfjMbCPh5CFSx1YHO3pkGYn0~SnUWMP1JSEcQ66azexrm9eBAUFRnv4FwkyGNHs5J2UvrsATi9Ooq4o2rc6IDYkxeE00WwPAsWpssBNNWxz5jRc1URejSnA-j6iVsToPZTVXpPQY5QIpC6SM2ryhdTgSyDLPlDr9xJ1Nlb8vG~8-S44K91xR68pkScbn5bGFtzqfb1IMglcPbVyrWB69gaYZ8uauu03gnReu3EL2uI4ET7LVltitlfO8rwitgZEgiwqJj9gtdWkhorCE36c-toQt4RwE-lRIQB~MVa6-noL0Bclu0gT6o1fNgRi6KAqw4~B0ye6YVQ__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      58.414413703595514,
+      44.57418045677775,
+      966.0283666232108,
+      353.20806286003597
+    ],
+    [
+      61.96812352941177,
+      418.02312279040405,
+      393.09802802287584,
+      72.77968497474751
+    ],
+    [
+      61.96812352941177,
+      500.85250568181823,
+      392.7649365196079,
+      114.19439583333332
+    ],
+    [
+      61.96812352941177,
+      625.096586489899,
+      393.0919986111111,
+      176.31631976010095
+    ],
+    [
+      61.96812352941177,
+      811.4625653409091,
+      393.03322859477123,
+      155.6089578598485
+    ],
+    [
+      535.1081503267974,
+      418.0303055555556,
+      392.76196200980394,
+      52.072355429292884
+    ],
+    [
+      535.1081503267974,
+      480.152345959596,
+      392.78301470588235,
+      238.43843781565653
+    ],
+    [
+      535.1081503267974,
+      728.6404428661616,
+      392.7769852941176,
+      197.02361306818182
+    ],
+    [
+      535.1081503267974,
+      935.7137124368687,
+      392.77095588235295,
+      31.364998705808084
+    ],
+    [
+      61.96895424836602,
+      987.4567879103536,
+      14.42854816176471,
+      9.187467140151512
+    ]
+  ],
+  "category_id": [
+    7,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    5
+  ],
+  "segmentation": [
+    [
+      [
+        58.414413703595514,
+        44.57418045677775,
+        58.414413703595514,
+        397.7822433168137,
+        1024.4427803268063,
+        397.7822433168137,
+        1024.4427803268063,
+        44.57418045677775
+      ]
+    ],
+    [
+      [
+        61.96812352941177,
+        418.02312279040405,
+        61.96812352941177,
+        490.80280776515156,
+        455.0661515522876,
+        490.80280776515156,
+        455.0661515522876,
+        418.02312279040405
+      ]
+    ],
+    [
+      [
+        61.96812352941177,
+        500.85250568181823,
+        61.96812352941177,
+        615.0469015151516,
+        454.7330600490196,
+        615.0469015151516,
+        454.7330600490196,
+        500.85250568181823
+      ]
+    ],
+    [
+      [
+        61.96812352941177,
+        625.096586489899,
+        61.96812352941177,
+        801.4129062499999,
+        455.0601221405228,
+        801.4129062499999,
+        455.0601221405228,
+        625.096586489899
+      ]
+    ],
+    [
+      [
+        61.96812352941177,
+        811.4625653409091,
+        61.96812352941177,
+        967.0715232007576,
+        455.001352124183,
+        967.0715232007576,
+        455.001352124183,
+        811.4625653409091
+      ]
+    ],
+    [
+      [
+        535.1081503267974,
+        418.0303055555556,
+        535.1081503267974,
+        470.1026609848485,
+        927.8701123366013,
+        470.1026609848485,
+        927.8701123366013,
+        418.0303055555556
+      ]
+    ],
+    [
+      [
+        535.1081503267974,
+        480.152345959596,
+        535.1081503267974,
+        718.5907837752525,
+        927.8911650326797,
+        718.5907837752525,
+        927.8911650326797,
+        480.152345959596
+      ]
+    ],
+    [
+      [
+        535.1081503267974,
+        728.6404428661616,
+        535.1081503267974,
+        925.6640559343434,
+        927.885135620915,
+        925.6640559343434,
+        927.885135620915,
+        728.6404428661616
+      ]
+    ],
+    [
+      [
+        535.1081503267974,
+        935.7137124368687,
+        535.1081503267974,
+        967.0787111426768,
+        927.8791062091503,
+        967.0787111426768,
+        927.8791062091503,
+        935.7137124368687
+      ]
+    ],
+    [
+      [
+        61.96895424836602,
+        987.4567879103536,
+        61.96895424836602,
+        996.6442550505051,
+        76.39750241013073,
+        996.6442550505051,
+        76.39750241013073,
+        987.4567879103536
+      ]
+    ]
+  ],
+  "area": [
+    341209.0080428289,
+    28609.55064369937,
+    44851.554630374136,
+    69308.53452225382,
+    61159.49110592395,
+    20452.04048488094,
+    93654.56842699464,
+    77386.34077267516,
+    12319.260522929004,
+    132.56181211630675
+  ],
+  "pdf_cells": [
+    [],
+    [
+      {
+        "bbox": [
+          102.16470106209151,
+          418.02312279040405,
+          86.25073194444444,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Meanwhile,"
+      },
+      {
+        "bbox": [
+          206.98149918300655,
+          418.02312279040405,
+          14.06661764705882,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "in"
+      },
+      {
+        "bbox": [
+          239.61418300653597,
+          418.02312279040405,
+          65.95724264705879,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "midtown"
+      },
+      {
+        "bbox": [
+          324.1374918300654,
+          418.02312279040405,
+          84.56249999999994,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Manhattan,"
+      },
+      {
+        "bbox": [
+          427.26605800653596,
+          418.02312279040405,
+          27.800093545751622,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          438.73046527777785,
+          393.08751004901956,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Hartford’s negotiations for permanent offices—a"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          459.4378207070707,
+          392.7649365196079,
+          10.65764457070702
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "process that normally takes 12 to 15 months—were"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          480.14516319444454,
+          74.50845588235293,
+          10.65764457070702
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "complete. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          102.16470106209151,
+          500.85250568181823,
+          352.4628610294118,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The feverish pace was in some ways therapeutic."
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          521.5598611111111,
+          392.6608789215686,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "It helped take people’s minds off the tragedy and the"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          542.2672035984849,
+          392.6624030228759,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "monumental loss of life, including the lives of many"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          562.9745460858586,
+          392.7649365196079,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "good friends and business colleagues at Aon, Marsh &"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          583.6819015151516,
+          392.4965941993464,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "McLennan, Bank of America and Morgan Stanley—major"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          604.3892440025253,
+          392.66997328431364,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "partners of The Hartford with offices in the Twin Towers."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          102.16470106209151,
+          625.096586489899,
+          352.5683589869281,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Like many Americans watching the heroism of"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          645.803941919192,
+          392.76795122549026,
+          10.65764457070702
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "firefighters, police and emergency crews, thousands of"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          666.5112844065657,
+          392.77547124183,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "our employees asked, “How can we help?” Fortunately,"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          687.218601010101,
+          392.7784859477124,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "they found ways. Lots of them. Employees crowded"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          707.9259176136363,
+          28.9622777369281,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "into"
+      },
+      {
+        "bbox": [
+          112.91966597222222,
+          707.9259176136363,
+          101.97545290032681,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "bloodmobiles"
+      },
+      {
+        "bbox": [
+          236.88436683006535,
+          707.9259176136363,
+          27.800110294117644,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "and"
+      },
+      {
+        "bbox": [
+          286.6737585784314,
+          707.9259176136363,
+          62.625992647058865,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "dropped"
+      },
+      {
+        "bbox": [
+          371.28901593137255,
+          707.9259176136363,
+          33.98174795751635,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "food"
+      },
+      {
+        "bbox": [
+          427.26002859477126,
+          707.9259176136363,
+          27.800093545751622,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "and"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          728.6332471590908,
+          392.77096593137264,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "supplies into overflowing bins. With the company’s"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          749.3405767045455,
+          392.7739806372549,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "match, employees also donated more than $700,000 to"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          770.04790625,
+          392.7694418300654,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "relief efforts, and The Hartford provided a special tele-"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          790.7552357954546,
+          383.51581887254906,
+          10.65767045454541
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "phone hotline for employees who needed counseling."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          102.16470106209151,
+          811.4625653409091,
+          145.50929812091505,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "“Focused resolve”"
+      },
+      {
+        "bbox": [
+          259.40271241830067,
+          811.4625653409091,
+          195.59863970588236,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "is how New York-based"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          832.1698819444445,
+          392.7573662581699,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Regional Vice President Brandon Hickey characterizes"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          852.877211489899,
+          392.77096593137264,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The Hartford’s response. “It solidified in my mind how"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          873.5845410353536,
+          392.76795122549026,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "strong the culture is at this company,” he says. “The"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          894.2918705808081,
+          392.71521062091506,
+          10.657669160353535
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "emotional stress of Sept. 11 will be with us for a long"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          914.9991962436868,
+          392.7181750816994,
+          10.657671748737386
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "time. But as a tribute to the people who were there, we"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          935.7065244949495,
+          392.757433251634,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "came back as quickly as we did because we knew we"
+      },
+      {
+        "bbox": [
+          61.96812352941177,
+          956.4138514520203,
+          380.9352306372549,
+          10.657671748737364
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "had a job to do, and we were committed to succeed.”"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3047312091503,
+          418.0303055555556,
+          352.565381127451,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "By early November—less than 60 days after the"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          438.7376609848485,
+          392.76196200980394,
+          10.65764457070702
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "attack—The Hartford’s New York employees were in"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          459.4450034722223,
+          305.05358292483663,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "their new permanent offices at 2 Park Ave. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3047312091503,
+          480.152345959596,
+          352.565381127451,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "No less impressive—and certainly no less swift—"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          500.8597013888889,
+          392.7678909313727,
+          10.657644570707134
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "was The Hartford’s claims service during Sept. 11’s"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          521.5670438762627,
+          392.7634861111111,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "aftermath. “Catastrophe Team”—CAT—adjusters were"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          542.2743863636365,
+          392.719739379085,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "on the ground within days, fulfilling obligations to poli-"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          562.9817417929294,
+          392.7678909313727,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "cyholders who suffered losses. As an example, The"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          583.6890842803031,
+          392.78301470588235,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Hartford advanced $1 million within 72 hours of the dis-"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          604.3964397095959,
+          392.76951552287585,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "aster to help the Thacher, Proffitt & Wood law firm"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          625.1037821969697,
+          392.7724799836601,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "establish temporary midtown Manhattan offices. All"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          645.8111246843434,
+          392.7603206699346,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the firm’s employees had evacuated the World Trade"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          666.5184801136363,
+          392.77852614379094,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Center’s south tower before everything in their offices"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          687.2257837752526,
+          392.7800502450981,
+          10.657670454545382
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "was destroyed. Within a week, Thacher, Proffitt & Wood"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          707.9331133207071,
+          154.08011029411762,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "was back in business."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3047312091503,
+          728.6404428661616,
+          352.565381127451,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The Hartford assigned extra resources to expedite"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          749.3477594696969,
+          392.75889705882344,
+          10.657683396464677
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "service requests, and customers received premium"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          770.0550890151516,
+          392.77095588235295,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "payment extensions as needed. One adjuster wrote a"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          790.7624185606061,
+          392.7678909313727,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "$250,000 check on the spot to help a lower Manhattan"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          811.4697481060606,
+          392.76941503267983,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "software-development company begin its recovery."
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          832.1770776515152,
+          392.7559325980392,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "CAT team members and call center customer service"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          852.8844071969697,
+          392.77095588235295,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "representatives received special training to help them"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          873.5917238005051,
+          392.7769852941176,
+          10.657683396464648
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "cope with traumatized customers, and the company"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          894.2990533459596,
+          392.76941503267983,
+          10.657675631313126
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "distributed disaster-recovery literature and forms to"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          915.0063841856061,
+          262.9185294117648,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "help customers get back to business."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          575.3047312091503,
+          935.7137124368687,
+          352.57437500000003,
+          10.657670454545453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "The Hartford’s Group Benefits Division (GBD)"
+      },
+      {
+        "bbox": [
+          535.1081503267974,
+          956.4210393939394,
+          392.7649264705882,
+          10.657671748737378
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "offered crisis-counseling services to policyholders in"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          61.96895424836602,
+          987.4567879103536,
+          14.42854816176471,
+          9.187467140151512
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OCMHLN+Univers-Light",
+          "size": 1.0
+        },
+        "text": "10"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 149,
+    "num_pages": 40,
+    "original_filename": "NYSE_HIG_2001.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "a832ddaa54c4c5a35e340a6a29ceadee1fb584eb8c3ed8f14a590799220fa633",
+    "page_no": 11
+  },
+  "modalities": [
+    "layout"
+  ]
+}

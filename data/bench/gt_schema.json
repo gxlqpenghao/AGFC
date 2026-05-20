@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AGFC Ground Truth Schema",
+  "type": "object",
+  "required": [
+    "page_idx",
+    "page_label",
+    "figures"
+  ],
+  "properties": {
+    "page_idx": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "page_label": {
+      "type": "string"
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "figure_id",
+          "bbox",
+          "logical_group_id",
+          "panel_bboxes",
+          "body_exclusion_bboxes"
+        ],
+        "properties": {
+          "figure_id": {
+            "type": "string"
+          },
+          "bbox": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number"
+            }
+          },
+          "logical_group_id": {
+            "type": "string"
+          },
+          "panel_bboxes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "caption_bbox": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "type": "number"
+                }
+              }
+            ]
+          },
+          "body_exclusion_bboxes": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

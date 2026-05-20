@@ -1,0 +1,66 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_SHEN_2003.pdf#page_4",
+  "figures": [
+    {
+      "figure_id": "test_000078_picture_0",
+      "bbox": [
+        53.0747,
+        153.1585,
+        188.7944,
+        285.4662
+      ],
+      "logical_group_id": "test_000078_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000078_picture_1",
+      "bbox": [
+        424.2187,
+        304.0424,
+        560.3175,
+        437.4874
+      ],
+      "logical_group_id": "test_000078_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000078_picture_2",
+      "bbox": [
+        53.0747,
+        458.3382,
+        188.4153,
+        589.8877
+      ],
+      "logical_group_id": "test_000078_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000078_picture_3",
+      "bbox": [
+        425.7351,
+        608.0848,
+        559.9384,
+        737.3596
+      ],
+      "logical_group_id": "test_000078_picture_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 78,
+    "row_id": "test_000078",
+    "source_pdf_name": "NASDAQ_SHEN_2003.pdf",
+    "page_no": 4,
+    "page_hash": "f860d1ac77d4b1f6e0058bfbc8472f4b9ecdd59a41dd041d3628ab344e15e13d"
+  }
+}

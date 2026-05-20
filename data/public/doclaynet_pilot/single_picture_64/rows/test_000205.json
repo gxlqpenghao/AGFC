@@ -1,0 +1,923 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/205/image/image.jpg?Expires=1776545187&Signature=oVwCZ~qV8WHxALZe9YqgIwOF35RcqtTFk1I3okq1f6n2MdmssoQ4eZMNGfO6SI1joaMqkgsKnX0uOCPsK6oIzMfDP9kEmTntkW~-VNvm0zqm84u~R1IFb4LyshvtG1soJaUlRSVCEzOVHgTWCQiOi9Mv5otqCTlUfKIdFmNZxwyJSvlAXIUfZsEUOef5q128hEW0~9uggamjSH~KKwft19NAt79fIsCmgWTjVhB8lcZD4NzDZc6KWls3Yjz6GiXPVc58dxqHZ9xlmCrYajZD7y4eSX-r0xQR95-tFz5M0wiPtB-eIg7kM5bS3LbDLc4e5WsoDREBFxb0Lc4pjawNFw__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      317.88368067226895,
+      651.774455760095,
+      575.9768201680673,
+      97.32230136579574
+    ],
+    [
+      317.88368067226895,
+      600.6449723871734,
+      559.5928756302521,
+      46.19278147268403
+    ],
+    [
+      317.88368067226895,
+      515.4291505344418,
+      582.9467512605041,
+      80.27910777909739
+    ],
+    [
+      317.88368067226895,
+      464.2996549881235,
+      585.3496268907563,
+      46.192781472684146
+    ],
+    [
+      317.88368067226895,
+      396.12696585510696,
+      581.993518487395,
+      63.235975059382326
+    ],
+    [
+      317.88368067226895,
+      327.9542280285035,
+      584.7478743697478,
+      63.236060273159296
+    ],
+    [
+      1004.0912575630254,
+      466.8907746437054,
+      9.6121054621849,
+      61.302790973871765
+    ],
+    [
+      804.902180672269,
+      991.5326556116389,
+      170.0916869747898,
+      10.18913179928741
+    ],
+    [
+      317.88368067226895,
+      253.12663509501192,
+      445.5260176470588,
+      44.895486935866984
+    ],
+    [
+      146.97122193277312,
+      156.65929572446566,
+      120.81492050420167,
+      20.378253859857523
+    ],
+    [
+      146.97122193277312,
+      121.77193557007138,
+      176.305147394958,
+      11.321246733966632
+    ],
+    [
+      145.5493207484258,
+      247.4889448518827,
+      139.8638004066904,
+      49.81920318446987
+    ]
+  ],
+  "category_id": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    6,
+    5,
+    8,
+    8,
+    8,
+    7
+  ],
+  "segmentation": [
+    [
+      [
+        317.88368067226895,
+        651.774455760095,
+        317.88368067226895,
+        749.0967571258907,
+        893.8605008403363,
+        749.0967571258907,
+        893.8605008403363,
+        651.774455760095
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        600.6449723871734,
+        317.88368067226895,
+        646.8377538598575,
+        877.4765563025211,
+        646.8377538598575,
+        877.4765563025211,
+        600.6449723871734
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        515.4291505344418,
+        317.88368067226895,
+        595.7082583135391,
+        900.8304319327731,
+        595.7082583135391,
+        900.8304319327731,
+        515.4291505344418
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        464.2996549881235,
+        317.88368067226895,
+        510.49243646080765,
+        903.2333075630253,
+        510.49243646080765,
+        903.2333075630253,
+        464.2996549881235
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        396.12696585510696,
+        317.88368067226895,
+        459.3629409144893,
+        899.877199159664,
+        459.3629409144893,
+        899.877199159664,
+        396.12696585510696
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        327.9542280285035,
+        317.88368067226895,
+        391.1902883016628,
+        902.6315550420168,
+        391.1902883016628,
+        902.6315550420168,
+        327.9542280285035
+      ]
+    ],
+    [
+      [
+        1004.0912575630254,
+        466.8907746437054,
+        1004.0912575630254,
+        528.1935656175772,
+        1013.7033630252103,
+        528.1935656175772,
+        1013.7033630252103,
+        466.8907746437054
+      ]
+    ],
+    [
+      [
+        804.902180672269,
+        991.5326556116389,
+        804.902180672269,
+        1001.7217874109264,
+        974.9938676470588,
+        1001.7217874109264,
+        974.9938676470588,
+        991.5326556116389
+      ]
+    ],
+    [
+      [
+        317.88368067226895,
+        253.12663509501192,
+        317.88368067226895,
+        298.0221220308789,
+        763.4096983193277,
+        298.0221220308789,
+        763.4096983193277,
+        253.12663509501192
+      ]
+    ],
+    [
+      [
+        146.97122193277312,
+        156.65929572446566,
+        146.97122193277312,
+        177.0375495843232,
+        267.7861424369748,
+        177.0375495843232,
+        267.7861424369748,
+        156.65929572446566
+      ]
+    ],
+    [
+      [
+        146.97122193277312,
+        121.77193557007138,
+        146.97122193277312,
+        133.093182304038,
+        323.2763693277311,
+        133.093182304038,
+        323.2763693277311,
+        121.77193557007138
+      ]
+    ],
+    [
+      [
+        145.5493207484258,
+        247.4889448518827,
+        145.5493207484258,
+        297.3081480363526,
+        285.4131211551162,
+        297.3081480363526,
+        285.4131211551162,
+        247.4889448518827
+      ]
+    ]
+  ],
+  "area": [
+    56055.389672109384,
+    25849.15141765909,
+    46798.445073916686,
+    27038.927400081906,
+    36802.92761979108,
+    36977.15182824715,
+    589.248891967132,
+    1733.086616549271,
+    20002.10750486237,
+    2461.9971200931273,
+    1995.994074126674,
+    6967.903090613048
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          342.29918067226896,
+          651.774455760095,
+          545.220894117647,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "With a luxury brand of this stature, establishing the dealer network, along with a distinctive"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          668.8176249999999,
+          575.9768201680673,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "level of service and a highly trained staff, are absolutely critical elements for sustained success."
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          685.8607942399051,
+          569.7579470588234,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Infiniti’s global expansion is a significant investment that must be executed flawlessly from the"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          702.9039513064133,
+          525.4150000000001,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "beginning. The launch of the Infiniti into any new market will therefore be very carefully"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          719.947132719715,
+          548.8918928571428,
+          12.106430819477396
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "considered, thoroughly developed and painstakingly implemented to ensure the successful"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          736.9903141330167,
+          262.73092857142854,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "debut of a globally recognized luxury brand."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          342.29918067226896,
+          600.6449723871734,
+          535.1773756302521,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "South Korea represents a good first global market for Infiniti. The initial sales targets are"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          617.6881294536818,
+          547.6062844537815,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "modest but will help build a solid foundation for Infiniti’s expansion into Russia, followed by"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          634.7312986935867,
+          224.17194453781508,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "China and then ultimately into Japan."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          342.29918067226896,
+          515.4291505344418,
+          538.1982315126052,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "The brand’s overwhelming success in the United States led to the decision to take Infiniti"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          532.4723076009502,
+          563.0003029411764,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "global as part of the NISSAN Value-Up Plan. Currently available in North America, the Middle"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          549.5154768408552,
+          556.112268487395,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "East and Taiwan, Infiniti took its first step toward becoming a truly world-class brand with its"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          566.5586460807601,
+          582.9467512605041,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "entry into South Korea in the summer of 2005. Exclusive Infiniti dealerships there will offer a full"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          583.6018031472684,
+          525.7752142857142,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "passenger car lineup, including the G35 sedan and coupe, FX, Q45, and the all-new M."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          342.29918067226896,
+          464.2996549881235,
+          560.9341268907563,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Infiniti has been the fastest-growing luxury-car brand in the North American market for three"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          481.3428242280286,
+          582.0725899159663,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "consecutive years. This success is based on a clear understanding of the Infiniti luxury customer"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          498.3859812945368,
+          503.1241268907563,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "and building distinctive vehicles that surpass even their uncompromising standards."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          342.29918067226896,
+          396.12696585510696,
+          521.7411071428571,
+          12.1064916864608
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "From the time of its U.S. launch in 1989, Infiniti has been such a brand. Built using the"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          413.17015944180525,
+          511.7839470588235,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "ultimate in Nissan technology and production skills, an Infiniti is a merging of spirited"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          430.2133286817102,
+          581.993518487395,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "performance, innovation and art, and embodies the achievement of something deeper—a vibrant"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          447.2564979216153,
+          291.3782142857143,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "alternative to the usual luxury-class competitors."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          317.88368067226895,
+          327.9542280285035,
+          567.5468584033614,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "In the realm of passenger vehicles, a luxury car is the thoroughbred all the others aspire to be."
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          344.99743378859864,
+          584.7478743697478,
+          12.10645516627062
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Constructed differently and with infinite care, it is meant for passionate buyers with exceptionally"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          362.04063954869366,
+          576.8026256302522,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "high expectations. A luxury car also demands extraordinary treatment; only the highest levels of"
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          379.08383313539196,
+          338.3129642857143,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "attention to customer desires, needs and service will do."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          1004.0912575630254,
+          466.8907746437054,
+          2.4028756302519696,
+          61.302790973871765
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "WHO"
+      },
+      {
+        "bbox": [
+          1010.3392613445378,
+          466.8907746437054,
+          3.3641016806724338,
+          61.302790973871765
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "WE ARE"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          804.902180672269,
+          992.6264340855107,
+          142.91516428571435,
+          7.924881235154388
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "Nissan Annual Report 2004"
+      },
+      {
+        "bbox": [
+          957.5856983193277,
+          991.5326556116389,
+          17.408169327731116,
+          10.18913179928741
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "25"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          317.88368067226895,
+          253.12663509501192,
+          445.5260176470588,
+          18.11401425178144
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "Becoming a Globally Recognized "
+      },
+      {
+        "bbox": [
+          317.88368067226895,
+          279.90810777909735,
+          173.94473949579833,
+          18.114014251781555
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "Luxury Brand"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          146.97122193277312,
+          156.65929572446566,
+          120.81492050420167,
+          20.378253859857523
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "INFINITI"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          146.97122193277312,
+          121.77193557007138,
+          176.305147394958,
+          11.321246733966632
+        ],
+        "font": {
+          "color": [
+            213,
+            213,
+            213,
+            255
+          ],
+          "name": "/MENEML+NissanAG-MedExt",
+          "size": 1.0
+        },
+        "text": "AUTOMOBILES"
+      }
+    ],
+    []
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 233,
+    "num_pages": 114,
+    "original_filename": "OTC_NSANY_2004.pdf",
+    "original_height": 842.0,
+    "original_width": 595.0,
+    "page_hash": "5ab4acee89998c3c8ea8729465caf4c8094c9a03fbbb1c76b34a0e2e82ba8b30",
+    "page_no": 26
+  },
+  "modalities": [
+    "layout"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NYSE_HNI_2003.pdf#page_58",
+  "figures": [
+    {
+      "figure_id": "test_000108_picture_0",
+      "bbox": [
+        63.8043,
+        517.9753,
+        227.9555,
+        544.0771
+      ],
+      "logical_group_id": "test_000108_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 108,
+    "row_id": "test_000108",
+    "source_pdf_name": "NYSE_HNI_2003.pdf",
+    "page_no": 58,
+    "page_hash": "813110c5dcd7cac7d283c5db609ced539b55acbad6276414c9cfc5447691d3ff"
+  }
+}

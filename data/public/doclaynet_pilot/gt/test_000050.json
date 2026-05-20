@@ -1,0 +1,157 @@
+{
+  "page_idx": 0,
+  "page_label": "NYSE_HNI_2003.pdf#page_60",
+  "figures": [
+    {
+      "figure_id": "test_000050_picture_0",
+      "bbox": [
+        61.2015,
+        651.4135,
+        181.692,
+        684.3093
+      ],
+      "logical_group_id": "test_000050_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_1",
+      "bbox": [
+        414.9851,
+        652.9099,
+        528.4144,
+        684.8512
+      ],
+      "logical_group_id": "test_000050_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_2",
+      "bbox": [
+        414.2197,
+        606.4578,
+        527.2881,
+        630.0775
+      ],
+      "logical_group_id": "test_000050_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_3",
+      "bbox": [
+        414.001,
+        550.2517,
+        514.3847,
+        580.6511
+      ],
+      "logical_group_id": "test_000050_picture_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_4",
+      "bbox": [
+        415.9693,
+        507.1676,
+        514.166,
+        528.3816
+      ],
+      "logical_group_id": "test_000050_picture_4",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_5",
+      "bbox": [
+        238.6028,
+        514.6034,
+        337.893,
+        545.4403
+      ],
+      "logical_group_id": "test_000050_picture_5",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_6",
+      "bbox": [
+        68.4534,
+        493.1707,
+        176.9291,
+        528.3816
+      ],
+      "logical_group_id": "test_000050_picture_6",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_7",
+      "bbox": [
+        62.5485,
+        547.846,
+        172.5551,
+        580.6511
+      ],
+      "logical_group_id": "test_000050_picture_7",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_8",
+      "bbox": [
+        235.541,
+        621.7669,
+        327.1767,
+        649.3232
+      ],
+      "logical_group_id": "test_000050_picture_8",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_9",
+      "bbox": [
+        68.2347,
+        607.5513,
+        173.8673,
+        632.4832
+      ],
+      "logical_group_id": "test_000050_picture_9",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000050_picture_10",
+      "bbox": [
+        235.1036,
+        565.342,
+        318.4286,
+        597.2724
+      ],
+      "logical_group_id": "test_000050_picture_10",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 50,
+    "row_id": "test_000050",
+    "source_pdf_name": "NYSE_HNI_2003.pdf",
+    "page_no": 60,
+    "page_hash": "403f274275cba381ed922abeb781d948576ad88b90ad539fdc072608b8eb0ca3"
+  }
+}

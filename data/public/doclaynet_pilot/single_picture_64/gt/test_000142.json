@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_SANM_2004.pdf#page_17",
+  "figures": [
+    {
+      "figure_id": "test_000142_picture_0",
+      "bbox": [
+        0.0,
+        251.9251,
+        575.9473,
+        657.16
+      ],
+      "logical_group_id": "test_000142_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 142,
+    "row_id": "test_000142",
+    "source_pdf_name": "NASDAQ_SANM_2004.pdf",
+    "page_no": 17,
+    "page_hash": "c2b513a5611d3138726e679c6e2e9e5383e4d3d82a2c588bbe3d5802797e2765"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/170/image/image.jpg?Expires=1776545173&Signature=qSTM1yhlneHIMG~EsLlkYlyuCEPYK7kz6W5C6QdloutqGM4E2Qay7YJ-ntYzap2qi4S4G~fDx~FuIz141fRItHBHttXmnIazww0NrVC8L6VsqiirfxGsFtInAEXeQFD13RzudiilEZNK6xNvXBgLZDYOL6Utl8xankSq2qq4CIbzpaF4yCbWndhpKPJS6Di~vUpVzsmQWLahjtQYOD30V0zwvS1BslcVaX3HNiYAfSePxIGDLzhxpjYkevnMEX~vCacEG-3-KgrdFag9pw8OdjvL-hfNv3HT4vcrn1Bd6-6sLe9tzCJ5FV2KtoWIC6t7bPvZa82FhrErAjxp0e6fHw__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      0.9793800844429262,
+      -0.74619435005161,
+      1022.472808158415,
+      1025.271036971109
+    ]
+  ],
+  "category_id": [
+    7
+  ],
+  "segmentation": [
+    [
+      [
+        0.9793800844429262,
+        -0.74619435005161,
+        0.9793800844429262,
+        1024.5248426210574,
+        1023.4521882428579,
+        1024.5248426210574,
+        1023.4521882428579,
+        -0.74619435005161
+      ]
+    ]
+  ],
+  "area": [
+    1048311.7562953399
+  ],
+  "pdf_cells": [
+    []
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 193,
+    "num_pages": 64,
+    "original_filename": "NYSE_HNI_2003.pdf",
+    "original_height": 850.5,
+    "original_width": 648.0,
+    "page_hash": "a485fa59a17f314312ef1e17b8547be39d23dccd8bd23cfeafb98241163e0b0d",
+    "page_no": 8
+  },
+  "modalities": [
+    "layout"
+  ]
+}

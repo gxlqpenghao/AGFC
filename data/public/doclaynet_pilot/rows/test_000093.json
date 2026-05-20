@@ -1,0 +1,1991 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/93/image/image.jpg?Expires=1776543024&Signature=N3k3p63NRwhsp2HztMiLU8PMNs6o~5fpUfcVs4G33UOmwUWRzC8rSQDtk9naM5Z-T-tUcxbQJY4faAa7tuyHzsT930I22K77mS8oFIyP4iRHcDrcPTQxYoAThcxQCm4u2XguKQ2XBSyxfHyVkjNPNUhMSGchjJBzeYxW15-9cD3BYthQa96WA2BN-IxLsY2VFZOKHNzKyLneonH0hFgDIx1MaPflMUUYwyHPIdI0TbW8SEwzEvkC8-MvGtXI1rVCy-sw0x6bJdcS7Qz80DocjniVbIj0754zMEqt9eDmb1sPBhUvOHNqyr5MsXJuWx3Z4Q8cDg8fNeWO75r5CY2Y5A__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      356.2448341699979,
+      154.7323461424562,
+      176.42061055233972,
+      84.18081007750209
+    ],
+    [
+      542.3090150740732,
+      154.3314851420871,
+      176.42061055233978,
+      84.1808100775022
+    ],
+    [
+      727.8059271339288,
+      154.7323461424562,
+      176.42061055233978,
+      84.18081007750209
+    ],
+    [
+      146.97122193277312,
+      293.8685712589074,
+      357.65912092436974,
+      326.66694002375294
+    ],
+    [
+      146.97122193277312,
+      624.9848877672209,
+      360.0488007563025,
+      194.22053028503564
+    ],
+    [
+      542.5114142857143,
+      293.8685712589074,
+      360.5686945378152,
+      127.99702108076008
+    ],
+    [
+      542.5114142857143,
+      426.3149688242281,
+      359.3972831932774,
+      227.33220576009495
+    ],
+    [
+      542.5114142857143,
+      658.0965388954869,
+      357.9124285714287,
+      161.1088791567696
+    ],
+    [
+      148.05716834135265,
+      848.6227377812946,
+      358.5139095468769,
+      114.24538510518138
+    ],
+    [
+      541.8038621682954,
+      849.2556471932522,
+      360.62741144322854,
+      111.56768373034113
+    ],
+    [
+      804.902180672269,
+      991.5326556116389,
+      170.0916869747898,
+      10.18913179928741
+    ],
+    [
+      146.97122193277312,
+      832.2751784441805,
+      205.26796084033617,
+      9.623070071258923
+    ],
+    [
+      542.5128441176471,
+      832.2751784441805,
+      132.0829642857143,
+      9.623070071258923
+    ],
+    [
+      1004.0912575630254,
+      575.6429216152019,
+      9.6121054621849,
+      50.846330166270775
+    ]
+  ],
+  "category_id": [
+    7,
+    7,
+    7,
+    10,
+    10,
+    10,
+    10,
+    10,
+    7,
+    7,
+    5,
+    1,
+    1,
+    6
+  ],
+  "segmentation": [
+    [
+      [
+        356.2448341699979,
+        154.7323461424562,
+        356.2448341699979,
+        238.9131562199583,
+        532.6654447223376,
+        238.9131562199583,
+        532.6654447223376,
+        154.7323461424562
+      ]
+    ],
+    [
+      [
+        542.3090150740732,
+        154.3314851420871,
+        542.3090150740732,
+        238.5122952195893,
+        718.7296256264129,
+        238.5122952195893,
+        718.7296256264129,
+        154.3314851420871
+      ]
+    ],
+    [
+      [
+        727.8059271339288,
+        154.7323461424562,
+        727.8059271339288,
+        238.9131562199583,
+        904.2265376862686,
+        238.9131562199583,
+        904.2265376862686,
+        154.7323461424562
+      ]
+    ],
+    [
+      [
+        146.97122193277312,
+        293.8685712589074,
+        146.97122193277312,
+        620.5355112826603,
+        504.63034285714286,
+        620.5355112826603,
+        504.63034285714286,
+        293.8685712589074
+      ]
+    ],
+    [
+      [
+        146.97122193277312,
+        624.9848877672209,
+        146.97122193277312,
+        819.2054180522566,
+        507.02002268907563,
+        819.2054180522566,
+        507.02002268907563,
+        624.9848877672209
+      ]
+    ],
+    [
+      [
+        542.5114142857143,
+        293.8685712589074,
+        542.5114142857143,
+        421.8655923396675,
+        903.0801088235295,
+        421.8655923396675,
+        903.0801088235295,
+        293.8685712589074
+      ]
+    ],
+    [
+      [
+        542.5114142857143,
+        426.3149688242281,
+        542.5114142857143,
+        653.647174584323,
+        901.9086974789917,
+        653.647174584323,
+        901.9086974789917,
+        426.3149688242281
+      ]
+    ],
+    [
+      [
+        542.5114142857143,
+        658.0965388954869,
+        542.5114142857143,
+        819.2054180522565,
+        900.423842857143,
+        819.2054180522565,
+        900.423842857143,
+        658.0965388954869
+      ]
+    ],
+    [
+      [
+        148.05716834135265,
+        848.6227377812946,
+        148.05716834135265,
+        962.868122886476,
+        506.5710778882295,
+        962.868122886476,
+        506.5710778882295,
+        848.6227377812946
+      ]
+    ],
+    [
+      [
+        541.8038621682954,
+        849.2556471932522,
+        541.8038621682954,
+        960.8233309235934,
+        902.4312736115239,
+        960.8233309235934,
+        902.4312736115239,
+        849.2556471932522
+      ]
+    ],
+    [
+      [
+        804.902180672269,
+        991.5326556116389,
+        804.902180672269,
+        1001.7217874109264,
+        974.9938676470588,
+        1001.7217874109264,
+        974.9938676470588,
+        991.5326556116389
+      ]
+    ],
+    [
+      [
+        146.97122193277312,
+        832.2751784441805,
+        146.97122193277312,
+        841.8982485154394,
+        352.2391827731093,
+        841.8982485154394,
+        352.2391827731093,
+        832.2751784441805
+      ]
+    ],
+    [
+      [
+        542.5128441176471,
+        832.2751784441805,
+        542.5128441176471,
+        841.8982485154394,
+        674.5958084033614,
+        841.8982485154394,
+        674.5958084033614,
+        832.2751784441805
+      ]
+    ],
+    [
+      [
+        1004.0912575630254,
+        575.6429216152019,
+        1004.0912575630254,
+        626.4892517814726,
+        1013.7033630252103,
+        626.4892517814726,
+        1013.7033630252103,
+        575.6429216152019
+      ]
+    ]
+  ],
+  "area": [
+    14851.229910663471,
+    14851.229910663496,
+    14851.229910663476,
+    116835.41060394929,
+    69928.86901138021,
+    46151.71879581887,
+    81702.57713251325,
+    57662.870203420236,
+    40958.55966174712,
+    40234.36498438972,
+    1733.086616549271,
+    1975.3079705509876,
+    1271.0436205410183,
+    488.74028792326817
+  ],
+  "pdf_cells": [
+    [],
+    [],
+    [],
+    [
+      {
+        "bbox": [
+          171.38671848739497,
+          293.8685712589074,
+          333.24362436974786,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "The Process and Resource Management division is one"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          310.4243663895487,
+          351.0288179831933,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "of Nissan’s greatest assets. They are sometimes perceived"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          326.9801493467934,
+          340.991191092437,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "as too rigid, and it is true that the division has established"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          343.5359444774348,
+          353.9749608403362,
+          12.10645516627062
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "quite a number of rules. However, I easily imagine what can"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          360.09173960807607,
+          340.8549608403361,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "happen to a company without rules. The point, really, is to"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          376.6475225653206,
+          310.3816936134454,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "keep the structure and provide some freedom when"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          393.20331769596214,
+          350.02142386554624,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "needed. The core creative divisions can add great value to "
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          409.75913717339677,
+          337.4226751260505,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "a process, such as when they interact with the advanced"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          426.3149688242281,
+          355.7730864705883,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "engineering team. When the creative people are happy with"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          442.87078830166274,
+          314.5563549579832,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "what they have developed, however, someone has to"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          459.4266199524941,
+          350.5749066386555,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "support the complex process of creating added value. That"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          475.98245160332544,
+          307.2657452941176,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "responsibility belongs to the Process and Resource"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          492.53827108076007,
+          342.76876504201687,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Management division. Otherwise, a nicely crafted process"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          509.0941027315914,
+          357.3691923529412,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "may never be implemented. But at Nissan, employees in the"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          525.6499343824228,
+          343.4526209243698,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Process and Resource Management division serve as the"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          542.2057538598575,
+          348.9202465546218,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "guardians of the timelines and support the implementation"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          558.7615855106889,
+          333.1776763865546,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "of processes. If a process is not working as we planned,"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          575.3174049881235,
+          353.71283647058823,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "they get the project back on track in a smooth and efficient"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          591.8732366389548,
+          322.6787822689076,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "manner. If a process is no longer relevant, they quickly"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          608.4290682897862,
+          199.38446084033615,
+          12.106442992874179
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "organize a taskforce to update it. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          171.38671848739497,
+          624.9848877672209,
+          313.10233991596635,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "So Corporate Planning provides the direction, Design"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          641.5407194180523,
+          360.0488007563025,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "and Product Planning create products with value, and Market"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          658.0965388954869,
+          317.7177994957983,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Intelligence and Process and Resource Management"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          674.6523705463183,
+          318.98294235294117,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "support the creative teams. Someone has to drive the"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          691.2082021971496,
+          337.5412822689076,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "implementation, and that role belongs to our six program"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          707.7640216745843,
+          344.2301566386555,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "directors in Program Management. The program directors"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          724.3198533254157,
+          346.4895150420169,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "are involved from the beginning. They are businesspeople,"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          740.8756728028504,
+          329.95188941176474,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "the CEOs of their own platform businesses. Each has a"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          757.4315044536818,
+          356.0879423529411,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "different part of the vehicle lineup, but the substance of their"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          773.9873361045131,
+          348.9202465546218,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "mutual targets and commitments is simple: profit. Program"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          790.5431555819478,
+          357.5331578991597,
+          12.106430819477481
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "directors make it happen. They ensure that everybody in the"
+      },
+      {
+        "bbox": [
+          146.97122193277312,
+          807.0989872327791,
+          355.3733881512605,
+          12.106430819477481
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Company keeps each project consistently profitable through"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5114142857143,
+          293.8685712589074,
+          353.93101848739514,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "all phases: planning, development and launch, right through"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          310.4243663895487,
+          313.4362142857143,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "to the end of the lifecycle. Our program directors are"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          326.9801493467934,
+          352.5853743697479,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "persuasive people with strong characters, special skills and"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          343.5359444774348,
+          346.46469453781526,
+          12.10645516627062
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "attributes, and they are not afraid to challenge the system."
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          360.09173960807607,
+          307.59080294117655,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Their diversity contributes tremendously to Nissan’s"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          376.6475225653206,
+          360.5686945378152,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "success. The cumulative work of all these divisions results in"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          393.20331769596214,
+          335.0505184873949,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "a very consistent organization with an upstream process"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          409.75913717339677,
+          108.75107016806726,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "that creates value."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          566.9269487394959,
+          426.3149688242281,
+          334.98174873949586,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Looking at Nissan’s global output over the last six years,"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          442.87078830166274,
+          358.0061084033613,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "it is clear that some terrific products have been created, and"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          459.4266199524941,
+          345.7573928571428,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "the value of the Company as a whole is greater. There are"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          475.98245160332544,
+          328.0366415966387,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "many scorecards that reflect this, and our stakeholders"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          492.53827108076007,
+          332.67841008403366,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "certainly know Nissan’s success first-hand. At the same"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          509.0941027315914,
+          348.3506773109244,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "time, we must prepare for the future. We need to reinforce"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          525.6499343824228,
+          320.07676722689087,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "the strength of our program management groups and"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          542.2057538598575,
+          352.1870886554623,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "establish more precise, accurate groups to standardize and"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          558.7615855106889,
+          279.0328386554622,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "improve processes for the future. Ironically, our"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          575.3174049881235,
+          319.2918756302521,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "achievements have created uncertainty for the future."
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          591.8732366389548,
+          309.5807155462186,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Success creates risk, and the more we highlight our"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          608.4290682897862,
+          351.6188941176471,
+          12.106442992874179
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "successes, the more we raise the anxiety level of investors."
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          624.9848877672209,
+          333.83078571428575,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "How can our new products be as good as those already"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          641.5407194180523,
+          242.44032142857145,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "released? How can we keep it all going?"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          566.9269487394959,
+          658.0965388954869,
+          318.19373025210075,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "One way to sustain our strong pace is to take greater"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          674.6523705463183,
+          350.22782268907565,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "advantage of the Alliance. The value is there, in areas such"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          691.2082021971496,
+          356.9299617647058,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "as purchasing, development, benchmarking, sales networks,"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          707.7640216745843,
+          356.68096428571425,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "market knowledge and even financial strategy. Yet we must"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          724.3198533254157,
+          357.9124285714287,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "maintain both a balance and a clear separation between the"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          740.8756728028504,
+          337.46664159663874,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "brand identities of Renault and Nissan. Neither company"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          757.4315044536818,
+          346.7208411764707,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "wants to make the same cars, or have the same corporate"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          773.9873361045131,
+          332.12633991596635,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "culture, or have its brand mistaken for the other. We will"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          790.5431555819478,
+          342.67066134453785,
+          12.106430819477481
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "continue to derive benefits from this strategic partnership"
+      },
+      {
+        "bbox": [
+          542.5114142857143,
+          807.0989872327791,
+          141.32265882352942,
+          12.106430819477481
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "while remaining Nissan."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          284.99668487394956,
+          855.9726428147269,
+          78.04470588235296,
+          9.057007125890749
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "NISSAN 180"
+      },
+      {
+        "bbox": [
+          168.86677063025212,
+          883.5507425771972,
+          87.8047886134454,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "New Products"
+      },
+      {
+        "bbox": [
+          168.86677063025212,
+          922.747127256532,
+          50.4665192857143,
+          9.05700956057008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "Start of "
+      },
+      {
+        "bbox": [
+          168.86677063025212,
+          933.0945144299287,
+          72.00977978991594,
+          9.057009560570066
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "Production "
+      },
+      {
+        "bbox": [
+          388.32702100840334,
+          855.9726428147269,
+          101.71998361344549,
+          9.057007125890749
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "NISSAN Value-Up"
+      },
+      {
+        "bbox": [
+          416.3319159663866,
+          922.8876021674585,
+          48.407563025210095,
+          28.30314726840855
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "70"
+      },
+      {
+        "bbox": [
+          307.1478651260504,
+          925.7784211104513,
+          29.044537815126034,
+          16.98188470902612
+        ],
+        "font": {
+          "color": [
+            106,
+            106,
+            106,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "44"
+      },
+      {
+        "bbox": [
+          416.3319159663866,
+          879.1875415676959,
+          48.407563025210095,
+          28.30314483372922
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "28"
+      },
+      {
+        "bbox": [
+          307.1478651260504,
+          882.07908847981,
+          29.044537815126034,
+          16.981888361045137
+        ],
+        "font": {
+          "color": [
+            106,
+            106,
+            106,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "31"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          561.9675336134454,
+          874.3635896674584,
+          13.378437815125949,
+          9.057007125890749
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "10"
+      },
+      {
+        "bbox": [
+          581.5856718487395,
+          874.3635896674584,
+          31.658735714285854,
+          9.057007125890749
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "New "
+      },
+      {
+        "bbox": [
+          561.9675336134454,
+          885.9283165083135,
+          109.90065504201675,
+          9.057007125890749
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "Conquest Models"
+      },
+      {
+        "bbox": [
+          561.9675336134454,
+          922.6763937351544,
+          9.856158823529427,
+          9.057009560570052
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "18"
+      },
+      {
+        "bbox": [
+          576.5804331932773,
+          922.6763937351544,
+          90.93283193277318,
+          9.057009560570052
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "Replacement "
+      },
+      {
+        "bbox": [
+          561.9675336134454,
+          934.2411205760095,
+          49.609328151260456,
+          9.057009560570066
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "Models "
+      },
+      {
+        "bbox": [
+          759.2221684873949,
+          893.1794002375298,
+          48.40756302521015,
+          28.30315092042754
+        ],
+        "font": {
+          "color": [
+            106,
+            106,
+            106,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "28"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          804.902180672269,
+          992.6264340855107,
+          142.91516428571435,
+          7.924881235154388
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "Nissan Annual Report 2004"
+      },
+      {
+        "bbox": [
+          957.5856983193277,
+          991.5326556116389,
+          17.408169327731116,
+          10.18913179928741
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "35"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          146.97122193277312,
+          832.2751784441805,
+          205.26796084033617,
+          9.623070071258923
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "Nre Global Product Launches"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5128441176471,
+          832.2751784441805,
+          11.541827310924418,
+          9.623070071258923
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "28"
+      },
+      {
+        "bbox": [
+          561.692368487395,
+          832.2751784441805,
+          112.90343991596637,
+          9.623070071258923
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "All-New Models"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          1004.0912575630254,
+          575.6429216152019,
+          3.003663445378038,
+          50.846330166270775
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "OUR"
+      },
+      {
+        "bbox": [
+          1009.4982100840336,
+          575.6429216152019,
+          4.205152941176607,
+          50.846330166270775
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "WORK"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 107,
+    "num_pages": 114,
+    "original_filename": "OTC_NSANY_2004.pdf",
+    "original_height": 842.0,
+    "original_width": 595.0,
+    "page_hash": "3c0254c252e46ca12faa51a960cb1cfc6d757c221c100e8cc7e7009646dfcb76",
+    "page_no": 36
+  },
+  "modalities": [
+    "layout"
+  ]
+}

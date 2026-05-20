@@ -1,0 +1,969 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/18/image/image.jpg?Expires=1776543024&Signature=tAjXWnqy8VHXZ59Easo5c66SlIlWT2P-NWOTka6HQJdvZ2DGm8t9Zl7ORbMkzfaGxniNdw5egDPrYhPRq0wMDrN5M1UK-MkdMF33uKXp6BtGEhWEZkVrgayPNqmokJLJfAqhzN6TpUkGj76NbwB4LA6ihcrxwvWteg7sVx5Q8EtSGZlzUiSmnVgZijmL~gd0Ck2qpeB8fBl4AyB0v5ijAWy3kvlwITf4bu6cahoVob5-ZGTcGe6sWlFVLDq8j~ireFkQB5h9MZAKPFCecylT4XyAn30ll9H-YdXekXT93TtY73-enrdoIS1PPtv4xXrVHLmqlEK~2q2CIwFkBUBo1w__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      0.0,
+      45.42052565532413,
+      964.8235693405742,
+      466.53368494540075
+    ],
+    [
+      97.19712900326797,
+      573.3232670454545,
+      392.7227406862745,
+      32.29943244949499
+    ],
+    [
+      97.19712900326797,
+      615.6723844696969,
+      392.75739305555555,
+      93.4870274621212
+    ],
+    [
+      97.19712900326797,
+      719.2090710227274,
+      392.8312868464053,
+      155.60895138888887
+    ],
+    [
+      97.19712900326797,
+      884.8676815025253,
+      401.86636037581695,
+      52.07232954545452
+    ],
+    [
+      570.3387066993464,
+      718.2796212121212,
+      392.8086732026145,
+      238.43826698232323
+    ],
+    [
+      570.3387066993464,
+      573.3282496843435,
+      392.7739203431373,
+      134.9017124368687
+    ],
+    [
+      955.8153639705881,
+      983.4788302083333,
+      7.216904411764858,
+      9.187467140151519
+    ]
+  ],
+  "category_id": [
+    7,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    5
+  ],
+  "segmentation": [
+    [
+      [
+        0.0,
+        45.42052565532413,
+        0.0,
+        511.9542106007249,
+        964.8235693405742,
+        511.9542106007249,
+        964.8235693405742,
+        45.42052565532413
+      ]
+    ],
+    [
+      [
+        97.19712900326797,
+        573.3232670454545,
+        97.19712900326797,
+        605.6226994949495,
+        489.91986968954245,
+        605.6226994949495,
+        489.91986968954245,
+        573.3232670454545
+      ]
+    ],
+    [
+      [
+        97.19712900326797,
+        615.6723844696969,
+        97.19712900326797,
+        709.1594119318181,
+        489.9545220588235,
+        709.1594119318181,
+        489.9545220588235,
+        615.6723844696969
+      ]
+    ],
+    [
+      [
+        97.19712900326797,
+        719.2090710227274,
+        97.19712900326797,
+        874.8180224116162,
+        490.02841584967325,
+        874.8180224116162,
+        490.02841584967325,
+        719.2090710227274
+      ]
+    ],
+    [
+      [
+        97.19712900326797,
+        884.8676815025253,
+        97.19712900326797,
+        936.9400110479799,
+        499.0634893790849,
+        936.9400110479799,
+        499.0634893790849,
+        884.8676815025253
+      ]
+    ],
+    [
+      [
+        570.3387066993464,
+        718.2796212121212,
+        570.3387066993464,
+        956.7178881944444,
+        963.1473799019609,
+        956.7178881944444,
+        963.1473799019609,
+        718.2796212121212
+      ]
+    ],
+    [
+      [
+        570.3387066993464,
+        573.3282496843435,
+        570.3387066993464,
+        708.2299621212122,
+        963.1126270424837,
+        708.2299621212122,
+        963.1126270424837,
+        573.3282496843435
+      ]
+    ],
+    [
+      [
+        955.8153639705881,
+        983.4788302083333,
+        955.8153639705881,
+        992.6662973484848,
+        963.032268382353,
+        992.6662973484848,
+        963.032268382353,
+        983.4788302083333
+      ]
+    ]
+  ],
+  "area": [
+    450122.69512663246,
+    12684.72163417686,
+    36717.721190535856,
+    61128.06461891694,
+    20926.117550721927,
+    93660.61929405715,
+    52985.874454831486,
+    66.30507213670415
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          87.39397708333334,
+          405.254858270202,
+          352.8853938316994,
+          97.69337121212118
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/NDFFIH+Futura-BookOblique",
+          "size": 1.0
+        },
+        "text": "people"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          97.1978006127451,
+          573.3232670454545,
+          10.23324660947712,
+          11.854797979798036
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKF+Univers-Bold",
+          "size": 1.0
+        },
+        "text": "T"
+      },
+      {
+        "bbox": [
+          107.61444852941176,
+          574.2576994949495,
+          382.3054211601308,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "he worst of 2001 brought out the best in The"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          594.9650419823233,
+          131.18792777777782,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Hartford’s people. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          137.39370653594773,
+          615.6723844696969,
+          352.5216075980392,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "As the world watched the horrors of Sept. 11,"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          636.37973989899,
+          392.75739305555555,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "some 330 of our New York employees fled their offices"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          657.0870823863636,
+          392.70914101307187,
+          10.657657512626315
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "in 7 World Trade Center. Though many were caught in"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          677.7944248737374,
+          392.71215571895425,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the debris and dust from the nearby Twin Towers, all"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          698.5017414772727,
+          112.24502336601307,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "escaped safely. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          137.39370653594773,
+          719.2090710227274,
+          352.63159411764707,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "By the time the 47-story 7 World Trade Center"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          739.9163876262626,
+          392.8312868464053,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "building collapsed at about 5:20 p.m., The Hartford had"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          760.6237171717172,
+          392.8161630718954,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "already arranged for temporary space in several of the"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          781.3310467171717,
+          392.8161630718954,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "company’s other offices. Employees and suppliers"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          802.0383762626263,
+          392.8282218954248,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "immediately began working around the clock to get"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          822.7457058080809,
+          392.8191777777778,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the business up and running again. Despite the"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          843.4530353535354,
+          392.81468921568626,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "destruction, back-up systems kept distributors’ and"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          864.1603519570707,
+          175.32926805555556,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "customers’ data secure. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          137.39370653594773,
+          884.8676815025253,
+          352.51859289215685,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "A hundred miles from Ground Zero, home office"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          905.5750123421717,
+          392.77702214052283,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "employees in Hartford, Conn., began shuttling equip-"
+      },
+      {
+        "bbox": [
+          97.19712900326797,
+          926.2823392992425,
+          401.86636037581695,
+          10.657671748737357
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "ment and supplies to our temporary offices. Some "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          610.5352875816994,
+          718.2796212121212,
+          352.3120620915032,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "By Monday, Sept. 17, all of The Hartford’s business"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          738.9869378156566,
+          392.4981082516341,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "units in New York were serving customers again."
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          759.6942673611111,
+          392.5011732026144,
+          10.65767045454541
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Employees had new furniture, phones, servers and PCs."
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          780.4015969065657,
+          392.49361968954247,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Distributors’ and customers’ access to company e-mail"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          801.1089264520202,
+          392.5026135620915,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "was never interrupted. Calls to old phone numbers were"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          821.8162559974747,
+          392.51324877450975,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "rerouted to cell phones or new office phones. Print and"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          842.5235855429294,
+          392.8086732026145,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "radio ads—along with The Hartford’s Web site—"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          863.2309021464647,
+          392.4965841503267,
+          10.657670454545439
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "gave customers instructions for filing claims quickly."
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          883.9382316919192,
+          392.5026135620915,
+          10.657670454545467
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Customer relationships were stronger than ever. The"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          904.6455625315657,
+          392.505678513072,
+          10.657671748737357
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Hartford Experience—customer solutions, ease of doing"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          925.3528894886364,
+          392.49207883986935,
+          10.657671748737371
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "business and extraordinary service—was never better"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          946.060217739899,
+          100.54948529411763,
+          10.657670454545453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "demonstrated."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          570.3387066993464,
+          573.3282496843435,
+          392.7739203431373,
+          10.657644570707077
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "booked Long Island Sound ferries from Connecticut to"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          594.0355921717172,
+          392.7739203431373,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "Long Island within 48 hours of the attack. Others spent"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          614.7429346590909,
+          392.77095588235284,
+          10.657657512626201
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "the weekend driving supplies to the new locations so"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          635.4502900883839,
+          392.7694150326797,
+          10.65764457070702
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "employees could concentrate on customers instead of"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          656.1576325757576,
+          392.76635008169933,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "on finding pens and paper. Employees and suppliers"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          676.8649750631314,
+          392.7092046568629,
+          10.657657512626258
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "were determined to get the company, its distributors"
+      },
+      {
+        "bbox": [
+          570.3387066993464,
+          697.5722916666666,
+          259.555608251634,
+          10.657670454545496
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OECHKG+Univers",
+          "size": 1.0
+        },
+        "text": "and its customers through the crisis."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          955.8153639705881,
+          983.4788302083333,
+          7.216904411764858,
+          9.187467140151519
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/OCMHLN+Univers-Light",
+          "size": 1.0
+        },
+        "text": "9"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 20,
+    "num_pages": 40,
+    "original_filename": "NYSE_HIG_2001.pdf",
+    "original_height": 792.0,
+    "original_width": 612.0,
+    "page_hash": "bfdb4cc4b8c92ab3e7f5a044e894645deb24a9350569ff7e1dcaee0c52d447c0",
+    "page_no": 10
+  },
+  "modalities": [
+    "layout"
+  ]
+}

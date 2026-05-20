@@ -1,0 +1,310 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/105/image/image.jpg?Expires=1776543035&Signature=XrvZOqlGv~ZdWEXM-mXt1jI4z~k6aX131rmpgrHsSrrEQH0IPeqZh-AKd5dY-NKh4EyQKeuzbZppL2AOOUkJFQq~WTW4Tb6Ek5k2K0hstWl5NzZMBU4AhuLDYgNdI11qvbFpStZqj8~ukPQMmIsnZKmZBm9EhxwizrGPOdQFN2RLn3W0E43ISeUGTy3LG2-MaCNEzcDtuorNt3qyKCwTpxXfkkFDTiHpgG67CxxtKp4uL0H1CH-LbswigtGsdh6wOnhmg~AS73USTQHkcd4P5ETIuy8FEln5uWkk9UN2EpoORdviYmkOj2c1REPWw1-krhe9YgAqWxGYSUgU2Iv86A__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      292.992718487395,
+      449.24447446555814,
+      600.4918915966387,
+      94.83889192399056
+    ],
+    [
+      244.1606848739496,
+      380.5765350356294,
+      132.8089743697479,
+      11.32124673396686
+    ],
+    [
+      50.94542857142857,
+      991.5326556116389,
+      170.10365966386559,
+      10.18913179928741
+    ],
+    [
+      292.6862424213284,
+      620.4809295986593,
+      731.2195276763355,
+      295.16663430625476
+    ]
+  ],
+  "category_id": [
+    10,
+    8,
+    5,
+    7
+  ],
+  "segmentation": [
+    [
+      [
+        292.992718487395,
+        449.24447446555814,
+        292.992718487395,
+        544.0833663895487,
+        893.4846100840336,
+        544.0833663895487,
+        893.4846100840336,
+        449.24447446555814
+      ]
+    ],
+    [
+      [
+        244.1606848739496,
+        380.5765350356294,
+        244.1606848739496,
+        391.89778176959624,
+        376.9696592436975,
+        391.89778176959624,
+        376.9696592436975,
+        380.5765350356294
+      ]
+    ],
+    [
+      [
+        50.94542857142857,
+        991.5326556116389,
+        50.94542857142857,
+        1001.7217874109264,
+        221.04908823529416,
+        1001.7217874109264,
+        221.04908823529416,
+        991.5326556116389
+      ]
+    ],
+    [
+      [
+        292.6862424213284,
+        620.4809295986593,
+        292.6862424213284,
+        915.647563904914,
+        1023.9057700976639,
+        915.647563904914,
+        1023.9057700976639,
+        620.4809295986593
+      ]
+    ]
+  ],
+  "area": [
+    56949.98560836627,
+    1503.5631673249966,
+    1733.2086078562559,
+    215831.60692323325
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          292.992718487395,
+          449.24447446555814,
+          432.08437436974793,
+          9.623070071259008
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "NISSAN IS A WORLD-CLASS AUTOMOBILE MANUFACTURER. "
+      },
+      {
+        "bbox": [
+          292.992718487395,
+          466.2876437054632,
+          532.3440516806724,
+          9.623070071258894
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "TO ENVISION, PLAN, BUILD AND DISTRIBUTE MILLIONS OF AUTOMOBILES "
+      },
+      {
+        "bbox": [
+          292.992718487395,
+          483.33080077197155,
+          557.8196428571429,
+          9.623070071258894
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "TO THE WORLD REQUIRES A CLEAR DEFINITION OF ROLES AND PROCESSES. "
+      },
+      {
+        "bbox": [
+          292.992718487395,
+          500.3739700118765,
+          600.4918915966387,
+          9.623070071258894
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "AT NISSAN, OUR BUSINESS DIVISIONS COMMUNICATE IDEAS ACROSS COUNTRIES,"
+      },
+      {
+        "bbox": [
+          292.992718487395,
+          517.4171392517815,
+          436.2253915966386,
+          9.623057897862225
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "CULTURES AND FUNCTIONS TO DEVISE THE TRANSPARENT, "
+      },
+      {
+        "bbox": [
+          292.992718487395,
+          534.4602963182898,
+          551.4470886554622,
+          9.623070071258894
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEHF+NissanAG-Medium",
+          "size": 1.0
+        },
+        "text": "EFFICIENT SOLUTIONS THAT CREATE SUCCESS. THIS IS THE NISSAN SHIFT_"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          244.1606848739496,
+          380.5765350356294,
+          132.8089743697479,
+          11.32124673396686
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEML+NissanAG-MedExt",
+          "size": 1.0
+        },
+        "text": "OUR WORK"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          78.13394289915966,
+          992.6264340855107,
+          31.441328907563033,
+          7.924881235154388
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "Nissan"
+      },
+      {
+        "bbox": [
+          183.89115,
+          992.6264340855107,
+          37.157938235294154,
+          7.924881235154388
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "Annual Report 2004"
+      },
+      {
+        "bbox": [
+          50.94542857142857,
+          991.5326556116389,
+          17.408114201680682,
+          10.18913179928741
+        ],
+        "font": {
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "32"
+      }
+    ],
+    []
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 120,
+    "num_pages": 114,
+    "original_filename": "OTC_NSANY_2004.pdf",
+    "original_height": 842.0,
+    "original_width": 595.0,
+    "page_hash": "3f93f9b7e92815462fa64a54a9e70f0ae09d96c7093b7ab72ee52e6aa53866e2",
+    "page_no": 33
+  },
+  "modalities": [
+    "layout"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "OTC_NSANY_2004.pdf#page_55",
+  "figures": [
+    {
+      "figure_id": "test_000133_picture_0",
+      "bbox": [
+        367.6652,
+        0.5648,
+        594.1379,
+        155.8765
+      ],
+      "logical_group_id": "test_000133_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 133,
+    "row_id": "test_000133",
+    "source_pdf_name": "OTC_NSANY_2004.pdf",
+    "page_no": 55,
+    "page_hash": "89a6023a9aceedfa44aabe22e455e9257f6e3a73d01c04a670555adcc62ab1f3"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_FFIN_2002.pdf#page_9",
+  "figures": [
+    {
+      "figure_id": "test_000000_picture_0",
+      "bbox": [
+        259.6871,
+        -0.3791,
+        611.8758,
+        455.6845
+      ],
+      "logical_group_id": "test_000000_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 0,
+    "row_id": "test_000000",
+    "source_pdf_name": "NASDAQ_FFIN_2002.pdf",
+    "page_no": 9,
+    "page_hash": "132a855ee8b23533d8ae69af0049c038171a06ddfcac892c3c6d7e6b4091c642"
+  }
+}

@@ -1,0 +1,15 @@
+.DS_Store
+.env.local
+.local/
+.pytest_cache/
+.venv/
+.worktrees/
+__pycache__/
+*.pyc
+artifacts/
+output/
+tmp/
+data/private/
+data/sample_corpus/
+src/**/__pycache__/
+tests/**/__pycache__/

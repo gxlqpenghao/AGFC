@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NYSE_RSG_2004.pdf#page_3",
+  "figures": [
+    {
+      "figure_id": "test_000145_picture_0",
+      "bbox": [
+        44.1554,
+        588.7381,
+        243.2418,
+        632.1188
+      ],
+      "logical_group_id": "test_000145_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 145,
+    "row_id": "test_000145",
+    "source_pdf_name": "NYSE_RSG_2004.pdf",
+    "page_no": 3,
+    "page_hash": "454e20d65ef8b8c23dd18b0ceba5d84ebae7c6bd12922f757895dc0ac458c98c"
+  }
+}

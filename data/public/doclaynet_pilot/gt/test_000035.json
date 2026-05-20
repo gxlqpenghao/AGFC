@@ -1,0 +1,92 @@
+{
+  "page_idx": 0,
+  "page_label": "NYSE_RSG_2004.pdf#page_1",
+  "figures": [
+    {
+      "figure_id": "test_000035_picture_0",
+      "bbox": [
+        24.7703,
+        286.0567,
+        146.2245,
+        437.475
+      ],
+      "logical_group_id": "test_000035_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000035_picture_1",
+      "bbox": [
+        214.942,
+        271.2744,
+        338.3939,
+        438.274
+      ],
+      "logical_group_id": "test_000035_picture_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000035_picture_2",
+      "bbox": [
+        379.944,
+        271.2744,
+        544.1469,
+        445.4654
+      ],
+      "logical_group_id": "test_000035_picture_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000035_picture_3",
+      "bbox": [
+        383.1402,
+        463.0443,
+        540.9508,
+        631.6419
+      ],
+      "logical_group_id": "test_000035_picture_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000035_picture_4",
+      "bbox": [
+        216.5401,
+        459.4486,
+        339.1929,
+        614.8621
+      ],
+      "logical_group_id": "test_000035_picture_4",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "test_000035_picture_5",
+      "bbox": [
+        25.1698,
+        462.6448,
+        142.6288,
+        613.6635
+      ],
+      "logical_group_id": "test_000035_picture_5",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 35,
+    "row_id": "test_000035",
+    "source_pdf_name": "NYSE_RSG_2004.pdf",
+    "page_no": 1,
+    "page_hash": "2271fdca260e8f64f1e6a2101a4e2795a24ccbba3366933e665e8319253614bf"
+  }
+}

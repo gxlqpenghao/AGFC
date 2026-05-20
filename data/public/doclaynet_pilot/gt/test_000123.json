@@ -1,0 +1,27 @@
+{
+  "page_idx": 0,
+  "page_label": "NASDAQ_SHEN_2003.pdf#page_59",
+  "figures": [
+    {
+      "figure_id": "test_000123_picture_0",
+      "bbox": [
+        225.5921,
+        519.1451,
+        388.8868,
+        539.9109
+      ],
+      "logical_group_id": "test_000123_picture_0",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ],
+  "source": {
+    "split": "test",
+    "offset": 123,
+    "row_id": "test_000123",
+    "source_pdf_name": "NASDAQ_SHEN_2003.pdf",
+    "page_no": 59,
+    "page_hash": "66f76f484536870cc46bda0651618a315645cdaaf7c74588e0cd825ed7fb2951"
+  }
+}

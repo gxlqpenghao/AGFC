@@ -1,0 +1,1972 @@
+{
+  "image": {
+    "src": "https://datasets-server.huggingface.co/cached-assets/docling-project/DocLayNet-v1.2/--/0daf93102e2efce76c3e11a274a5e0d0969391d3/--/default/test/214/image/image.jpg?Expires=1776545187&Signature=AkGd7uQcLxUxVa4eLwJaOZh8fUGWHnpGXRTslj4ksIvUGeIarZiu96UiJIwDaVMvft-GVUHMuLXeavLCNPwk8iUBD6ddF9semRIySlEFf382JdabTLlgfIaADcw0-pIyaxk-9-5jaJHMr0W8Fnse0nYUKa43hgZ12pFn0KPxUYrEjwwyvJVYnAEgsHHbQlMX7j33cH46DWbzMLt9COABFqGit6fwWBX5UfNwfxm~WkTDwmdo1eJiDAchwzKdHVnDS7IGwOyBVxqUZjifXijwgfdKE~b0rdcP5aseMkLcfVlUUN3a5TE3ih~7~DB1kPx-G2d8VmjyrKg--p7jDeBiAQ__&Key-Pair-Id=K204OQ5RWQVDLD",
+    "height": 1025,
+    "width": 1025
+  },
+  "bboxes": [
+    [
+      146.97127533613445,
+      293.8712494061758,
+      352.6058692016807,
+      114.35942042755346
+    ],
+    [
+      146.97127533613445,
+      413.1673839073634,
+      361.0327990336135,
+      148.45176039192404
+    ],
+    [
+      146.97127533613445,
+      566.5558583729216,
+      349.8559234033614,
+      148.45173604513064
+    ],
+    [
+      146.97127533613445,
+      719.9443450118765,
+      361.14851205882354,
+      165.49507571258903
+    ],
+    [
+      146.97127533613445,
+      890.3761713182898,
+      352.97340491596646,
+      63.23598479809975
+    ],
+    [
+      542.5114831932773,
+      821.6664162707839,
+      320.83154621848746,
+      8.545712292161511
+    ],
+    [
+      542.5114831932773,
+      831.9132633610452,
+      326.6663285714286,
+      17.067321258907327
+    ],
+    [
+      542.5114831932773,
+      293.86835213776726,
+      360.3079655462186,
+      97.31726157957235
+    ],
+    [
+      542.5114831932773,
+      396.12227909738715,
+      353.0905357142857,
+      114.36548277909742
+    ],
+    [
+      542.5114831932773,
+      515.4244637767221,
+      355.8345899159664,
+      131.4086033254157
+    ],
+    [
+      542.5114831932773,
+      670.0908405581947,
+      210.092768487395,
+      9.623070071258951
+    ],
+    [
+      536.0074936937601,
+      688.3607614844153,
+      371.4559703706757,
+      131.4901525857614
+    ],
+    [
+      804.902180672269,
+      991.5326556116389,
+      170.0916869747898,
+      10.18913179928741
+    ]
+  ],
+  "category_id": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    8,
+    7,
+    5
+  ],
+  "segmentation": [
+    [
+      [
+        146.97127533613445,
+        293.8712494061758,
+        146.97127533613445,
+        408.2306698337293,
+        499.5771445378152,
+        408.2306698337293,
+        499.5771445378152,
+        293.8712494061758
+      ]
+    ],
+    [
+      [
+        146.97127533613445,
+        413.1673839073634,
+        146.97127533613445,
+        561.6191442992874,
+        508.00407436974797,
+        561.6191442992874,
+        508.00407436974797,
+        413.1673839073634
+      ]
+    ],
+    [
+      [
+        146.97127533613445,
+        566.5558583729216,
+        146.97127533613445,
+        715.0075944180523,
+        496.8271987394958,
+        715.0075944180523,
+        496.8271987394958,
+        566.5558583729216
+      ]
+    ],
+    [
+      [
+        146.97127533613445,
+        719.9443450118765,
+        146.97127533613445,
+        885.4394207244655,
+        508.119787394958,
+        885.4394207244655,
+        508.119787394958,
+        719.9443450118765
+      ]
+    ],
+    [
+      [
+        146.97127533613445,
+        890.3761713182898,
+        146.97127533613445,
+        953.6121561163895,
+        499.9446802521009,
+        953.6121561163895,
+        499.9446802521009,
+        890.3761713182898
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        821.6664162707839,
+        542.5114831932773,
+        830.2121285629454,
+        863.3430294117647,
+        830.2121285629454,
+        863.3430294117647,
+        821.6664162707839
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        831.9132633610452,
+        542.5114831932773,
+        848.9805846199525,
+        869.1778117647059,
+        848.9805846199525,
+        869.1778117647059,
+        831.9132633610452
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        293.86835213776726,
+        542.5114831932773,
+        391.1856137173396,
+        902.8194487394959,
+        391.1856137173396,
+        902.8194487394959,
+        293.86835213776726
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        396.12227909738715,
+        542.5114831932773,
+        510.48776187648457,
+        895.602018907563,
+        510.48776187648457,
+        895.602018907563,
+        396.12227909738715
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        515.4244637767221,
+        542.5114831932773,
+        646.8330671021378,
+        898.3460731092437,
+        646.8330671021378,
+        898.3460731092437,
+        515.4244637767221
+      ]
+    ],
+    [
+      [
+        542.5114831932773,
+        670.0908405581947,
+        542.5114831932773,
+        679.7139106294537,
+        752.6042516806723,
+        679.7139106294537,
+        752.6042516806723,
+        670.0908405581947
+      ]
+    ],
+    [
+      [
+        536.0074936937601,
+        688.3607614844153,
+        536.0074936937601,
+        819.8509140701767,
+        907.4634640644358,
+        819.8509140701767,
+        907.4634640644358,
+        688.3607614844153
+      ]
+    ],
+    [
+      [
+        804.902180672269,
+        991.5326556116389,
+        804.902180672269,
+        1001.7217874109264,
+        974.9938676470588,
+        1001.7217874109264,
+        974.9938676470588,
+        991.5326556116389
+      ]
+    ]
+  ],
+  "area": [
+    40323.80284125793,
+    53595.95457576366,
+    51936.71919490125,
+    59768.30034666388,
+    22320.62086739956,
+    2741.734088232512,
+    5575.319174196349,
+    35064.184532264895,
+    40381.369581694424,
+    46759.72647572919,
+    2021.7374326189865,
+    48842.80222293221,
+    1733.086616549271
+  ],
+  "pdf_cells": [
+    [
+      {
+        "bbox": [
+          146.97127533613445,
+          293.8712494061758,
+          347.8307818067227,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "we set after benchmarking others with A+ ratings. This is"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          310.9134082541568,
+          352.0494061764706,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "also the reason we changed our ROIC formula. Previously,"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          327.9555671021378,
+          352.6058692016807,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "cash on hand was one of the denominators in our formula,"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          344.99773812351543,
+          345.8862448319328,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "which meant that higher cash on hand led to lower ROIC."
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          362.03989697149643,
+          305.8600120588236,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "We do not want to penalize liquidity improvements."
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          379.08205581947755,
+          325.2705490336135,
+          12.10645516627062
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Obviously, cash is a funding source that enables us to"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          396.12421466745855,
+          318.87165491596636,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "invest in opportunities such as R&D in a flexible way."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          171.38677016806724,
+          413.1673839073634,
+          305.1249113445378,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Liquidity can also have a significant impact on our "
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          430.21054097387173,
+          349.45615617647064,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "sales financing business, which requires large amounts of"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          447.2537102137767,
+          335.9583876890757,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "cash to operate. There has been a high degree of inter-"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          464.296867280285,
+          336.45770911764714,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "company loans to the sales finance companies, but that"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          481.3400365201901,
+          361.0327990336135,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "strategy will change after our rating improves. With a higher"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          498.38319358669844,
+          342.6047805462185,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "rating we can develop diversified sources of funding. We"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          515.4263628266034,
+          310.8502805462185,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "will strive to achieve a healthy balance between the"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          532.4695320665083,
+          333.2728876890756,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "diversification of funds and cost efficiencies by utilizing"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          549.5126891330167,
+          177.76867340336133,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "sound financial management."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          171.38677016806724,
+          566.5558583729216,
+          324.89719579831933,
+          12.106442992874179
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "In terms of the commitment under NISSAN Value-Up,"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          583.5990154394299,
+          349.8559234033614,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "we must maintain a 20 percent ROIC on average over the"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          600.642184679335,
+          347.40326205882354,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "course of the plan. I believe that Treasury can continue to"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          617.6853417458433,
+          342.79515491596646,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "play a key role in managing working capital. What we did"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          634.7285109857482,
+          329.1113704621849,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "especially well under NISSAN 180 was to improve our"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          651.7716802256532,
+          344.01340617647065,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "supply chain management. With the information from the"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          668.8148372921615,
+          343.66642214285713,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "new supply chain management system, we succeeded in"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          685.8580065320666,
+          321.2452448319328,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "converting our working capital into cash much faster "
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          702.9011635985748,
+          76.53822634453783,
+          12.106430819477339
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "than before. "
+      }
+    ],
+    [
+      {
+        "bbox": [
+          171.38677016806724,
+          719.9443450118765,
+          331.4791428571429,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "However, our inventory increased in fiscal 2004. There"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          736.9875264251782,
+          361.14851205882354,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "are two reasons for this. First, we increased our inventory to"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          754.0307200118765,
+          351.27185323529415,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "prepare for the spring season. As evidenced by the strong"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          771.0739014251782,
+          321.7255305462186,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "sales volume so far in fiscal 2005, it appears that our"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          788.1170828384797,
+          298.54299357142855,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "decision was correct. The second reason was the"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          805.1602642517814,
+          355.28547760504205,
+          12.106430819477453
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "consolidation of new companies, whose operations are not"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          822.2034456650831,
+          343.711746092437,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "yet as efficient as Nissan’s. I believe, though, that we can"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          839.2466270783848,
+          310.91326205882353,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "apply our methodology to these newly consolidated"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          856.2898084916865,
+          346.95372634453787,
+          12.106430819477424
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "companies. We will focus on reducing working capital on "
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          873.3329777315914,
+          125.8831561764706,
+          12.106442992874094
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "a consolidated basis."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          171.38677016806724,
+          890.3761713182898,
+          312.3804642857143,
+          12.106442992874094
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "We will not change our commitment to the NISSAN"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          907.4193490795725,
+          348.95688642857147,
+          12.106441775534435
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Value-Up dividend plan. Our dividend policy is transparent"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          924.4625317102137,
+          352.97340491596646,
+          12.106441775534435
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "because we have already announced our dividends for the"
+      },
+      {
+        "bbox": [
+          146.97127533613445,
+          941.5057131235154,
+          283.4124948319328,
+          12.106442992874108
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "next three years. I believe that this benefits our"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5114831932773,
+          821.6664162707839,
+          320.83154621848746,
+          8.545712292161511
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Consolidated automotive working capital/consolidated automotive turnover"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5114831932773,
+          831.9132633610452,
+          326.6663285714286,
+          8.545712292161483
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "* Same scope pf consolidation as P&L, excluding change of cash compared "
+      },
+      {
+        "bbox": [
+          548.7565928571429,
+          840.4348845011876,
+          81.16137773109244,
+          8.545700118764842
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "to fiscal year 2003"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5114831932773,
+          293.86835213776726,
+          350.7124840336136,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "shareholders in forecasting the return for Nissan’s shares."
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          310.91051098574826,
+          322.49430294117656,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "We want to encourage more long-term investors, and"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          327.95266983372926,
+          333.58621554621857,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "dividends are the way to do that. Concurrently, we have"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          344.99482868171026,
+          341.06725126050435,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "also been repurchasing stock from the market, primarily "
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          362.036999703088,
+          339.0319630252101,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "for stock option purposes. We will continue this to some"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          379.079158551069,
+          360.3079655462186,
+          12.10645516627062
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "extent, because we may have M&A and other opportunities."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          566.927000420168,
+          396.12227909738715,
+          311.95144579831947,
+          12.106491686460913
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "With global expansion, we must extend financing to"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          413.16548485748217,
+          346.6198226890756,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "new areas. This means that we have to move to a second"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          430.20865409738724,
+          343.22123277310936,
+          12.106442992874008
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "phase in the development of our Global Treasury Center."
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          447.2518111638956,
+          347.141142857143,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "For example, the use of leading competitive countries will"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          464.29498040380054,
+          353.0905357142857,
+          12.106442992874122
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "create a more complex cash flow due to foreign exchange"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          481.3381374703089,
+          318.6124642857144,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "exposure. We’ve opened an office in Singapore as a "
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          498.38130671021383,
+          55.64141008403362,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "first step."
+      }
+    ],
+    [
+      {
+        "bbox": [
+          566.927000420168,
+          515.4244637767221,
+          331.4190726890756,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "In our drive to become a world-class Treasury function,"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          532.4676330166271,
+          346.7809113445379,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "we evaluate our performance in comparison to worldwide"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          549.5108022565321,
+          340.30589159663884,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "best practices. This provides an objective assessment of"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          566.5539593230403,
+          322.9555701680673,
+          12.106455166270848
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "our operation. Investors also provide us with objective"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          583.5971285629454,
+          345.6783558823529,
+          12.106442992874065
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "evaluations. To receive feedback from the latter, we must"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          600.6402856294537,
+          345.4571453781514,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "be transparent, and also pay attention to the signals from"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          617.6834548693587,
+          346.7868029411766,
+          12.106455166270791
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "the capital market. I believe that is the most effective way"
+      },
+      {
+        "bbox": [
+          542.5114831932773,
+          634.726611935867,
+          195.2888399159665,
+          12.106455166270734
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "to enhance shareholders’ value.”"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.5114831932773,
+          670.0908405581947,
+          210.092768487395,
+          9.623070071258951
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "Working Capital Management"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          542.7273361344538,
+          701.6501279691212,
+          10.041571848739522,
+          5.660629453681679
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "10"
+      },
+      {
+        "bbox": [
+          547.7489920168067,
+          719.1414729809976,
+          5.021655882353002,
+          5.660629453681679
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "8"
+      },
+      {
+        "bbox": [
+          543.0787819327732,
+          692.4452262470309,
+          13.173403361344526,
+          5.66061728028501
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "(%)"
+      },
+      {
+        "bbox": [
+          547.7487852941177,
+          736.632562351544,
+          5.0216558823528885,
+          5.66061728028501
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "6"
+      },
+      {
+        "bbox": [
+          547.7487852941177,
+          754.1240412707839,
+          5.0216558823528885,
+          5.6606172802850665
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "4"
+      },
+      {
+        "bbox": [
+          547.7487852941177,
+          771.6156175771972,
+          5.0216558823528885,
+          5.660629453681679
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "2"
+      },
+      {
+        "bbox": [
+          547.7487852941177,
+          789.10635391924,
+          5.0216558823528885,
+          5.660617280285038
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "0"
+      },
+      {
+        "bbox": [
+          598.5197399159664,
+          790.6427583135392,
+          16.872705882352875,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "’00"
+      },
+      {
+        "bbox": [
+          656.8541264705883,
+          790.6427583135392,
+          16.872705882352875,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "’01"
+      },
+      {
+        "bbox": [
+          715.1884957983194,
+          790.6427583135392,
+          16.87272310924368,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "’02"
+      },
+      {
+        "bbox": [
+          773.5228823529412,
+          790.6427583135392,
+          16.87270588235299,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "’03"
+      },
+      {
+        "bbox": [
+          831.857268907563,
+          790.6427583135392,
+          16.87270588235299,
+          9.05700712589072
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "’04"
+      },
+      {
+        "bbox": [
+          561.7482525210085,
+          807.085,
+          36.159915546218485,
+          8.545712292161511
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "NISSAN"
+      },
+      {
+        "bbox": [
+          633.5139117647059,
+          807.085,
+          50.03826050420173,
+          8.545712292161511
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Company A"
+      },
+      {
+        "bbox": [
+          715.615912184874,
+          807.085,
+          50.25533655462186,
+          8.545712292161511
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEIG+NissanAG-Light",
+          "size": 1.0
+        },
+        "text": "Company B"
+      },
+      {
+        "bbox": [
+          598.7066344537816,
+          697.8109916864609,
+          15.009600420167999,
+          7.9248934085511
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "9.0"
+      },
+      {
+        "bbox": [
+          657.36438697479,
+          724.1854955463183,
+          15.009600420167999,
+          7.92488123515443
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "7.6"
+      },
+      {
+        "bbox": [
+          703.5725928571428,
+          735.4967722684086,
+          15.009600420168113,
+          7.924869061757704
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "5.8"
+      },
+      {
+        "bbox": [
+          833.3340096638656,
+          740.1128025534442,
+          15.009600420168113,
+          7.924869061757704
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "4.0"
+      },
+      {
+        "bbox": [
+          774.6783071428572,
+          744.7427226840855,
+          15.009617647058803,
+          7.924869061757761
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "3.6"
+      },
+      {
+        "bbox": [
+          847.9742483193278,
+          756.5013717339668,
+          18.61399999999992,
+          7.924881235154373
+        ],
+        "font": {
+          "color": [
+            203,
+            0,
+            56,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "3.1*"
+      }
+    ],
+    [
+      {
+        "bbox": [
+          804.902180672269,
+          992.6264340855107,
+          142.91516428571435,
+          7.924881235154388
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGB+NissanAG-Regular",
+          "size": 1.0
+        },
+        "text": "Nissan Annual Report 2004"
+      },
+      {
+        "bbox": [
+          957.5856983193277,
+          991.5326556116389,
+          17.408169327731116,
+          10.18913179928741
+        ],
+        "font": {
+          "color": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "name": "/MENEGC+NissanAG-Bold",
+          "size": 1.0
+        },
+        "text": "55"
+      }
+    ]
+  ],
+  "metadata": {
+    "coco_height": 1025,
+    "coco_width": 1025,
+    "collection": "ann_reports_00_04_fancy",
+    "doc_category": "financial_reports",
+    "image_id": 243,
+    "num_pages": 114,
+    "original_filename": "OTC_NSANY_2004.pdf",
+    "original_height": 842.0,
+    "original_width": 595.0,
+    "page_hash": "da14d894ff9aebe45f5d4ade1e55d0ecea3fa12ad5ded7c91307254eb7ef4735",
+    "page_no": 56
+  },
+  "modalities": [
+    "layout"
+  ]
+}
