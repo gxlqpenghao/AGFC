@@ -10,6 +10,8 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     benchmark_doc = (root / "docs" / "benchmarks" / "journalmix-v1.md").read_text(encoding="utf-8")
     changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
     ci = (root / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    graphical_abstract = root / "docs" / "assets" / "agfc-graphical-abstract.svg"
 
     assert "POST /extract" in http_doc
     assert "POST /repair/mineru" in http_doc
@@ -17,3 +19,5 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "JournalMix-v1" in benchmark_doc
     assert "0.1.0" in changelog
     assert "python3 -m pytest -q" in ci
+    assert graphical_abstract.exists()
+    assert "docs/assets/agfc-graphical-abstract.svg" in readme

@@ -4,6 +4,8 @@ AGFC is a standalone figure extractor for heterogeneous documents. It extracts f
 
 AGFC also provides first-party MinerU artifact repair for image remediation workflows. The MinerU adapter reads MinerU-style artifacts, writes a new repaired bundle, and does not mutate the original parser output.
 
+![AGFC graphical abstract](docs/assets/agfc-graphical-abstract.svg)
+
 ## Status
 
 This repository is being shaped as a public, demo-first product repo. AGFC v0.1 freezes the current extraction algorithm as a baseline and focuses on stable packaging, contracts, CLI, local service, and MinerU repair.
