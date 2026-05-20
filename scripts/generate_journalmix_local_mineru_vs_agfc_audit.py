@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
 import sys
 from collections import defaultdict
 from datetime import datetime
@@ -28,7 +29,10 @@ DEFAULT_AGFC_RESULTS = (
 DEFAULT_DATASET_ROOT = REPO_ROOT / "data/private/journalmix_v1"
 DEFAULT_RAW_MANIFEST = REPO_ROOT / "output/pdf/journalmix_v1_selected_pages_raw.manifest.json"
 DEFAULT_MINERU_ROOT = Path(
-    "/Users/paul/MinerU/journalmix_v1_selected_pages_raw.pdf-0ccf3a50-f134-4edc-bada-76e050b1a7db"
+    os.environ.get(
+        "AGFC_MINERU_AUDIT_ROOT",
+        str(REPO_ROOT / "artifacts" / "review" / "mineru_local_vlm_output"),
+    )
 )
 DEFAULT_OUTPUT_ROOT = REPO_ROOT / "artifacts/review"
 

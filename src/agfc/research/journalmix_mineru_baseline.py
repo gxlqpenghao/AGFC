@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import time
@@ -22,7 +23,9 @@ PACKAGE_ROOT = MODULE_ROOT.parent
 PROJECT_ROOT = PACKAGE_ROOT.parents[1]
 DEFAULT_DATASET_ROOT = PROJECT_ROOT / "data" / "private" / "journalmix_v1"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "artifacts" / "benchmarks" / "journalmix_v1" / "mineru_selected_pages"
-DEFAULT_DATAPROXY_ROOT = Path("/Users/paul/Coding/DataProxy")
+DEFAULT_DATAPROXY_ROOT = Path(
+    os.environ.get("AGFC_DATAPROXY_ROOT", str(PROJECT_ROOT.parent / "DataProxy"))
+)
 
 
 def run_journalmix_mineru_baseline(
