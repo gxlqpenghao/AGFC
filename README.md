@@ -16,7 +16,7 @@ This repository is being shaped as a public, demo-first product repo. AGFC v0.1 
 
 - A standalone `agfc` CLI for figure extraction and MinerU artifact repair
 - A local HTTP sidecar service with `/extract` and `/repair/mineru`
-- Stable JSON contracts and JSON Schemas under `src/agfc/schemas/`
+- Stable JSON contracts in `src/agfc/contracts/` and JSON Schemas under `src/agfc/schemas/`
 - First-party MinerU repair that writes a new repaired bundle without mutating original artifacts
 - Public-safe generated demos that run without private datasets
 - JournalMix-v1 benchmark runner and report format for maintainers with the private benchmark dataset
@@ -122,8 +122,11 @@ See [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md).
 ## Repository Layout
 
 ```text
-src/agfc/             AGFC package and public runtime
-src/agfc/adapters/    First-party integration adapters
+src/agfc/core/        Algorithmic figure extraction core
+src/agfc/runtime/     CLI, service, runner, demos
+src/agfc/contracts/   Stable public contract builders
+src/agfc/adapters/    MinerU and third-party integration adapters
+src/agfc/research/    JournalMix, DocLayNet, corpus, evaluation tooling
 src/agfc/schemas/     JSON Schema files for public contracts
 tests/                Automated tests
 docs/contracts/       Public contract docs
@@ -131,7 +134,7 @@ docs/integrations/    Integration guides
 docs/benchmarks/      Benchmark protocols and reference reports
 examples/             Runnable demo wrappers
 fixtures/             Public-safe fixture notes and generated demo roots
-scripts/              Research and benchmark entrypoints
+scripts/              Thin research and benchmark entrypoints
 ```
 
 ## Public Contract Boundary

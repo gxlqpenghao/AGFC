@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-agfc = "agfc.cli:main"
+agfc = "agfc.runtime.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

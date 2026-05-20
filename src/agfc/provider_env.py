@@ -1,18 +1,5 @@
-from __future__ import annotations
+import sys
+from importlib import import_module
 
-from pathlib import Path
-
-
-def load_env_file(path: str | Path) -> dict[str, str]:
-    env_path = Path(path)
-    if not env_path.exists():
-        return {}
-
-    values: dict[str, str] = {}
-    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        values[key.strip()] = value.strip()
-    return values
+_target = import_module("agfc.adapters.provider_env")
+sys.modules[__name__] = _target
