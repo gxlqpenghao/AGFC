@@ -25,12 +25,9 @@ The command writes `extract_result.json` in the output directory. The result is 
 - `images[].figure_bbox`: page-space figure bounding box
 - `images[].content_bbox`: content-only bounding box when AGFC can refine it, otherwise `figure_bbox`
 - `images[].support_bbox`: support/evidence bounding box when AGFC can refine it, otherwise `figure_bbox`
-
-## Optional Public Fields
-
-- `images[].panel_ids`
-- `images[].boundary_strategy`
-- `images[].caption_text`
+- `images[].panel_ids`: source AGFC panel ids, empty when unavailable
+- `images[].boundary_strategy`: boundary decision strategy, empty when unavailable
+- `images[].caption_text`: caption text, empty when unavailable
 
 ## Compatibility
 

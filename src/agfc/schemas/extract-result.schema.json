@@ -38,7 +38,10 @@
           "asset_path",
           "figure_bbox",
           "content_bbox",
-          "support_bbox"
+          "support_bbox",
+          "panel_ids",
+          "boundary_strategy",
+          "caption_text"
         ],
         "properties": {
           "page_idx": { "type": "integer" },

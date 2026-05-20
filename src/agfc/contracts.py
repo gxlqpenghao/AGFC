@@ -91,12 +91,9 @@ def _public_image_record(
         or boundary_metadata.get("final_boundary_strategy")
         or ""
     ).strip()
-    if panel_ids:
-        record["panel_ids"] = panel_ids
-    if boundary_strategy:
-        record["boundary_strategy"] = boundary_strategy
-    if caption_text:
-        record["caption_text"] = caption_text
+    record["panel_ids"] = panel_ids
+    record["boundary_strategy"] = boundary_strategy
+    record["caption_text"] = caption_text
     return record
 
 

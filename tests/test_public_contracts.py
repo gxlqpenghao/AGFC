@@ -69,3 +69,30 @@ def test_write_contract_json_round_trips_payload(tmp_path: Path):
 
     assert written == output_path
     assert json.loads(output_path.read_text(encoding="utf-8")) == payload
+
+
+def test_build_extract_result_always_emits_plugin_metadata_keys(tmp_path: Path):
+    source_path = tmp_path / "demo.pdf"
+    source_path.write_bytes(b"%PDF-demo\n")
+    run_dir = tmp_path / "run"
+    page_dir = run_dir / "pages" / "page_000"
+    images_dir = run_dir / "images"
+    page_dir.mkdir(parents=True)
+    images_dir.mkdir(parents=True)
+    (images_dir / "page_000_figure_1.png").write_bytes(b"png")
+    (run_dir / "summary.json").write_text(
+        json.dumps({"pdf": str(source_path), "pages": [{"page_idx": 0, "figures": 1}]}),
+        encoding="utf-8",
+    )
+    (page_dir / "figures.json").write_text(
+        json.dumps([{"id": "figure_1", "bbox": [1, 2, 3, 4], "page_idx": 0}]),
+        encoding="utf-8",
+    )
+
+    image = build_extract_result(run_dir, source_path=source_path)["images"][0]
+
+    assert image["content_bbox"] == [1.0, 2.0, 3.0, 4.0]
+    assert image["support_bbox"] == [1.0, 2.0, 3.0, 4.0]
+    assert image["panel_ids"] == []
+    assert image["boundary_strategy"] == ""
+    assert image["caption_text"] == ""
