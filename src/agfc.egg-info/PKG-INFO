@@ -1,5 +1,0 @@
-Metadata-Version: 2.4
-Name: agfc
-Version: 0.1.0
-Summary: Atom-Graph Figure Closure for logical object recovery from heterogeneous document elements.
-Requires-Python: >=3.9

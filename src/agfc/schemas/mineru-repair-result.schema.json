@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agfc.dev/schemas/mineru-repair-result.schema.json",
+  "title": "AGFC MinerU Repair Result",
+  "type": "object",
+  "required": ["adapter", "adapter_version", "engine", "engine_version", "input", "match_policy", "replacements", "outputs"],
+  "properties": {
+    "adapter": { "const": "mineru" },
+    "adapter_version": { "type": "string" },
+    "engine": { "const": "agfc" },
+    "engine_version": { "type": "string" },
+    "input": {
+      "type": "object",
+      "required": ["source_path", "artifact_dir"],
+      "properties": {
+        "source_path": { "type": "string" },
+        "artifact_dir": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "match_policy": {
+      "type": "object",
+      "required": ["primary", "fallback"],
+      "properties": {
+        "primary": { "type": "array", "items": { "type": "string" } },
+        "fallback": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "replacements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["decision", "target"],
+        "properties": {
+          "decision": { "enum": ["replace", "keep_original"] },
+          "target": {
+            "type": "object",
+            "required": ["image_slot_index", "page_idx", "image_ordinal_in_page"],
+            "properties": {
+              "image_slot_index": { "type": "integer" },
+              "page_idx": { "type": "integer" },
+              "original_asset_id": { "type": "string" },
+              "original_bbox": {
+                "anyOf": [
+                  { "$ref": "#/$defs/bbox" },
+                  { "type": "null" }
+                ]
+              },
+              "image_ordinal_in_page": { "type": "integer" }
+            },
+            "additionalProperties": true
+          },
+          "replacement": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": ["asset_id", "asset_path", "caption_text"],
+                "properties": {
+                  "asset_id": { "type": "string" },
+                  "asset_path": { "type": "string" },
+                  "caption_text": { "type": "string" }
+                },
+                "additionalProperties": true
+              },
+              { "type": "null" }
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["artifact_dir", "repaired_content_list", "merged_content_list", "merged_full_md", "patch_manifest", "final_images_dir"],
+      "properties": {
+        "artifact_dir": { "type": "string" },
+        "repaired_content_list": { "type": "string" },
+        "merged_content_list": { "type": "string" },
+        "merged_full_md": { "type": "string" },
+        "patch_manifest": { "type": "string" },
+        "final_images_dir": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "bbox": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "type": "number" }
+    }
+  }
+}

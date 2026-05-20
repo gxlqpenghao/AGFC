@@ -5,11 +5,22 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agfc"
 version = "0.1.0"
-description = "Atom-Graph Figure Closure for logical object recovery from heterogeneous document elements."
+description = "Standalone figure extraction and MinerU artifact repair with stable public contracts."
+readme = "README.md"
 requires-python = ">=3.9"
+dependencies = [
+  "Pillow>=9",
+  "PyMuPDF>=1.20",
+]
+
+[project.scripts]
+agfc = "agfc.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+agfc = ["schemas/*.json"]

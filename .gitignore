@@ -6,9 +6,13 @@
 .worktrees/
 __pycache__/
 *.pyc
+*.egg-info/
+build/
+dist/
 artifacts/
 output/
 tmp/
+demo_output/
 data/private/
 data/sample_corpus/
 src/**/__pycache__/
