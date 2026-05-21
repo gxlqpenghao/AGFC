@@ -8,6 +8,7 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
 
     http_doc = (root / "docs" / "contracts" / "http-service.md").read_text(encoding="utf-8")
     benchmark_doc = (root / "docs" / "benchmarks" / "journalmix-v1.md").read_text(encoding="utf-8")
+    dataset_doc = (root / "docs" / "benchmarks" / "journalmix-v1-dataset.md").read_text(encoding="utf-8")
     benchmark_comparison_doc = (root / "docs" / "benchmarks" / "journalmix-v1-vs-mineru.md").read_text(encoding="utf-8")
     mineru_runtime_doc = (root / "docs" / "benchmarks" / "mineru-api-vs-client.md").read_text(encoding="utf-8")
     changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
@@ -19,6 +20,8 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "POST /repair/mineru" in http_doc
     assert "agfc benchmark journalmix" in benchmark_doc
     assert "JournalMix-v1" in benchmark_doc
+    assert "data/private/journalmix_v1/" in dataset_doc
+    assert "source_pdfs/" in dataset_doc
     assert "MinerU Desktop / Product Client" in benchmark_comparison_doc
     assert "compound_multi_panel" in benchmark_comparison_doc
     assert "standalone subcaptions" in benchmark_comparison_doc
@@ -29,5 +32,9 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "python3 -m pytest -q" in ci
     assert intro_figure.exists()
     assert "docs/assets/agfc-project-intro.png" in readme
+    assert "docs/benchmarks/journalmix-v1-dataset.md" in readme
     assert "docs/benchmarks/journalmix-v1-vs-mineru.md" in readme
     assert "docs/benchmarks/mineru-api-vs-client.md" in readme
+    assert (root / "data" / "private" / "journalmix_v1" / "manifest.json").exists()
+    assert (root / "docs" / "reviews" / "journalmix-local-mineru-vs-agfc-raw" / "index.html").exists()
+    assert (root / "docs" / "reviews" / "journalmix-mineru-api-vs-client" / "index.html").exists()

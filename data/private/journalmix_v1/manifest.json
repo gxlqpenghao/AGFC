@@ -1,0 +1,18 @@
+{
+  "dataset_name": "AGFC-JournalMix",
+  "version": "v1",
+  "status": "frozen",
+  "page_count": 84,
+  "positive_page_count": 72,
+  "hard_negative_page_count": 12,
+  "doc_count": 22,
+  "bucket_counts": {
+    "route_map_or_flow": 18,
+    "mixed_vector_raster": 18,
+    "compound_multi_panel": 18,
+    "vector_dominant": 18,
+    "hard_negative": 12
+  },
+  "notes": "Draft dataset skeleton created by run_journalmix_prepare.py",
+  "frozen_at": "2026-04-20T14:20:08.102445+00:00"
+}

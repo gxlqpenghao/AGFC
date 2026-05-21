@@ -1,0 +1,32 @@
+{
+  "page_idx": 4,
+  "page_label": "2203_11714v1#page_4",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        73.3,
+        48.5,
+        263.8,
+        283.5
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_2",
+      "bbox": [
+        343.8,
+        49.5,
+        526.3,
+        281.5
+      ],
+      "logical_group_id": "group_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

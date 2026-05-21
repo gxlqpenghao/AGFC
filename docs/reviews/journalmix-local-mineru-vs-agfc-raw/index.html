@@ -1,0 +1,1991 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JournalMix-v1 Local MinerU vs AGFC Raw Audit</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d8dee8;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --agfc: #2563eb;
+      --mineru: #d97706;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.5; }
+    header { background: #fff; border-bottom: 1px solid var(--line); padding: 28px clamp(18px, 4vw, 52px) 22px; }
+    main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
+    h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; letter-spacing: 0; }
+    h2 { margin: 34px 0 14px; font-size: 21px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 15px; letter-spacing: 0; }
+    p { margin: 0; color: var(--muted); }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 12px; color: var(--muted); font-size: 13px; }
+    .cards { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; margin-top: 18px; }
+    .metric { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .metric .label { color: var(--muted); font-size: 12px; }
+    .metric .value { margin-top: 4px; font-size: 24px; font-weight: 700; }
+    .metric .sub { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .note { margin: 12px 0 0; padding: 12px 14px; background: #eef6ff; border: 1px solid #bfdbfe; border-radius: 8px; color: #1e3a8a; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 13px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    th { background: #eef2f7; color: #374151; font-weight: 650; }
+    tr:last-child td { border-bottom: 0; }
+    .gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .page-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .page-card.problem { border-color: #fdba74; }
+    .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .badge { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 8px; border-radius: 999px; border: 1px solid #cbd5e1; color: #334155; background: #f8fafc; font-size: 12px; }
+    .badge.problem { color: #9a3412; background: #fff7ed; border-color: #fdba74; }
+    .badge.agfc { color: #1d4ed8; background: #eff6ff; border-color: #bfdbfe; }
+    .metrics-line { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .metrics-line b { color: var(--ink); }
+    img { display: block; width: 100%; height: auto; background: #fff; }
+    @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .metrics-line { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } .page-head { flex-direction: column; } .badges { justify-content: flex-start; } th, td { white-space: normal; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JournalMix-v1 本地 MinerU VLM vs AGFC 对比审计</h1>
+    <p>按 raw PDF 页序对齐。右侧读取你本地 MinerU 输出目录的 <code>block_list.json</code>：浅蓝为全部 VLM layout block，橙色为 <code>type=image</code> 图像块，紫色为 image caption。</p>
+    <div class="meta">
+      <span>生成时间：20260518_164725</span>
+      <span>MinerU root：local_mineru_client_output/journalmix_v1_selected_pages_raw_bundle</span>
+      <span>MinerU PDF：local_mineru_client_output/journalmix_v1_selected_pages_raw_bundle/6e1262e3-d12b-434f-8195-ba5ba782da54_origin.pdf</span>
+      <span>AGFC：artifacts/benchmarks/journalmix_v1/agfc_structural_no_semantic_keywords_full_20260518_153550/results.json</span>
+      <span>raw manifest：output/pdf/journalmix_v1_selected_pages_raw.manifest.json</span>
+    </div>
+  </header>
+  <main>
+    <section class="cards">
+      <div class="metric"><div class="label">可比页面</div><div class="value">76</div><div class="sub">raw 84 页中 8 页和当前 GT/AGFC 不同版</div></div>
+      <div class="metric"><div class="label">AGFC F1</div><div class="value">1.0000</div><div class="sub">命中 98/98 / 漏 0 / 误 0</div></div>
+      <div class="metric"><div class="label">Local MinerU F1</div><div class="value">0.4040</div><div class="sub">命中 61/98 / 漏 37 / 误 143</div></div>
+      <div class="metric"><div class="label">问题页</div><div class="value">42</div><div class="sub">MinerU 漏检、误检或低 F1 页面优先展示</div></div>
+    </section>
+    <div class="note">注意：这版和上一版不同，MinerU 来源不是 DataProxy selected_pages baseline，而是你本地完整 raw PDF 的 VLM 输出。页面同时显示 raw_id 和 current_id；例如 raw 第 12 页 raw_id=jm_0012，对应当前 GT/AGFC 的 current_id=jm_0004。</div>
+
+    <section>
+      <h2>Local MinerU 问题页优先审计</h2>
+      <div class="gallery">
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 44/84 · raw_id jm_0044 · current_id jm_0017</h3>
+      <p>2010_09525v1#page_8 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 30 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9738</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 30 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 30</div>
+  </div>
+  <img loading="lazy" src="pages/raw_044_jm_0044.png" alt="raw 44 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 17/84 · raw_id jm_0017 · current_id jm_0007</h3>
+      <p>2412_19303v1#page_7 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 28 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9589</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 28 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 28</div>
+  </div>
+  <img loading="lazy" src="pages/raw_017_jm_0017.png" alt="raw 17 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 55/84 · raw_id jm_0055 · current_id jm_0059</h3>
+      <p>2503_06706v3#page_6 · mixed_vector_raster · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 5 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9607</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 5</div>
+  </div>
+  <img loading="lazy" src="pages/raw_055_jm_0055.png" alt="raw 55 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 38/84 · raw_id jm_0038 · current_id jm_0028</h3>
+      <p>1604_06646v1#page_2 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 8 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9917</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 8 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 8</div>
+  </div>
+  <img loading="lazy" src="pages/raw_038_jm_0038.png" alt="raw 38 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 13/84 · raw_id jm_0013 · current_id jm_0038</h3>
+      <p>2203_11714v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9201</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_013_jm_0013.png" alt="raw 13 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 40/84 · raw_id jm_0040 · current_id jm_0013</h3>
+      <p>1604_06646v1#page_11 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9903</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_040_jm_0040.png" alt="raw 40 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 26/84 · raw_id jm_0026 · current_id jm_0023</h3>
+      <p>2506_18900v1#page_7 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 7 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 7 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 7</div>
+  </div>
+  <img loading="lazy" src="pages/raw_026_jm_0026.png" alt="raw 26 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 19/84 · raw_id jm_0019 · current_id jm_0009</h3>
+      <p>2412_19303v1#page_12 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 6 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9895</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 6 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 6</div>
+  </div>
+  <img loading="lazy" src="pages/raw_019_jm_0019.png" alt="raw 19 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 18/84 · raw_id jm_0018 · current_id jm_0008</h3>
+      <p>2412_19303v1#page_11 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9852</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_018_jm_0018.png" alt="raw 18 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 84/84 · raw_id jm_0084 · current_id jm_0070</h3>
+      <p>29_2207_05401v2#page_1 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9655</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_084_jm_0084.png" alt="raw 84 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 16/84 · raw_id jm_0016 · current_id jm_0006</h3>
+      <p>2412_19303v1#page_4 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9800</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_016_jm_0016.png" alt="raw 16 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 31/84 · raw_id jm_0031 · current_id jm_0024</h3>
+      <p>2603_25804v1#page_1 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.8958</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_031_jm_0031.png" alt="raw 31 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 32/84 · raw_id jm_0032 · current_id jm_0025</h3>
+      <p>2603_25804v1#page_3 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_032_jm_0032.png" alt="raw 32 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 37/84 · raw_id jm_0037 · current_id jm_0027</h3>
+      <p>1604_06646v1#page_1 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_037_jm_0037.png" alt="raw 37 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 49/84 · raw_id jm_0049 · current_id jm_0031</h3>
+      <p>2602_15918v1#page_4 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9522</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_049_jm_0049.png" alt="raw 49 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 65/84 · raw_id jm_0065 · current_id jm_0065</h3>
+      <p>04_2412_19303v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_065_jm_0065.png" alt="raw 65 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 39/84 · raw_id jm_0039 · current_id jm_0029</h3>
+      <p>1604_06646v1#page_3 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 2 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_039_jm_0039.png" alt="raw 39 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 66/84 · raw_id jm_0066 · current_id jm_0066</h3>
+      <p>06_2506_18900v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 2 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_066_jm_0066.png" alt="raw 66 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 7/84 · raw_id jm_0007 · current_id jm_0001</h3>
+      <p>1710_02167v1#page_8 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9404</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_007_jm_0007.png" alt="raw 7 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 8/84 · raw_id jm_0008 · current_id jm_0056</h3>
+      <p>1710_02167v1#page_9 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9401</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_008_jm_0008.png" alt="raw 8 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 45/84 · raw_id jm_0045 · current_id jm_0057</h3>
+      <p>2312_00784v2#page_7 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9750</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_045_jm_0045.png" alt="raw 45 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 60/84 · raw_id jm_0060 · current_id jm_0061</h3>
+      <p>01_1710_02167v1#page_12 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9678</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_060_jm_0060.png" alt="raw 60 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 61/84 · raw_id jm_0061 · current_id jm_0062</h3>
+      <p>01_1710_02167v1#page_13 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9692</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_061_jm_0061.png" alt="raw 61 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 62/84 · raw_id jm_0062 · current_id jm_0063</h3>
+      <p>01_1710_02167v1#page_14 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9717</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_062_jm_0062.png" alt="raw 62 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 42/84 · raw_id jm_0042 · current_id jm_0015</h3>
+      <p>2010_09525v1#page_4 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 2 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 7 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.8182</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9542</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 8 / Match 1 / F1 0.1818 / IoU 0.9801 / 漏 2 / 误 7</div>
+  </div>
+  <img loading="lazy" src="pages/raw_042_jm_0042.png" alt="raw 42 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 9/84 · raw_id jm_0009 · current_id jm_0002</h3>
+      <p>2101_09903v2#page_1 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.7143</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9823</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 1 / F1 0.2857 / IoU 0.9786 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_009_jm_0009.png" alt="raw 9 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 22/84 · raw_id jm_0022 · current_id jm_0040</h3>
+      <p>2503_05524v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.7143</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9564</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 1 / F1 0.2857 / IoU 0.9735 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_022_jm_0022.png" alt="raw 22 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 47/84 · raw_id jm_0047 · current_id jm_0030</h3>
+      <p>2312_00784v2#page_20 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 2 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.5000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9749</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 1 / Match 1 / F1 0.5000 / IoU 0.9548 / 漏 2 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_047_jm_0047.png" alt="raw 47 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 11/84 · raw_id jm_0011 · current_id jm_0037</h3>
+      <p>2203_11714v1#page_2 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.6000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9723</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 3 / Match 1 / F1 0.4000 / IoU 0.9536 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_011_jm_0011.png" alt="raw 11 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 12/84 · raw_id jm_0012 · current_id jm_0004</h3>
+      <p>2203_11714v1#page_3 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.6000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9671</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 3 / Match 1 / F1 0.4000 / IoU 0.9715 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_012_jm_0012.png" alt="raw 12 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 46/84 · raw_id jm_0046 · current_id jm_0018</h3>
+      <p>2312_00784v2#page_12 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.2000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 2 / Match 2 / F1 0.8000 / IoU 0.9753 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_046_jm_0046.png" alt="raw 46 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 52/84 · raw_id jm_0052 · current_id jm_0034</h3>
+      <p>2305_01323v3#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.5000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9083</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 1 / F1 0.5000 / IoU 0.6659 / 漏 0 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_052_jm_0052.png" alt="raw 52 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 73/84 · raw_id jm_0073 · current_id jm_0073</h3>
+      <p>26_2001_03271v2#page_11 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_073_jm_0073.png" alt="raw 73 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 74/84 · raw_id jm_0074 · current_id jm_0074</h3>
+      <p>09_1604_06646v1#page_4 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_074_jm_0074.png" alt="raw 74 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 75/84 · raw_id jm_0075 · current_id jm_0075</h3>
+      <p>01_1710_02167v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_075_jm_0075.png" alt="raw 75 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 76/84 · raw_id jm_0076 · current_id jm_0076</h3>
+      <p>24_2602_14035v1#page_3 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_076_jm_0076.png" alt="raw 76 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 77/84 · raw_id jm_0077 · current_id jm_0077</h3>
+      <p>26_2001_03271v2#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_077_jm_0077.png" alt="raw 77 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 78/84 · raw_id jm_0078 · current_id jm_0078</h3>
+      <p>04_2412_19303v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_078_jm_0078.png" alt="raw 78 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 79/84 · raw_id jm_0079 · current_id jm_0079</h3>
+      <p>14_2504_21559v1#page_6 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_079_jm_0079.png" alt="raw 79 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 80/84 · raw_id jm_0080 · current_id jm_0080</h3>
+      <p>05_2503_05524v1#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_080_jm_0080.png" alt="raw 80 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 82/84 · raw_id jm_0082 · current_id jm_0081</h3>
+      <p>13_2412_07509v1#page_14 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_082_jm_0082.png" alt="raw 82 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card problem">
+  <div class="page-head">
+    <div>
+      <h3>raw 83/84 · raw_id jm_0083 · current_id jm_0082</h3>
+      <p>02_2101_09903v2#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_083_jm_0083.png" alt="raw 83 local MinerU AGFC comparison">
+</article>
+</div>
+    </section>
+
+    <section>
+      <h2>按图形类型汇总</h2>
+      <table><thead><tr><th>类型</th><th>页数</th><th>GT</th><th>AGFC 命中/预测</th><th>AGFC F1</th><th>Local MinerU 命中/预测</th><th>Local MinerU F1</th><th>MinerU 漏检</th><th>MinerU 误检</th><th>F1 差值</th></tr></thead><tbody><tr><td>compound_multi_panel</td><td>18</td><td>30</td><td>30/30</td><td>1.0000</td><td>16/104</td><td>0.2388</td><td>14</td><td>88</td><td>+0.7612</td></tr>
+<tr><td>route_map_or_flow</td><td>18</td><td>25</td><td>25/25</td><td>1.0000</td><td>16/47</td><td>0.4444</td><td>9</td><td>31</td><td>+0.5556</td></tr>
+<tr><td>mixed_vector_raster</td><td>18</td><td>22</td><td>22/22</td><td>1.0000</td><td>12/26</td><td>0.5000</td><td>10</td><td>14</td><td>+0.5000</td></tr>
+<tr><td>vector_dominant</td><td>12</td><td>21</td><td>21/21</td><td>1.0000</td><td>17/27</td><td>0.7083</td><td>4</td><td>10</td><td>+0.2917</td></tr>
+<tr><td>hard_negative</td><td>10</td><td>0</td><td>0/0</td><td>0.0000</td><td>0/0</td><td>0.0000</td><td>0</td><td>0</td><td>+0.0000</td></tr></tbody></table>
+    </section>
+
+    <section>
+      <h2>全量可比页</h2>
+      <div class="gallery">
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 44/84 · raw_id jm_0044 · current_id jm_0017</h3>
+      <p>2010_09525v1#page_8 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 30 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9738</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 30 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 30</div>
+  </div>
+  <img loading="lazy" src="pages/raw_044_jm_0044.png" alt="raw 44 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 17/84 · raw_id jm_0017 · current_id jm_0007</h3>
+      <p>2412_19303v1#page_7 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 28 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9589</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 28 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 28</div>
+  </div>
+  <img loading="lazy" src="pages/raw_017_jm_0017.png" alt="raw 17 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 55/84 · raw_id jm_0055 · current_id jm_0059</h3>
+      <p>2503_06706v3#page_6 · mixed_vector_raster · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 5 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9607</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 5</div>
+  </div>
+  <img loading="lazy" src="pages/raw_055_jm_0055.png" alt="raw 55 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 38/84 · raw_id jm_0038 · current_id jm_0028</h3>
+      <p>1604_06646v1#page_2 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 8 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9917</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 8 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 8</div>
+  </div>
+  <img loading="lazy" src="pages/raw_038_jm_0038.png" alt="raw 38 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 13/84 · raw_id jm_0013 · current_id jm_0038</h3>
+      <p>2203_11714v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9201</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_013_jm_0013.png" alt="raw 13 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 40/84 · raw_id jm_0040 · current_id jm_0013</h3>
+      <p>1604_06646v1#page_11 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9903</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 2 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_040_jm_0040.png" alt="raw 40 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 26/84 · raw_id jm_0026 · current_id jm_0023</h3>
+      <p>2506_18900v1#page_7 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 7 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 7 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 7</div>
+  </div>
+  <img loading="lazy" src="pages/raw_026_jm_0026.png" alt="raw 26 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 19/84 · raw_id jm_0019 · current_id jm_0009</h3>
+      <p>2412_19303v1#page_12 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 6 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9895</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 6 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 6</div>
+  </div>
+  <img loading="lazy" src="pages/raw_019_jm_0019.png" alt="raw 19 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 18/84 · raw_id jm_0018 · current_id jm_0008</h3>
+      <p>2412_19303v1#page_11 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9852</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_018_jm_0018.png" alt="raw 18 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 84/84 · raw_id jm_0084 · current_id jm_0070</h3>
+      <p>29_2207_05401v2#page_1 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9655</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 4 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_084_jm_0084.png" alt="raw 84 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 16/84 · raw_id jm_0016 · current_id jm_0006</h3>
+      <p>2412_19303v1#page_4 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9800</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_016_jm_0016.png" alt="raw 16 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 31/84 · raw_id jm_0031 · current_id jm_0024</h3>
+      <p>2603_25804v1#page_1 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.8958</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_031_jm_0031.png" alt="raw 31 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 32/84 · raw_id jm_0032 · current_id jm_0025</h3>
+      <p>2603_25804v1#page_3 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_032_jm_0032.png" alt="raw 32 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 37/84 · raw_id jm_0037 · current_id jm_0027</h3>
+      <p>1604_06646v1#page_1 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_037_jm_0037.png" alt="raw 37 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 49/84 · raw_id jm_0049 · current_id jm_0031</h3>
+      <p>2602_15918v1#page_4 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9522</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_049_jm_0049.png" alt="raw 49 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 65/84 · raw_id jm_0065 · current_id jm_0065</h3>
+      <p>04_2412_19303v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 3 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 3</div>
+  </div>
+  <img loading="lazy" src="pages/raw_065_jm_0065.png" alt="raw 65 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 39/84 · raw_id jm_0039 · current_id jm_0029</h3>
+      <p>1604_06646v1#page_3 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 2 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_039_jm_0039.png" alt="raw 39 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 66/84 · raw_id jm_0066 · current_id jm_0066</h3>
+      <p>06_2506_18900v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 2 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_066_jm_0066.png" alt="raw 66 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 7/84 · raw_id jm_0007 · current_id jm_0001</h3>
+      <p>1710_02167v1#page_8 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9404</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_007_jm_0007.png" alt="raw 7 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 8/84 · raw_id jm_0008 · current_id jm_0056</h3>
+      <p>1710_02167v1#page_9 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9401</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_008_jm_0008.png" alt="raw 8 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 45/84 · raw_id jm_0045 · current_id jm_0057</h3>
+      <p>2312_00784v2#page_7 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9750</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_045_jm_0045.png" alt="raw 45 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 60/84 · raw_id jm_0060 · current_id jm_0061</h3>
+      <p>01_1710_02167v1#page_12 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9678</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_060_jm_0060.png" alt="raw 60 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 61/84 · raw_id jm_0061 · current_id jm_0062</h3>
+      <p>01_1710_02167v1#page_13 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9692</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_061_jm_0061.png" alt="raw 61 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 62/84 · raw_id jm_0062 · current_id jm_0063</h3>
+      <p>01_1710_02167v1#page_14 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 未命中 GT 图形</span><span class="badge agfc">AGFC F1 +1.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9717</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_062_jm_0062.png" alt="raw 62 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 42/84 · raw_id jm_0042 · current_id jm_0015</h3>
+      <p>2010_09525v1#page_4 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 2 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 7 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.8182</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9542</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 8 / Match 1 / F1 0.1818 / IoU 0.9801 / 漏 2 / 误 7</div>
+  </div>
+  <img loading="lazy" src="pages/raw_042_jm_0042.png" alt="raw 42 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 9/84 · raw_id jm_0009 · current_id jm_0002</h3>
+      <p>2101_09903v2#page_1 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.7143</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9823</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 1 / F1 0.2857 / IoU 0.9786 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_009_jm_0009.png" alt="raw 9 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 22/84 · raw_id jm_0022 · current_id jm_0040</h3>
+      <p>2503_05524v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 4 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.7143</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9564</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 5 / Match 1 / F1 0.2857 / IoU 0.9735 / 漏 1 / 误 4</div>
+  </div>
+  <img loading="lazy" src="pages/raw_022_jm_0022.png" alt="raw 22 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 47/84 · raw_id jm_0047 · current_id jm_0030</h3>
+      <p>2312_00784v2#page_20 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 2 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.5000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9749</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 1 / Match 1 / F1 0.5000 / IoU 0.9548 / 漏 2 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_047_jm_0047.png" alt="raw 47 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 11/84 · raw_id jm_0011 · current_id jm_0037</h3>
+      <p>2203_11714v1#page_2 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.6000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9723</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 3 / Match 1 / F1 0.4000 / IoU 0.9536 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_011_jm_0011.png" alt="raw 11 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 12/84 · raw_id jm_0012 · current_id jm_0004</h3>
+      <p>2203_11714v1#page_3 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.6000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9671</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 3 / Match 1 / F1 0.4000 / IoU 0.9715 / 漏 1 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_012_jm_0012.png" alt="raw 12 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 46/84 · raw_id jm_0046 · current_id jm_0018</h3>
+      <p>2312_00784v2#page_12 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 漏检 1 个</span><span class="badge problem">多图/组图召回不足</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.2000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 2 / Match 2 / F1 0.8000 / IoU 0.9753 / 漏 1 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_046_jm_0046.png" alt="raw 46 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 52/84 · raw_id jm_0052 · current_id jm_0034</h3>
+      <p>2305_01323v3#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">Local MinerU 误检 2 个</span><span class="badge problem">Local MinerU F1 偏低</span><span class="badge agfc">AGFC F1 +0.5000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9083</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 3 / Match 1 / F1 0.5000 / IoU 0.6659 / 漏 0 / 误 2</div>
+  </div>
+  <img loading="lazy" src="pages/raw_052_jm_0052.png" alt="raw 52 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 73/84 · raw_id jm_0073 · current_id jm_0073</h3>
+      <p>26_2001_03271v2#page_11 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_073_jm_0073.png" alt="raw 73 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 74/84 · raw_id jm_0074 · current_id jm_0074</h3>
+      <p>09_1604_06646v1#page_4 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_074_jm_0074.png" alt="raw 74 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 75/84 · raw_id jm_0075 · current_id jm_0075</h3>
+      <p>01_1710_02167v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_075_jm_0075.png" alt="raw 75 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 76/84 · raw_id jm_0076 · current_id jm_0076</h3>
+      <p>24_2602_14035v1#page_3 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_076_jm_0076.png" alt="raw 76 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 77/84 · raw_id jm_0077 · current_id jm_0077</h3>
+      <p>26_2001_03271v2#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_077_jm_0077.png" alt="raw 77 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 78/84 · raw_id jm_0078 · current_id jm_0078</h3>
+      <p>04_2412_19303v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_078_jm_0078.png" alt="raw 78 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 79/84 · raw_id jm_0079 · current_id jm_0079</h3>
+      <p>14_2504_21559v1#page_6 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_079_jm_0079.png" alt="raw 79 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 80/84 · raw_id jm_0080 · current_id jm_0080</h3>
+      <p>05_2503_05524v1#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_080_jm_0080.png" alt="raw 80 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 82/84 · raw_id jm_0082 · current_id jm_0081</h3>
+      <p>13_2412_07509v1#page_14 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_082_jm_0082.png" alt="raw 82 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 83/84 · raw_id jm_0083 · current_id jm_0082</h3>
+      <p>02_2101_09903v2#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000</div>
+    <div><b>Local MinerU</b> GT 0 / Pred 0 / Match 0 / F1 0.0000 / IoU 0.0000 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_083_jm_0083.png" alt="raw 83 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 1/84 · raw_id jm_0001 · current_id jm_0019</h3>
+      <p>1710_02167v1#page_1 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9528 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_001_jm_0001.png" alt="raw 1 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 2/84 · raw_id jm_0002 · current_id jm_0020</h3>
+      <p>1710_02167v1#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9772</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9725 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_002_jm_0002.png" alt="raw 2 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 3/84 · raw_id jm_0003 · current_id jm_0053</h3>
+      <p>1710_02167v1#page_3 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9866</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9759 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_003_jm_0003.png" alt="raw 3 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 4/84 · raw_id jm_0004 · current_id jm_0054</h3>
+      <p>1710_02167v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9773</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9769 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_004_jm_0004.png" alt="raw 4 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 5/84 · raw_id jm_0005 · current_id jm_0021</h3>
+      <p>1710_02167v1#page_6 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9726</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9817 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_005_jm_0005.png" alt="raw 5 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 6/84 · raw_id jm_0006 · current_id jm_0055</h3>
+      <p>1710_02167v1#page_7 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9578</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9873 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_006_jm_0006.png" alt="raw 6 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 10/84 · raw_id jm_0010 · current_id jm_0003</h3>
+      <p>2101_09903v2#page_2 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9582</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.8931 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_010_jm_0010.png" alt="raw 10 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 14/84 · raw_id jm_0014 · current_id jm_0005</h3>
+      <p>2412_19303v1#page_0 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9835 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_014_jm_0014.png" alt="raw 14 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 15/84 · raw_id jm_0015 · current_id jm_0022</h3>
+      <p>2412_19303v1#page_3 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9862 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_015_jm_0015.png" alt="raw 15 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 20/84 · raw_id jm_0020 · current_id jm_0039</h3>
+      <p>2503_05524v1#page_2 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.8537</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9620 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_020_jm_0020.png" alt="raw 20 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 21/84 · raw_id jm_0021 · current_id jm_0010</h3>
+      <p>2503_05524v1#page_3 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9671</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9882 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_021_jm_0021.png" alt="raw 21 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 23/84 · raw_id jm_0023 · current_id jm_0041</h3>
+      <p>2503_05524v1#page_7 · vector_dominant · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9580</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9677 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_023_jm_0023.png" alt="raw 23 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 24/84 · raw_id jm_0024 · current_id jm_0011</h3>
+      <p>2503_05524v1#page_9 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9360</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9827 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_024_jm_0024.png" alt="raw 24 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 25/84 · raw_id jm_0025 · current_id jm_0042</h3>
+      <p>2503_05524v1#page_10 · vector_dominant · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9438</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9779 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_025_jm_0025.png" alt="raw 25 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 27/84 · raw_id jm_0027 · current_id jm_0012</h3>
+      <p>2506_18900v1#page_15 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9806 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_027_jm_0027.png" alt="raw 27 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 30/84 · raw_id jm_0030 · current_id jm_0043</h3>
+      <p>2601_00251v1#page_5 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9184</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9487 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_030_jm_0030.png" alt="raw 30 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 34/84 · raw_id jm_0034 · current_id jm_0044</h3>
+      <p>2603_25804v1#page_6 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9227</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9671 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_034_jm_0034.png" alt="raw 34 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 35/84 · raw_id jm_0035 · current_id jm_0045</h3>
+      <p>2603_25804v1#page_7 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9581</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9526 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_035_jm_0035.png" alt="raw 35 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 36/84 · raw_id jm_0036 · current_id jm_0026</h3>
+      <p>1604_06646v1#page_0 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9229</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9694 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_036_jm_0036.png" alt="raw 36 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 41/84 · raw_id jm_0041 · current_id jm_0014</h3>
+      <p>2010_09525v1#page_3 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9517 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_041_jm_0041.png" alt="raw 41 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 43/84 · raw_id jm_0043 · current_id jm_0016</h3>
+      <p>2010_09525v1#page_5 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9698</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9749 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_043_jm_0043.png" alt="raw 43 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 48/84 · raw_id jm_0048 · current_id jm_0058</h3>
+      <p>2412_07509v1#page_11 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9555</div>
+    <div><b>Local MinerU</b> GT 2 / Pred 2 / Match 2 / F1 1.0000 / IoU 0.9612 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_048_jm_0048.png" alt="raw 48 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 50/84 · raw_id jm_0050 · current_id jm_0032</h3>
+      <p>1310_0306v1#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9507</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9689 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_050_jm_0050.png" alt="raw 50 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 51/84 · raw_id jm_0051 · current_id jm_0033</h3>
+      <p>2305_01323v3#page_0 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9595</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9560 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_051_jm_0051.png" alt="raw 51 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 53/84 · raw_id jm_0053 · current_id jm_0035</h3>
+      <p>2305_01323v3#page_3 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9557</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9420 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_053_jm_0053.png" alt="raw 53 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 54/84 · raw_id jm_0054 · current_id jm_0036</h3>
+      <p>2407_05183v2#page_10 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9509</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9796 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_054_jm_0054.png" alt="raw 54 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 56/84 · raw_id jm_0056 · current_id jm_0060</h3>
+      <p>1801_08163v2#page_5 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9884 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_056_jm_0056.png" alt="raw 56 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 57/84 · raw_id jm_0057 · current_id jm_0046</h3>
+      <p>2001_03271v2#page_4 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9427</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9589 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_057_jm_0057.png" alt="raw 57 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 58/84 · raw_id jm_0058 · current_id jm_0047</h3>
+      <p>2001_03271v2#page_5 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.8768</div>
+    <div><b>Local MinerU</b> GT 3 / Pred 3 / Match 3 / F1 1.0000 / IoU 0.9453 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_058_jm_0058.png" alt="raw 58 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 59/84 · raw_id jm_0059 · current_id jm_0048</h3>
+      <p>2207_05401v2#page_3 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9690</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9632 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_059_jm_0059.png" alt="raw 59 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 64/84 · raw_id jm_0064 · current_id jm_0064</h3>
+      <p>04_2412_19303v1#page_2 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9832</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9816 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_064_jm_0064.png" alt="raw 64 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 67/84 · raw_id jm_0067 · current_id jm_0067</h3>
+      <p>06_2506_18900v1#page_6 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9703 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_067_jm_0067.png" alt="raw 67 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 72/84 · raw_id jm_0072 · current_id jm_0068</h3>
+      <p>07_2601_00251v1#page_4 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 1.0000</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9712 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_072_jm_0072.png" alt="raw 72 local MinerU AGFC comparison">
+</article>
+
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 81/84 · raw_id jm_0081 · current_id jm_0069</h3>
+      <p>20_2503_06706v3#page_19 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge problem">两者接近或均正确</span><span class="badge agfc">AGFC F1 +0.0000</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>AGFC</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.9673</div>
+    <div><b>Local MinerU</b> GT 1 / Pred 1 / Match 1 / F1 1.0000 / IoU 0.8837 / 漏 0 / 误 0</div>
+  </div>
+  <img loading="lazy" src="pages/raw_081_jm_0081.png" alt="raw 81 local MinerU AGFC comparison">
+</article>
+</div>
+    </section>
+
+    <section>
+      <h2>raw PDF 中不可比页</h2>
+      <p>这些页存在于本地 MinerU raw PDF 中，但和当前 JournalMix-v1 GT/AGFC 结果集按物理源页无法对齐，因此不计入指标。</p>
+      <table><thead><tr><th>raw 页</th><th>raw_id</th><th>源页</th><th>MinerU image blocks</th><th>原因</th></tr></thead><tbody><tr><td>28</td><td>jm_0028</td><td>2506_18900v1.pdf#page_16</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>29</td><td>jm_0029</td><td>2506_18900v1.pdf#page_17</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>33</td><td>jm_0033</td><td>2603_25804v1.pdf#page_5</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>63</td><td>jm_0063</td><td>1710_02167v1.pdf#page_15</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>68</td><td>jm_0068</td><td>2506_18900v1.pdf#page_13</td><td>4</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>69</td><td>jm_0069</td><td>2506_18900v1.pdf#page_14</td><td>2</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>70</td><td>jm_0070</td><td>2506_18900v1.pdf#page_18</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr>
+<tr><td>71</td><td>jm_0071</td><td>2506_18900v1.pdf#page_19</td><td>0</td><td>raw PDF page has no physical match in current GT/AGFC result set</td></tr></tbody></table>
+    </section>
+  </main>
+</body>
+</html>

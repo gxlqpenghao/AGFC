@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0048",
+  "doc_id": "29_2207_05401v2",
+  "figure_family": "vector_dominant",
+  "difficulty": "hard",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/29_2207_05401v2/pages/page_003/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/29_2207_05401v2/pages/page_003",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 1,
+  "old_page_id": "jm_0050"
+}

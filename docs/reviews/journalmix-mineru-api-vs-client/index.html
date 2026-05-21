@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JournalMix-v1 MinerU API vs Client Audit</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d8dee8;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.5; }
+    header { background: #fff; border-bottom: 1px solid var(--line); padding: 28px clamp(18px, 4vw, 52px) 22px; }
+    main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
+    h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.2; }
+    h2 { margin: 34px 0 14px; font-size: 21px; }
+    h3 { margin: 0 0 8px; font-size: 15px; }
+    p { margin: 0; color: var(--muted); }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 12px; color: var(--muted); font-size: 13px; }
+    .cards { display: grid; grid-template-columns: repeat(5, minmax(140px, 1fr)); gap: 12px; margin-top: 18px; }
+    .metric { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .metric .label { color: var(--muted); font-size: 12px; }
+    .metric .value { margin-top: 4px; font-size: 24px; font-weight: 700; }
+    .metric .sub { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 13px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    th { background: #eef2f7; color: #374151; font-weight: 650; }
+    tr:last-child td { border-bottom: 0; }
+    .gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .page-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .badge { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 8px; border-radius: 999px; border: 1px solid #cbd5e1; color: #334155; background: #f8fafc; font-size: 12px; }
+    .badge.client { color: #9a3412; background: #fff7ed; border-color: #fdba74; }
+    .badge.api { color: #1d4ed8; background: #eff6ff; border-color: #bfdbfe; }
+    .metrics-line { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .metrics-line b { color: var(--ink); }
+    img { display: block; width: 100%; height: auto; background: #fff; }
+    @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .metrics-line { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } .page-head { flex-direction: column; } .badges { justify-content: flex-start; } th, td { white-space: normal; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JournalMix-v1 MinerU API vs 桌面/产品客户端 对比审计</h1>
+    <p>同一份 raw PDF、同一套 JournalMix-v1 GT，对比 MinerU token API（vlm）与 MinerU 本地桌面/产品客户端输出。</p>
+    <div class="meta">
+      <span>生成时间：20260520_191909</span>
+      <span>raw page count：84</span>
+      <span>comparable pages：76</span>
+      <span>exact bbox-list match pages：24</span>
+      <span>same image-count pages：50</span>
+    </div>
+  </header>
+  <main>
+    <section class="cards">
+      <div class="metric"><div class="label">Client F1</div><div class="value">0.4040</div><div class="sub">GT 98 / Pred 204 / Match 61</div></div>
+      <div class="metric"><div class="label">API F1</div><div class="value">0.4561</div><div class="sub">GT 98 / Pred 130 / Match 52</div></div>
+      <div class="metric"><div class="label">Client IoU</div><div class="value">0.9610</div><div class="sub">against JournalMix GT</div></div>
+      <div class="metric"><div class="label">API IoU</div><div class="value">0.9580</div><div class="sub">against JournalMix GT</div></div>
+      <div class="metric"><div class="label">API / Client agreement F1</div><div class="value">0.6474</div><div class="sub">Match 112 / Client refs 210</div></div>
+    </section>
+
+    <section>
+      <h2>Aggregate Results</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>System</th><th>GT</th><th>Pred</th><th>Match</th><th>Precision</th><th>Recall</th><th>F1</th><th>IoU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>MinerU Desktop / Product Client</td><td>98</td><td>204</td><td>61</td><td>0.2990</td><td>0.6224</td><td>0.4040</td><td>0.9610</td></tr>
+          <tr><td>MinerU token API (vlm)</td><td>98</td><td>130</td><td>52</td><td>0.4000</td><td>0.5306</td><td>0.4561</td><td>0.9580</td></tr>
+          <tr><td>API vs Client agreement</td><td>210</td><td>136</td><td>112</td><td>0.8235</td><td>0.5333</td><td>0.6474</td><td>0.9662</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Family Breakdown</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Figure family</th><th>Pages</th><th>GT</th><th>Client F1</th><th>API F1</th><th>Agreement F1</th><th>API-Client ΔF1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>compound_multi_panel</td><td>18</td><td>30</td><td>0.2388</td><td>0.2609</td><td>0.7513</td><td>0.0221</td></tr><tr><td>hard_negative</td><td>10</td><td>0</td><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr><tr><td>mixed_vector_raster</td><td>18</td><td>22</td><td>0.5000</td><td>0.7027</td><td>0.5854</td><td>0.2027</td></tr><tr><td>route_map_or_flow</td><td>18</td><td>25</td><td>0.4444</td><td>0.7347</td><td>0.5070</td><td>0.2903</td></tr><tr><td>vector_dominant</td><td>12</td><td>21</td><td>0.7083</td><td>0.4444</td><td>0.3030</td><td>-0.2639</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Page-Level Audit</h2>
+      <div class="gallery">
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 38 · jm_0038 · jm_0028</h3>
+      <p>1604_06646v1#page_2 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 8 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_038_jm_0038.png" alt="raw 38 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 84 · jm_0084 · jm_0070</h3>
+      <p>29_2207_05401v2#page_1 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_084_jm_0084.png" alt="raw 84 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 24 · jm_0024 · jm_0011</h3>
+      <p>2503_05524v1#page_9 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_024_jm_0024.png" alt="raw 24 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 30 · jm_0030 · jm_0043</h3>
+      <p>2601_00251v1#page_5 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_030_jm_0030.png" alt="raw 30 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 37 · jm_0037 · jm_0027</h3>
+      <p>1604_06646v1#page_1 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_037_jm_0037.png" alt="raw 37 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 65 · jm_0065 · jm_0065</h3>
+      <p>04_2412_19303v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_065_jm_0065.png" alt="raw 65 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 23 · jm_0023 · jm_0041</h3>
+      <p>2503_05524v1#page_7 · vector_dominant · control</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_023_jm_0023.png" alt="raw 23 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 25 · jm_0025 · jm_0042</h3>
+      <p>2503_05524v1#page_10 · vector_dominant · control</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_025_jm_0025.png" alt="raw 25 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 34 · jm_0034 · jm_0044</h3>
+      <p>2603_25804v1#page_6 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_034_jm_0034.png" alt="raw 34 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 45 · jm_0045 · jm_0057</h3>
+      <p>2312_00784v2#page_7 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_045_jm_0045.png" alt="raw 45 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 53 · jm_0053 · jm_0035</h3>
+      <p>2305_01323v3#page_3 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_053_jm_0053.png" alt="raw 53 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 59 · jm_0059 · jm_0048</h3>
+      <p>2207_05401v2#page_3 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_059_jm_0059.png" alt="raw 59 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 81 · jm_0081 · jm_0069</h3>
+      <p>20_2503_06706v3#page_19 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_081_jm_0081.png" alt="raw 81 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 11 · jm_0011 · jm_0037</h3>
+      <p>2203_11714v1#page_2 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 3 / Match 1 / F1 0.4000</div>
+    <div><b>API</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.4000 / IoU 0.9899</div>
+  </div>
+  <img loading="lazy" src="pages/raw_011_jm_0011.png" alt="raw 11 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 22 · jm_0022 · jm_0040</h3>
+      <p>2503_05524v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 5 / Match 1 / F1 0.2857</div>
+    <div><b>API</b> GT 2 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_022_jm_0022.png" alt="raw 22 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 47 · jm_0047 · jm_0030</h3>
+      <p>2312_00784v2#page_20 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 1 / Match 1 / F1 0.5000</div>
+    <div><b>API</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.5000 / IoU 0.9925</div>
+  </div>
+  <img loading="lazy" src="pages/raw_047_jm_0047.png" alt="raw 47 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 52 · jm_0052 · jm_0034</h3>
+      <p>2305_01323v3#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 1 / F1 0.5000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.5000 / IoU 0.6683</div>
+  </div>
+  <img loading="lazy" src="pages/raw_052_jm_0052.png" alt="raw 52 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 57 · jm_0057 · jm_0046</h3>
+      <p>2001_03271v2#page_4 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>API</b> GT 3 / Pred 1 / Match 1 / F1 0.5000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.5000 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_057_jm_0057.png" alt="raw 57 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 58 · jm_0058 · jm_0047</h3>
+      <p>2001_03271v2#page_5 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>API</b> GT 3 / Pred 1 / Match 1 / F1 0.5000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.5000 / IoU 0.9899</div>
+  </div>
+  <img loading="lazy" src="pages/raw_058_jm_0058.png" alt="raw 58 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 40 · jm_0040 · jm_0013</h3>
+      <p>1604_06646v1#page_11 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 2 / Pred 7 / Match 1 / F1 0.2222</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_040_jm_0040.png" alt="raw 40 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 44 · jm_0044 · jm_0017</h3>
+      <p>2010_09525v1#page_8 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 30 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 2 / Pred 13 / Match 1 / F1 0.1333</div>
+    <div><b>Agreement</b> Match 9 / F1 0.4186 / IoU 0.8459</div>
+  </div>
+  <img loading="lazy" src="pages/raw_044_jm_0044.png" alt="raw 44 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 26 · jm_0026 · jm_0023</h3>
+      <p>2506_18900v1#page_7 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 7 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_026_jm_0026.png" alt="raw 26 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 55 · jm_0055 · jm_0059</h3>
+      <p>2503_06706v3#page_6 · mixed_vector_raster · stress</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 5 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 2 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_055_jm_0055.png" alt="raw 55 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 13 · jm_0013 · jm_0038</h3>
+      <p>2203_11714v1#page_4 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 2 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_013_jm_0013.png" alt="raw 13 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 32 · jm_0032 · jm_0025</h3>
+      <p>2603_25804v1#page_3 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_032_jm_0032.png" alt="raw 32 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 49 · jm_0049 · jm_0031</h3>
+      <p>2602_15918v1#page_4 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_049_jm_0049.png" alt="raw 49 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 12 · jm_0012 · jm_0004</h3>
+      <p>2203_11714v1#page_3 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge api">API F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 3 / Match 1 / F1 0.4000</div>
+    <div><b>API</b> GT 2 / Pred 1 / Match 1 / F1 0.6667</div>
+    <div><b>Agreement</b> Match 1 / F1 0.5000 / IoU 0.9943</div>
+  </div>
+  <img loading="lazy" src="pages/raw_012_jm_0012.png" alt="raw 12 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 5 · jm_0005 · jm_0021</h3>
+      <p>1710_02167v1#page_6 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 1 / Match 1 / F1 0.6667</div>
+    <div><b>Agreement</b> Match 1 / F1 0.6667 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_005_jm_0005.png" alt="raw 5 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 6 · jm_0006 · jm_0055</h3>
+      <p>1710_02167v1#page_7 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 1 / Match 1 / F1 0.6667</div>
+    <div><b>Agreement</b> Match 1 / F1 0.6667 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_006_jm_0006.png" alt="raw 6 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 35 · jm_0035 · jm_0045</h3>
+      <p>2603_25804v1#page_7 · vector_dominant · stress</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 1 / Match 1 / F1 0.6667</div>
+    <div><b>Agreement</b> Match 1 / F1 0.6667 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_035_jm_0035.png" alt="raw 35 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 7 · jm_0007 · jm_0001</h3>
+      <p>1710_02167v1#page_8 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_007_jm_0007.png" alt="raw 7 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 8 · jm_0008 · jm_0056</h3>
+      <p>1710_02167v1#page_9 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_008_jm_0008.png" alt="raw 8 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 60 · jm_0060 · jm_0061</h3>
+      <p>01_1710_02167v1#page_12 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_060_jm_0060.png" alt="raw 60 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 61 · jm_0061 · jm_0062</h3>
+      <p>01_1710_02167v1#page_13 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_061_jm_0061.png" alt="raw 61 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 62 · jm_0062 · jm_0063</h3>
+      <p>01_1710_02167v1#page_14 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_062_jm_0062.png" alt="raw 62 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 73 · jm_0073 · jm_0073</h3>
+      <p>26_2001_03271v2#page_11 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_073_jm_0073.png" alt="raw 73 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 74 · jm_0074 · jm_0074</h3>
+      <p>09_1604_06646v1#page_4 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_074_jm_0074.png" alt="raw 74 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 75 · jm_0075 · jm_0075</h3>
+      <p>01_1710_02167v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_075_jm_0075.png" alt="raw 75 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 76 · jm_0076 · jm_0076</h3>
+      <p>24_2602_14035v1#page_3 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_076_jm_0076.png" alt="raw 76 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 77 · jm_0077 · jm_0077</h3>
+      <p>26_2001_03271v2#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_077_jm_0077.png" alt="raw 77 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 78 · jm_0078 · jm_0078</h3>
+      <p>04_2412_19303v1#page_10 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_078_jm_0078.png" alt="raw 78 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 79 · jm_0079 · jm_0079</h3>
+      <p>14_2504_21559v1#page_6 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_079_jm_0079.png" alt="raw 79 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 80 · jm_0080 · jm_0080</h3>
+      <p>05_2503_05524v1#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_080_jm_0080.png" alt="raw 80 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 82 · jm_0082 · jm_0081</h3>
+      <p>13_2412_07509v1#page_14 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_082_jm_0082.png" alt="raw 82 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 83 · jm_0083 · jm_0082</h3>
+      <p>02_2101_09903v2#page_0 · hard_negative · control</p>
+    </div>
+    <div class="badges"><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 0 / Pred 0 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 0 / F1 0.0000 / IoU 0.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_083_jm_0083.png" alt="raw 83 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 9 · jm_0009 · jm_0002</h3>
+      <p>2101_09903v2#page_1 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 5 / Match 1 / F1 0.2857</div>
+    <div><b>API</b> GT 2 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 4 / F1 0.8889 / IoU 0.9860</div>
+  </div>
+  <img loading="lazy" src="pages/raw_009_jm_0009.png" alt="raw 9 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 16 · jm_0016 · jm_0006</h3>
+      <p>2412_19303v1#page_4 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span><span class="badge">low agreement</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 0.4000 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_016_jm_0016.png" alt="raw 16 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 27 · jm_0027 · jm_0012</h3>
+      <p>2506_18900v1#page_15 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"><span class="badge client">Client F1 higher</span><span class="badge">image count differs</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 3 / Match 2 / F1 0.8000</div>
+    <div><b>Agreement</b> Match 2 / F1 0.8000 / IoU 0.7562</div>
+  </div>
+  <img loading="lazy" src="pages/raw_027_jm_0027.png" alt="raw 27 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 31 · jm_0031 · jm_0024</h3>
+      <p>2603_25804v1#page_1 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"><span class="badge">image count differs</span></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 3 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 0.8000 / IoU 0.9841</div>
+  </div>
+  <img loading="lazy" src="pages/raw_031_jm_0031.png" alt="raw 31 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 19 · jm_0019 · jm_0009</h3>
+      <p>2412_19303v1#page_12 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 6 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 6 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 5 / F1 0.8333 / IoU 0.8894</div>
+  </div>
+  <img loading="lazy" src="pages/raw_019_jm_0019.png" alt="raw 19 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 1 · jm_0001 · jm_0019</h3>
+      <p>1710_02167v1#page_1 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9742</div>
+  </div>
+  <img loading="lazy" src="pages/raw_001_jm_0001.png" alt="raw 1 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 2 · jm_0002 · jm_0020</h3>
+      <p>1710_02167v1#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>API</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 3 / F1 1.0000 / IoU 0.9982</div>
+  </div>
+  <img loading="lazy" src="pages/raw_002_jm_0002.png" alt="raw 2 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 3 · jm_0003 · jm_0053</h3>
+      <p>1710_02167v1#page_3 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9980</div>
+  </div>
+  <img loading="lazy" src="pages/raw_003_jm_0003.png" alt="raw 3 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 4 · jm_0004 · jm_0054</h3>
+      <p>1710_02167v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9854</div>
+  </div>
+  <img loading="lazy" src="pages/raw_004_jm_0004.png" alt="raw 4 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 10 · jm_0010 · jm_0003</h3>
+      <p>2101_09903v2#page_2 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9898</div>
+  </div>
+  <img loading="lazy" src="pages/raw_010_jm_0010.png" alt="raw 10 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 14 · jm_0014 · jm_0005</h3>
+      <p>2412_19303v1#page_0 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9958</div>
+  </div>
+  <img loading="lazy" src="pages/raw_014_jm_0014.png" alt="raw 14 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 15 · jm_0015 · jm_0022</h3>
+      <p>2412_19303v1#page_3 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9955</div>
+  </div>
+  <img loading="lazy" src="pages/raw_015_jm_0015.png" alt="raw 15 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 17 · jm_0017 · jm_0007</h3>
+      <p>2412_19303v1#page_7 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 28 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 28 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 28 / F1 1.0000 / IoU 0.9863</div>
+  </div>
+  <img loading="lazy" src="pages/raw_017_jm_0017.png" alt="raw 17 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 18 · jm_0018 · jm_0008</h3>
+      <p>2412_19303v1#page_11 · compound_multi_panel · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 4 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 4 / F1 1.0000 / IoU 0.9463</div>
+  </div>
+  <img loading="lazy" src="pages/raw_018_jm_0018.png" alt="raw 18 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 20 · jm_0020 · jm_0039</h3>
+      <p>2503_05524v1#page_2 · vector_dominant · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9919</div>
+  </div>
+  <img loading="lazy" src="pages/raw_020_jm_0020.png" alt="raw 20 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 21 · jm_0021 · jm_0010</h3>
+      <p>2503_05524v1#page_3 · compound_multi_panel · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9902</div>
+  </div>
+  <img loading="lazy" src="pages/raw_021_jm_0021.png" alt="raw 21 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 36 · jm_0036 · jm_0026</h3>
+      <p>1604_06646v1#page_0 · route_map_or_flow · stress</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9946</div>
+  </div>
+  <img loading="lazy" src="pages/raw_036_jm_0036.png" alt="raw 36 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 39 · jm_0039 · jm_0029</h3>
+      <p>1604_06646v1#page_3 · route_map_or_flow · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9958</div>
+  </div>
+  <img loading="lazy" src="pages/raw_039_jm_0039.png" alt="raw 39 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 41 · jm_0041 · jm_0014</h3>
+      <p>2010_09525v1#page_3 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_041_jm_0041.png" alt="raw 41 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 42 · jm_0042 · jm_0015</h3>
+      <p>2010_09525v1#page_4 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 8 / Match 1 / F1 0.1818</div>
+    <div><b>API</b> GT 3 / Pred 8 / Match 1 / F1 0.1818</div>
+    <div><b>Agreement</b> Match 8 / F1 1.0000 / IoU 0.9934</div>
+  </div>
+  <img loading="lazy" src="pages/raw_042_jm_0042.png" alt="raw 42 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 43 · jm_0043 · jm_0016</h3>
+      <p>2010_09525v1#page_5 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9917</div>
+  </div>
+  <img loading="lazy" src="pages/raw_043_jm_0043.png" alt="raw 43 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 46 · jm_0046 · jm_0018</h3>
+      <p>2312_00784v2#page_12 · compound_multi_panel · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 2 / Match 2 / F1 0.8000</div>
+    <div><b>API</b> GT 3 / Pred 2 / Match 2 / F1 0.8000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9932</div>
+  </div>
+  <img loading="lazy" src="pages/raw_046_jm_0046.png" alt="raw 46 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 48 · jm_0048 · jm_0058</h3>
+      <p>2412_07509v1#page_11 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>API</b> GT 2 / Pred 2 / Match 2 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9987</div>
+  </div>
+  <img loading="lazy" src="pages/raw_048_jm_0048.png" alt="raw 48 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 50 · jm_0050 · jm_0032</h3>
+      <p>1310_0306v1#page_2 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>API</b> GT 3 / Pred 3 / Match 3 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 3 / F1 1.0000 / IoU 0.9951</div>
+  </div>
+  <img loading="lazy" src="pages/raw_050_jm_0050.png" alt="raw 50 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 51 · jm_0051 · jm_0033</h3>
+      <p>2305_01323v3#page_0 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9867</div>
+  </div>
+  <img loading="lazy" src="pages/raw_051_jm_0051.png" alt="raw 51 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 54 · jm_0054 · jm_0036</h3>
+      <p>2407_05183v2#page_10 · route_map_or_flow · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9875</div>
+  </div>
+  <img loading="lazy" src="pages/raw_054_jm_0054.png" alt="raw 54 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 56 · jm_0056 · jm_0060</h3>
+      <p>1801_08163v2#page_5 · mixed_vector_raster · hard</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9851</div>
+  </div>
+  <img loading="lazy" src="pages/raw_056_jm_0056.png" alt="raw 56 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 64 · jm_0064 · jm_0064</h3>
+      <p>04_2412_19303v1#page_2 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9980</div>
+  </div>
+  <img loading="lazy" src="pages/raw_064_jm_0064.png" alt="raw 64 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 66 · jm_0066 · jm_0066</h3>
+      <p>06_2506_18900v1#page_5 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>API</b> GT 1 / Pred 2 / Match 0 / F1 0.0000</div>
+    <div><b>Agreement</b> Match 2 / F1 1.0000 / IoU 0.9751</div>
+  </div>
+  <img loading="lazy" src="pages/raw_066_jm_0066.png" alt="raw 66 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 67 · jm_0067 · jm_0067</h3>
+      <p>06_2506_18900v1#page_6 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 1.0000</div>
+  </div>
+  <img loading="lazy" src="pages/raw_067_jm_0067.png" alt="raw 67 client vs api">
+</article>
+
+<article class="page-card">
+  <div class="page-head">
+    <div>
+      <h3>raw 72 · jm_0072 · jm_0068</h3>
+      <p>07_2601_00251v1#page_4 · mixed_vector_raster · control</p>
+    </div>
+    <div class="badges"></div>
+  </div>
+  <div class="metrics-line">
+    <div><b>Client</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>API</b> GT 1 / Pred 1 / Match 1 / F1 1.0000</div>
+    <div><b>Agreement</b> Match 1 / F1 1.0000 / IoU 0.9893</div>
+  </div>
+  <img loading="lazy" src="pages/raw_072_jm_0072.png" alt="raw 72 client vs api">
+</article>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>

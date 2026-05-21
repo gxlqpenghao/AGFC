@@ -1,0 +1,32 @@
+{
+  "page_idx": 15,
+  "page_label": "2506_18900v1#page_15",
+  "figures": [
+    {
+      "figure_id": "panel_1",
+      "bbox": [
+        119.12999725341797,
+        92.281494140625,
+        490.3816223144531,
+        435.2590026855469
+      ],
+      "logical_group_id": "panel_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "panel_2",
+      "bbox": [
+        120.375,
+        510.68597412109375,
+        491.6410217285156,
+        669.7999877929688
+      ],
+      "logical_group_id": "panel_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

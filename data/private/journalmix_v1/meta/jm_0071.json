@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0071",
+  "doc_id": "tust_squeezing_2026",
+  "figure_family": "mixed_vector_raster",
+  "difficulty": "control",
+  "review_status": "confirmed",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/tust_squeezing/pages/page_002",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/tust_squeezing/pages/page_002/overlay.png",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 1,
+  "old_page_id": "jm_0095"
+}

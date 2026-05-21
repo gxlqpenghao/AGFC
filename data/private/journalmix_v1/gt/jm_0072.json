@@ -1,0 +1,32 @@
+{
+  "page_idx": 5,
+  "page_label": "tust_squeezing_2026#page_5",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        142.3,
+        591,
+        453.8,
+        724.5
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_2",
+      "bbox": [
+        40.3,
+        53.5,
+        285.3,
+        208.5
+      ],
+      "logical_group_id": "group_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 JournalMix-v1 is AGFC's private frozen benchmark for publication-style figure extraction. It is not committed to the public repo, but the runner and report format are public so maintainers can reproduce the benchmark locally.
 
+This private repository includes the frozen dataset under `data/private/journalmix_v1/` for internal collaboration and reproducible benchmark runs.
+
 ## Command
 
 ```bash
@@ -61,3 +63,8 @@ The public repository should include the benchmark command and report protocol, 
 
 A separate local audit compares AGFC with MinerU on JournalMix-v1 raw pages. See
 [JournalMix-v1 vs MinerU](journalmix-v1-vs-mineru.md).
+
+The repository also includes the packaged HTML review artifacts:
+
+- `docs/reviews/journalmix-local-mineru-vs-agfc-raw/index.html`
+- `docs/reviews/journalmix-mineru-api-vs-client/index.html`

@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0044",
+  "doc_id": "08_2603_25804v1",
+  "figure_family": "vector_dominant",
+  "difficulty": "stress",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/08_2603_25804v1/pages/page_006/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/08_2603_25804v1/pages/page_006",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 1,
+  "old_page_id": "jm_0046"
+}

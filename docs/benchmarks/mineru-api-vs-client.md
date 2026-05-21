@@ -1,9 +1,13 @@
 # MinerU API vs Client
 
-This note compares two MinerU output forms on the same raw JournalMix PDF:
+This note compares two MinerU output forms on the same raw JournalMix PDF.
 
 - MinerU Desktop / Product Client output
 - MinerU token API output with `model_version=vlm`
+
+Packaged HTML review artifact:
+
+- `docs/reviews/journalmix-mineru-api-vs-client/index.html`
 
 ## Current Finding
 

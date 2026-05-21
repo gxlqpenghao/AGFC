@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0077",
+  "doc_id": "26_2001_03271v2",
+  "figure_family": "hard_negative",
+  "difficulty": "control",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/26_2001_03271v2/pages/page_010/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/26_2001_03271v2/pages/page_010",
+  "prelabel_source": "empty",
+  "prelabel_prediction_count": 0,
+  "old_page_id": "jm_0077"
+}

@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0012",
+  "doc_id": "06_2506_18900v1",
+  "figure_family": "compound_multi_panel",
+  "difficulty": "hard",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/06_2506_18900v1/pages/page_015/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/06_2506_18900v1/pages/page_015",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 2,
+  "old_page_id": "jm_0012"
+}

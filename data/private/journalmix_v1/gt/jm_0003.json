@@ -1,0 +1,19 @@
+{
+  "page_idx": 2,
+  "page_label": "2101_09903v2#page_2",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        86.3,
+        73.5,
+        505.8,
+        167.5
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "page_idx": 6,
+  "page_label": "06_2506_18900v1#page_6",
+  "figures": [
+    {
+      "figure_id": "panel_1",
+      "bbox": [
+        83.25199890136719,
+        71.98849487304688,
+        528.7655029296875,
+        459.0740051269531
+      ],
+      "logical_group_id": "panel_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

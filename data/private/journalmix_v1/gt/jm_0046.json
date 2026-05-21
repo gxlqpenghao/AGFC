@@ -1,0 +1,45 @@
+{
+  "page_idx": 4,
+  "page_label": "2001_03271v2#page_4",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        57.3,
+        64.5,
+        289.8,
+        175.5
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_2",
+      "bbox": [
+        333.3,
+        66.5,
+        560.8,
+        117.5
+      ],
+      "logical_group_id": "group_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_3",
+      "bbox": [
+        333.3,
+        195,
+        561.3,
+        322.5
+      ],
+      "logical_group_id": "group_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

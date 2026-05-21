@@ -1,0 +1,19 @@
+{
+  "page_idx": 14,
+  "page_label": "01_1710_02167v1#page_14",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        53.8,
+        69.5,
+        559.3,
+        680.5
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

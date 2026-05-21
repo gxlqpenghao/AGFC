@@ -1,0 +1,45 @@
+{
+  "page_idx": 2,
+  "page_label": "1710_02167v1#page_2",
+  "figures": [
+    {
+      "figure_id": "gt_1",
+      "bbox": [
+        52.8,
+        104,
+        299.3,
+        172
+      ],
+      "logical_group_id": "group_1",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_2",
+      "bbox": [
+        340.3,
+        71,
+        535.3,
+        258.5
+      ],
+      "logical_group_id": "group_2",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    },
+    {
+      "figure_id": "gt_3",
+      "bbox": [
+        314.8,
+        383,
+        554.8,
+        466
+      ],
+      "logical_group_id": "group_3",
+      "panel_bboxes": [],
+      "caption_bbox": null,
+      "body_exclusion_bboxes": []
+    }
+  ]
+}

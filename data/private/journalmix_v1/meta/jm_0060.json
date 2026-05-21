@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0060",
+  "doc_id": "25_1801_08163v2",
+  "figure_family": "mixed_vector_raster",
+  "difficulty": "hard",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/25_1801_08163v2/pages/page_005/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/25_1801_08163v2/pages/page_005",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 1,
+  "old_page_id": "jm_0062"
+}

@@ -4,7 +4,8 @@ This note summarizes the current local raw-page audit between AGFC and MinerU De
 
 Source artifact:
 
-- generated from the local raw-page audit HTML under `artifacts/review/`
+- packaged HTML review artifact:
+  `docs/reviews/journalmix-local-mineru-vs-agfc-raw/index.html`
 - reproducible with `scripts/generate_journalmix_local_mineru_vs_agfc_audit.py`
 
 ## Scope

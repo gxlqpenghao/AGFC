@@ -13,7 +13,9 @@ artifacts/
 output/
 tmp/
 demo_output/
-data/private/
+data/private/*
+!data/private/journalmix_v1/
+!data/private/journalmix_v1/**
 data/sample_corpus/
 src/**/__pycache__/
 tests/**/__pycache__/

@@ -1,0 +1,12 @@
+{
+  "page_id": "jm_0035",
+  "doc_id": "18_2305_01323v3",
+  "figure_family": "route_map_or_flow",
+  "difficulty": "hard",
+  "review_status": "confirmed",
+  "overlay_path": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/18_2305_01323v3/pages/page_003/overlay.png",
+  "page_dir": "artifacts/corpus_runs/20260420_215816_journalmix_v1_arxiv32/docs/18_2305_01323v3/pages/page_003",
+  "prelabel_source": "agfc_prediction",
+  "prelabel_prediction_count": 1,
+  "old_page_id": "jm_0035"
+}
