@@ -29,6 +29,15 @@ Against current JournalMix GT on the `76` comparable pages:
 - In the current run, the API path produced fewer false positives than the client path, but also lower recall.
 - The client path appears more aggressive in image extraction, while the API path emits fewer `image` blocks and more `chart`-like structure.
 
+## Granularity Note
+
+MinerU may split subfigures when they have standalone subcaptions. Under a logical full-figure GT protocol, this means:
+
+- part of the disagreement can be a task-granularity difference
+- part of the disagreement still reflects true extraction differences between the two MinerU output forms
+
+This is one reason the client/API comparison should be read together with page-level audit images rather than only aggregate F1.
+
 ## Recommended Benchmark Naming
 
 - `MinerU Desktop / Product Client`

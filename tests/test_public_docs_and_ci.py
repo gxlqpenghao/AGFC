@@ -19,12 +19,15 @@ def test_public_docs_include_http_benchmark_changelog_and_ci():
     assert "POST /repair/mineru" in http_doc
     assert "agfc benchmark journalmix" in benchmark_doc
     assert "JournalMix-v1" in benchmark_doc
-    assert "Local MinerU" in benchmark_comparison_doc
+    assert "MinerU Desktop / Product Client" in benchmark_comparison_doc
     assert "compound_multi_panel" in benchmark_comparison_doc
+    assert "standalone subcaptions" in benchmark_comparison_doc
     assert "MinerU Desktop / Product Client" in mineru_runtime_doc
     assert "MinerU token API (vlm)" in mineru_runtime_doc
+    assert "standalone subcaptions" in mineru_runtime_doc
     assert "0.1.0" in changelog
     assert "python3 -m pytest -q" in ci
     assert intro_figure.exists()
     assert "docs/assets/agfc-project-intro.png" in readme
     assert "docs/benchmarks/journalmix-v1-vs-mineru.md" in readme
+    assert "docs/benchmarks/mineru-api-vs-client.md" in readme

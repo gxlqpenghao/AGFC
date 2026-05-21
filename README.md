@@ -127,8 +127,19 @@ agfc benchmark journalmix \
 
 详见 [JournalMix-v1 Benchmark](docs/benchmarks/journalmix-v1.md)。
 
-当前 AGFC 与本地 MinerU raw-page 对比结果见
-[JournalMix-v1 vs MinerU](docs/benchmarks/journalmix-v1-vs-mineru.md)。
+当前 JournalMix-v1 相关对比建议按三方口径理解：
+
+- `AGFC`
+- `MinerU Desktop / Product Client`
+- `MinerU token API (vlm)`
+
+相关文档：
+
+- [JournalMix-v1 vs MinerU](docs/benchmarks/journalmix-v1-vs-mineru.md)
+- [MinerU API vs Client](docs/benchmarks/mineru-api-vs-client.md)
+
+说明：
+MinerU 在部分页面上会倾向于把带独立副标题的子图单独拆开抽取。因此当 GT 采用“逻辑完整 figure”边界时，MinerU 分数里会同时混入两类因素：一类是合理的粒度偏差，另一类才是真正的漏检或误检。这一点需要结合页面级审计一起解读。
 
 ## 仓库结构
 
