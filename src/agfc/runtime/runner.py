@@ -248,6 +248,15 @@ def run_pdf(
                 page_width=float(payload["page_width"]),
                 page_height=float(payload["page_height"]),
             )
+            figures = _ensure_page_output_figures(
+                figures=figures,
+                atoms=atoms,
+                raw_atoms=raw_atoms,
+                panels=panels,
+                page_idx=page_idx,
+                page_width=float(payload["page_width"]),
+                page_height=float(payload["page_height"]),
+            )
 
             page_dir = run_dir / "pages" / f"page_{page_idx:03d}"
             page_dir.mkdir(parents=True, exist_ok=True)
@@ -438,6 +447,110 @@ def _build_candidate_lifecycle_events(
     return serialize_lifecycle_events(events)
 
 
+def _ensure_page_output_figures(
+    *,
+    figures: list[FigureCandidate],
+    atoms: list[PageAtom],
+    raw_atoms: list[PageAtom],
+    panels: list[object],
+    page_idx: int,
+    page_width: float,
+    page_height: float,
+) -> list[FigureCandidate]:
+    if figures:
+        return figures
+
+    fallback_bbox, fallback_source = _resolve_page_level_fallback_bbox(
+        atoms=atoms,
+        raw_atoms=raw_atoms,
+        panels=panels,
+        page_width=page_width,
+        page_height=page_height,
+    )
+    if fallback_bbox is None:
+        return figures
+
+    fallback_panel_ids = [
+        str(getattr(panel, "id"))
+        for panel in panels
+        if hasattr(panel, "id")
+        and hasattr(panel, "bbox")
+        and _bbox_overlap_coverage(
+            _clip_bbox_to_page(getattr(panel, "bbox"), page_width=page_width, page_height=page_height),
+            fallback_bbox,
+        )
+        >= 0.5
+    ]
+    fallback_member_atom_ids = [
+        atom.id
+        for atom in raw_atoms
+        if atom.kind in {"raster_image", "vector_cluster", "color_band"}
+        and _bbox_overlap_coverage(
+            _clip_bbox_to_page(atom.bbox, page_width=page_width, page_height=page_height),
+            fallback_bbox,
+        )
+        >= 0.25
+    ]
+    figure_id = "fallback_1"
+    return [
+        FigureCandidate(
+            id=figure_id,
+            bbox=fallback_bbox,
+            page_idx=page_idx,
+            panel_ids=fallback_panel_ids,
+            member_atom_ids=fallback_member_atom_ids,
+            support_bbox=fallback_bbox,
+            content_bbox=fallback_bbox,
+            boundary_metadata={
+                "page_level_fallback": True,
+                "fallback_source": fallback_source,
+                "content_to_support_area_ratio": 1.0,
+            },
+            metadata={
+                "boundary_strategy": "page_level_fallback",
+                "logical_group_id": f"page_{page_idx:03d}_fallback",
+                "caption_text": "",
+            },
+        )
+    ]
+
+
+def _resolve_page_level_fallback_bbox(
+    *,
+    atoms: list[PageAtom],
+    raw_atoms: list[PageAtom],
+    panels: list[object],
+    page_width: float,
+    page_height: float,
+) -> tuple[tuple[float, float, float, float] | None, str]:
+    panel_bboxes = [
+        _clip_bbox_to_page(getattr(panel, "bbox"), page_width=page_width, page_height=page_height)
+        for panel in panels
+        if hasattr(panel, "bbox")
+    ]
+    if panel_bboxes:
+        panel_union = _union_bbox(panel_bboxes)
+        if _bbox_area(panel_union) / max(page_width * page_height, 1.0) > 0.12:
+            return panel_union, "panel_union"
+
+    support_bbox = _resolve_structural_miss_support_bbox(
+        atoms,
+        page_width=page_width,
+        page_height=page_height,
+    )
+    if support_bbox is not None:
+        return support_bbox, "active_visual_atoms"
+
+    support_bbox = _resolve_structural_miss_support_bbox(
+        raw_atoms,
+        page_width=page_width,
+        page_height=page_height,
+    )
+    if support_bbox is not None:
+        return support_bbox, "suppressed_visual_atoms"
+    return None, ""
+
+
 def _is_structural_path_miss(
     *,
     atoms: list[PageAtom],
@@ -547,6 +660,26 @@ def _union_bbox(bboxes: list[tuple[float, float, float, float]]) -> tuple[float,
         max(bbox[2] for bbox in bboxes),
         max(bbox[3] for bbox in bboxes),
     )
+
+
+def _bbox_overlap_coverage(
+    a: tuple[float, float, float, float],
+    b: tuple[float, float, float, float],
+) -> float:
+    ax0, ay0, ax1, ay1 = a
+    bx0, by0, bx1, by1 = b
+    ix0 = max(ax0, bx0)
+    iy0 = max(ay0, by0)
+    ix1 = min(ax1, bx1)
+    iy1 = min(ay1, by1)
+    if ix1 <= ix0 or iy1 <= iy0:
+        return 0.0
+    intersection = (ix1 - ix0) * (iy1 - iy0)
+    area_a = _bbox_area(a)
+    area_b = _bbox_area(b)
+    if area_a <= 0.0 or area_b <= 0.0:
+        return 0.0
+    return intersection / min(area_a, area_b)
 
 
 def _clip_bbox_to_page(

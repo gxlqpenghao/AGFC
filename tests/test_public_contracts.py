@@ -96,3 +96,38 @@ def test_build_extract_result_always_emits_plugin_metadata_keys(tmp_path: Path):
     assert image["panel_ids"] == []
     assert image["boundary_strategy"] == ""
     assert image["caption_text"] == ""
+
+
+def test_build_extract_result_resolves_fallback_crop_asset_path(tmp_path: Path):
+    source_path = tmp_path / "demo.pdf"
+    source_path.write_bytes(b"%PDF-demo\n")
+    run_dir = tmp_path / "run"
+    page_dir = run_dir / "pages" / "page_000"
+    images_dir = run_dir / "images"
+    page_dir.mkdir(parents=True)
+    images_dir.mkdir(parents=True)
+    (images_dir / "page_000_fallback_1.png").write_bytes(b"png")
+    (run_dir / "summary.json").write_text(
+        json.dumps({"pdf": str(source_path), "pages": [{"page_idx": 0, "figures": 1}]}),
+        encoding="utf-8",
+    )
+    (page_dir / "figures.json").write_text(
+        json.dumps(
+            [
+                {
+                    "id": "fallback_1",
+                    "bbox": [0.0, 0.0, 100.0, 190.0],
+                    "page_idx": 0,
+                    "metadata": {"boundary_strategy": "page_level_fallback"},
+                    "boundary_metadata": {"page_level_fallback": True},
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    image = build_extract_result(run_dir, source_path=source_path)["images"][0]
+
+    assert image["asset_path"] == "images/page_000_fallback_1.png"
+    assert image["asset_id"] == "page_000_fallback_1"
+    assert image["boundary_strategy"] == "page_level_fallback"
