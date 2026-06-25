@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from PIL import Image
+from PIL import UnidentifiedImageError
 
 BBox = tuple[float, float, float, float]
 
@@ -106,7 +107,10 @@ def extract_clean_figure_image(
     if not isinstance(image_bytes, (bytes, bytearray)):
         return None
 
-    image = _load_pil_image(image_bytes)
+    try:
+        image = _load_pil_image(image_bytes)
+    except (UnidentifiedImageError, OSError, ValueError):
+        return None
     if match.smask > 0:
         try:
             smask_payload = extract_image(match.smask)
@@ -114,7 +118,10 @@ def extract_clean_figure_image(
             smask_payload = None
         smask_bytes = smask_payload.get("image") if isinstance(smask_payload, dict) else None
         if isinstance(smask_bytes, (bytes, bytearray)):
-            image = _apply_smask(image, smask_bytes)
+            try:
+                image = _apply_smask(image, smask_bytes)
+            except (UnidentifiedImageError, OSError, ValueError):
+                pass
 
     if output_path is not None:
         destination = Path(output_path)

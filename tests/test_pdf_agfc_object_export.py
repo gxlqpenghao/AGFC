@@ -241,3 +241,62 @@ def test_extract_clean_figure_image_flattens_alpha_when_saving_png(tmp_path: Pat
         assert saved.mode == "RGB"
         assert saved.getpixel((0, 0)) == (255, 255, 255)
         assert saved.getpixel((1, 0)) == (255, 0, 0)
+
+
+def test_extract_clean_figure_image_returns_none_when_primary_image_decode_fails():
+    page = FakePage(
+        image_entries=[
+            (200, 0, 2, 2, 8, "DeviceRGB", "", "Im200", "FlateDecode", 0),
+        ],
+        image_rects={200: [fitz.Rect(100.0, 200.0, 200.0, 300.0)]},
+    )
+    doc = FakeDoc(
+        {
+            200: {
+                "image": b"not-a-real-image",
+                "ext": "png",
+            },
+        }
+    )
+
+    image = extract_clean_figure_image(
+        doc,
+        page,
+        figure_bbox=(100.0, 200.0, 200.0, 300.0),
+        xref_usage_counts={200: 1},
+    )
+
+    assert image is None
+
+
+def test_extract_clean_figure_image_ignores_invalid_smask_and_keeps_base_image():
+    page = FakePage(
+        image_entries=[
+            (200, 301, 2, 1, 8, "DeviceRGB", "", "Im200", "FlateDecode", 0),
+        ],
+        image_rects={200: [fitz.Rect(100.0, 200.0, 200.0, 250.0)]},
+    )
+    doc = FakeDoc(
+        {
+            200: {
+                "image": _png_bytes(Image.new("RGB", (2, 1), (255, 0, 0))),
+                "ext": "png",
+            },
+            301: {
+                "image": b"not-a-real-mask",
+                "ext": "png",
+            },
+        }
+    )
+
+    image = extract_clean_figure_image(
+        doc,
+        page,
+        figure_bbox=(100.0, 200.0, 200.0, 250.0),
+        xref_usage_counts={200: 1},
+    )
+
+    assert image is not None
+    assert image.mode == "RGB"
+    assert image.getpixel((0, 0)) == (255, 0, 0)
+    assert image.getpixel((1, 0)) == (255, 0, 0)
