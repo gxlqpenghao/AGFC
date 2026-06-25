@@ -4,7 +4,7 @@ from pathlib import Path
 import fitz
 
 from agfc.models import FigureCandidate, PageAtom
-from agfc.runner import _ensure_page_output_figures, _is_structural_path_miss, run_pdf
+from agfc.runner import _compute_image_xref_usage_counts, _ensure_page_output_figures, _is_structural_path_miss, run_pdf
 
 
 def test_is_structural_path_miss_true_for_single_dominant_raster_with_only_coarse_figure():
@@ -41,6 +41,38 @@ def test_is_structural_path_miss_false_when_single_dominant_raster_page_already_
     ]
 
     assert _is_structural_path_miss(atoms=atoms, figures=figures, page_width=576.0, page_height=720.0) is False
+
+
+class _FakeUsagePage:
+    def __init__(self, image_entries):
+        self._image_entries = image_entries
+
+    def get_images(self, full: bool = False):
+        assert full is True
+        return list(self._image_entries)
+
+
+class _FakeUsageDoc:
+    def __init__(self, pages):
+        self._pages = pages
+
+    def __len__(self):
+        return len(self._pages)
+
+    def __getitem__(self, index):
+        return self._pages[index]
+
+
+def test_compute_image_xref_usage_counts_counts_each_xref_once_per_page():
+    doc = _FakeUsageDoc(
+        [
+            _FakeUsagePage([(140, 0), (86, 149), (86, 149)]),
+            _FakeUsagePage([(140, 0), (109, 153)]),
+            _FakeUsagePage([]),
+        ]
+    )
+
+    assert _compute_image_xref_usage_counts(doc) == {140: 2, 86: 1, 109: 1}
 
 
 def test_is_structural_path_miss_false_when_page_is_not_single_dominant_raster():

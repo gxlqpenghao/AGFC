@@ -8,6 +8,7 @@ from typing import Any
 from PIL import Image, ImageDraw
 
 from agfc.models import FigureCandidate, PageAtom, PageGraph, PanelCandidate
+from agfc.object_export import extract_clean_figure_image
 from agfc.pipeline_models import BipolarEdge, ClosureResult, SeedCandidate
 
 
@@ -79,15 +80,30 @@ def export_figure_crops(
     render_dpi: int,
     output_dir: Path,
     filename_prefix: str = "",
+    pdf_doc: object | None = None,
+    pdf_page: object | None = None,
+    xref_usage_counts: dict[int, int] | None = None,
 ) -> list[Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     exported: list[Path] = []
     scale = render_dpi / 72.0
     for figure in figures:
-        x0, y0, x1, y1 = _scale_bbox(figure.bbox, scale)
-        cropped = page_image.crop((x0, y0, x1, y1))
         stem = f"{filename_prefix}_{figure.id}" if filename_prefix else figure.id
         output_path = output_dir / f"{stem}.png"
+        object_image = None
+        if pdf_doc is not None and pdf_page is not None and xref_usage_counts is not None:
+            object_image = extract_clean_figure_image(
+                pdf_doc,
+                pdf_page,
+                figure_bbox=figure.bbox,
+                xref_usage_counts=xref_usage_counts,
+            )
+        if object_image is not None:
+            _save_export_image(object_image, output_path)
+            exported.append(output_path)
+            continue
+        x0, y0, x1, y1 = _scale_bbox(figure.bbox, scale)
+        cropped = page_image.crop((x0, y0, x1, y1))
         cropped.save(output_path)
         exported.append(output_path)
     return exported
@@ -105,6 +121,15 @@ def _scale_bbox(bbox: tuple[float, float, float, float], scale: float) -> tuple[
 
 def _to_pretty_json(value: Any) -> str:
     return json.dumps(_serialize(value), ensure_ascii=False, indent=2)
+
+
+def _save_export_image(image: Image.Image, output_path: Path) -> None:
+    if image.mode == "RGBA":
+        background = Image.new("RGBA", image.size, (255, 255, 255, 255))
+        image = Image.alpha_composite(background, image).convert("RGB")
+    elif image.mode != "RGB":
+        image = image.convert("RGB")
+    image.save(output_path, format="PNG")
 
 
 def _serialize(value: Any) -> Any:

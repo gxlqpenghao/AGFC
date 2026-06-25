@@ -90,6 +90,31 @@ def _write_json(path: Path, payload) -> None:
     path.write_text(json.dumps(_serialize(payload), ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _compute_image_xref_usage_counts(doc: fitz.Document) -> dict[int, int]:
+    usage_counts: dict[int, int] = {}
+    for page_idx in range(len(doc)):
+        page = doc[page_idx]
+        get_images = getattr(page, "get_images", None)
+        if not callable(get_images):
+            continue
+        try:
+            entries = get_images(full=True)
+        except Exception:
+            continue
+        seen_xrefs: set[int] = set()
+        for entry in entries:
+            if not entry:
+                continue
+            try:
+                xref = int(entry[0])
+            except (TypeError, ValueError, IndexError):
+                continue
+            seen_xrefs.add(xref)
+        for xref in seen_xrefs:
+            usage_counts[xref] = usage_counts.get(xref, 0) + 1
+    return usage_counts
+
+
 def run_pdf(
     pdf_path: str | Path,
     *,
@@ -108,6 +133,7 @@ def run_pdf(
 
     doc = fitz.open(pdf_path)
     try:
+        xref_usage_counts = _compute_image_xref_usage_counts(doc)
         page_indexes = pages if pages else list(range(len(doc)))
         page_payloads: list[dict] = []
         for page_idx in page_indexes:
@@ -316,6 +342,9 @@ def run_pdf(
                     render_dpi=RENDER_DPI,
                     output_dir=run_dir / "images",
                     filename_prefix=f"page_{page_idx:03d}",
+                    pdf_doc=doc,
+                    pdf_page=page,
+                    xref_usage_counts=xref_usage_counts,
                 )
 
             prediction_records = [

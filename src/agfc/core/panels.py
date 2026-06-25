@@ -344,11 +344,17 @@ def _caption_semantic_scope_panels(
         if (atom_id := _role_value(role, "atom_id")) is not None
     }
     text_atoms = [atom for atom in atoms if atom.kind == "text_block" and atom.text.strip()]
+    atom_by_id = {atom.id: atom for atom in atoms}
+    visual_atoms = [atom for atom in atoms if atom.kind in {"raster_image", "vector_cluster", "panel_border"}]
+    existing_visual_figure_numbers = _existing_visual_figure_numbers(existing_panels, atom_by_id=atom_by_id)
     panels: list[PanelCandidate] = []
     panel_index = start_index
     for role in caption_roles:
         role_atom_id = _role_value(role, "atom_id")
         if role_atom_id is not None and str(role_atom_id) in existing_caption_ids:
+            continue
+        role_figure_number = _role_value(role, "figure_number")
+        if role_figure_number is not None and str(role_figure_number) in existing_visual_figure_numbers:
             continue
         caption_bbox = _role_value(role, "bbox")
         if not caption_bbox:
@@ -362,6 +368,19 @@ def _caption_semantic_scope_panels(
             thresholds=thresholds,
         )
         if not semantic_atoms:
+            continue
+        has_local_visual_support = _has_local_figure_like_visual_support(
+            caption_bbox,
+            visual_atoms=visual_atoms,
+            page_width=page_width,
+            page_height=page_height,
+            thresholds=thresholds,
+        )
+        if not has_local_visual_support and not _has_annotation_rich_semantic_scope(
+            semantic_atoms,
+            caption_bbox=caption_bbox,
+            page_height=page_height,
+        ):
             continue
         raw_bbox = _union_bbox(atom.bbox for atom in semantic_atoms)
         bbox = _pad_semantic_scope_bbox(
@@ -815,6 +834,64 @@ def _is_large_image_seed(
         and area_ratio >= thresholds.image_seed_relative_min_area_ratio
     )
     return absolute_large or relative_large
+
+
+def _existing_visual_figure_numbers(
+    panels: Sequence[PanelCandidate],
+    *,
+    atom_by_id: dict[str, PageAtom],
+) -> set[str]:
+    figure_numbers: set[str] = set()
+    for panel in panels:
+        numbers = {str(value) for value in panel.metadata.get("figure_numbers", []) or [] if value is not None}
+        if not numbers:
+            continue
+        member_atoms = [atom_by_id[atom_id] for atom_id in panel.member_atom_ids if atom_id in atom_by_id]
+        if any(atom.kind in {"raster_image", "vector_cluster", "panel_border"} for atom in member_atoms):
+            figure_numbers.update(numbers)
+    return figure_numbers
+
+
+def _has_local_figure_like_visual_support(
+    caption_bbox: BBox,
+    *,
+    visual_atoms: Sequence[PageAtom],
+    page_width: float,
+    page_height: float,
+    thresholds: VisualThresholds,
+) -> bool:
+    cx0, cy0, cx1, _ = caption_bbox
+    caption_width = max(cx1 - cx0, 1.0)
+    horizontal_margin = max(32.0, min(page_width * 0.1, caption_width * 0.4))
+    max_gap = max(72.0, min(page_height * 0.22, thresholds.caption_below_max_gap * 3.0))
+    for atom in visual_atoms:
+        ax0, ay0, ax1, ay1 = atom.bbox
+        if ay1 > cy0 + 4.0:
+            continue
+        if cy0 - ay1 > max_gap:
+            continue
+        overlap = max(0.0, min(cx1, ax1) - max(cx0, ax0))
+        atom_width = max(ax1 - ax0, 1.0)
+        center_x = (ax0 + ax1) / 2.0
+        within_band = cx0 - horizontal_margin <= center_x <= cx1 + horizontal_margin
+        if not within_band and overlap / min(caption_width, atom_width) < 0.15:
+            continue
+        return True
+    return False
+
+
+def _has_annotation_rich_semantic_scope(
+    atoms: Sequence[PageAtom],
+    *,
+    caption_bbox: BBox,
+    page_height: float,
+) -> bool:
+    if len(atoms) >= 2:
+        return True
+    if not atoms:
+        return False
+    score = _semantic_scope_text_score(atoms[0], caption_bbox=caption_bbox, page_height=page_height)
+    return score >= 0.85
 
 
 def _resolve_page_dimensions(

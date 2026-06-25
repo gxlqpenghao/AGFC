@@ -44,6 +44,30 @@ def test_classify_text_roles_marks_chinese_figure_caption_prefixes():
     ]
 
 
+def test_classify_text_roles_keeps_narrow_sentence_style_caption_prefixes_as_captions():
+    atoms = [
+        _text_atom("en_caption", "Figure 7 shows the evaluation test rig.", (180.0, 400.0, 420.0, 420.0)),
+    ]
+
+    roles = classify_text_roles(atoms, page_width=595.0, page_height=842.0)
+
+    assert [(role.atom_id, role.role, role.matched_prefix, role.figure_number) for role in roles] == [
+        ("en_caption", "figure_caption", "Figure", "7"),
+    ]
+
+
+def test_classify_text_roles_treats_full_width_sentence_initial_figure_reference_as_body_reference():
+    atoms = [
+        _text_atom("body_lead", "Figure 7 shows the ablation trend across all models.", (72.0, 400.0, 520.0, 420.0)),
+    ]
+
+    roles = classify_text_roles(atoms, page_width=595.0, page_height=842.0)
+
+    assert [(role.atom_id, role.role, role.matched_prefix, role.figure_number) for role in roles] == [
+        ("body_lead", "body_reference", "Figure", "7"),
+    ]
+
+
 def test_classify_text_roles_distinguishes_body_references_from_captions():
     atoms = [
         _text_atom("body_en", "The trend is summarized as shown in Figure 2 for all models."),

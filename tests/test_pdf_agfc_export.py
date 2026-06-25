@@ -38,6 +38,74 @@ def test_export_figure_crops_scales_bbox_to_rendered_image(tmp_path: Path):
         assert cropped.size == (60, 80)
 
 
+def test_export_figure_crops_prefers_object_backed_export_when_available(tmp_path: Path, monkeypatch):
+    page_image = Image.new("RGB", (120, 160), "white")
+    figures = [
+        FigureCandidate(
+            id="figure_1",
+            bbox=(10.0, 20.0, 40.0, 60.0),
+            page_idx=0,
+            panel_ids=["panel_1"],
+        )
+    ]
+    fake_doc = object()
+    fake_page = object()
+    object_image = Image.new("RGBA", (3, 2), (255, 0, 0, 128))
+
+    def _fake_extract(doc, page, *, figure_bbox, xref_usage_counts=None, output_path=None):
+        assert doc is fake_doc
+        assert page is fake_page
+        assert figure_bbox == (10.0, 20.0, 40.0, 60.0)
+        assert xref_usage_counts == {86: 1}
+        if output_path is not None:
+            object_image.save(output_path, format="PNG")
+        return object_image
+
+    monkeypatch.setattr("agfc.export.extract_clean_figure_image", _fake_extract)
+
+    exported = export_figure_crops(
+        page_image=page_image,
+        figures=figures,
+        render_dpi=72,
+        output_dir=tmp_path,
+        filename_prefix="page_000",
+        pdf_doc=fake_doc,
+        pdf_page=fake_page,
+        xref_usage_counts={86: 1},
+    )
+
+    with Image.open(exported[0]) as saved:
+        assert saved.size == (3, 2)
+
+
+def test_export_figure_crops_falls_back_to_page_crop_when_object_backed_export_misses(tmp_path: Path, monkeypatch):
+    page_image = Image.new("RGB", (120, 160), "white")
+    figures = [
+        FigureCandidate(
+            id="figure_1",
+            bbox=(10.0, 20.0, 40.0, 60.0),
+            page_idx=0,
+            panel_ids=["panel_1"],
+        )
+    ]
+
+    monkeypatch.setattr("agfc.export.extract_clean_figure_image", lambda *args, **kwargs: None)
+
+    exported = export_figure_crops(
+        page_image=page_image,
+        figures=figures,
+        render_dpi=72,
+        output_dir=tmp_path,
+        filename_prefix="page_000",
+        pdf_doc=object(),
+        pdf_page=object(),
+        xref_usage_counts={140: 45},
+    )
+
+    with Image.open(exported[0]) as saved:
+        assert saved.size == (30, 40)
+
+
 def test_write_page_debug_bundle_writes_seed_candidates_json(tmp_path: Path):
     page_dir = tmp_path / "page_000"
     page_image = Image.new("RGB", (120, 160), "white")

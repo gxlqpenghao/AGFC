@@ -67,8 +67,6 @@ def classify_text_roles(
     page_width: float,
     page_height: float,
 ) -> list[TextRoleEvidence]:
-    del page_width, page_height
-
     roles: list[TextRoleEvidence] = []
     for atom in atoms:
         if not atom.kind.startswith("text"):
@@ -79,7 +77,13 @@ def classify_text_roles(
 
         caption_match = _CAPTION_RE.match(raw_text)
         if caption_match is not None:
-            if not _is_plausible_caption_block(raw_text):
+            if not _is_plausible_caption_block(
+                raw_text,
+                bbox=atom.bbox,
+                page_width=page_width,
+                page_height=page_height,
+                match_end=caption_match.end(),
+            ):
                 roles.append(
                     TextRoleEvidence(
                         atom_id=atom.id,
@@ -137,7 +141,14 @@ def classify_text_roles(
     return roles
 
 
-def _is_plausible_caption_block(raw_text: str) -> bool:
+def _is_plausible_caption_block(
+    raw_text: str,
+    *,
+    bbox: BBox,
+    page_width: float,
+    page_height: float,
+    match_end: int | None = None,
+) -> bool:
     lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
     if len(lines) > 6:
         return False
@@ -146,7 +157,51 @@ def _is_plausible_caption_block(raw_text: str) -> bool:
     body_section_re = re.compile(r"^\s*\d+(?:\.\d+)*\.?\s+[A-Z][A-Za-z -]{4,}")
     if any(body_section_re.match(line) for line in lines[1:]):
         return False
+    if _looks_like_full_width_leading_reference(
+        raw_text,
+        bbox=bbox,
+        page_width=page_width,
+        page_height=page_height,
+        match_end=match_end,
+    ):
+        return False
     return True
+
+
+def _looks_like_full_width_leading_reference(
+    raw_text: str,
+    *,
+    bbox: BBox,
+    page_width: float,
+    page_height: float,
+    match_end: int | None,
+) -> bool:
+    if match_end is None:
+        return False
+    suffix = raw_text[match_end:].lstrip()
+    if not suffix:
+        return False
+    if suffix[:1] in {":", "：", ".", "。", ")", "）", "]", "-", "—"}:
+        return False
+
+    x0, y0, x1, y1 = bbox
+    resolved_page_width = max(page_width, 1.0)
+    resolved_page_height = max(page_height, 1.0)
+    width_ratio = max(0.0, x1 - x0) / resolved_page_width
+    left_margin_ratio = x0 / resolved_page_width
+    right_margin_ratio = max(0.0, resolved_page_width - x1) / resolved_page_width
+    height_ratio = max(0.0, y1 - y0) / resolved_page_height
+    is_full_width_sentence = (
+        width_ratio >= 0.68
+        and left_margin_ratio <= 0.18
+        and right_margin_ratio <= 0.18
+        and height_ratio <= 0.08
+    )
+    if not is_full_width_sentence:
+        return False
+    if re.match(r"^(?:所示|显示|顯示)", suffix):
+        return True
+    return bool(re.match(r"^[a-z]", suffix))
 
 
 def build_figure_anchor_candidates(roles: list[TextRoleEvidence]) -> list[FigureAnchorCandidate]:
