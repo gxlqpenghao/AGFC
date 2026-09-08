@@ -9,6 +9,8 @@ import time
 from pathlib import Path
 from typing import Any
 
+from agfc.runtime.output import prepare_output_dir
+
 from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.integrations.mineru.mineru_postprocessed_adapter import (
     mineru_postprocessed_dir_for_pdf,
@@ -38,12 +40,12 @@ def run_journalmix_mineru_baseline(
     write_visualizations: bool = False,
 ) -> dict[str, Any]:
     dataset_path = Path(dataset_root)
-    output_path = Path(output_dir)
+    output_path = Path(output_dir).expanduser().resolve()
     runtime_path = Path(runtime_root)
     parsed_path = Path(parsed_root) if parsed_root is not None else runtime_path / "runtime" / "parsed" / "mineru"
     records = load_journalmix_selected_page_records(dataset_path)
 
-    _reset_output_dir(output_path)
+    prepare_output_dir(output_path)
     source_dir = output_path / "runtime_source"
     source_dir.mkdir(parents=True, exist_ok=True)
     pending_source_dir = output_path / "runtime_source_pending"
@@ -192,12 +194,6 @@ def run_mineru_runtime_pilot(*, runtime_root: Path, source_dir: Path, report_dir
         "stopped_after_directory_ingest": stopped_after_directory_ingest,
         "ingest_completed": ingest_completed,
     }
-
-
-def _reset_output_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
 
 
 def _has_mineru_prediction_artifacts(staged_pdf: Path, *, parsed_root: Path) -> bool:

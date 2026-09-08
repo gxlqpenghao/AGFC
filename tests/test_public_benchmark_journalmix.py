@@ -103,7 +103,7 @@ def test_cli_benchmark_journalmix_invokes_report(tmp_path: Path, monkeypatch):
         Path(kwargs["output_dir"]).mkdir(parents=True)
         return {"aggregate": {"f1": 1.0}, "performance": {"wall_seconds": 1.2}}
 
-    monkeypatch.setattr(cli, "run_journalmix_performance_report", fake_run_report)
+    monkeypatch.setattr("agfc.research.benchmark_reports.run_journalmix_performance_report", fake_run_report)
 
     exit_code = cli.main(
         [

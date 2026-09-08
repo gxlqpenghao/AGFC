@@ -1,0 +1,85 @@
+{
+  "release": "0.1.1",
+  "base_commit": "686748b3c481050ae8880d9b62ecf6168c3fbb66",
+  "baseline": "base commit plus pre-existing local source changes; same reconciled dataset and local source map",
+  "python": "3.9.6",
+  "pymupdf": "1.26.5",
+  "pillow": "11.3.0",
+  "baseline_metrics": {
+    "page_count": 84,
+    "total_gt_count": 106,
+    "total_prediction_count": 106,
+    "total_match_count": 106,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "iou": 0.9657
+  },
+  "release_metrics": {
+    "page_count": 84,
+    "total_gt_count": 106,
+    "total_prediction_count": 106,
+    "total_match_count": 106,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "iou": 0.9657
+  },
+  "changed_page_results": [],
+  "gt_unchanged": true,
+  "inventory": {
+    "core": {
+      "modules": 35,
+      "lines": 14466
+    },
+    "runtime": {
+      "modules": 7,
+      "lines": 1227
+    },
+    "contracts": {
+      "modules": 1,
+      "lines": 149
+    },
+    "adapters": {
+      "modules": 15,
+      "lines": 876
+    },
+    "research": {
+      "modules": 19,
+      "lines": 4251
+    }
+  },
+  "dataset_revision": "v1.1",
+  "tests": {
+    "python3.9": 515,
+    "python3.11": 515,
+    "python3.13": 515
+  },
+  "wheel_smoke": "passed outside checkout; both demos, package version, pinned dependencies and schemas",
+  "static_checks": "F401 F811 F821 F841 and git diff --check",
+  "python3.13_pinned_metrics": {
+    "page_count": 84,
+    "total_gt_count": 106,
+    "total_prediction_count": 106,
+    "total_match_count": 106,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "iou": 0.9657
+  },
+  "rejected_dependency_experiment": {
+    "pymupdf": "1.28.0",
+    "pillow": "12.3.0",
+    "python": "3.13",
+    "metrics": {
+      "page_count": 84,
+      "total_gt_count": 106,
+      "total_prediction_count": 106,
+      "total_match_count": 105,
+      "precision": 0.9906,
+      "recall": 0.9906,
+      "f1": 0.9906,
+      "iou": 0.954
+    }
+  }
+}

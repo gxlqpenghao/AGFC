@@ -19,3 +19,6 @@ data/private/*
 data/sample_corpus/
 src/**/__pycache__/
 tests/**/__pycache__/
+
+# Machine-specific private source locations
+source_map.local.json

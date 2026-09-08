@@ -8,7 +8,6 @@ import fitz
 
 from agfc.integrations.mineru.mineru_postprocessed_adapter import mineru_postprocessed_dir_for_pdf
 from agfc.journalmix_mineru_baseline import run_journalmix_mineru_baseline
-from agfc.journalmix_selected_pages import extract_single_page_pdf
 
 
 def test_run_journalmix_mineru_baseline_uses_selected_single_page_pdfs(tmp_path: Path, monkeypatch):

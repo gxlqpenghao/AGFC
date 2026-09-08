@@ -92,7 +92,7 @@ def extract_clean_figure_image(
         figure_bbox=figure_bbox,
         xref_usage_counts=xref_usage_counts,
     )
-    if match is None:
+    if match is None or _requires_composite_render(page, match, figure_bbox):
         return None
 
     extract_image = getattr(doc, "extract_image", None)
@@ -115,13 +115,15 @@ def extract_clean_figure_image(
         try:
             smask_payload = extract_image(match.smask)
         except Exception:
-            smask_payload = None
+            return None
         smask_bytes = smask_payload.get("image") if isinstance(smask_payload, dict) else None
         if isinstance(smask_bytes, (bytes, bytearray)):
             try:
                 image = _apply_smask(image, smask_bytes)
             except (UnidentifiedImageError, OSError, ValueError):
-                pass
+                return None
+        else:
+            return None
 
     if output_path is not None:
         destination = Path(output_path)
@@ -131,6 +133,36 @@ def extract_clean_figure_image(
         _save_png(image, destination)
 
     return image
+
+
+def _requires_composite_render(page: object, match: ImageXObjectMatch, figure_bbox: BBox) -> bool:
+    """A raw XObject cannot preserve overlaid labels, clipping or transforms."""
+    get_bboxlog = getattr(page, "get_bboxlog", None)
+    if not callable(get_bboxlog):
+        return False  # Lightweight page adapters may expose only image objects.
+    try:
+        if getattr(page, "rotation", 0):
+            return True
+        if any(abs(left - right) > 0.5 for left, right in zip(match.bbox, figure_bbox)):
+            return True
+        overlapping_images = 0
+        for kind, bbox, *_ in get_bboxlog():
+            if _bbox_area(_intersect_bbox(_bbox_tuple(bbox), figure_bbox)) <= 0:
+                continue
+            if kind == "fill-image":
+                overlapping_images += 1
+            elif kind != "ignore-text":
+                return True
+        if overlapping_images != 1:
+            return True
+        for rect, matrix in page.get_image_rects(match.xref, transform=True):
+            if _bbox_tuple(rect) != match.bbox:
+                continue
+            if abs(matrix.b) > 1e-6 or abs(matrix.c) > 1e-6 or matrix.a <= 0 or matrix.d <= 0:
+                return True
+        return False
+    except Exception:
+        return True  # Preserve the rendered page when composition cannot be verified.
 
 
 def _apply_smask(image: Image.Image, smask_bytes: bytes | bytearray) -> Image.Image:

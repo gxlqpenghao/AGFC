@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
+
+from agfc.runtime.output import prepare_output_dir
 
 from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
@@ -26,12 +27,12 @@ def run_journalmix_agfc_benchmark(
     reset_output: bool = True,
 ) -> dict[str, Any]:
     dataset_path = Path(dataset_root)
-    output_path = Path(output_dir)
+    output_path = Path(output_dir).expanduser().resolve()
     manifest = _load_dataset_manifest(dataset_path)
     records = load_journalmix_records(dataset_path)
 
     if reset_output:
-        _reset_output_dir(output_path)
+        prepare_output_dir(output_path)
     else:
         output_path.mkdir(parents=True, exist_ok=True)
     (output_path / "pages").mkdir(parents=True, exist_ok=True)
@@ -211,12 +212,6 @@ def _load_dataset_manifest(dataset_root: Path) -> dict[str, Any]:
     if not manifest_path.exists():
         raise FileNotFoundError(f"JournalMix manifest not found: {manifest_path}")
     return json.loads(manifest_path.read_text(encoding="utf-8"))
-
-
-def _reset_output_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
 
 
 def main() -> int:

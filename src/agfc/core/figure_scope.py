@@ -8,7 +8,7 @@ from agfc.models import BBox, PageAtom
 
 
 LEADING_FIGURE_SCOPE_RE = re.compile(
-    r"^\s*(?:fig(?:ure)?\.?|figure|图|圖)\s*(?P<number>\d+[A-Za-z]?)(?=\s|[:：.。)、)\]-]|$)",
+    r"^\s*(?:fig(?:ure)?\.?|figure|图|圖)\s*(?P<number>\d+(?:\.\d+)*(?:-\d+)?[A-Za-z]?)(?=\s|[:：.。)、)\]-]|$)",
     re.IGNORECASE,
 )
 

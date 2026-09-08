@@ -4,7 +4,7 @@ from agfc.figure_objects import (
     build_figure_object_candidates,
 )
 from agfc.models import PageAtom
-from agfc.pipeline_models import ClosureResult, FigureObjectCandidate, SeedCandidate
+from agfc.pipeline_models import ClosureResult, SeedCandidate
 from agfc.primitive_evidence import PrimitiveEvidence
 from agfc.raster_object_split import RasterObjectSplitProposal
 from PIL import Image, ImageDraw

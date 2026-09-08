@@ -172,3 +172,9 @@ python3 -m pytest \
 ## Scope Notes
 
 AGFC v0.1 productizes the current figure extraction baseline. Known extraction-quality issues should be fixed in AGFC core over time, but major algorithm changes are outside this release packaging pass.
+
+## Frozen release v0.1.1
+
+See the [release audit](docs/audits/v0.1.1.md) for architecture, removals, evidence and compatibility notes. Reproduce the environment with `git checkout v0.1.1`, `uv sync --locked --python 3.9` and `uv run --locked python -m pytest -q`. Optional HTTP integrations are available through `pip install '.[integrations]'`.
+
+Extraction and benchmark outputs must be new or empty directories. The complete 84-page JournalMix run requires the local private tunnel-paper mapping described in the [dataset notes](docs/benchmarks/journalmix-v1-dataset.md).

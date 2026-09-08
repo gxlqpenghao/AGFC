@@ -131,6 +131,8 @@ def _looks_like_visual_annotation_text(raw_text: str) -> bool:
         return True
     if _looks_like_axis_variable_annotation(text):
         return True
+    if _looks_like_short_cjk_diagram_label(text):
+        return True
     if len(text) > 90:
         return False
     tokens = re.findall(r"[A-Za-z]+|\d+(?:\.\d+)?", text)
@@ -153,6 +155,17 @@ def _looks_like_axis_variable_annotation(text: str) -> bool:
     return re.search(r"[αβγδεθκλμρσφψωξ]", text, re.IGNORECASE) is not None or (
         len(re.findall(r"\b[xyz](?:[A-Z]{1,3})?\b", text)) >= 2
     )
+
+
+def _looks_like_short_cjk_diagram_label(text: str) -> bool:
+    compact = re.sub(r"\s+", "", text)
+    if not re.fullmatch(r"[\u3400-\u9fff]{2,8}", compact):
+        return False
+    return re.search(
+        r"(?:拱顶|拱腰|墙角|台阶|测线|掌子面|界面|透镜|空洞|断面|"
+        r"^[左右上下前后内外中](?:拱|墙|角|腰|顶|底|线|侧|端|部|面|层|段))",
+        compact,
+    ) is not None
 
 
 def _starts_like_table_context(text: str) -> bool:

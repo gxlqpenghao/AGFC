@@ -4,13 +4,14 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 from dataclasses import asdict, is_dataclass
 from datetime import datetime
 from pathlib import Path
 
 import fitz
 from PIL import Image
+
+from agfc.runtime.output import prepare_output_dir
 
 from agfc.atoms import collect_page_atoms
 from agfc.bipolar_closure import compute_bipolar_closure
@@ -63,15 +64,7 @@ def create_run_dir(root: Path, *, now: datetime | None = None) -> Path:
     now = now or datetime.now()
     run_dir = root / now.strftime("%Y%m%d_%H%M%S_%f")
     run_dir.mkdir(parents=True, exist_ok=True)
-    (run_dir / "images").mkdir(parents=True, exist_ok=True)
-    (run_dir / "pages").mkdir(parents=True, exist_ok=True)
     return run_dir
-
-
-def reset_output_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
 
 
 def _serialize(value):
@@ -122,24 +115,28 @@ def run_pdf(
     pages: list[int] | None = None,
     benchmark_only: bool = False,
 ) -> Path:
-    pdf_path = Path(pdf_path).resolve()
-    if not pdf_path.exists():
-        raise SystemExit(f"PDF not found: {pdf_path}")
-
-    run_dir = Path(output_dir).resolve() if output_dir is not None else create_run_dir(RUNS_DIR)
-    reset_output_dir(run_dir)
-    (run_dir / "images").mkdir(parents=True, exist_ok=True)
-    (run_dir / "pages").mkdir(parents=True, exist_ok=True)
+    pdf_path = Path(pdf_path).expanduser().resolve()
+    if not pdf_path.is_file():
+        raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
     doc = fitz.open(pdf_path)
     try:
+        if doc.needs_pass:
+            raise ValueError("Encrypted PDF requires a password and is not supported")
+        page_indexes = list(range(len(doc))) if pages is None else list(pages)
+        if not page_indexes or any(type(index) is not int or index < 0 or index >= len(doc) for index in page_indexes):
+            raise ValueError("pages must contain valid zero-based page indexes")
+        page_indexes = list(dict.fromkeys(page_indexes))
+        run_dir = prepare_output_dir(output_dir if output_dir is not None else create_run_dir(RUNS_DIR))
+        (run_dir / "images").mkdir()
+        (run_dir / "pages").mkdir()
         xref_usage_counts = _compute_image_xref_usage_counts(doc)
-        page_indexes = pages if pages else list(range(len(doc)))
         page_payloads: list[dict] = []
         for page_idx in page_indexes:
-            if page_idx < 0 or page_idx >= len(doc):
-                continue
             page = doc[page_idx]
+            # PyMuPDF text/drawing coordinates are unrotated; keep rendering in that space.
+            if page.rotation:
+                page.set_rotation(0)
             text_dict = page.get_text("dict")
             atoms = collect_page_atoms(page, page_idx=page_idx)
             primitive_evidence = collect_page_primitive_evidence(page, page_idx=page_idx)

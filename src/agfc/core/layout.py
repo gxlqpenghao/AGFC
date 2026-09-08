@@ -4,7 +4,7 @@ from collections import Counter
 from statistics import median
 from typing import Any
 
-from agfc.pipeline_models import LayoutFingerprint, TypographyDNA
+from agfc.pipeline_models import LayoutFingerprint
 
 
 def compute_layout_fingerprint(

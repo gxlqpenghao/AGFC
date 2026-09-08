@@ -875,6 +875,56 @@ def test_content_branch_without_explicit_exclusions_cannot_replace_complete_with
     assert figures[0].metadata["final_boundary_strategy"] == "complete_object_evidence"
 
 
+def test_coarse_nonraster_content_branch_cannot_replace_caption_scoped_complete_with_side_fragment():
+    atoms = [
+        PageAtom(id="full_framework", kind="vector_cluster", bbox=(0.0, 0.0, 450.0, 140.0), page_idx=0),
+        PageAtom(id="left_flowchart", kind="vector_cluster", bbox=(0.0, 2.0, 205.0, 136.0), page_idx=0),
+        PageAtom(id="caption", kind="text_block", bbox=(0.0, 160.0, 450.0, 176.0), page_idx=0, text="Figure 3: Framework"),
+    ]
+    objects = [
+        FigureObjectCandidate(
+            id="complete_framework",
+            seed_id="panel",
+            owned_atom_ids=["full_framework"],
+            support_bbox=(0.0, 0.0, 450.0, 140.0),
+            content_bbox=(0.0, 0.0, 450.0, 140.0),
+            object_score=2.0,
+            metadata={
+                "hypothesis_kind": "compound",
+                "object_strategy": "compound_support_union",
+                "seed_evidence_tags": ["visual_community"],
+                "figure_scope": "3",
+                "boundary_metadata": {"calibration_confidence": 0.95},
+            },
+        ),
+        FigureObjectCandidate(
+            id="left_fragment_content",
+            seed_id="panel",
+            owned_atom_ids=["left_flowchart"],
+            excluded_atom_ids=["full_framework"],
+            support_bbox=(0.0, 0.0, 450.0, 140.0),
+            content_bbox=(0.0, 2.0, 205.0, 136.0),
+            object_score=8.0,
+            metadata={
+                "hypothesis_kind": "content_branch",
+                "object_strategy": "coarse_nonraster_decomposition",
+                "content_region_source": "nonraster_content_decomposition_helper",
+                "evidence_ids": [f"fill_{index}" for index in range(35)],
+                "evidence_kind_counts": {"fill": 35, "line": 8},
+                "global_coarse_atom_ids": ["full_framework"],
+                "content_to_support_promotion_score": -1.0,
+                "boundary_metadata": {"calibration_confidence": 1.0},
+            },
+        ),
+    ]
+
+    figures = figure_instances_to_figure_candidates(build_figure_instances(objects, atoms=atoms), page_idx=0)
+
+    assert figures[0].content_bbox == (0.0, 0.0, 450.0, 140.0)
+    assert figures[0].metadata["final_boundary_strategy"] == "complete_object_evidence"
+    assert "left_fragment_content" in figures[0].boundary_metadata["rejected_boundary_proposal_ids"]
+
+
 def test_primitive_content_branch_cannot_replace_complete_when_it_crops_one_side():
     atoms = [
         PageAtom(id="body", kind="vector_cluster", bbox=(0.0, 0.0, 100.0, 100.0), page_idx=0),
@@ -1854,6 +1904,111 @@ def test_semantic_annotation_envelope_can_trim_broad_nonraster_carrier():
         "x_axis",
         "y_axis",
     ]
+
+
+def test_semantic_annotation_envelope_does_not_shrink_caption_anchor_vector_visual_to_internal_labels():
+    atoms = [
+        PageAtom(id="tunnel_outline", kind="vector_cluster", bbox=(143.0, 278.0, 264.0, 374.0), page_idx=0),
+        _text("internal_labels", (148.0, 315.0, 211.0, 337.0), "测线1\n测线2\n上台阶"),
+    ]
+    objects = [
+        FigureObjectCandidate(
+            id="caption_anchored_tunnel",
+            seed_id="caption_5_2_2_3",
+            owned_atom_ids=["tunnel_outline"],
+            support_bbox=(143.0, 278.0, 264.0, 374.0),
+            content_bbox=(143.0, 278.0, 264.0, 374.0),
+            object_score=2.0,
+            metadata={
+                "hypothesis_kind": "compound",
+                "object_strategy": "compound_support_union",
+                "seed_evidence_tags": ["caption_anchor_visual"],
+                "figure_scope": "5.2.2-3",
+            },
+        )
+    ]
+
+    figures = figure_instances_to_figure_candidates(build_figure_instances(objects, atoms=atoms), page_idx=0)
+
+    assert figures[0].content_bbox == (143.0, 278.0, 264.0, 374.0)
+    assert figures[0].metadata["final_boundary_strategy"] == "complete_object_evidence"
+    assert figures[0].boundary_metadata["included_annotation_atom_ids"] == []
+    assert figures[0].boundary_metadata["rejected_annotation_atom_ids"] == ["internal_labels"]
+
+
+def test_caption_anchor_vector_visual_expands_to_short_chinese_edge_labels():
+    atoms = [
+        PageAtom(id="tunnel_outline", kind="vector_cluster", bbox=(143.0, 278.0, 264.0, 374.0), page_idx=0),
+        _text("vault", (196.0, 268.0, 210.0, 275.0), "拱顶"),
+        _text("left_haunch", (123.0, 318.0, 143.0, 325.0), "左拱腰"),
+        _text("left_corner", (120.0, 352.0, 141.0, 359.0), "左墙角"),
+        _text("right_haunch", (265.0, 318.0, 286.0, 325.0), "右拱腰"),
+        _text("right_corner", (265.0, 352.0, 286.0, 359.0), "右墙角"),
+        _text("lower_bench", (148.0, 346.0, 169.0, 353.0), "下台阶"),
+    ]
+    objects = [
+        FigureObjectCandidate(
+            id="caption_anchored_tunnel",
+            seed_id="caption_5_2_2_3",
+            owned_atom_ids=["tunnel_outline"],
+            support_bbox=(143.0, 278.0, 264.0, 374.0),
+            content_bbox=(143.0, 278.0, 264.0, 374.0),
+            object_score=2.0,
+            metadata={
+                "hypothesis_kind": "compound",
+                "object_strategy": "compound_support_union",
+                "seed_evidence_tags": ["caption_anchor_visual"],
+                "figure_scope": "5.2.2-3",
+            },
+        )
+    ]
+
+    figures = figure_instances_to_figure_candidates(build_figure_instances(objects, atoms=atoms), page_idx=0)
+
+    assert figures[0].content_bbox == (120.0, 268.0, 286.0, 374.0)
+    assert set(figures[0].boundary_metadata["included_annotation_atom_ids"]) == {
+        "left_corner",
+        "left_haunch",
+        "lower_bench",
+        "right_corner",
+        "right_haunch",
+        "vault",
+    }
+
+
+def test_caption_anchor_vector_visual_keeps_bottom_edge_without_bottom_label():
+    atoms = [
+        PageAtom(id="tunnel_outline", kind="vector_cluster", bbox=(357.0, 278.0, 477.0, 374.0), page_idx=0),
+        _text("vault", (409.0, 268.0, 423.0, 276.0), "拱顶"),
+        _text("left_haunch", (337.0, 317.0, 358.0, 325.0), "左拱腰"),
+        _text("left_corner", (335.0, 352.0, 356.0, 359.0), "左墙角"),
+        _text("right_haunch", (477.0, 317.0, 498.0, 325.0), "右拱腰"),
+        _text("right_corner", (477.0, 352.0, 498.0, 359.0), "右墙角"),
+        _text("survey_lines", (409.0, 332.0, 425.0, 346.0), "测线1\n测线2"),
+    ]
+    objects = [
+        FigureObjectCandidate(
+            id="caption_anchored_tunnel",
+            seed_id="caption_5_2_2_4",
+            owned_atom_ids=["tunnel_outline"],
+            support_bbox=(357.0, 278.0, 477.0, 374.0),
+            content_bbox=(357.0, 278.0, 477.0, 374.0),
+            object_score=2.0,
+            metadata={
+                "hypothesis_kind": "compound",
+                "object_strategy": "compound_support_union",
+                "seed_evidence_tags": ["caption_anchor_visual"],
+                "figure_scope": "5.2.2-4",
+            },
+        )
+    ]
+
+    figures = figure_instances_to_figure_candidates(build_figure_instances(objects, atoms=atoms), page_idx=0)
+
+    assert figures[0].content_bbox == (335.0, 268.0, 498.0, 374.0)
+    assert figures[0].boundary_metadata["semantic_annotation_envelope_decision"] == (
+        "rejected_caption_anchor_visual_retention"
+    )
 
 
 def test_semantic_annotation_envelope_recovers_adjacent_labels_rejected_by_expansion_budget():

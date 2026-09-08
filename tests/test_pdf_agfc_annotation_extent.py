@@ -93,6 +93,18 @@ def test_chinese_body_heading_near_raster_is_not_annotation():
     assert is_nonraster_annotation_atom(atom, content_bbox=(90.0, 70.0, 506.0, 310.0)) is False
 
 
+def test_short_chinese_diagram_edge_labels_are_visual_annotations():
+    content_bbox = (143.0, 278.0, 264.0, 374.0)
+    labels = [
+        PageAtom(id="vault", kind="text_block", bbox=(196.0, 268.0, 210.0, 275.0), page_idx=0, text="拱顶"),
+        PageAtom(id="left_haunch", kind="text_block", bbox=(123.0, 318.0, 143.0, 325.0), page_idx=0, text="左拱腰"),
+        PageAtom(id="right_corner", kind="text_block", bbox=(265.0, 352.0, 286.0, 359.0), page_idx=0, text="右墙角"),
+        PageAtom(id="lower_bench", kind="text_block", bbox=(148.0, 346.0, 169.0, 353.0), page_idx=0, text="下台阶"),
+    ]
+
+    assert all(is_nonraster_annotation_atom(atom, content_bbox=content_bbox) for atom in labels)
+
+
 def test_page_number_footer_is_not_annotation():
     atom = PageAtom(
         id="footer",

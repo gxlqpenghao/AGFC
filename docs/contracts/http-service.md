@@ -121,3 +121,12 @@ Invalid requests return:
   "message": "Missing required path field: input"
 }
 ```
+
+## v0.1.1 validation and output policy
+
+- Outputs must be new or empty. Existing extraction results are never recursively deleted; use a fresh output directory for each request.
+- `/extract` also accepts `pages`, a nonempty list of valid zero-based integer page indexes. Omit it for all pages.
+- POST requires one valid `Content-Length` header, UTF-8 JSON and an object payload. Chunked transfer encoding is not supported.
+- Request bodies are limited to 1 MiB (413); body reads time out after 30 seconds (408).
+- Invalid paths/parameters return 400. Unexpected engine failures return 500 with a generic JSON error, and the service remains available.
+- This is a serial, trusted-local sidecar with filesystem access. It has no authentication, job queue or process isolation; keep the default loopback binding. Body timeouts do not impose a CPU-time limit on PDF extraction.

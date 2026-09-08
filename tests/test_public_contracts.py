@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from agfc import __version__
 from agfc.contracts import build_extract_result, write_contract_json
 
 
@@ -39,7 +40,7 @@ def test_build_extract_result_exposes_stable_image_fields(tmp_path: Path):
     result = build_extract_result(run_dir, source_path=source_path)
 
     assert result["engine"] == "agfc"
-    assert result["engine_version"] == "0.1.0"
+    assert result["engine_version"] == __version__
     assert result["input"]["source_format"] == "pdf"
     assert result["artifacts"]["run_dir"] == str(run_dir.resolve())
     assert result["artifacts"]["summary_json"] == str((run_dir / "summary.json").resolve())

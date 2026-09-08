@@ -13,10 +13,12 @@ def load_journalmix_selected_page_records(
     *,
     page_ids: list[str] | None = None,
 ) -> list[dict[str, Any]]:
-    dataset_path = Path(dataset_root)
+    dataset_path = Path(dataset_root).expanduser().resolve()
     selected_rows = _load_selected_rows(dataset_path)
     allowed_page_ids = {str(page_id) for page_id in page_ids} if page_ids is not None else None
     selected_row_by_page_id = {row["page_id"]: row for row in selected_rows}
+    if allowed_page_ids is not None and (not allowed_page_ids or allowed_page_ids - selected_row_by_page_id.keys()):
+        raise ValueError("page_ids must contain known JournalMix page IDs")
     candidate_source_map = _load_candidate_source_map(dataset_path)
     candidate_rows_by_page_dir = _load_candidate_rows_by_page_dir(dataset_path)
     doc_source_map = _load_doc_source_map(dataset_path)
@@ -34,7 +36,7 @@ def load_journalmix_selected_page_records(
         candidate_id = ""
         if candidate_row is not None:
             candidate_id = str(candidate_row.get("candidate_id", "") or "")
-        elif row.get("candidate_id"):
+        elif row.get("candidate_id") and row.get("doc_id") == meta.get("doc_id"):
             candidate_id = str(row.get("candidate_id", "") or "")
 
         source_pdf = candidate_source_map.get(candidate_id) if (candidate_row is not None and candidate_id) else None
@@ -42,7 +44,7 @@ def load_journalmix_selected_page_records(
             source_pdf = _resolve_doc_source_pdf(doc_source_map, str(meta.get("doc_id", "") or ""))
         if source_pdf is None and candidate_id:
             source_pdf = candidate_source_map.get(candidate_id)
-        if source_pdf is None:
+        if source_pdf is None or not source_pdf.is_file():
             raise FileNotFoundError(
                 f"Unable to resolve source PDF for page_id={page_id}, candidate_id={candidate_id}, doc_id={meta.get('doc_id', '')}"
             )
@@ -110,7 +112,7 @@ def _load_candidate_source_map(dataset_root: Path) -> dict[str, Path]:
             candidate_id = row.get("candidate_id", "").strip()
             source_pdf = row.get("source_pdf", "").strip()
             if candidate_id and source_pdf:
-                result[candidate_id] = Path(source_pdf)
+                result[candidate_id] = _resolve_source_path(dataset_root, source_pdf)
     return result
 
 
@@ -137,7 +139,7 @@ def _load_doc_source_map(dataset_root: Path) -> dict[str, Path]:
         for doc_id, path in payload.items():
             if doc_id.startswith("_") or not path:
                 continue
-            result[str(doc_id)] = Path(path)
+            result[str(doc_id)] = _resolve_source_path(dataset_root, str(path))
 
     for pdf_path in (dataset_root / "source_pdfs").glob("*/*.pdf"):
         stem = pdf_path.stem
@@ -163,3 +165,14 @@ def _resolve_doc_source_pdf(doc_source_map: dict[str, Path], doc_id: str) -> Pat
         if f"arxiv_{suffix}" in doc_source_map:
             return doc_source_map[f"arxiv_{suffix}"]
     return None
+
+
+def _resolve_source_path(dataset_root: Path, raw: str) -> Path:
+    path = Path(raw).expanduser()
+    if path.is_absolute():
+        return path
+    for base in (dataset_root, *dataset_root.parents):
+        candidate = base / path
+        if candidate.is_file():
+            return candidate
+    return dataset_root / path

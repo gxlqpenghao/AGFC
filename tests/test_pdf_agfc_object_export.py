@@ -269,7 +269,7 @@ def test_extract_clean_figure_image_returns_none_when_primary_image_decode_fails
     assert image is None
 
 
-def test_extract_clean_figure_image_ignores_invalid_smask_and_keeps_base_image():
+def test_extract_clean_figure_image_falls_back_when_smask_is_invalid():
     page = FakePage(
         image_entries=[
             (200, 301, 2, 1, 8, "DeviceRGB", "", "Im200", "FlateDecode", 0),
@@ -296,7 +296,4 @@ def test_extract_clean_figure_image_ignores_invalid_smask_and_keeps_base_image()
         xref_usage_counts={200: 1},
     )
 
-    assert image is not None
-    assert image.mode == "RGB"
-    assert image.getpixel((0, 0)) == (255, 0, 0)
-    assert image.getpixel((1, 0)) == (255, 0, 0)
+    assert image is None

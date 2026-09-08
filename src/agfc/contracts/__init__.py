@@ -25,6 +25,8 @@ def build_extract_result(
     run_path = Path(run_dir).resolve()
     summary_path = run_path / "summary.json"
     summary = _read_json_object(summary_path)
+    if not isinstance(summary.get("pages"), list) or any(not isinstance(page, dict) for page in summary["pages"]):
+        raise ValueError("summary.pages must be a list of page records")
     resolved_source = Path(source_path or summary.get("pdf", "")).expanduser()
     source_format = resolved_source.suffix.lower().lstrip(".") or "unknown"
     images_dir = run_path / "images"
@@ -62,9 +64,11 @@ def _public_image_record(
     figure: dict[str, Any],
 ) -> dict[str, Any]:
     figure_id = str(figure.get("id") or f"page_{page_idx:03d}_figure_{figure_index + 1}")
-    asset = _resolve_asset_path(images_dir, page_idx, figure_index, figure_id)
-    asset_path = _relative_posix_path(asset, run_path) if asset is not None else ""
-    asset_id = asset.stem if asset is not None else figure_id
+    asset = _resolve_asset_path(images_dir, page_idx, figure_id)
+    if asset is None:
+        raise FileNotFoundError(f"Missing exported asset for page {page_idx}, figure {figure_id}")
+    asset_path = _relative_posix_path(asset, run_path)
+    asset_id = asset.stem
     metadata = figure.get("metadata") if isinstance(figure.get("metadata"), dict) else {}
     boundary_metadata = figure.get("boundary_metadata") if isinstance(figure.get("boundary_metadata"), dict) else {}
     figure_bbox = _bbox_list(figure.get("bbox"))
@@ -97,30 +101,25 @@ def _public_image_record(
     return record
 
 
-def _resolve_asset_path(images_dir: Path, page_idx: int, figure_index: int, figure_id: str) -> Path | None:
+def _resolve_asset_path(images_dir: Path, page_idx: int, figure_id: str) -> Path | None:
     preferred = images_dir / f"page_{page_idx:03d}_{figure_id}.png"
-    if preferred.exists():
+    if preferred.is_file():
         return preferred
-    candidates = sorted(path for path in images_dir.glob(f"page_{page_idx:03d}_*.png") if path.is_file())
-    if figure_index < len(candidates):
-        return candidates[figure_index]
     return None
 
 
 def _read_json_object(path: Path) -> dict[str, Any]:
-    if not path.exists():
-        return {}
     payload = json.loads(path.read_text(encoding="utf-8"))
-    return payload if isinstance(payload, dict) else {}
+    if not isinstance(payload, dict):
+        raise ValueError(f"Expected JSON object: {path}")
+    return payload
 
 
 def _read_json_list(path: Path) -> list[dict[str, Any]]:
-    if not path.exists():
-        return []
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, list):
-        return []
-    return [item for item in payload if isinstance(item, dict)]
+    if not isinstance(payload, list) or any(not isinstance(item, dict) for item in payload):
+        raise ValueError(f"Expected list of figure records: {path}")
+    return payload
 
 
 def _bbox_list(value: Any) -> list[float]:

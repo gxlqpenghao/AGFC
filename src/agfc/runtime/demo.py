@@ -6,6 +6,7 @@ from pathlib import Path
 import fitz
 from PIL import Image, ImageDraw
 
+from agfc import __version__
 from agfc.adapters.mineru import repair_mineru_artifact
 from agfc.contracts import build_extract_result, write_contract_json
 from agfc.runner import run_pdf
@@ -83,7 +84,7 @@ def _synthetic_demo_extract_result(output_dir: Path) -> dict:
     image.save(image_path)
     return {
         "engine": "agfc",
-        "engine_version": "0.1.0",
+        "engine_version": __version__,
         "input": {"source_path": "", "source_format": "pdf"},
         "artifacts": {"run_dir": str(run_dir), "images_dir": str(images_dir)},
         "images": [

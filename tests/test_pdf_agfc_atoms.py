@@ -119,6 +119,109 @@ class _FakeXrefImagePage:
         return list(self._drawings)
 
 
+def test_collect_page_atoms_splits_parallel_figure_caption_lines():
+    page = _FakeXrefImagePage(
+        blocks=[
+            {
+                "type": 0,
+                "bbox": (90.0, 248.0, 498.0, 263.0),
+                "number": 4,
+                "lines": [
+                    {
+                        "bbox": (90.0, 248.0, 320.0, 263.0),
+                        "spans": [{"text": "图5.2.2-1 LTD-2600 型地质雷达"}],
+                    },
+                    {
+                        "bbox": (334.0, 248.0, 498.0, 263.0),
+                        "spans": [{"text": "图5.2.2-2 雷达预报测试原理示意图"}],
+                    },
+                ],
+            }
+        ],
+        images=[],
+        image_rects={},
+    )
+
+    atoms = collect_page_atoms(page, page_idx=12)
+
+    caption_atoms = [atom for atom in atoms if atom.kind == "text_block"]
+    assert [(atom.text, atom.bbox) for atom in caption_atoms] == [
+        ("图5.2.2-1 LTD-2600 型地质雷达", (90.0, 248.0, 320.0, 263.0)),
+        ("图5.2.2-2 雷达预报测试原理示意图", (334.0, 248.0, 498.0, 263.0)),
+    ]
+
+
+def test_collect_page_atoms_promotes_dense_fill_only_line_art_to_vector_cluster():
+    def _fill_rect(x0, y0, x1, y1):
+        return {"type": "f", "rect": fitz.Rect(x0, y0, x1, y1), "fill": (0.0, 0.0, 0.0)}
+
+    page = _FakeXrefImagePage(
+        blocks=[],
+        images=[],
+        image_rects={},
+        drawings=[
+            _fill_rect(120.0, 280.0, 132.0, 288.0),
+            _fill_rect(134.0, 276.0, 146.0, 284.0),
+            _fill_rect(148.0, 272.0, 160.0, 280.0),
+            _fill_rect(162.0, 268.0, 174.0, 276.0),
+            _fill_rect(176.0, 276.0, 188.0, 284.0),
+            _fill_rect(190.0, 288.0, 202.0, 296.0),
+            _fill_rect(204.0, 300.0, 216.0, 308.0),
+            _fill_rect(330.0, 280.0, 342.0, 288.0),
+            _fill_rect(344.0, 276.0, 356.0, 284.0),
+            _fill_rect(358.0, 272.0, 370.0, 280.0),
+            _fill_rect(372.0, 268.0, 384.0, 276.0),
+            _fill_rect(386.0, 276.0, 398.0, 284.0),
+            _fill_rect(400.0, 288.0, 412.0, 296.0),
+            _fill_rect(414.0, 300.0, 426.0, 308.0),
+        ],
+    )
+
+    atoms = collect_page_atoms(page, page_idx=12)
+
+    composite_atoms = [
+        atom
+        for atom in atoms
+        if atom.kind == "vector_cluster" and atom.metadata.get("source") == "drawing_composite"
+    ]
+    assert len(composite_atoms) == 2
+    assert composite_atoms[0].bbox == (120.0, 268.0, 216.0, 308.0)
+    assert composite_atoms[1].bbox == (330.0, 268.0, 426.0, 308.0)
+    assert all(atom.metadata["fill_member_count"] == 7 for atom in composite_atoms)
+
+
+def test_collect_page_atoms_promotes_fill_dominated_line_art_with_single_stroke():
+    def _fill_rect(x0, y0, x1, y1):
+        return {"type": "f", "rect": fitz.Rect(x0, y0, x1, y1), "fill": (0.0, 0.0, 0.0)}
+
+    page = _FakeXrefImagePage(
+        blocks=[],
+        images=[],
+        image_rects={},
+        drawings=[
+            _fill_rect(120.0, 280.0, 132.0, 288.0),
+            _fill_rect(134.0, 276.0, 146.0, 284.0),
+            _fill_rect(148.0, 272.0, 160.0, 280.0),
+            _fill_rect(162.0, 268.0, 174.0, 276.0),
+            _fill_rect(176.0, 276.0, 188.0, 284.0),
+            _fill_rect(190.0, 288.0, 202.0, 296.0),
+            _fill_rect(204.0, 300.0, 216.0, 308.0),
+            {"type": "s", "rect": fitz.Rect(120.0, 310.0, 216.0, 310.0), "color": (0.0, 0.0, 0.0), "dashes": "[] 0", "width": 1.0},
+        ],
+    )
+
+    atoms = collect_page_atoms(page, page_idx=12)
+
+    composite_atoms = [
+        atom
+        for atom in atoms
+        if atom.kind == "vector_cluster" and atom.metadata.get("source") == "drawing_composite"
+    ]
+    assert len(composite_atoms) == 1
+    assert composite_atoms[0].bbox == (120.0, 268.0, 216.0, 310.0)
+    assert composite_atoms[0].metadata["fill_member_count"] == 7
+
+
 def test_collect_page_atoms_recovers_xref_only_images():
     page = _FakeXrefImagePage(
         blocks=[],

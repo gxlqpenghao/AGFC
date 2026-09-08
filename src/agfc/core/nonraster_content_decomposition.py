@@ -3,7 +3,6 @@ from __future__ import annotations
 from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
 from statistics import median
-from typing import Any
 
 from agfc.models import BBox, PageAtom
 

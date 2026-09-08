@@ -4,8 +4,11 @@ from typing import Iterable
 
 import fitz
 
+from agfc.core.figure_scope import LEADING_FIGURE_SCOPE_RE
 from agfc.models import BBox, PageAtom
 from agfc.thresholds import VisualThresholds, resolve_visual_thresholds
+
+
 
 
 def collect_page_atoms(page: fitz.Page, *, page_idx: int) -> list[PageAtom]:
@@ -20,25 +23,60 @@ def collect_page_atoms(page: fitz.Page, *, page_idx: int) -> list[PageAtom]:
 def _extract_text_atoms(page: fitz.Page, *, page_idx: int) -> list[PageAtom]:
     atoms: list[PageAtom] = []
     payload = page.get_text("dict")
-    block_index = 0
+    text_index = 0
     for block in payload.get("blocks", []):
         if block.get("type") != 0:
             continue
-        text = _block_text(block)
+        block_atoms = _split_parallel_caption_line_atoms(block)
+        if not block_atoms:
+            text = _block_text(block)
+            if not text:
+                continue
+            block_atoms = [
+                {
+                    "text": text,
+                    "bbox": _bbox_tuple(block.get("bbox")),
+                    "metadata": {},
+                }
+            ]
+        for block_atom in block_atoms:
+            text_index += 1
+            metadata = {"block_number": block.get("number")}
+            metadata.update(block_atom.get("metadata", {}))
+            atoms.append(
+                PageAtom(
+                    id=f"page_{page_idx}_text_{text_index}",
+                    kind="text_block",
+                    bbox=block_atom["bbox"],
+                    page_idx=page_idx,
+                    text=block_atom["text"],
+                    metadata=metadata,
+                )
+            )
+    return atoms
+
+
+def _split_parallel_caption_line_atoms(block: dict) -> list[dict]:
+    lines: list[dict] = []
+    for line_index, line in enumerate(block.get("lines", [])):
+        text = _line_text(line)
         if not text:
             continue
-        block_index += 1
-        atoms.append(
-            PageAtom(
-                id=f"page_{page_idx}_text_{block_index}",
-                kind="text_block",
-                bbox=_bbox_tuple(block.get("bbox")),
-                page_idx=page_idx,
-                text=text,
-                metadata={"block_number": block.get("number")},
-            )
+        if not LEADING_FIGURE_SCOPE_RE.match(text):
+            return []
+        bbox = line.get("bbox")
+        if bbox is None:
+            return []
+        lines.append(
+            {
+                "text": text,
+                "bbox": _bbox_tuple(bbox),
+                "metadata": {"split_from_block": True, "line_index": line_index},
+            }
         )
-    return atoms
+    if len(lines) < 2:
+        return []
+    return lines
 
 
 def _extract_image_atoms(page: fitz.Page, *, page_idx: int, thresholds: VisualThresholds) -> list[PageAtom]:
@@ -213,7 +251,11 @@ def _extract_composite_drawing_atoms(
         fill_count = sum(1 for candidate in component if candidate["fragment_type"] == "fill")
 
         if fill_count > 0:
-            if horizontal_count + vertical_count < 2:
+            if horizontal_count + vertical_count < 2 and not _is_dense_fill_dominated_component(
+                component,
+                bbox=clipped_bbox,
+                thresholds=thresholds,
+            ):
                 continue
         elif horizontal_count < 3 or vertical_count < 2:
             continue
@@ -244,6 +286,22 @@ def _extract_composite_drawing_atoms(
         )
 
     return atoms
+
+
+def _is_dense_fill_dominated_component(
+    component: list[dict],
+    *,
+    bbox: BBox,
+    thresholds: VisualThresholds,
+) -> bool:
+    fill_count = sum(1 for candidate in component if candidate["fragment_type"] == "fill")
+    if fill_count < 6 or fill_count < len(component) - 1:
+        return False
+    width = max(0.0, bbox[2] - bbox[0])
+    height = max(0.0, bbox[3] - bbox[1])
+    if width < thresholds.vector_cluster_min_width or height < thresholds.vector_cluster_min_height:
+        return False
+    return width * height >= 900.0
 
 
 def _composite_drawing_candidate(
@@ -339,11 +397,15 @@ def _stroke_orientation(drawing: dict, bbox: BBox, *, thresholds: VisualThreshol
 def _block_text(block: dict) -> str:
     parts: list[str] = []
     for line in block.get("lines", []):
-        spans = line.get("spans", [])
-        line_text = "".join(span.get("text", "") for span in spans).strip()
+        line_text = _line_text(line)
         if line_text:
             parts.append(line_text)
     return "\n".join(parts).strip()
+
+
+def _line_text(line: dict) -> str:
+    spans = line.get("spans", [])
+    return "".join(span.get("text", "") for span in spans).strip()
 
 
 def _bbox_tuple(value: object) -> BBox:

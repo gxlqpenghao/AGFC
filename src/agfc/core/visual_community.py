@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from agfc.core.graph_utils import _connected_component
+
 import math
 
 from agfc.models import BBox, PageAtom, PanelCandidate
@@ -43,7 +45,6 @@ def cluster_visual_atoms(
         if _is_visual_candidate(atom, page_width=page_width, page_height=page_height)
     ]
     adjacency: dict[str, set[str]] = {atom.id: set() for atom in candidates}
-    atom_by_id = {atom.id: atom for atom in candidates}
     barriers = [atom for atom in atoms if is_likely_body_text(atom, page_width)]
 
     ordered = sorted(candidates, key=lambda atom: atom.id)
@@ -180,16 +181,6 @@ def _has_text_barrier(a: BBox, b: BBox, barriers: list[PageAtom]) -> bool:
     return False
 
 
-def _connected_component(seed: str, adjacency: dict[str, set[str]]) -> set[str]:
-    stack = [seed]
-    seen: set[str] = set()
-    while stack:
-        current = stack.pop()
-        if current in seen:
-            continue
-        seen.add(current)
-        stack.extend(sorted(adjacency.get(current, set()) - seen))
-    return seen
 
 
 def _union_bbox(bboxes) -> BBox:

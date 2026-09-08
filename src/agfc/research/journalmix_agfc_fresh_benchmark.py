@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 import re
 import time
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Callable
+
+from agfc.runtime.output import prepare_output_dir
 
 from agfc.page_metrics import aggregate_figure_results, evaluate_figure_page
 from agfc.journalmix_page_visualizations import create_journalmix_visualization_bundle
@@ -33,10 +34,10 @@ def run_journalmix_agfc_fresh_benchmark(
     clock: Callable[[], float] = time.perf_counter,
 ) -> dict[str, Any]:
     dataset_path = Path(dataset_root)
-    output_path = Path(output_dir)
+    output_path = Path(output_dir).expanduser().resolve()
     records = load_journalmix_selected_page_records(dataset_path, page_ids=page_ids)
 
-    _reset_output_dir(output_path)
+    prepare_output_dir(output_path)
     runs_dir = output_path / "runs"
     runs_dir.mkdir(parents=True, exist_ok=True)
     (output_path / "pages").mkdir(parents=True, exist_ok=True)
@@ -136,12 +137,6 @@ def _load_prediction_boxes_from_page_dir(page_dir: Path) -> list[dict[str, Any]]
             }
         )
     return predictions
-
-
-def _reset_output_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
 
 
 def _safe_run_name(value: str) -> str:

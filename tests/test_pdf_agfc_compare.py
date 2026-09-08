@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 from agfc.compare import compare_run_summaries

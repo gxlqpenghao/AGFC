@@ -1,18 +1,20 @@
 {
   "dataset_name": "AGFC-JournalMix",
-  "version": "v1",
+  "version": "v1.1",
   "status": "frozen",
   "page_count": 84,
   "positive_page_count": 72,
   "hard_negative_page_count": 12,
-  "doc_count": 22,
+  "doc_count": 24,
   "bucket_counts": {
+    "mixed_vector_raster": 24,
     "route_map_or_flow": 18,
-    "mixed_vector_raster": 18,
     "compound_multi_panel": 18,
-    "vector_dominant": 18,
+    "vector_dominant": 12,
     "hard_negative": 12
   },
-  "notes": "Draft dataset skeleton created by run_journalmix_prepare.py",
-  "frozen_at": "2026-04-20T14:20:08.102445+00:00"
+  "notes": "Index and manifest reconciled with existing GT/meta during v0.1.1 audit; GT unchanged. The tust_squeezing_2026 source requires a local source_map.local.json entry.",
+  "frozen_at": "2026-04-20T14:20:08.102445+00:00",
+  "previous_version": "v1",
+  "revised_at": "2026-09-08"
 }

@@ -50,7 +50,7 @@ class FigureAnchorCandidate:
 
 
 _FIGURE_PREFIX = r"(?:fig(?:ure)?\.?|figure|图|圖)"
-_FIGURE_NUMBER = r"(?P<figure_number>\d+[A-Za-z]?)"
+_FIGURE_NUMBER = r"(?P<figure_number>\d+(?:\.\d+)*(?:-\d+)?[A-Za-z]?)"
 _CAPTION_RE = re.compile(
     rf"^\s*(?P<prefix>{_FIGURE_PREFIX})\s*{_FIGURE_NUMBER}(?=\s|[:：.。)、)\]-]|$)",
     re.IGNORECASE,

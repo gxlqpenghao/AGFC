@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
-from typing import Any
 
 from agfc.models import BBox, PageAtom
 from agfc.nonraster_content_decomposition import propose_nonraster_content_hypotheses

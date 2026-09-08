@@ -4,11 +4,8 @@ from PIL import Image, ImageDraw
 
 from agfc.models import PageAtom
 from agfc.primitive_evidence import PrimitiveEvidence
-from pathlib import Path
 
-import fitz
 
-from agfc.runner import _render_page, RENDER_DPI
 from agfc.raster_content_region import (
     RasterContentRegionProposal,
     _stabilize_small_axis_crop,

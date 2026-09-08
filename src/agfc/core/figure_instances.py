@@ -422,18 +422,41 @@ def _resolve_instance_boundary(
             ) = semantic_envelope_proposal
             comparison_score = max(annotation_base_score_value, annotation_proposal_score_value or 0.0)
             if semantic_score > comparison_score:
-                content_bbox = semantic_bbox
-                strategy = "semantic_annotation_envelope"
-                selected_annotation_atoms = semantic_selected_atoms
-                rejected_annotation_atoms = semantic_rejected_atoms
-                annotation_score_metadata.update(
-                    {
-                        "semantic_annotation_envelope_score": round(semantic_score, 4),
-                        "semantic_annotation_envelope_base_score": round(comparison_score, 4),
-                        "semantic_annotation_envelope_proposal": semantic_metadata,
-                        "annotation_extent_decision": "semantic_envelope_selected",
-                    }
+                caption_anchor_rejection = _semantic_envelope_caption_anchor_visual_rejection(
+                    base_content_bbox,
+                    semantic_bbox,
+                    candidates,
                 )
+                semantic_score_metadata = {
+                    "semantic_annotation_envelope_score": round(semantic_score, 4),
+                    "semantic_annotation_envelope_base_score": round(comparison_score, 4),
+                    "semantic_annotation_envelope_proposal": semantic_metadata,
+                }
+                if caption_anchor_rejection is not None:
+                    semantic_selected_ids = {atom.id for atom in semantic_selected_atoms}
+                    if expanded_bbox == base_content_bbox:
+                        selected_annotation_atoms = [
+                            atom for atom in selected_annotation_atoms if atom.id not in semantic_selected_ids
+                        ]
+                    rejected_annotation_atoms = _dedupe_atoms([*rejected_annotation_atoms, *semantic_selected_atoms])
+                    annotation_score_metadata.update(
+                        {
+                            **semantic_score_metadata,
+                            **caption_anchor_rejection,
+                            "annotation_extent_decision": "semantic_envelope_rejected_caption_anchor_visual",
+                        }
+                    )
+                else:
+                    content_bbox = semantic_bbox
+                    strategy = "semantic_annotation_envelope"
+                    selected_annotation_atoms = semantic_selected_atoms
+                    rejected_annotation_atoms = semantic_rejected_atoms
+                    annotation_score_metadata.update(
+                        {
+                            **semantic_score_metadata,
+                            "annotation_extent_decision": "semantic_envelope_selected",
+                        }
+                    )
         used_annotation_atom_ids = sorted(atom.id for atom in selected_annotation_atoms)
         rejected_annotation_atom_ids = sorted(atom.id for atom in rejected_annotation_atoms)
     else:
@@ -1215,13 +1238,6 @@ def _annotation_same_axis_band(left: BBox, right: BBox, gap_limit: float) -> boo
     return False
 
 
-def _semantic_annotation_component_rank(base_bbox: BBox, atoms: list[PageAtom]) -> tuple[float, float, float, str]:
-    bbox = _union_bbox(atom.bbox for atom in atoms)
-    semantic_support = sum(_annotation_atom_semantic_support(atom) for atom in atoms) / len(atoms)
-    local_support = sum(_semantic_annotation_atom_local_support(base_bbox, atom) for atom in atoms) / len(atoms)
-    scale = max(1.0, min(_bbox_width(base_bbox), _bbox_height(base_bbox)))
-    proximity = 1.0 / (1.0 + _bbox_gap(base_bbox, bbox) / scale)
-    return (-semantic_support, -local_support, -proximity, "|".join(sorted(atom.id for atom in atoms)))
 
 
 def _semantic_annotation_component_score_rank(
@@ -1951,6 +1967,64 @@ def _candidate_seed_evidence_contains(candidates: list[FigureObjectCandidate], t
     return False
 
 
+def _semantic_envelope_caption_anchor_visual_rejection(
+    base_bbox: BBox,
+    envelope_bbox: BBox,
+    candidates: list[FigureObjectCandidate],
+) -> dict[str, Any] | None:
+    if not _candidate_seed_evidence_contains(candidates, "caption_anchor_visual"):
+        return None
+    base_area = _bbox_area(base_bbox)
+    envelope_area = _bbox_area(envelope_bbox)
+    if base_area <= 0.0 or envelope_area <= 0.0:
+        return None
+    external_expansion = _boundary_external_expansion(base_bbox, envelope_bbox)
+    if external_expansion > 0.06:
+        side_loss = _boundary_side_loss(base_bbox, envelope_bbox)
+        visual_retention = _caption_anchor_visual_retention(envelope_bbox, candidates, base_bbox=base_bbox)
+        if visual_retention is None or side_loss < 0.02:
+            return None
+        return {
+            "semantic_annotation_envelope_decision": "rejected_caption_anchor_visual_retention",
+            "semantic_annotation_envelope_visual_retention": round(visual_retention, 4),
+            "semantic_annotation_envelope_area_ratio": round(envelope_area / base_area, 4),
+            "semantic_annotation_envelope_side_loss": round(side_loss, 4),
+        }
+    visual_retention = _caption_anchor_visual_retention(envelope_bbox, candidates, base_bbox=base_bbox)
+    if visual_retention is None or visual_retention >= 0.62:
+        return None
+    area_ratio = envelope_area / base_area
+    side_loss = _boundary_side_loss(base_bbox, envelope_bbox)
+    if area_ratio >= 0.62 and side_loss <= 0.7:
+        return None
+    return {
+        "semantic_annotation_envelope_decision": "rejected_caption_anchor_visual_retention",
+        "semantic_annotation_envelope_visual_retention": round(visual_retention, 4),
+        "semantic_annotation_envelope_area_ratio": round(area_ratio, 4),
+        "semantic_annotation_envelope_side_loss": round(side_loss, 4),
+    }
+
+
+def _caption_anchor_visual_retention(
+    proposal_bbox: BBox,
+    candidates: list[FigureObjectCandidate],
+    *,
+    base_bbox: BBox,
+) -> float | None:
+    retentions: list[float] = []
+    for candidate in candidates:
+        if not _is_caption_anchor_visual_candidate(candidate):
+            continue
+        candidate_area = _bbox_area(candidate.content_bbox)
+        if candidate_area <= 0.0:
+            continue
+        base_overlap = _bbox_overlap_area(base_bbox, candidate.content_bbox) / candidate_area
+        if base_overlap < 0.72:
+            continue
+        retentions.append(_bbox_overlap_area(proposal_bbox, candidate.content_bbox) / candidate_area)
+    return min(retentions) if retentions else None
+
+
 def _annotation_side_expansion(base_bbox: BBox, expanded_bbox: BBox) -> float:
     width = max(_bbox_width(base_bbox), 1.0)
     height = max(_bbox_height(base_bbox), 1.0)
@@ -2275,7 +2349,40 @@ def _content_evidence_can_replace_complete(
     content_ratio = content_area / complete_area
     if content_ratio <= 0.0:
         return False
+    if _is_fragmentary_coarse_nonraster_content_replacement(complete, content_bbox, content_candidate):
+        return False
     return _content_replacement_score(complete.content_bbox, content_bbox, content_candidate) > _complete_boundary_score(complete)
+
+
+def _is_fragmentary_coarse_nonraster_content_replacement(
+    complete: FigureObjectCandidate,
+    content_bbox: BBox,
+    content_candidate: FigureObjectCandidate,
+) -> bool:
+    metadata = content_candidate.metadata
+    source = str(metadata.get("content_region_source") or "")
+    strategy = str(metadata.get("object_strategy") or "")
+    if strategy != "coarse_nonraster_decomposition" and source != "nonraster_content_decomposition_helper":
+        return False
+    if not (
+        _candidate_seed_evidence_contains([complete], "visual_community")
+        or _candidate_seed_evidence_contains([complete], "caption_anchor_visual")
+        or _candidate_metadata_scope_numbers(complete)
+    ):
+        return False
+    complete_area = _bbox_area(complete.content_bbox)
+    content_area = _bbox_area(content_bbox)
+    if complete_area <= 0.0 or content_area <= 0.0:
+        return False
+    content_ratio = content_area / complete_area
+    complete_width = max(_bbox_width(complete.content_bbox), 1.0)
+    complete_height = max(_bbox_height(complete.content_bbox), 1.0)
+    width_retention = _bbox_width(content_bbox) / complete_width
+    height_retention = _bbox_height(content_bbox) / complete_height
+    side_loss = _boundary_side_loss(complete.content_bbox, content_bbox)
+    horizontal_fragment = width_retention < 0.62 and height_retention >= 0.72
+    vertical_fragment = height_retention < 0.62 and width_retention >= 0.72
+    return content_ratio < 0.58 and side_loss >= 0.42 and (horizontal_fragment or vertical_fragment)
 
 
 def _same_scope_sibling_union_bbox(candidates: list[FigureObjectCandidate]) -> BBox | None:

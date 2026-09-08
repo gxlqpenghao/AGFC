@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from agfc.core.graph_utils import _connected_component
+
 import re
 from collections.abc import Sequence
 from typing import Any
@@ -1201,16 +1203,6 @@ def _has_unreasonable_page_overhang(bbox: BBox, *, page_width: float, page_heigh
     return False
 
 
-def _connected_component(seed: str, adjacency: dict[str, set[str]]) -> set[str]:
-    stack = [seed]
-    seen: set[str] = set()
-    while stack:
-        current = stack.pop()
-        if current in seen:
-            continue
-        seen.add(current)
-        stack.extend(sorted(adjacency.get(current, set()) - seen))
-    return seen
 
 
 def _union_bbox(bboxes) -> BBox:

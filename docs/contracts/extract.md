@@ -32,3 +32,9 @@ The command writes `extract_result.json` in the output directory. The result is 
 ## Compatibility
 
 Consumers should tolerate additional fields. AGFC v0.1 may add optional diagnostics without breaking this contract.
+
+## v0.1.1 output integrity
+
+The output directory must be new or empty. Invalid or empty page selections are errors, not silently skipped pages. Rotated PDF pages are normalized in memory so text, vector and crop coordinates share the unrotated PDF coordinate space; the source PDF is not modified.
+
+An incomplete run (missing summary, figure records or the exact exported asset) raises an error. Asset filenames are never guessed by positional sorting. Figures containing overlays or transformed image placement use the rendered crop to preserve composition.

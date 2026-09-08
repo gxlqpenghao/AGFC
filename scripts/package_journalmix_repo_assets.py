@@ -3,7 +3,12 @@ from __future__ import annotations
 
 import argparse
 import shutil
+import sys
 from pathlib import Path
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from agfc.runtime.output import require_empty_output_dir
 
 
 def main() -> int:
@@ -23,9 +28,10 @@ def main() -> int:
     raw_audit_dst = repo_root / "docs" / "reviews" / "journalmix-local-mineru-vs-agfc-raw"
     api_audit_dst = repo_root / "docs" / "reviews" / "journalmix-mineru-api-vs-client"
 
-    _reset_dir(dataset_dst)
-    _reset_dir(raw_audit_dst)
-    _reset_dir(api_audit_dst)
+    for target in (dataset_dst, raw_audit_dst, api_audit_dst):
+        require_empty_output_dir(target)
+    for target in (dataset_dst, raw_audit_dst, api_audit_dst):
+        target.mkdir(parents=True, exist_ok=True)
 
     _copy_dataset(dataset_src, dataset_dst)
     _copy_audit(raw_audit_src, raw_audit_dst)
@@ -78,12 +84,6 @@ def _sanitize_repo_paths(text: str) -> str:
     for old, new in replacements:
         text = text.replace(old, new)
     return text
-
-
-def _reset_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
 
 
 if __name__ == "__main__":

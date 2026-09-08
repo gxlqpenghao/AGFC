@@ -200,3 +200,19 @@ python3 -m pytest \
 ## 范围说明
 
 AGFC v0.1 的重点是把当前 figure extraction baseline 产品化。已知的抽图质量问题应该继续在 AGFC core 中修复，但大规模算法升级不属于这次 packaging pass 的范围。
+
+## 固定版本 v0.1.1
+
+本次架构与代码审计、删除依据、验证结果和兼容性变化见 [审计报告](docs/audits/v0.1.1.md)。
+
+复现固定开发环境：
+
+```bash
+git checkout v0.1.1
+uv sync --locked --python 3.9
+uv run --locked python -m pytest -q
+```
+
+只安装产品可用 `python3 -m pip install .`；需要第三方 HTTP 适配器时使用 `python3 -m pip install '.[integrations]'`。固定依赖环境以 `uv.lock` 为准。
+
+抽取和 benchmark 的输出目录须为新目录或空目录，重复运行请指定新的目录。完整 84 页 JournalMix 验证需要本地隧道论文映射；仓库内不包含该私有源文件，详见 [数据集说明](docs/benchmarks/journalmix-v1-dataset.md)。

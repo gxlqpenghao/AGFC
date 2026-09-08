@@ -6,10 +6,11 @@ from pathlib import Path
 from typing import Any
 
 from agfc import __version__
+from agfc.runtime.output import require_empty_output_dir
 
 
 ADAPTER_NAME = "mineru"
-ADAPTER_VERSION = "0.1.0"
+ADAPTER_VERSION = "0.1.1"
 
 
 def repair_mineru_artifact(
@@ -25,10 +26,17 @@ def repair_mineru_artifact(
     repaired_dir = output_path / "repaired"
     postprocessed_dir = output_path / "postprocessed"
     final_images_dir = postprocessed_dir / "final_images"
+    if output_path == artifact_path or artifact_path in output_path.parents or output_path in artifact_path.parents:
+        raise ValueError("Repair output and original artifact directories must not overlap")
+    if source == output_path or output_path in source.parents:
+        raise ValueError("Repair output must not contain the source PDF")
+    if not isinstance(extract_result, dict) or not isinstance(extract_result.get("images"), list):
+        raise ValueError("extract_result.images must be a list")
+    original_items = _load_content_list(artifact_path / "content_list.json")
+    require_empty_output_dir(repaired_dir)
+    require_empty_output_dir(postprocessed_dir)
     repaired_dir.mkdir(parents=True, exist_ok=True)
     final_images_dir.mkdir(parents=True, exist_ok=True)
-
-    original_items = _load_content_list(artifact_path / "content_list.json")
     extract_images = [item for item in extract_result.get("images", []) if isinstance(item, dict)]
     page_image_offsets: dict[int, int] = {}
     slot_index = 0
@@ -43,7 +51,7 @@ def repair_mineru_artifact(
         page_idx = _coerce_page_idx(item)
         ordinal = page_image_offsets.get(page_idx, 0) + 1
         page_image_offsets[page_idx] = ordinal
-        replacement = _match_extract_image(extract_images, page_idx=page_idx, ordinal=ordinal, slot_index=slot_index)
+        replacement = _match_extract_image(extract_images, page_idx=page_idx, ordinal=ordinal)
         repaired_item = dict(item)
         target = {
             "image_slot_index": slot_index,
@@ -61,7 +69,7 @@ def repair_mineru_artifact(
 
         asset_id = str(replacement.get("asset_id") or replacement.get("figure_id") or f"agfc_image_{slot_index + 1}")
         source_asset = _resolve_extract_asset(extract_result, replacement)
-        if source_asset is None or not source_asset.exists():
+        if source_asset is None or not source_asset.is_file():
             replacements.append(
                 {
                     "decision": "keep_original",
@@ -74,13 +82,15 @@ def repair_mineru_artifact(
             slot_index += 1
             continue
 
-        suffix = source_asset.suffix if source_asset is not None and source_asset.suffix else ".png"
+        suffix = source_asset.suffix or ".png"
         final_name = f"{slot_index:04d}_{_safe_stem(asset_id)}{suffix}"
         final_asset_path = f"final_images/{final_name}"
         shutil.copy2(source_asset, final_images_dir / final_name)
 
-        caption = str(replacement.get("caption_text") or replacement.get("caption") or "").strip()
+        caption = _caption_text(replacement.get("caption_text") or replacement.get("caption") or item.get("image_caption") or item.get("caption"))
         repaired_item["asset_path"] = final_asset_path
+        if "img_path" in repaired_item:
+            repaired_item["img_path"] = final_asset_path
         repaired_item["asset_id"] = asset_id
         repaired_item["asset_source"] = "agfc"
         repaired_item["image_caption"] = caption
@@ -102,7 +112,30 @@ def repair_mineru_artifact(
     merged_content_list = postprocessed_dir / "merged_content_list.json"
     merged_full_md = postprocessed_dir / "merged_full.md"
     patch_manifest = postprocessed_dir / "patch_manifest.json"
-    _write_json(repaired_content_list, repaired_items)
+    # Each JSON document resolves paths relative to its own parent directory.
+    for index, item in enumerate(repaired_items):
+        if not isinstance(item, dict) or str(item.get("type") or "").lower() != "image" or item.get("asset_source") == "agfc":
+            continue
+        raw = str(item.get("asset_path") or item.get("img_path") or "").strip()
+        if not raw:
+            continue
+        original_asset = (artifact_path / raw).resolve()
+        if artifact_path not in original_asset.parents or not original_asset.is_file():
+            continue
+        final_name = f"original_{index:04d}_{_safe_stem(original_asset.stem)}{original_asset.suffix}"
+        shutil.copy2(original_asset, final_images_dir / final_name)
+        item["asset_path"] = f"final_images/{final_name}"
+        if "img_path" in item:
+            item["img_path"] = item["asset_path"]
+    repaired_bundle_items = []
+    for item in repaired_items:
+        record = dict(item) if isinstance(item, dict) else item
+        if isinstance(record, dict):
+            for key in ("asset_path", "img_path"):
+                if str(record.get(key) or "").startswith("final_images/"):
+                    record[key] = "../postprocessed/" + record[key]
+        repaired_bundle_items.append(record)
+    _write_json(repaired_content_list, repaired_bundle_items)
     _write_json(merged_content_list, repaired_items)
     merged_full_md.write_text(_render_full_md(repaired_items), encoding="utf-8")
     _write_json(
@@ -127,7 +160,7 @@ def repair_mineru_artifact(
         },
         "match_policy": {
             "primary": ["page_idx", "image_ordinal_in_page"],
-            "fallback": ["image_slot_index"],
+            "fallback": [],
         },
         "replacements": replacements,
         "outputs": {
@@ -155,13 +188,10 @@ def _match_extract_image(
     *,
     page_idx: int,
     ordinal: int,
-    slot_index: int,
 ) -> dict[str, Any] | None:
     page_matches = [image for image in images if _coerce_page_idx(image) == page_idx]
     if ordinal - 1 < len(page_matches):
         return page_matches[ordinal - 1]
-    if slot_index < len(images):
-        return images[slot_index]
     return None
 
 
@@ -189,8 +219,8 @@ def _render_full_md(items: list[Any]) -> str:
             continue
         item_type = str(item.get("type") or "").lower()
         if item_type == "image":
-            caption = str(item.get("image_caption") or item.get("caption") or "").strip()
-            asset_path = str(item.get("asset_path") or "").strip()
+            caption = _caption_text(item.get("image_caption") or item.get("caption"))
+            asset_path = str(item.get("asset_path") or item.get("img_path") or "").strip()
             parts.append(f"![{caption}]({asset_path})" if asset_path else f"![{caption}]()")
             continue
         text = str(item.get("text") or item.get("content") or "").strip()
@@ -224,3 +254,9 @@ def _safe_stem(value: str) -> str:
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _caption_text(value: Any) -> str:
+    if isinstance(value, list):
+        return " ".join(str(part).strip() for part in value if part).strip()
+    return str(value or "").strip()

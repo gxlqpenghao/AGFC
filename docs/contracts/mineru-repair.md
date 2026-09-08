@@ -41,3 +41,11 @@ It falls back to document-level image slot order when necessary. Future versions
 ## Boundary
 
 The repair adapter depends only on MinerU-style files such as `content_list.json` and `full.md`. It does not depend on consumer-specific classes or runtime directories.
+
+## v0.1.1 matching and bundle paths
+
+Matching uses page index and image ordinal within that page. The global slot fallback has been removed because it could reuse an already-matched image; `match_policy.fallback` is now an empty array. This remains ordinal matching, so differently split/merged figures require review.
+
+Paths in each JSON file are relative to that file: `repaired/content_list.json` uses `../postprocessed/final_images/...`, while `postprocessed/merged_content_list.json` and Markdown use `final_images/...`. Native `img_path` is updated when present. Available retained original images are copied into the output bundle; missing original images remain unresolved and are not fabricated.
+
+Original artifact and repair output directories must not overlap. Existing nonempty `repaired` or `postprocessed` directories are rejected; choose a fresh output directory.

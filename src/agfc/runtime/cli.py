@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Sequence
 
 from agfc.adapters.mineru import repair_mineru_artifact
-from agfc.benchmark_reports import run_journalmix_performance_report
 from agfc.contracts import build_extract_result, write_contract_json
 from agfc.demo import run_extract_demo, run_mineru_demo
 from agfc.runner import run_pdf
@@ -15,7 +14,12 @@ from agfc.service import run_server
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
-    return int(args.func(args))
+    try:
+        return int(args.func(args))
+    except (OSError, ValueError) as exc:
+        import sys
+        print(f"agfc: {exc}", file=sys.stderr)
+        return 2
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -109,6 +113,8 @@ def _cmd_serve(args: argparse.Namespace) -> int:
 
 
 def _cmd_benchmark_journalmix(args: argparse.Namespace) -> int:
+    from agfc.research.benchmark_reports import run_journalmix_performance_report
+
     report = run_journalmix_performance_report(
         dataset_root=args.dataset_root,
         output_dir=args.output_dir,
@@ -135,7 +141,9 @@ def _load_extract_result(path: str | None) -> dict | None:
     if not path:
         return None
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
-    return payload if isinstance(payload, dict) else None
+    if not isinstance(payload, dict):
+        raise ValueError("extract-result must be a JSON object")
+    return payload
 
 
 if __name__ == "__main__":

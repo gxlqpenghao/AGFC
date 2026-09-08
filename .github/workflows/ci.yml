@@ -2,29 +2,38 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "feat/public-product-repo"]
+    tags: ["v*"]
   pull_request:
-    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.11"]
+        python-version: ["3.9", "3.11", "3.13"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Install AGFC
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -e .
-
+      - uses: astral-sh/setup-uv@v6
+      - name: Install locked environment
+        run: uv sync --locked --python ${{ matrix.python-version }}
+      - name: Static checks
+        run: uv run --locked ruff check src tests
       - name: Run tests
-        run: python3 -m pytest -q
+        run: uv run --locked python3 -m pytest -q
+      - name: Build distribution
+        run: uv build
+      - name: Smoke-test installed wheel outside source tree
+        run: |
+          uv venv /tmp/agfc-wheel --python ${{ matrix.python-version }}
+          uv pip install --python /tmp/agfc-wheel/bin/python dist/*.whl
+          cd /tmp
+          /tmp/agfc-wheel/bin/agfc demo extract --output-dir /tmp/agfc-extract-demo
+          /tmp/agfc-wheel/bin/agfc demo mineru --output-dir /tmp/agfc-mineru-demo

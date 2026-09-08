@@ -44,6 +44,18 @@ def test_classify_text_roles_marks_chinese_figure_caption_prefixes():
     ]
 
 
+def test_classify_text_roles_preserves_hierarchical_chinese_figure_numbers():
+    atoms = [
+        _text_atom("zh_nested", "图5.2.2-1 LTD-2600 型地质雷达", (90.0, 248.0, 320.0, 263.0)),
+    ]
+
+    roles = classify_text_roles(atoms, page_width=595.0, page_height=842.0)
+
+    assert [(role.atom_id, role.role, role.matched_prefix, role.figure_number) for role in roles] == [
+        ("zh_nested", "figure_caption", "图", "5.2.2-1"),
+    ]
+
+
 def test_classify_text_roles_keeps_narrow_sentence_style_caption_prefixes_as_captions():
     atoms = [
         _text_atom("en_caption", "Figure 7 shows the evaluation test rig.", (180.0, 400.0, 420.0, 420.0)),
